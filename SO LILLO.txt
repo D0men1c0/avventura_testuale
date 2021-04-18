@@ -1,6 +1,3 @@
 SO LILLO 
-<<<<<<< HEAD
 è VERO, NON è BUGIA
-=======
 ciao come va
->>>>>>> 655cdf54c6d0bd00265f602d154080e70ee3697e
