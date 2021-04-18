@@ -14,5 +14,6 @@
 int main(void) {
 	printf("ciao");
 	printf("ciaijfdasifhsiuhbfuisdhfui");
+	printf("salve");
 	system ("pause");
 }
