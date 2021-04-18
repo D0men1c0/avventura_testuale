@@ -15,9 +15,13 @@
 
 int main(void)
 {
-	char * stringa_file;
-	leggere_file_testo("prova.txt",stringa_file);
+	stringa stringa_file;
+  stringa nome_file;
 
-	printf("%s",stringa_file);
+  nome_file.stringa = "prova.txt";
+
+	stringa_file = leggere_file_testo(nome_file, stringa_file);
+
+	printf("%s", stringa_file.stringa);
 	system ("pause");
 }
