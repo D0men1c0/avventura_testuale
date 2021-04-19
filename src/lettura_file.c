@@ -3,6 +3,8 @@
 #include <string.h>
 #include "lettura_file.h"
 
+//aaaaaaaa
+
 stringa leggere_file_testo(stringa nome_file, stringa stringa_file)
 {
 
