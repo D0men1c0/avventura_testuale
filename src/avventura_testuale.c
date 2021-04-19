@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include "lettura_file.h"
 
-
+//funzione principale main
 int main(void)
 {
 	stringa stringa_file;
