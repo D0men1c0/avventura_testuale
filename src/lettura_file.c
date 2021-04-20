@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include "lettura_file.h"
+#include "utility.h"
 
-//aaaaaaaa
 
 stringa leggere_file_testo(stringa nome_file, stringa stringa_file)
 {
@@ -16,15 +14,14 @@ stringa leggere_file_testo(stringa nome_file, stringa stringa_file)
 	{
 		i = 0;
 
-    stringa_file.stringa = (char *) malloc(sizeof(char) * 100);
-
 		while(!feof(fp))
 		{
-      stringa_file = assegnare_carattere(stringa_file, fgetc(fp), i);
+      scrivere_carattere(&stringa_file, i, fgetc(fp));
+
 			i++;
 		}
-
-    stringa_file = assegnare_carattere(stringa_file, '\0', i-1);
+    
+    scrivere_carattere(&stringa_file, i-1, '\0');
 	}
 	else
 	{
@@ -34,13 +31,5 @@ stringa leggere_file_testo(stringa nome_file, stringa stringa_file)
 	fclose(fp);
 
 	return stringa_file;
-}
-
-
-stringa assegnare_carattere(stringa stringa, char c, int numero)
-{
-  *(stringa.stringa + numero) = c;
-
-  return stringa;
 }
 
