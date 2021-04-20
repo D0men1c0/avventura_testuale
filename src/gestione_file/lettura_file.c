@@ -10,7 +10,7 @@ stringa leggere_file_testo(stringa nome_file, stringa stringa_file)
 
 	FILE * fp;
 
-	if((fp = fopen("prova.txt", "r")) != NULL)
+	if((fp = fopen("nome_file", "r")) != NULL)
 	{
 		i = 0;
 

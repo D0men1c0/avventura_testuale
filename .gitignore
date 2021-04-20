@@ -20,3 +20,4 @@ Debug/src/lettura_file.o
 src/avventura_testuale.c
 src/lettura_file.c
 src/lettura_file.h
+*.o
