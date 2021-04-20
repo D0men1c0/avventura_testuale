@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "utility.h"
 
-
 stringa leggere_file_testo(stringa nome_file, stringa stringa_file)
 {
 
