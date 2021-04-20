@@ -1,27 +1,20 @@
-/*
- ============================================================================
- Name        : avventura_testuale.c
- Author      : 
- Version     :
- Copyright   : Your copyright notice
- Description : Hello World in C, Ansi-style
- ============================================================================
- */
-
 #include <stdio.h>
 #include <stdlib.h>
-#include "lettura_file.h"
+#include "utility/utility.h"
+#include "gestione_file/lettura_file.h"
 
 
 int main(void)
 {
 	stringa stringa_file;
-  stringa nome_file;
+	stringa stringa_nome_file;
 
-  nome_file.stringa = "prova.txt";
+	scrivere_stringa(&stringa_nome_file, "prova.txt");
 
-	stringa_file = leggere_file_testo(nome_file, stringa_file);
+	stringa_file = leggere_file_testo(stringa_nome_file, stringa_file);
 
-	printf("%s", stringa_file.stringa);
+	printf("%s", leggere_stringa(stringa_file));
 	system ("pause");
+
+	return 0;
 }
