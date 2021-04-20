@@ -21,3 +21,6 @@ src/avventura_testuale.c
 src/lettura_file.c
 src/lettura_file.h
 *.o
+.settings/language.settings.xml
+Debug/src/lettura_file.o
+Debug/src/utility.o
