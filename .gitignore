@@ -24,3 +24,4 @@ src/lettura_file.h
 .settings/language.settings.xml
 Debug/src/lettura_file.o
 Debug/src/utility.o
+.settings/language.settings.xml
