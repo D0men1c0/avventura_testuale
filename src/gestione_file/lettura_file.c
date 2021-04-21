@@ -1,15 +1,11 @@
 /**
  * La seguente funzione leggere_file_testo serve a gestire l'apertura del file di testo in modalità di lettura, la quale è gestita mediante
- * fopen che a sua volta richiama un altra funzione leggere_stringa, che serve per riferirsi al nome del file di testo, in quanto è stato
- * utilizzato un tipo di dato denominato stringa per poter gestire più comodamente sia la lunghezza della stringa e anche gli stessi caratteri
- * all'interno di essa. Infatti proprio perchè utilizziamo il tipo di dato, è presente anche la funzione scrivere_carattere, la quale avrà il
- * compito di memorizzare all'interno della stringa tutti i caratteri presi volta per volta dal file di testo mediante fgetc(fp), fino a quando
- * i caratteri del file non sono terminati(!feof).
+ * fopen che a sua volta richiama un altra funzione leggere_stringa, che serve per riferirsi al nome del file di testo.Inoltre è presente
+ * anche la funzione scrivere_carattere, la quale avrà il compito di memorizzare all'interno della stringa tutti i caratteri presi volta
+ * per volta dal file di testo mediante fgetc(fp), fino a quando i caratteri del file non sono terminati(!feof).
  * Inoltre alla fine del ciclo , viene richiamata ulteriormente la funzione scrivere carattere in modo tale da gestire il carattere di
- * fine stringa cioè \0. Infine se l'apertura del file dovesse andare a buon fine, quindi non dandoci alcun errore (!NULL), chiuderemo il file.
- * Perciò l'utilità di questo modulo risiede nella gestione dei file di testo per poter visualizzare le varie parti della storia, viene
- * usata un tipo di dato stringa e non una printf per stampare tutti i caratteri, in quanto negli altri moduli non ci servirà solo
- * la stampa a video del file di testo , ma ad esempio per gestire i movimenti del personaggio no avremo bisogno di una semplice stampa.
+ * fine stringa cioè \0. Infine se l'apertura del file dovesse andare a buon fine, quindi non dando alcun messaggio di errore (!NULL),
+ * si chiuderà il file.
  */
 #include <stdio.h>
 #include <stdlib.h>
