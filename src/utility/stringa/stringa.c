@@ -26,11 +26,11 @@ stringa scrivere_stringa(stringa str, stringa str_2)
 {
 	int lunghezza;
 
-	free(str);//serve a liberare spazio all'interno della stringa
+	free(str);												//serve a liberare spazio all'interno della stringa
 	lunghezza=strlen(str_2);
-	str = allocare_stringa(str, 0);//inizializzo la dimensione della stringa partendo da 0
+	str = allocare_stringa(str, 0);							//inizializzo la dimensione della stringa partendo da 0
 	str = allocare_stringa(str, lunghezza);
-	strcpy(str, str_2);//copiamo il contenuto di str_2 in str
+	strcpy(str, str_2);										//copiamo il contenuto di str_2 in str
 
 	return str;
 }
