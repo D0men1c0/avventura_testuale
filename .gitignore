@@ -25,3 +25,7 @@ src/lettura_file.h
 Debug/src/lettura_file.o
 Debug/src/utility.o
 .settings/language.settings.xml
+/Debug/
+.settings/org.eclipse.cdt.managedbuilder.core.prefs
+.settings/language.settings.xml
+.cproject
