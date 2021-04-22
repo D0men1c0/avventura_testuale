@@ -17,14 +17,12 @@
  */
 #define DIM_STRINGA 100
 
-typedef struct {
-  char * stringa;
-} stringa;
+typedef char * stringa;
 
-char * leggere_stringa(stringa str);
-void scrivere_stringa(stringa * str, char * str_2);
+stringa leggere_stringa(stringa str);
+stringa scrivere_stringa(stringa str, stringa str_2);
 char leggere_carattere(stringa str, int indice);
-void scrivere_carattere(stringa * str, int indice, char c);
-void allocare_stringa(stringa * str, int dimensione);
-void concatenare_stringhe(stringa * str, char * str_2);
+stringa scrivere_carattere(stringa str, int indice, char c);
+stringa allocare_stringa(stringa str, int dimensione);
+stringa concatenare_stringhe(stringa str, stringa str_2);
 

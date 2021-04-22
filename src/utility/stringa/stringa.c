@@ -17,35 +17,39 @@
 #include <string.h>
 #include "stringa.h"
 
-char * leggere_stringa(stringa str)
+stringa leggere_stringa(stringa str)
 {
-  return str.stringa;
+  return str;
 }
 
-void scrivere_stringa(stringa * str, char * str_2)
+stringa scrivere_stringa(stringa str, stringa str_2)
 {
 	int lunghezza;
 
-	free(leggere_stringa(*str));//serve a liberare spazio all'interno della stringa
+	free(str);//serve a liberare spazio all'interno della stringa
 	lunghezza=strlen(str_2);
-	allocare_stringa(str,0);//inizializzo la dimensione della stringa partendo da 0
-	allocare_stringa(str,lunghezza);
-	strcpy(leggere_stringa(*str),str_2);//copiamo il contenuto di str_2 in str
+	str = allocare_stringa(str, 0);//inizializzo la dimensione della stringa partendo da 0
+	str = allocare_stringa(str, lunghezza);
+	strcpy(str, str_2);//copiamo il contenuto di str_2 in str
+
+	return str;
 }
 
-void scrivere_carattere(stringa * str, int indice, char c)
+stringa scrivere_carattere(stringa str, int indice, char c)
 {
   if (indice % DIM_STRINGA == 0)
   {
-    allocare_stringa(str, indice);
+    str = allocare_stringa(str, indice);
   }
 
-  *(str->stringa + indice) = c;
+  str[indice] = c;
+
+  return str;
 }
 
 char leggere_carattere(stringa str, int indice)
 {
-  return *(str.stringa + indice);
+  return str[indice];
 }
 
 
@@ -53,20 +57,24 @@ char leggere_carattere(stringa str, int indice)
  * altrimenti se c'è bisogno di assegnare nuovo spazio
  * esegue la realloc.
  */
-void allocare_stringa(stringa * str, int dimensione)
+stringa allocare_stringa(stringa str, int dimensione)
 {
   if(dimensione == 0)
   {
-    str->stringa =  malloc(sizeof(char) * DIM_STRINGA);
+    str =  malloc(sizeof(char) * DIM_STRINGA);
   }
   else
   {
-    str->stringa = realloc(str->stringa, (dimensione + DIM_STRINGA) * sizeof(char));
+    str = realloc(str, (dimensione + DIM_STRINGA) * sizeof(char));
   }
+
+  return str;
 }
 
-void concatenare_stringhe(stringa * str, char * str_2)
+stringa concatenare_stringhe(stringa str, stringa str_2)
 {
-	strcat(leggere_stringa(*str),str_2);
+	strcat(str, str_2);
+
+	return str;
 }
 

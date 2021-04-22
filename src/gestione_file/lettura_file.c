@@ -18,18 +18,18 @@ stringa leggere_file_testo(stringa nome_file, stringa stringa_file)
 
 	FILE * fp;
 
-	if((fp = fopen(leggere_stringa(nome_file), "r")) != NULL)
+	if((fp = fopen(nome_file, "r")) != NULL)
 	{
 		i = 0;
 
 		while(!feof(fp))
 		{
-			scrivere_carattere(&stringa_file, i, fgetc(fp));
+			stringa_file = scrivere_carattere(stringa_file, i, fgetc(fp));
 
 			i++;
 		}
 
-		scrivere_carattere(&stringa_file, i-1, '\0');//serve per gestire il carattere di fine stringa cioè \0
+		stringa_file = scrivere_carattere(stringa_file, i-1, '\0');//serve per gestire il carattere di fine stringa cioè \0
 	}
 	else
 	{
