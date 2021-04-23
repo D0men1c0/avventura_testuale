@@ -28,7 +28,7 @@ void ritardare_programma(int millisecondi)
     ticks = millisecondi * (CLOCKS_PER_SEC / 1000);
 
     tempo_iniziale = clock();                               //Assegnazione dei tick trascorsi dall'avvio del programma
-    tempo_attuale = tempo_iniziale;                         //Impostazione del tempo attuale alla stessa attività del tempo iniziale
+    tempo_attuale = tempo_iniziale;                         //Impostazione del tempo attuale alla stessa quantità del tempo iniziale
 
     /**
      * Tramite questa struttura di ripetizione si confronta la differenza tra i tick del tempo attuale e quelli del tempo iniziale
