@@ -15,7 +15,7 @@
 
 void ritardare_programma(int millisecondi)
 {
-    setbuf(stdout, NULL);                                   //Disabilitazione il buffering su stdout
+    setbuf(stdout, NULL);                                   //Disabilitazione del buffering su stdout
     long ticks;                                             //Variabile contenente i ticks presenti nella quantità di tempo desiderata
     clock_t tempo_attuale;                                  //Variabile contenente il tempo attuale
     clock_t tempo_iniziale;                                 //Variabile contenente il tempo iniziale
