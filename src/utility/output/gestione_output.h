@@ -1,3 +1,5 @@
+#ifndef GESTIONE_OUTPUT_H
+#define GESTIONE_OUTPUT_H
 /**
  * Il seguente modulo contiene funzioni utili alla gestione dell'output di una stringa in modalità "lenta".
  * Ciò è reso possibile attraverso una funzione che permette di ottenere un delay sul programma, così da poterlo
@@ -8,11 +10,10 @@
  * ha il solo compito di ripulire il CMD da tutti i messaggi.
  */
 
-#include <stdio.h>
-#include <time.h>
-#include <stdlib.h>
-#include "stringa.h"
+#include "../stringa/stringa.h"
 
 void ritardare_programma(int millisecondi);
 void rallentare_output(stringa messaggio, int millisecondi);
 void pulire_schermo();
+
+#endif
