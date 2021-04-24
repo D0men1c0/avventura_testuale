@@ -1,3 +1,6 @@
+#ifndef STRINGA_H
+#define STRINGA_H
+
 /**
  * Questo modulo contiene il tipo di dato stringa con le relative funzioni legate ad esso. Il tipo di dato stringa è composto da un vettore
  * di caratteri. Si è deciso di utilizzare il tipo di dato stringa in quanto riteniamo sia più comodo poter gestire il tipo di dato stringa
@@ -15,6 +18,7 @@
  * Per concludere è stata definita la costante DIM_STRINGA per poter reallocare spazio con l'oppurtuna funzione realloc definita in
  * allocare_stringa.
  */
+
 #define DIM_STRINGA 100
 
 typedef char * stringa;
@@ -25,4 +29,9 @@ char leggere_carattere(stringa str, int indice);
 stringa scrivere_carattere(stringa str, int indice, char c);
 stringa allocare_stringa(stringa str, int dimensione);
 stringa concatenare_stringhe(stringa str, stringa str_2);
+int leggere_lunghezza(stringa str);
+
+
+#endif
+
 

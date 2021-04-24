@@ -7,9 +7,10 @@
  * fine stringa cioè \0. Infine se l'apertura del file dovesse andare a buon fine, quindi non dando alcun messaggio di errore (!NULL),
  * si chiuderà il file.
  */
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "../utility/utility.h"
+#include "lettura_file_testo.h"
 
 stringa leggere_file_testo(stringa nome_file, stringa stringa_file)
 {

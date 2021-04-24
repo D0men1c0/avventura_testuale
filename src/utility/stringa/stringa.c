@@ -12,6 +12,7 @@
  * Infine la funzione concatenare_stringhe, grazie alla funzione di libreria strcat, restituisce i caratteri della prima stringa alla quale
  * sono stati concatenati i caratteri presenti nel vettore di caratteri.
  */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -27,7 +28,7 @@ stringa scrivere_stringa(stringa str, stringa str_2)
 	int lunghezza;
 
 	free(str);												//serve a liberare spazio all'interno della stringa
-	lunghezza=strlen(str_2);
+	lunghezza = leggere_lunghezza(str_2);
 	str = allocare_stringa(str, 0);							//inizializzo la dimensione della stringa partendo da 0
 	str = allocare_stringa(str, lunghezza);
 	strcpy(str, str_2);										//copiamo il contenuto di str_2 in str
@@ -77,4 +78,15 @@ stringa concatenare_stringhe(stringa str, stringa str_2)
 
 	return str;
 }
+
+
+int leggere_lunghezza(stringa str)
+{
+	int lunghezza;
+
+	lunghezza = strlen(str);
+
+	return lunghezza;
+}
+
 
