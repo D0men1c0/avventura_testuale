@@ -17,6 +17,8 @@ int leggere_valore(int vettore[], int pos)
 
 void allocare_vettore(int vettore[], int lunghezza)
 {
+	vettore = (int *)malloc(sizeof(int) * DIM_VETTORE);
+
 	int pos;
 	pos = 0;
 	while(pos<=lunghezza)
@@ -25,5 +27,4 @@ void allocare_vettore(int vettore[], int lunghezza)
 		scanf("%d", &vettore[pos]);
 		pos++;
 	}
-    return;
 }
