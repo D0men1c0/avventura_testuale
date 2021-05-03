@@ -64,7 +64,7 @@ int controllare_valori_inseriti(int min,int max,stringa attributo)
 void settare_valori_personaggio()
 {
 	personaggio inizio_personaggio;
-	stringa nome_partenza;
+	stringa nome_partenza = "";
 	stringa stringa_file = "";
 	stringa stringa_nome_file = "";
 	int forza;
@@ -72,7 +72,7 @@ void settare_valori_personaggio()
 
 
 	printf("Benvenuto in questa nuova avventura, inserisci il tuo nome : ");
-	scanf("%s",&nome_partenza);
+	scanf("%s", nome_partenza);
 	scrivere_nome(&inizio_personaggio,nome_partenza);
 	printf("Ciao %s ",nome_partenza);
 	stringa_file = scrivere_stringa(stringa_file,"statistiche.txt");
