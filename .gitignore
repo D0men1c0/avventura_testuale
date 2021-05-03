@@ -2,12 +2,10 @@
 .settings/language.settings.xml
 Debug/avventura_testuale.exe
 Debug/src/avventura_testuale.o
-Debug/prova.txt
 Debug/src/avventura_testuale.o
 Debug/src/lettura_file.o
 Debug/src/main.o
 Debug/src/utility.o
-Debug/prova.txt
 Debug/src/avventura_testuale.o
 Debug/src/lettura_file.o
 *.o
@@ -15,7 +13,6 @@ Debug/src/lettura_file.o
 Debug/src/lettura_file.o
 Debug/src/utility.o
 .settings/language.settings.xml
-/Debug/
 .settings/org.eclipse.cdt.managedbuilder.core.prefs
 .settings/language.settings.xml
 .cproject
