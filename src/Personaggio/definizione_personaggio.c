@@ -70,9 +70,9 @@ void settare_valori_personaggio()
 {
 	personaggio inizio_personaggio;
 	stringa stringa_file = "";
-	stringa stringa_nome_file = "";
 	stringa str = "";
 	stringa stringa_out = "";
+
 	int forza;
 	int punti;
 	int intelligenza;
@@ -86,9 +86,8 @@ void settare_valori_personaggio()
 	sprintf(stringa_out, "Ciao %s", str);
 	rallentare_output(stringa_out, MILLISECONDI);
 
-	stringa_file = scrivere_stringa(stringa_file, "statistiche.txt");
-	stringa_nome_file = leggere_file_testo(stringa_file, stringa_nome_file);
-	rallentare_output(stringa_nome_file, MILLISECONDI);
+	stringa_file = leggere_file_testo("statistiche.txt", stringa_file);
+	rallentare_output(stringa_file, MILLISECONDI);
 
 	punti = 5;
 	forza = controllare_valori_inseriti(0, punti, "forza");
