@@ -50,7 +50,7 @@ int controllare_valori_inseriti(int min, int max, stringa attributo)
 	do
 	{
 		output = allocare_stringa(output, 0);
-		sprintf(output, "\n\nInserisci quanta %s vuoi avere (con un minimo di %d e un massimo di %d):  ", attributo, min, max);
+		sprintf(output, "\nInserisci quanta %s vuoi avere (con un minimo di %d e un massimo di %d):  ", attributo, min, max);
 		rallentare_output(output, MILLISECONDI);
 		scanf("%d", &valore);
 
@@ -77,13 +77,19 @@ void settare_valori_personaggio()
 	int punti;
 	int intelligenza;
 
-	rallentare_output("Benvenuto in questa nuova avventura, inserisci il tuo nome: ", MILLISECONDI);
+	scrivere_vita(&inizio_personaggio,5);
+
+	rallentare_output("Benvenuto in questa nuova avventura!!\nInserisci il tuo nome: ", MILLISECONDI);
 
 	str = leggere_stringa_tastiera(str);
 	scrivere_nome(&inizio_personaggio, str);
 
 	stringa_out = allocare_stringa(stringa_out, 0);
-	sprintf(stringa_out, "Ciao %s", str);
+	sprintf(stringa_out, "\nCiao %s", str);
+	rallentare_output(stringa_out, MILLISECONDI);
+
+	stringa_out = allocare_stringa(stringa_out, 0);
+	sprintf(stringa_out, "\nPartirai da %d punti vita.", leggere_vita(inizio_personaggio));
 	rallentare_output(stringa_out, MILLISECONDI);
 
 	stringa_file = leggere_file_testo("statistiche.txt", stringa_file);
@@ -100,4 +106,15 @@ void settare_valori_personaggio()
 	scrivere_forza(&inizio_personaggio, forza);
 	intelligenza = controllare_valori_inseriti(0, punti, "intelligenza");
 	scrivere_intelligenza(&inizio_personaggio, intelligenza);
+
+	stringa_out = allocare_stringa(stringa_out, 0);
+	sprintf(stringa_out, "\nHai inserito il valore %d a Forza\n", leggere_forza(inizio_personaggio));
+	rallentare_output(stringa_out, MILLISECONDI);
+
+	stringa_out = allocare_stringa(stringa_out, 0);
+	sprintf(stringa_out, "Hai inserito il valore %d a Intelligenza\n", leggere_intelligenza(inizio_personaggio));
+	rallentare_output(stringa_out, MILLISECONDI);
+
+
+
 }
