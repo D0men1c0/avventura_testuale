@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "definizione_personaggio.h"
 #include "../utility/stringa/stringa.h"
+#include "../utility/costanti.h"
 #include "../gestione_file/file_di_testo/lettura_file_testo.h"
 #include "../gestione_file/file_binari/scrittura_file_binari.h"
 
@@ -64,23 +65,36 @@ int controllare_valori_inseriti(int min,int max,stringa attributo)
 void settare_valori_personaggio()
 {
 	personaggio inizio_personaggio;
-	stringa nome_partenza = "";
 	stringa stringa_file = "";
 	stringa stringa_nome_file = "";
+	stringa str;
+	stringa stringa_out;
 	int forza;
 	int intelligenza;
 
+	rallentare_output("Benvenuto in questa nuova avventura, inserisci il tuo nome : ",MILLISECONDI);
 
-	printf("Benvenuto in questa nuova avventura, inserisci il tuo nome : ");
-	scanf("%s", nome_partenza);
-	scrivere_nome(&inizio_personaggio,nome_partenza);
-	printf("Ciao %s ",nome_partenza);
+
+
+	str=leggere_stringa_tastiera(str);
+	scrivere_nome(&inizio_personaggio,str);
+
+
+	//printf("Ciao %s ",str);
+	allocare_stringa(stringa_out,0);
+
+	sprintf(stringa_out,"Ciao %s",str);
+	rallentare_output(str,MILLISECONDI);
 	stringa_file = scrivere_stringa(stringa_file,"statistiche.txt");
 	stringa_nome_file=leggere_file_testo(stringa_file,stringa_nome_file);
+	rallentare_output(stringa_nome_file,MILLISECONDI);
+
+
 
 	forza = controllare_valori_inseriti(0,5,"forza");
 	scrivere_forza(&inizio_personaggio,forza);
 	intelligenza = controllare_valori_inseriti(0,5,"intelligenza");
 	scrivere_intelligenza(&inizio_personaggio,intelligenza);
+
 
 }

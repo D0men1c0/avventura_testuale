@@ -4,7 +4,7 @@
 
 void gestire_avventura()
 {
-	stringa stringa_file = "";
+	/*stringa stringa_file = "";
 	stringa stringa_nome_file = "";
 
 	stringa_nome_file = scrivere_stringa(stringa_nome_file, "prova.txt");
@@ -16,7 +16,8 @@ void gestire_avventura()
 
 	rallentare_output(stringa_file, 50);
 	ritardare_programma(3000);
-	pulire_schermo();
+	pulire_schermo();*/
+	settare_valori_personaggio();
 
 }
 
