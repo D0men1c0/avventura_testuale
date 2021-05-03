@@ -29,6 +29,7 @@ char leggere_carattere(stringa str, int indice);
 stringa scrivere_carattere(stringa str, int indice, char c);
 stringa allocare_stringa(stringa str, int dimensione);
 stringa concatenare_stringhe(stringa str, stringa str_2);
+stringa leggere_stringa_tastiera(stringa str);
 int leggere_lunghezza(stringa str);
 
 

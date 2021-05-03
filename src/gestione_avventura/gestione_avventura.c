@@ -11,10 +11,8 @@ void gestire_avventura()
 
 	stringa_file = leggere_file_testo(stringa_nome_file, stringa_file);
 
-	int * ciao;
-	allocare_vettore(ciao, 20);
+	settare_valori_personaggio();
 
-	printf("%d", leggere_valore(ciao, 0));
 
 	rallentare_output(stringa_file, 50);
 	ritardare_programma(3000);
