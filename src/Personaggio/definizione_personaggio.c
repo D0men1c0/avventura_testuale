@@ -85,7 +85,7 @@ void settare_valori_personaggio()
 	scrivere_nome(&inizio_personaggio, str);
 
 	stringa_out = allocare_stringa(stringa_out, 0);
-	sprintf(stringa_out, "\nCiao %s", str);
+	sprintf(stringa_out, "\nCiao %s!", str);
 	rallentare_output(stringa_out, MILLISECONDI);
 
 	stringa_out = allocare_stringa(stringa_out, 0);
