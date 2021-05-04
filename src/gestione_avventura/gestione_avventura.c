@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "gestione_avventura.h"
+#include "../utility/utility.h"
+#include "../gestione_file/file_di_testo/lettura_file_testo.h"
+#include "../gestione_file/file_binari/scrittura_file_binari.h"
+#include "../gestione_file/file_binari/lettura_file_binari.h"
+#include "../personaggio/personaggio.h"
 
 
 void gestire_avventura()
@@ -20,10 +24,6 @@ void gestire_avventura()
 	pulire_schermo();*/
 
 	settare_valori_personaggio();
-
-
-
-
 }
 
 

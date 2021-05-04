@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#include "gestione_output.h"
+#include "../stringa/stringa.h"
 
 void ritardare_programma(int millisecondi)
 {

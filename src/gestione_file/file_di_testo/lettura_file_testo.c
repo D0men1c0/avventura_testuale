@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "lettura_file_testo.h"
+#include "../../utility/utility.h"
 
 stringa leggere_file_testo(stringa nome_file, stringa stringa_file)
 {

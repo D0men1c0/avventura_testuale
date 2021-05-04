@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "definizione_personaggio.h"
 #include "../gestione_file/file_di_testo/lettura_file_testo.h"
 #include "../gestione_file/file_binari/scrittura_file_binari.h"
 #include "../utility/utility.h"
+#include "personaggio.h"
 
 stringa leggere_nome(personaggio personaggio_nome)
 {
@@ -104,16 +104,16 @@ void settare_valori_personaggio()
 		scrivere_intelligenza(&inizio_personaggio, punti);
 
 		stringa_out = allocare_stringa(stringa_out, 0);
-		sprintf(stringa_out, "\nHai inserito il valore %d a Forza\n", leggere_forza(inizio_personaggio));
+		sprintf(stringa_out, "\nHai inserito il valore %d alla forza.\n", leggere_forza(inizio_personaggio));
 		rallentare_output(stringa_out, MILLISECONDI);
 
 		stringa_out = allocare_stringa(stringa_out, 0);
-		sprintf(stringa_out, "Hai inserito il valore %d a Intelligenza\n", leggere_intelligenza(inizio_personaggio));
+		sprintf(stringa_out, "Di conseguenza intelligenza e' stato impostato a %d.\n", leggere_intelligenza(inizio_personaggio));
 		rallentare_output(stringa_out, MILLISECONDI);
 
 		do
 		{
-			rallentare_output("\nVuoi continuare con la storia? Non potrai piu' ridistribuire i punti! (si/no) ", MILLISECONDI);
+			rallentare_output("\nVuoi incominciare con la storia? Non potrai piu' ridistribuire i punti! (si/no) ", MILLISECONDI);
 			risposta = leggere_stringa_tastiera(risposta);
 
 			if(confrontare_stringhe(risposta, "si") == false && confrontare_stringhe(risposta, "no") == false)

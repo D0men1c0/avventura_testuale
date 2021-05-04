@@ -1,5 +1,5 @@
-#ifndef LETTURA_FILE_TESTO
-#define LETTURA_FILE_TESTO
+#ifndef LETTURA_FILE_TESTO_H
+#define LETTURA_FILE_TESTO_H
 
 /**
  * Il seguente modulo, presenta al suo interno la funzione leggere_file_testo che serve per poter leggere i vari caratteri presenti in un

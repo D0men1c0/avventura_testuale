@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
 #include "../stringa/stringa.h"
 
