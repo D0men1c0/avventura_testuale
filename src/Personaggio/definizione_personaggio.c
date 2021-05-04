@@ -71,11 +71,11 @@ void settare_valori_personaggio()
 	personaggio inizio_personaggio;
 	stringa stringa_file = "";
 	stringa str = "";
+	stringa risposta = "";
 	stringa stringa_out = "";
 
 	int forza;
 	int punti;
-	int intelligenza;
 
 	scrivere_vita(&inizio_personaggio,5);
 
@@ -95,26 +95,34 @@ void settare_valori_personaggio()
 	stringa_file = leggere_file_testo("statistiche.txt", stringa_file);
 	rallentare_output(stringa_file, MILLISECONDI);
 
-	punti = 5;
-	forza = controllare_valori_inseriti(0, punti, "forza");
-	punti -= forza;
+	do
+	{
+		punti = 5;
+		forza = controllare_valori_inseriti(0, punti, "forza");
+		punti -= forza;
 
-	stringa_out = allocare_stringa(stringa_out, 0);
-	sprintf(stringa_out, "\nTi sono rimasti %d punti", punti);
-	rallentare_output(stringa_out, MILLISECONDI);
+		scrivere_forza(&inizio_personaggio, forza);
+		scrivere_intelligenza(&inizio_personaggio, punti);
 
-	scrivere_forza(&inizio_personaggio, forza);
-	intelligenza = controllare_valori_inseriti(0, punti, "intelligenza");
-	scrivere_intelligenza(&inizio_personaggio, intelligenza);
+		stringa_out = allocare_stringa(stringa_out, 0);
+		sprintf(stringa_out, "\nHai inserito il valore %d a Forza\n", leggere_forza(inizio_personaggio));
+		rallentare_output(stringa_out, MILLISECONDI);
 
-	stringa_out = allocare_stringa(stringa_out, 0);
-	sprintf(stringa_out, "\nHai inserito il valore %d a Forza\n", leggere_forza(inizio_personaggio));
-	rallentare_output(stringa_out, MILLISECONDI);
+		stringa_out = allocare_stringa(stringa_out, 0);
+		sprintf(stringa_out, "Hai inserito il valore %d a Intelligenza\n", leggere_intelligenza(inizio_personaggio));
+		rallentare_output(stringa_out, MILLISECONDI);
 
-	stringa_out = allocare_stringa(stringa_out, 0);
-	sprintf(stringa_out, "Hai inserito il valore %d a Intelligenza\n", leggere_intelligenza(inizio_personaggio));
-	rallentare_output(stringa_out, MILLISECONDI);
+		do
+		{
+			rallentare_output("\nVuoi continuare con la storia? Non potrai piu' ridistribuire i punti! (si/no)", MILLISECONDI);
+			risposta = leggere_stringa_tastiera(str);
 
-
-
+			if(confrontare_stringhe(risposta, "si") == false && confrontare_stringhe(risposta, "no") == false)
+			{
+				rallentare_output("\nComando non riconosciuto!", MILLISECONDI);
+			}
+		}
+		while(confrontare_stringhe(risposta, "si") == false && confrontare_stringhe(risposta, "no") == false);
+	}
+	while(confrontare_stringhe(risposta, "si") == false);
 }

@@ -19,6 +19,8 @@
  * allocare_stringa.
  */
 
+#include "../bool.h"
+
 #define DIM_STRINGA 100
 
 typedef char * stringa;
@@ -31,7 +33,7 @@ stringa allocare_stringa(stringa str, int dimensione);
 stringa concatenare_stringhe(stringa str, stringa str_2);
 stringa leggere_stringa_tastiera(stringa str);
 int leggere_lunghezza(stringa str);
-
+bool confrontare_stringhe(stringa str1, stringa str2);
 
 #endif
 

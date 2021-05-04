@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "stringa.h"
+#include "../bool.h"
 
 stringa leggere_stringa(stringa str)
 {
@@ -97,4 +98,18 @@ int leggere_lunghezza(stringa str)
 	return lunghezza;
 }
 
+
+bool confrontare_stringhe(stringa str1, stringa str2)
+{
+	bool esito;
+
+	esito = false;
+
+	if(strcmp(str1, str2) == 0)
+	{
+		esito = true;
+	}
+
+	return esito;
+}
 
