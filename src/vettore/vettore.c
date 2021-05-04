@@ -2,29 +2,21 @@
 #include <stdlib.h>
 #include "vettore.h"
 
-void scrivere_valori(int vettore[], int pos, int valore)
+void scrivere_valori(int *vettore, int pos, int valore)
  {
     vettore[pos] = valore;
     return;
  }
 
-int leggere_valori(int vettore[], int pos)
+int leggere_valori(int *vettore, int pos)
  {
-	int valore;
+    int valore;
     valore = vettore[pos];
     return valore;
  }
 
-void allocare_vettore(int vettore[], int lunghezza)
+void allocare_vettore(int *vettore, int lunghezza)
 {
-	vettore = (int *)malloc(sizeof(int) * DIM_VETTORE);
-
-	int pos;
-	pos = 0;
-	while(pos<=lunghezza)
-	{
-		printf("Inserisci un valore intero: ");
-		scanf("%d", &vettore[pos]);
-		pos++;
-	}
+    vettore = malloc(sizeof(int) * DIM_VETTORE);
+    return;
 }
