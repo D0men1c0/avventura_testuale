@@ -22,6 +22,8 @@ void gestire_avventura()
 	settare_valori_personaggio();
 
 
+
+
 }
 
 

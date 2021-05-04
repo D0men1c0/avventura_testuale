@@ -14,24 +14,24 @@ int leggere_riga(matrice matrice_a)
 
 int leggere_valore(matrice matrice_a,int riga,int colonna)
 {
-  return  *(*(matrice_a.valori+riga)+colonna);
+  return  *(*(matrice_a.valori + riga) + colonna);
 }
 
 void scrivere_colonna(matrice *matrice_a,int num_colonne)
 {
-  matrice_a->colonne=num_colonne;
+  matrice_a->colonne = num_colonne;
   return;
 }
 
 void scrivere_riga(matrice *matrice_a,int num_righe)
 {
-  matrice_a->righe=num_righe;
+  matrice_a->righe = num_righe;
   return;
 }
 
 void scrivere_valore(matrice *matrice_a,int riga,int colonna,int valore)
 {
-  *(*(matrice_a->valori+riga)+colonna)=valore;
+  *(*(matrice_a->valori + riga) + colonna) = valore;
   return;
 }
 
@@ -44,20 +44,20 @@ void stampare_matrice(matrice matrice_a)
   {
 		j=0;
 		printf("[");
-		while (j<leggere_colonna(matrice_a)-1)
+		while (j<leggere_colonna(matrice_a) -1)
     {
-      if (leggere_valore(matrice_a,i,j)< 10)
+      if (leggere_valore(matrice_a, i, j) < 10)
       {
         printf(" ");
       }
-			printf("%d, ",leggere_valore(matrice_a,i,j));
+			printf("%d, ",leggere_valore(matrice_a, i, j));
 			j++;
 	  }
-     if (leggere_valore(matrice_a,i,j)< 10)
+     if (leggere_valore(matrice_a, i, j) < 10)
       {
         printf(" ");
       }
-		printf("%d]\n",leggere_valore(matrice_a,i,j));
+		printf("%d]\n",leggere_valore(matrice_a, i, j));
 		i++;
 	}
 	return;
