@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "definizione_personaggio.h"
+#include "../gestione_file/file_di_testo/lettura_file_testo.h"
+#include "../gestione_file/file_binari/scrittura_file_binari.h"
+#include "../utility/utility.h"
 
 stringa leggere_nome(personaggio personaggio_nome)
 {
@@ -52,7 +55,7 @@ int controllare_valori_inseriti(int min, int max, stringa attributo)
 		output = allocare_stringa(output, 0);
 		sprintf(output, "\nInserisci quanta %s vuoi avere (con un minimo di %d e un massimo di %d):  ", attributo, min, max);
 		rallentare_output(output, MILLISECONDI);
-		scanf("%d", &valore);
+		valore = leggere_intero_tastiera();
 
 		if ((valore < min) || (valore > max))
 		{
@@ -110,8 +113,8 @@ void settare_valori_personaggio()
 
 		do
 		{
-			rallentare_output("\nVuoi continuare con la storia? Non potrai piu' ridistribuire i punti! (si/no)", MILLISECONDI);
-			risposta = leggere_stringa_tastiera(str);
+			rallentare_output("\nVuoi continuare con la storia? Non potrai piu' ridistribuire i punti! (si/no) ", MILLISECONDI);
+			risposta = leggere_stringa_tastiera(risposta);
 
 			if(confrontare_stringhe(risposta, "si") == false && confrontare_stringhe(risposta, "no") == false)
 			{

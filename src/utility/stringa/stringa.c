@@ -80,15 +80,6 @@ stringa concatenare_stringhe(stringa str, stringa str_2)
 	return str;
 }
 
-stringa leggere_stringa_tastiera(stringa str)
-{
-	str = allocare_stringa(str, 0);
-	scanf("%s", str);
-
-	return str;
-}
-
-
 int leggere_lunghezza(stringa str)
 {
 	int lunghezza;
