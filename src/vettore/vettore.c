@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include "vettore.h"
 
-void scrivere_valore(int vettore[], int pos, int valore)
+void scrivere_valori(int vettore[], int pos, int valore)
  {
     vettore[pos] = valore;
     return;
  }
 
-int leggere_valore(int vettore[], int pos)
+int leggere_valori(int vettore[], int pos)
  {
 	int valore;
     valore = vettore[pos];

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "gestione_avventura.h"
 
+
 void gestire_avventura()
 {
 	/*stringa stringa_file = "";
@@ -17,7 +18,9 @@ void gestire_avventura()
 	rallentare_output(stringa_file, 50);
 	ritardare_programma(3000);
 	pulire_schermo();*/
+
 	settare_valori_personaggio();
+
 
 }
 

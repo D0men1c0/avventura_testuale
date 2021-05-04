@@ -88,10 +88,6 @@ void settare_valori_personaggio()
 	sprintf(stringa_out, "\nCiao %s!", str);
 	rallentare_output(stringa_out, MILLISECONDI);
 
-	stringa_out = allocare_stringa(stringa_out, 0);
-	sprintf(stringa_out, "\nPartirai da %d punti vita.", leggere_vita(inizio_personaggio));
-	rallentare_output(stringa_out, MILLISECONDI);
-
 	stringa_file = leggere_file_testo("statistiche.txt", stringa_file);
 	rallentare_output(stringa_file, MILLISECONDI);
 
