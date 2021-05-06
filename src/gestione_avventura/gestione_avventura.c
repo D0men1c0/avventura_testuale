@@ -9,8 +9,8 @@
 
 void gestire_avventura()
 {
-	/*stringa stringa_file = "";
-	stringa stringa_nome_file = "";
+	stringa stringa_file = "";
+	/*stringa stringa_nome_file = "";
 
 	stringa_nome_file = scrivere_stringa(stringa_nome_file, "prova.txt");
 
@@ -23,5 +23,7 @@ void gestire_avventura()
 	ritardare_programma(3000);
 	pulire_schermo();*/
 
+	stringa_file = leggere_file_testo("start.txt",stringa_file);
+	rallentare_output(stringa_file,MILLISEC_CASTELLO);
 	settare_valori_personaggio();
 }

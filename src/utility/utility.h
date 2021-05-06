@@ -10,6 +10,7 @@
 #include "bool.h"
 
 #define MILLISECONDI 50
+#define MILLISEC_CASTELLO 7
 
 #endif
 

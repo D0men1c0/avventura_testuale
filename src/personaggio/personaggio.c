@@ -82,7 +82,7 @@ void settare_valori_personaggio()
 
 	scrivere_vita(&inizio_personaggio,5);
 
-	rallentare_output("Benvenuto in questa nuova avventura!!\nInserisci il tuo nome: ", MILLISECONDI);
+	rallentare_output("\nBenvenuto in questa nuova avventura!!\nInserisci il tuo nome: ", MILLISECONDI);
 
 	str = leggere_stringa_tastiera(str);
 	scrivere_nome(&inizio_personaggio, str);
