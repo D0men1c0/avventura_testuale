@@ -17,6 +17,7 @@ typedef stringa token;
 
 struct{
 	simbolo simboli[MAX_SIMBOLI];
+	int numero_parole_chiave[MAX_SIMBOLI];
 	int dimensione;
 }struttura_simboli;
 

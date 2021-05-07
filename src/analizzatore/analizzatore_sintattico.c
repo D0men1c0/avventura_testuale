@@ -14,6 +14,10 @@ void scrivere_dimensione_parole_chiave(int dimensione);
 int leggere_dimensione_parole_chiave();
 void inserire_parola_chiave_tabella(parola_chiave parola);
 
+
+void inserire_parole_chiave(stringa str);
+void inserire_simboli(stringa str);
+
 void leggere_sorgente()
 {
 	stringa str = "";
@@ -32,14 +36,22 @@ void leggere_sorgente()
 
 void leggere_simboli_parole()
 {
-	int i;
-	int pos;
 	stringa str = "";
-	simbolo simb;
-	parola_chiave parola;
-	bool leggere;
 
 	str = leggere_file_testo(NOME_FILE_LINGUAGGIO, str);
+
+
+	inserire_simboli(str);
+
+	inserire_parole_chiave(str);
+}
+
+void inserire_simboli(stringa str)
+{
+	int i;
+	int pos;
+	simbolo simb;
+	bool leggere;
 
 	i = 0;
 	pos = 0;
@@ -74,9 +86,21 @@ void leggere_simboli_parole()
 
 		i++;
 	}
+}
+
+void inserire_parole_chiave(stringa str)
+{
+	bool leggere;
+	int i;
+	int pos;
+	int numero_parole;
+	int indice_simbolo;
+	parola_chiave parola;
 
 	leggere = false;
 	i = 0;
+	numero_parole = 0;
+	indice_simbolo = 0;
 	scrivere_dimensione_parole_chiave(0);
 
 	while(i < leggere_lunghezza(str) + 1)
@@ -85,8 +109,15 @@ void leggere_simboli_parole()
 		{
 			parola = scrivere_carattere(parola, pos, '\0');
 			inserire_parola_chiave_tabella(parola);
+
+			numero_parole++;
 			pos = 0;
 			leggere = false;
+
+			struttura_simboli.numero_parole_chiave[indice_simbolo] = numero_parole;
+
+			numero_parole = 0;
+			indice_simbolo++;
 		}
 		else
 		{
@@ -102,6 +133,7 @@ void leggere_simboli_parole()
 					parola = scrivere_carattere(parola, pos, '\0');
 					pos = 0;
 					inserire_parola_chiave_tabella(parola);
+					numero_parole++;
 				}
 			}
 			else
@@ -190,6 +222,9 @@ void stampare_simboli_tabella()
 			j++;
 		}
 
+
+		printf(": %d\n", struttura_simboli.numero_parole_chiave[i]);
+
 		i++;
 	}
 }
@@ -200,10 +235,12 @@ void stampare_parole_chiave_tabella()
 
 	i = 0;
 
+	printf("\n");
+
 	while(i < leggere_dimensione_parole_chiave(struttura_parole_chiave))
 	{
 
-		printf("%s ", leggere_stringa(struttura_parole_chiave.parole_chiave[i]));
+		printf("%s\n", leggere_stringa(struttura_parole_chiave.parole_chiave[i]));
 
 		i++;
 	}
