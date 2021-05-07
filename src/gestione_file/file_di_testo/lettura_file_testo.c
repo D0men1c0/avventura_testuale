@@ -30,7 +30,7 @@ stringa leggere_file_testo(stringa nome_file, stringa stringa_file)
 			i++;
 		}
 
-		stringa_file = scrivere_carattere(stringa_file, i-1, '\0');//serve per gestire il carattere di fine stringa cioè \0
+		stringa_file = scrivere_carattere(stringa_file, i-1, '\0'); //serve per gestire il carattere di fine stringa cioè \0
 	}
 	else
 	{

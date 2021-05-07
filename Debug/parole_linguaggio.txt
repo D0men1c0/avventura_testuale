@@ -1,0 +1,8 @@
+MOV
+nord sud est ovest
+HLP
+salva carica nuova aiuto
+VRB
+prendi sfonda analizza esamina
+PRL
+chiave porta frammento mappa botola stanza
