@@ -69,7 +69,7 @@ int controllare_valori_inseriti(int min, int max, stringa attributo)
 	return valore;
 }
 
-void settare_valori_personaggio()
+void impostare_valori_personaggio()
 {
 	personaggio inizio_personaggio;
 	stringa stringa_file = "";

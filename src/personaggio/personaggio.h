@@ -20,7 +20,7 @@ void scrivere_forza(personaggio *personaggio_forza, int valore);
 int leggere_intelligenza(personaggio personaggio_intelligenza);
 void scrivere_intelligenza(personaggio *personaggio_intelligenza, int valore);
 int controllare_valori_inseriti(int min, int max, stringa attributo);
-void settare_valori_personaggio();
+void impostare_valori_personaggio();
 
 
 #endif
