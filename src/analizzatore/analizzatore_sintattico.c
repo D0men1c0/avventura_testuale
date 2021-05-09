@@ -9,11 +9,12 @@
 void scrivere_dimensione_simboli(int dimensione);
 int leggere_dimensione_simboli();
 void inserire_simbolo_tabella(simbolo simb);
+void leggere_simbolo(int indice);
 
 void scrivere_dimensione_parole_chiave(int dimensione);
 int leggere_dimensione_parole_chiave();
+stringa leggere_parola_chiave_tabella(int indice);
 void inserire_parola_chiave_tabella(parola_chiave parola);
-
 
 void inserire_parole_chiave(stringa str);
 void inserire_simboli(stringa str);
@@ -23,16 +24,80 @@ void leggere_sorgente()
 	stringa str = "";
 
 	str = leggere_stringa_tastiera(str);
+
+	sorgente = scrivere_stringa(sorgente, str);
 }
 
 
-/*token estrarre_token()
+
+stringa estrarre_token()
 {
-	token t;
+	stringa token;
+	int i;
+	char c;
 
-	return t;
-}*/
+	i = 0;
+	c = leggere_carattere(sorgente, i);
 
+	while(c != ' ' && c != '\0')
+	{
+		token = scrivere_carattere(token, i, c);
+		i++;
+		c = leggere_carattere(sorgente, i);
+	}
+
+	sorgente = shiftare_sinistra(sorgente, i+1);
+
+	return token;
+}
+
+
+int scansionare_token(stringa token, int indice)
+{
+	int esito;
+	int i;
+	int j;
+	int k;
+	int numero_parole;
+	simbolo simb;
+
+	esito = ERRORE;
+
+	i = 0;
+
+	while(i < leggere_dimensione_parole_chiave() && esito == ERRORE)
+	{
+		if(confrontare_stringhe(token, leggere_parola_chiave_tabella(i)))
+		{
+			j = 0;
+			numero_parole = struttura_simboli.numero_parole_chiave[j];
+
+			while(j < leggere_dimensione_simboli() && numero_parole <= i)
+			{
+				j++;
+				numero_parole = struttura_simboli.numero_parole_chiave[j];
+			}
+
+
+			k = 0;
+
+			while(k < MAX_SIMBOLO)
+			{
+				tabella_simboli[indice][k] = struttura_simboli.simboli[j][k];
+				printf("%c", tabella_simboli[indice][k]);
+				k++;
+			}
+
+
+			esito = SUCCESSO;
+		}
+
+		i++;
+	}
+
+
+	return esito;
+}
 
 void leggere_simboli_parole()
 {
@@ -44,6 +109,12 @@ void leggere_simboli_parole()
 	inserire_simboli(str);
 
 	inserire_parole_chiave(str);
+}
+
+void leggere_simbolo(int indice)
+{
+	printf("%s ", struttura_simboli.simboli[indice]);
+	//return struttura_simboli.simboli[indice];
 }
 
 void inserire_simboli(stringa str)
@@ -116,7 +187,6 @@ void inserire_parole_chiave(stringa str)
 
 			struttura_simboli.numero_parole_chiave[indice_simbolo] = numero_parole;
 
-			numero_parole = 0;
 			indice_simbolo++;
 		}
 		else
@@ -204,7 +274,7 @@ int leggere_dimensione_parole_chiave()
 	return struttura_parole_chiave.dimensione;
 }
 
-
+/*
 void stampare_simboli_tabella()
 {
 	int i;
@@ -227,8 +297,14 @@ void stampare_simboli_tabella()
 
 		i++;
 	}
+}*/
+
+stringa leggere_parola_chiave_tabella(int indice)
+{
+	return leggere_stringa(struttura_parole_chiave.parole_chiave[indice]);
 }
 
+/*
 void stampare_parole_chiave_tabella()
 {
 	int i;
@@ -244,5 +320,5 @@ void stampare_parole_chiave_tabella()
 
 		i++;
 	}
-}
+}*/
 

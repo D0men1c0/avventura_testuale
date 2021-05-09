@@ -13,7 +13,7 @@
 
 typedef stringa parola_chiave;
 typedef char simbolo[MAX_SIMBOLO];
-typedef stringa token;
+stringa token;
 
 struct{
 	simbolo simboli[MAX_SIMBOLI];
@@ -30,12 +30,12 @@ stringa sorgente;
 simbolo tabella_simboli[MAX_TOKEN];
 
 void leggere_simboli_parole();
-void stampare_simboli_tabella();
+//void stampare_simboli_tabella();
 void leggere_sorgente();
 void individuare_errori(int codice);
-token estrarre_token();
-int scansionare_token(token t);
+stringa estrarre_token();
+int scansionare_token(stringa token, int indice);
 void leggere_tabella();
-void stampare_parole_chiave_tabella();
+//void stampare_parole_chiave_tabella();
 
 #endif

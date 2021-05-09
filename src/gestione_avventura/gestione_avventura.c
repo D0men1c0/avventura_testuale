@@ -7,13 +7,16 @@
 #include "../analizzatore/analizzatore_sintattico.h"
 #include "../personaggio/personaggio.h"
 
+void inizializzare_strutture();
 
 void gestire_avventura()
 {
-	//stringa stringa_file = "";
-	/*stringa stringa_nome_file = "";
+	stringa stringa_file = "";
+	stringa stringa_nome_file = "";
 
-	stringa_nome_file = scrivere_stringa(stringa_nome_file, "prova.txt");
+	inizializzare_strutture();
+
+	/*stringa_nome_file = scrivere_stringa(stringa_nome_file, "prova.txt");
 
 	stringa_file = leggere_file_testo(stringa_nome_file, stringa_file);
 
@@ -25,12 +28,27 @@ void gestire_avventura()
 	pulire_schermo();
 
 	stringa_file = leggere_file_testo("start.txt",stringa_file);
-	rallentare_output(stringa_file,MILLISEC_CASTELLO);
-	settare_valori_personaggio();*/
+	rallentare_output(stringa_file, MILLISEC_CASTELLO);
+	settare_valori_personaggio();
+*/
 
+	//stampare_simboli_tabella();
+	//stampare_parole_chiave_tabella();
+
+}
+
+
+void inizializzare_strutture()
+{
 	leggere_simboli_parole();
-	stampare_simboli_tabella();
-	stampare_parole_chiave_tabella();
+	leggere_sorgente();
 
+	int i;
+	i = 0;
 
+	while(leggere_lunghezza(sorgente) != 0)
+	{
+		scansionare_token(estrarre_token(), i);
+		i++;
+	}
 }

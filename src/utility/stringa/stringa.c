@@ -104,3 +104,29 @@ bool confrontare_stringhe(stringa str1, stringa str2)
 	return esito;
 }
 
+stringa shiftare_sinistra(stringa str, int ripetizioni)
+{
+	int i;
+	int j;
+
+	i = 0;
+
+	while(i < ripetizioni)
+	{
+		j = 0;
+
+		while(j < leggere_lunghezza(str))
+		{
+			str[j] = leggere_carattere(str, j+1);
+			j++;
+		}
+
+		str = scrivere_carattere(str, j, '\0');
+
+		i++;
+	}
+
+
+	return str;
+}
+
