@@ -22,7 +22,14 @@ stringa estrarre_token()
 	char c;
 
 	i = 0;
-	c = leggere_carattere(sorgente, i);
+
+	c = leggere_carattere(sorgente, 0);
+
+	while(c == ' ')
+	{
+		sorgente = shiftare_sinistra(sorgente, 1);
+		c = leggere_carattere(sorgente, 0);
+	}
 
 	while(c != ' ' && c != '\0')
 	{
