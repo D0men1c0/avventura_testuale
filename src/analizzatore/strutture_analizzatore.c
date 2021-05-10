@@ -1,9 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "strutture_analizzatore.h"
-#include "analizzatore_sintattico.h"
 #include "../utility/utility.h"
 #include "../gestione_file/file_di_testo/lettura_file_testo.h"
+#include "analizzatore_lessicale.h"
 
 #define NOME_FILE_LINGUAGGIO "parole_linguaggio.txt"
 

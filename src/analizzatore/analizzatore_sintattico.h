@@ -1,14 +1,13 @@
 #ifndef ANALIZZATORE_SINTATTICO_H
 #define ANALIZZATORE_SINTATTICO_H
+#include "analizzatore_lessicale.h"
+#include "strutture_analizzatore.h"
+#include "comandi.h"
 
-#include "../utility/utility.h"
+void controllare_simboli_tabella();
 
-#define SUCCESSO 1
-#define ERRORE 0
 
-void leggere_sorgente();
-void individuare_errori(int codice);
-stringa estrarre_token();
-int scansionare_token(stringa token, int indice);
+
+
 
 #endif
