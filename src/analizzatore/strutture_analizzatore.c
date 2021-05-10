@@ -29,22 +29,34 @@ void inizializzare_strutture_analizzatore()
 
 void leggere_comando()
 {
+	int i;
+	int esito;
+
+	rallentare_output("Inserisci il comando: ", MILLISECONDI);
+
 	leggere_sorgente();
 
-	int i;
 	i = 0;
 
-	while(leggere_lunghezza(sorgente) != 0)
+	esito = SUCCESSO;
+
+	while(leggere_lunghezza(sorgente) != 0 && esito == SUCCESSO)
 	{
-		scansionare_token(estrarre_token(), i);
+		esito = scansionare_token(estrarre_token(), i);
 		i++;
 	}
+
+	/*if(esito == SUCCESSO)
+	{
+		analizzatore_sintattico();
+	}*/
 }
 
 void inserire_simboli(stringa str)
 {
 	int i;
 	int pos;
+	stringa identificativo_simbolo = "";
 	simbolo simb;
 	bool leggere;
 
@@ -52,6 +64,7 @@ void inserire_simboli(stringa str)
 	pos = 0;
 	leggere = true;
 
+	identificativo_simbolo = allocare_stringa(identificativo_simbolo, 0);
 	scrivere_dimensione_simboli(0);
 
 	while(i < leggere_lunghezza(str))
@@ -60,14 +73,16 @@ void inserire_simboli(stringa str)
 		{
 			if((str[i] == '\n'))
 			{
-				simb[pos] = '\0';
+				identificativo_simbolo[pos] = '\0';
+				simb = convertire_intero(identificativo_simbolo);
+
 				inserire_simbolo_tabella(simb);
 				pos = 0;
 				leggere = false;
 			}
 			else
 			{
-				simb[pos] = str[i];
+				identificativo_simbolo[pos] = str[i];
 				pos++;
 			}
 		}
@@ -135,16 +150,7 @@ void inserire_simbolo_tabella(simbolo simb)
 
 	dimensione = leggere_dimensione_simboli();
 
-	int i;
-
-	i = 0;
-
-	while(i < MAX_SIMBOLO)
-	{
-		struttura_simboli.simboli[dimensione][i] = simb[i];
-		i++;
-	}
-
+	struttura_simboli.simboli[dimensione] = simb;
 
 	scrivere_dimensione_simboli(dimensione + 1);
 }

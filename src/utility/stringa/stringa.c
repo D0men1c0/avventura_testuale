@@ -130,3 +130,27 @@ stringa shiftare_sinistra(stringa str, int ripetizioni)
 	return str;
 }
 
+
+int convertire_intero(stringa str)
+{
+	int intero;
+	int i;
+	char c;
+
+	intero = 0;
+
+	c = leggere_carattere(str, 0);
+
+	i = 1;
+
+	while(c != '\0' && c >= '0' && c <= '9')
+	{
+		intero = (c - '0') + intero * 10;
+		c = leggere_carattere(str, i);
+
+		i++;
+	}
+
+	return intero;
+}
+

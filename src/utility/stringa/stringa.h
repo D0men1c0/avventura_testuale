@@ -34,6 +34,7 @@ stringa concatenare_stringhe(stringa str, stringa str_2);
 stringa shiftare_sinistra(stringa str, int ripetizioni);
 stringa leggere_stringa_tastiera(stringa str);
 int leggere_lunghezza(stringa str);
+int convertire_intero(stringa str);
 bool confrontare_stringhe(stringa str1, stringa str2);
 
 #endif

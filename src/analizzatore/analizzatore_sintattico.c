@@ -4,6 +4,7 @@
 #include "strutture_analizzatore.h"
 #include "../utility/utility.h"
 
+int gestire_errore();
 
 void leggere_sorgente()
 {
@@ -17,7 +18,7 @@ void leggere_sorgente()
 
 stringa estrarre_token()
 {
-	stringa token;
+	stringa token = "";
 	int i;
 	char c;
 
@@ -49,7 +50,6 @@ int scansionare_token(stringa token, int indice)
 	int esito;
 	int i;
 	int j;
-	int k;
 
 	esito = ERRORE;
 
@@ -66,22 +66,30 @@ int scansionare_token(stringa token, int indice)
 				j++;
 			}
 
-
-			k = 0;
-
-			while(k < MAX_SIMBOLO)
-			{
-				tabella_simboli[indice][k] = struttura_simboli.simboli[j][k];
-				printf("%c", tabella_simboli[indice][k]);
-				k++;
-			}
-
 			esito = SUCCESSO;
 		}
 
 		i++;
 	}
 
+	if(esito == SUCCESSO)
+	{
+		tabella_simboli[indice] = struttura_simboli.simboli[j];
+	}
+	else
+	{
+		esito = gestire_errore();
+	}
+
+	return esito;
+}
+
+int gestire_errore()
+{
+	int esito;
+
+	rallentare_output("Comando non riconosciuto! ", MILLISECONDI);
+	esito = ERRORE;
 
 	return esito;
 }

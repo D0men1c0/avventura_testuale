@@ -5,11 +5,10 @@
 
 #define MAX_SIMBOLI 10
 #define MAX_TOKEN 10
-#define MAX_SIMBOLO 4
 #define MAX_PAROLE 50
 
 typedef stringa parola_chiave;
-typedef char simbolo[MAX_SIMBOLO];
+typedef int simbolo;
 stringa token;
 
 struct{
