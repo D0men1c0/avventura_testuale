@@ -5,7 +5,7 @@
 #include "strutture_analizzatore.h"
 #include "../utility/utility.h"
 
-int gestire_errore();
+int gestire_errore_lessicale();
 
 void leggere_sorgente()
 {
@@ -16,7 +16,6 @@ void leggere_sorgente()
 	sorgente = scrivere_stringa(sorgente, str);
 }
 
-
 stringa estrarre_token()
 {
 	stringa token = "";
@@ -25,22 +24,33 @@ stringa estrarre_token()
 
 	i = 0;
 
-	c = leggere_carattere(sorgente, 0);
+	c = convertire_minuscolo(leggere_carattere(sorgente, 0));
 
 	while(c == ' ')
 	{
 		sorgente = shiftare_sinistra(sorgente, 1);
-		c = leggere_carattere(sorgente, 0);
+		c = convertire_minuscolo(leggere_carattere(sorgente, 0));
 	}
 
 	while(c != ' ' && c != '\0')
 	{
 		token = scrivere_carattere(token, i, c);
 		i++;
-		c = leggere_carattere(sorgente, i);
+		c = convertire_minuscolo(leggere_carattere(sorgente, i));
 	}
 
 	sorgente = shiftare_sinistra(sorgente, i+1);
+
+	if(leggere_lunghezza(sorgente) > 0)
+	{
+		c = convertire_minuscolo(leggere_carattere(sorgente, 0));
+
+		while(c == ' ')
+		{
+			sorgente = shiftare_sinistra(sorgente, 1);
+			c = convertire_minuscolo(leggere_carattere(sorgente, 0));
+		}
+	}
 
 	return token;
 }
@@ -75,17 +85,18 @@ int scansionare_token(stringa token, int indice)
 
 	if(esito == SUCCESSO)
 	{
-		tabella_simboli[indice] = struttura_simboli.simboli[j];
+		scrivere_simbolo_tabella_simboli(struttura_simboli.simboli[j], indice);
+		scrivere_dimensione_tabella_simboli(leggere_dimensione_tabella_simboli() + 1);
 	}
 	else
 	{
-		esito = gestire_errore();
+		esito = gestire_errore_lessicale();
 	}
 
 	return esito;
 }
 
-int gestire_errore()
+int gestire_errore_lessicale()
 {
 	int esito;
 

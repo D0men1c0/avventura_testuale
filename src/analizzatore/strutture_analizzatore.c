@@ -4,6 +4,7 @@
 #include "../utility/utility.h"
 #include "../gestione_file/file_di_testo/lettura_file_testo.h"
 #include "analizzatore_lessicale.h"
+#include "analizzatore_sintattico.h"
 
 #define NOME_FILE_LINGUAGGIO "parole_linguaggio.txt"
 
@@ -38,18 +39,48 @@ void leggere_comando()
 
 	i = 0;
 
-	esito = SUCCESSO;
+	esito = ERRORE;
 
-	while(leggere_lunghezza(sorgente) != 0 && esito == SUCCESSO)
+	scrivere_dimensione_tabella_simboli(0);
+
+	if(leggere_lunghezza(sorgente) != 0)
 	{
-		esito = scansionare_token(estrarre_token(), i);
-		i++;
+		esito = SUCCESSO;
+
+		while(leggere_lunghezza(sorgente) != 0 && esito == SUCCESSO)
+		{
+			esito = scansionare_token(estrarre_token(), i);
+			i++;
+		}
 	}
 
-	/*if(esito == SUCCESSO)
+	if(esito == SUCCESSO)
 	{
-		analizzatore_sintattico();
-	}*/
+		esito = controllare_simboli_tabella();
+
+	}
+}
+
+
+void scrivere_dimensione_tabella_simboli(int dimensione)
+{
+	tabella_simboli.dimensione = dimensione;
+}
+
+int leggere_dimensione_tabella_simboli()
+{
+	return tabella_simboli.dimensione;
+}
+
+
+void scrivere_simbolo_tabella_simboli(simbolo simb, int indice)
+{
+	tabella_simboli.simboli[indice] = simb;
+}
+
+simbolo leggere_simbolo_tabella_simboli(int indice)
+{
+	return tabella_simboli.simboli[indice];
 }
 
 void inserire_simboli(stringa str)

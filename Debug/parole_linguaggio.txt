@@ -3,6 +3,8 @@ nord sud est ovest
 2
 salva carica nuova aiuto
 3
-prendi sfonda analizza esamina
+partita
 4
+prendi sfonda analizza esamina
+5
 chiave porta frammento mappa botola stanza

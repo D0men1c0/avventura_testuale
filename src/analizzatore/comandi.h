@@ -3,7 +3,8 @@
 
 #define MOV 1
 #define HLP 2
-#define VRB 3
-#define PRL 4
+#define PRH 3
+#define VRB 4
+#define PRL 5
 
 #endif

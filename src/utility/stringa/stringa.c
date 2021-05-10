@@ -154,3 +154,13 @@ int convertire_intero(stringa str)
 	return intero;
 }
 
+char convertire_minuscolo(char c)
+{
+	if(c >= 'A' && c <= 'Z')
+	{
+		  c += 'a' - 'A';
+	}
+
+	return c;
+}
+

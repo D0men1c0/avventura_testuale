@@ -9,8 +9,8 @@
 #include "costanti.h"
 #include "bool.h"
 
-#define MILLISECONDI 50
-#define MILLISEC_CASTELLO 7
+#define MILLISECONDI 0
+#define MILLISEC_CASTELLO 0
 
 #endif
 
