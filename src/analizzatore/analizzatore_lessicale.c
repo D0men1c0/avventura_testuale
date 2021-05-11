@@ -5,7 +5,7 @@
 #include "strutture_analizzatore.h"
 #include "../utility/utility.h"
 
-int gestire_errore_lessicale();
+bool gestire_errore_lessicale();
 
 void leggere_sorgente()
 {
@@ -56,9 +56,9 @@ stringa estrarre_token()
 }
 
 
-int scansionare_token(stringa token, int indice)
+bool scansionare_token(stringa token, int indice)
 {
-	int esito;
+	bool esito;
 	int i;
 	int j;
 
@@ -97,9 +97,9 @@ int scansionare_token(stringa token, int indice)
 	return esito;
 }
 
-int gestire_errore_lessicale()
+bool gestire_errore_lessicale()
 {
-	int esito;
+	bool esito;
 
 	rallentare_output("Comando non riconosciuto! ", MILLISECONDI);
 	esito = ERRORE;

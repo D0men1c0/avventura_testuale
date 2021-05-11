@@ -10,9 +10,9 @@
 #define CARICA "carica"
 #define SALVA "salva"
 
-int gestire_comandi_globali()
+bool gestire_comandi_globali()
 {
-	int esito;
+	bool esito;
 
 	stringa risposta = "";
 

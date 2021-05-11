@@ -6,11 +6,11 @@
 #include "analizzatore_lessicale.h"
 #include "gestione_comandi_globali.h"
 
-int gestire_errore_sintattico();
+bool gestire_errore_sintattico();
 
-int controllare_simboli_tabella()
+bool controllare_simboli_tabella()
 {
-	int esito;
+	bool esito;
 	simbolo simb;
 
 	simb = leggere_simbolo_tabella_simboli(0);
@@ -104,9 +104,9 @@ int controllare_simboli_tabella()
 	return esito;
 }
 
-int gestire_errore_sintattico()
+bool gestire_errore_sintattico()
 {
-	int esito;
+	bool esito;
 
 	rallentare_output("Sintassi non riconosciuta! ", MILLISECONDI);
 	esito = false;
