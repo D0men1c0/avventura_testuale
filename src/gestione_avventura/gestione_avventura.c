@@ -30,8 +30,6 @@ void impostare_avventura()
 	rallentare_output(stringa_file, MILLISEC_CASTELLO);
 
 	inizializzare_strutture_analizzatore();
-
-	//impostare_valori_personaggio();
 }
 
 

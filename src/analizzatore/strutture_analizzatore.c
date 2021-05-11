@@ -83,6 +83,16 @@ simbolo leggere_simbolo_tabella_simboli(int indice)
 	return tabella_simboli.simboli[indice];
 }
 
+void scrivere_token_tabella_simboli(parola_chiave token, int indice)
+{
+	tabella_simboli.token[indice] = token;
+}
+
+parola_chiave leggere_token_tabella_simboli(int indice)
+{
+	return tabella_simboli.token[indice];
+}
+
 void inserire_simboli(stringa str)
 {
 	int i;

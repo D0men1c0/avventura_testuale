@@ -1,8 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include "../utility/utility.h"
+#include "comandi.h"
 #include "strutture_analizzatore.h"
 #include "analizzatore_lessicale.h"
-#include "comandi.h"
+#include "gestione_comandi_globali.h"
 
 int gestire_errore_sintattico();
 
@@ -44,6 +46,16 @@ int controllare_simboli_tabella()
 			else
 			{
 				esito = gestire_errore_sintattico();
+			}
+		}
+
+		if(esito == true)
+		{
+			esito = gestire_comandi_globali();
+
+			if(esito == false)
+			{
+				gestire_errore_sintattico();
 			}
 		}
 	}

@@ -9,6 +9,6 @@
 void leggere_sorgente();
 void individuare_errori(int codice);
 stringa estrarre_token();
-int scansionare_token(stringa token, int indice);
+bool scansionare_token(stringa token, int indice);
 
 #endif

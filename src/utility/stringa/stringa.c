@@ -164,3 +164,21 @@ char convertire_minuscolo(char c)
 	return c;
 }
 
+stringa convertire_stringa_minuscolo(stringa str)
+{
+	int i;
+
+	i = 0;
+
+	while(i < leggere_lunghezza(str))
+	{
+		if(leggere_carattere(str, i) >= 'A' && leggere_carattere(str, i) <= 'Z')
+		{
+			str[i] = leggere_carattere(str, i) + 'a' - 'A';
+		}
+
+		i++;
+	}
+
+	return str;
+}

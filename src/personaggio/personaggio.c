@@ -80,6 +80,7 @@ void impostare_valori_personaggio()
 	int forza;
 	int punti;
 
+	pulire_schermo();
 	scrivere_vita(&inizio_personaggio,5);
 
 	rallentare_output("\nBenvenuto in questa nuova avventura!!\nInserisci il tuo nome: ", MILLISECONDI);
@@ -116,12 +117,12 @@ void impostare_valori_personaggio()
 			rallentare_output("\nVuoi incominciare con la storia? Non potrai piu' ridistribuire i punti! (si/no) ", MILLISECONDI);
 			risposta = leggere_stringa_tastiera(risposta);
 
-			if(confrontare_stringhe(risposta, "si") == false && confrontare_stringhe(risposta, "no") == false)
+			if(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == false && confrontare_stringhe(convertire_stringa_minuscolo(risposta), "no") == false)
 			{
 				rallentare_output("\nComando non riconosciuto!", MILLISECONDI);
 			}
 		}
-		while(confrontare_stringhe(risposta, "si") == false && confrontare_stringhe(risposta, "no") == false);
+		while(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == false && confrontare_stringhe(convertire_stringa_minuscolo(risposta), "no") == false);
 	}
-	while(confrontare_stringhe(risposta, "si") == false);
+	while(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == false);
 }

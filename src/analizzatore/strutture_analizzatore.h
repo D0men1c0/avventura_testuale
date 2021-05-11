@@ -9,6 +9,7 @@
 
 stringa token;
 stringa sorgente;
+
 /**
  * STRUTTURA PAROLE CHIAVE
  */
@@ -18,9 +19,13 @@ struct{
 	int dimensione;
 }struttura_parole_chiave;
 
+/**
+ * STRUTTURA TABELLA SIMBOLI
+ */
 typedef int simbolo;
 struct{
 	simbolo simboli[MAX_TOKEN];
+	parola_chiave token[MAX_TOKEN];
 	int dimensione;
 }tabella_simboli;
 
@@ -39,6 +44,8 @@ void scrivere_dimensione_tabella_simboli(int dimensione);
 int leggere_dimensione_tabella_simboli();
 void scrivere_simbolo_tabella_simboli(simbolo simb, int indice);
 simbolo leggere_simbolo_tabella_simboli(int indice);
+void scrivere_token_tabella_simboli(parola_chiave token, int indice);
+parola_chiave leggere_token_tabella_simboli(int indice);
 stringa leggere_parola_chiave_tabella(int indice);
 
 #endif

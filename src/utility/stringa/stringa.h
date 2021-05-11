@@ -37,6 +37,7 @@ int leggere_lunghezza(stringa str);
 int convertire_intero(stringa str);
 char convertire_minuscolo(char c);
 bool confrontare_stringhe(stringa str1, stringa str2);
+stringa convertire_stringa_minuscolo(stringa str);
 
 #endif
 

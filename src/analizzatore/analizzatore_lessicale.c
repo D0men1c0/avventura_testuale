@@ -86,6 +86,7 @@ int scansionare_token(stringa token, int indice)
 	if(esito == SUCCESSO)
 	{
 		scrivere_simbolo_tabella_simboli(struttura_simboli.simboli[j], indice);
+		scrivere_token_tabella_simboli(token, indice);
 		scrivere_dimensione_tabella_simboli(leggere_dimensione_tabella_simboli() + 1);
 	}
 	else
