@@ -19,3 +19,7 @@
 | \||_|(_)\/(_| |_)(_||  |_| |_(_|    \_(_|| |(_(_| |_)(_||  |_| |_(_|
                 |                                   |                                                
 
+Scegli se: 
+1)Iniziare una nuova partita e dunque inserisci: "nuova partita" 
+2)Continuare la partita precedente e dunque inserisci: "carica partita"
+

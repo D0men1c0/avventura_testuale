@@ -17,6 +17,8 @@ void gestire_avventura()
 
 	while(true)
 	{
+
+
 		leggere_comando();
 	}
 
