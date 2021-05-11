@@ -7,28 +7,28 @@
 #define MAX_TOKEN 10
 #define MAX_PAROLE 50
 
-typedef stringa parola_chiave;
-typedef int simbolo;
 stringa token;
+stringa sorgente;
+/**
+ * STRUTTURA PAROLE CHIAVE
+ */
+typedef stringa parola_chiave;
+struct{
+	parola_chiave parole_chiave[MAX_PAROLE];
+	int dimensione;
+}struttura_parole_chiave;
+
+typedef int simbolo;
+struct{
+	simbolo simboli[MAX_TOKEN];
+	int dimensione;
+}tabella_simboli;
 
 struct{
 	simbolo simboli[MAX_SIMBOLI];
 	int numero_parole_chiave[MAX_SIMBOLI];
 	int dimensione;
 }struttura_simboli;
-
-struct{
-	parola_chiave parole_chiave[MAX_PAROLE];
-	int dimensione;
-}struttura_parole_chiave;
-
-stringa sorgente;
-
-struct{
-	simbolo simboli[MAX_TOKEN];
-	int dimensione;
-}tabella_simboli;
-
 
 void leggere_comando();
 void inizializzare_strutture_analizzatore();
