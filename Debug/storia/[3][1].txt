@@ -1,0 +1,32 @@
+Un'altra porta...
+
+
+...pensi sia l'ennesima stanza vuota...
+
+
+...ma questa volta c'è una guardia che parte all'attacco!
+
+
+      /| ________________
+O|===|* >________________>
+      \|
+
+La guardia ti ferisce, ma riesci a difenderti grazie ad uno scudo trovato a terra!
+
+  |`-._/\_.-`|
+  |    ||    |
+  |___o()o___|
+  |__((<>))__|
+  \   o\/o   /
+   \   ||   /
+    \  ||  /
+     '.||.'
+       ``
+
+Con un contrattacco degno di nota stordisci la guardia, cade e sviene...
+
+...recuperi il suo equipaggiamento e trovi anche una chiave particolare...
+
+
+...è la chiave del Re! Potrebbe servirti in futuro.
+

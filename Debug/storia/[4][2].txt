@@ -1,0 +1,57 @@
+C'è una porta arrugginita...
+
++------------------------------------+ 
+|#####|WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW| 
+|#####|WWWWWWWWWW.----.WWWWWWWWWWWWWW| 
+|#####|WWWWWWWW,'  ||  `.WWWWWWWWWWWW| 
+|#####|WWWWWWWI    ||    IWWWWWWWWWWW| 
+|#####|WWWWWWWI    ||    IWWWWWWWWWWW| 
+|#####|WWWWWWWI    ||    IWWWWWWWWWWW| 
+|#####|WWWWWWWI   _||_   IWWWWWWWWWWW| 
+|#####|WWWWWWWI  ' || `  IWWWWWWWWWWW| 
+|#####|WWWWWWWI    ||    IWWWWWWWWWWW| 
+|#####|WWWWWWWI    ||    IWWWWWWWWWWW| 
+|#####|WWWWWWWI    ||    IWWWWWWWWWWW| 
+|#####|WWWWWWWI____||____IWWWWWWWWWWW| 
+|#####/                              | 
+|####/                               | 
+|###/                                | 
+|##/                                 | 
+|#/                                  | 
+|/                                   | 
++------------------------------------+ 
+
+...provi a sfondarla ma nell'intento ti tagli.
+
+Hai perso una vita!
+
+
+Nonostante l'incoveniente sei riuscito ad accedere nella sala del trono!
+
+
+Lo intuisci dalla poltrona reale al centro
+
+   /~~|~~~~~~~~~~~~~~~~~~~~|~~\
+  (   |                    |   )
+   \  |    *    *    *     |  / 
+    | |                    | |
+    | |      *     *       | |
+    | |                    | | 
+    | |    *    *    *     | |
+    | |                    | |
+    / |      *     *       | \
+   /  \                    /  \
+  /    |__________________|    \
+ /~~~,/                    \,~~~\    
+(    )______________________(    )
+ '\ /                        \ /'
+   |__________________________|
+   |                          |
+   |                          |
+   |                          | 
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+

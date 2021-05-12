@@ -1,0 +1,25 @@
+Trovi un tavolo che costeggia il muro.
+
+Su di esso ci sono delle bottigliette strane...
+
+
+       )_(                                          
+       | |                                          
+     .-'-'-.       _                               
+    /-::_..-\    _[_]_                           
+    )_     _(   /_   _\      [-]                
+    |;::    |   )_``'_(    .-'-'-.       
+    |;::    |   |;:   |    :-...-:     
+    |;::    |   |;:   |    |;:   |    
+    |;::-.._|   |;:.._|    |;:.._|    
+    `-.._..-'   `-...-'    `-...-'  
+
+...sono delle pozioni!
+
+Ne bevi subito una e ti senti meglio: 
+
+Hai guadagnato vita!
+
+
+
+    

@@ -1,0 +1,156 @@
+Grazie alla tua intelligenza riesci a ricostruire la mappa!
+
+  ____________________________________________________________________
+ / \-----     ---------  -----------     -------------- ------    ----\
+ \_/__________________________________________________________________/
+ |~ ~~ ~~~ ~ ~ ~~~ ~ _____.----------._ ~~~  ~~~~ ~~   ~~  ~~~~~ ~~~~|
+ |  _   ~~ ~~ __,---'_       "         `. ~~~ _,--.  ~~~~ __,---.  ~~|
+ | | \___ ~~ /      ( )   "          "   `-.,' (') \~~ ~ (  / _\ \~~ |
+ |  \    \__/_   __(( _)_      (    "   "     (_\_) \___~ `-.___,'  ~|
+ |~~ \     (  )_(__)_|( ))  "   ))          "   |    "  \ ~~ ~~~ _ ~~|
+ |  ~ \__ (( _( (  ))  ) _)    ((     \\//    " |   "    \_____,' | ~|
+ |~~ ~   \  ( ))(_)(_)_)|  "    ))    //\\ " __,---._  "  "   "  /~~~|
+ |    ~~~ |(_ _)| | |   |   "  (   "      ,-'~~~ ~~~ `-.   ___  /~ ~ |
+ | ~~     |  |  |   |   _,--- ,--. _  "  (~~  ~~~~  ~~~ ) /___\ \~~ ~|
+ |  ~ ~~ /   |      _,----._,'`--'\.`-._  `._~~_~__~_,-'  |H__|  \ ~~|
+ |~~    / "     _,-' / `\ ,' / _'  \`.---.._          __        " \~ |
+ | ~~~ / /   .-' , / ' _,'_  -  _ '- _`._ `.`-._    _/- `--.   " " \~|
+ |  ~ / / _-- `---,~.-' __   --  _,---.  `-._   _,-'- / ` \ \_   " |~|
+ | ~ | | -- _    /~/  `-_- _  _,' '  \ \_`-._,-'  / --   \  - \_   / |
+ |~~ | \ -      /~~| "     ,-'_ /-  `_ ._`._`-...._____...._,--'  /~~|
+ | ~~\  \_ /   /~~/    ___  `---  ---  - - ' ,--.     ___        |~ ~|
+ |~   \      ,'~~|  " (o o)   "         " " |~~~ \_,-' ~ `.     ,'~~ |
+ | ~~ ~|__,-'~~~~~\    \"/      "  "   "    /~ ~~   O ~ ~~`-.__/~ ~~~|
+ |~~~ ~~~  ~~~~~~~~`.______________________/ ~~~    |   ~~~ ~~ ~ ~~~~|
+ |____~jrei~__~_______~~_~____~~_____~~___~_~~___~\_|_/ ~_____~___~__|
+ / \----- ----- ------------  ------- ----- -------  --------  -------\
+ \_/__________________________________________________________________/
+
+
+La mappa ti mostra una stanza nascosta poco vicino...
+
+
+...si tratta di un passaggio segreto.
+
+Ti avvicini al muro e noti un mattone fuori posto.
+
+ __|_____|_____|_____|_____|_____|_____|_____|_____|_
+|_____|_____|_____|_____|_____|_____|_____|_____|___
+___|_____|_____|_____|_____|__~__|_____|_____|_____|___
+|_____|_____|_____|_____|_____|_____|_____|_____|___
+___|_____|_____|_____|_____|_____|_____|_____|_____|__
+
+Lo premi e si apre una botola in fondo alla stanza.
+
+Finalmente dopo tante difficoltà hai trovato il tesoro...
+
+...e sei pronto a fargliela pagare.
+
+Apri il baule.
+
+                          _.--.
+                        _.-'_:-'||
+                    _.-'_.-::::'||
+               _.-:'_.-::::::'  ||
+             .'`-.-:::::::'     ||
+            /.'`;|:::::::'      ||_
+           ||   ||::::::'     _.;._'-._
+           ||   ||:::::'  _.-!oo @.!-._'-.
+           \'.  ||:::::.-!()oo @!()@.-'_.|
+            '.'-;|:.-'.&$@.& ()$%-'o.'\U||
+              `>'-.!@%()@'@_%-'_.-o _.|'||
+               ||-._'-.@.-'_.-' _.-o  |'||
+               ||=[ '-._.-\U/.-'    o |'||
+               || '-.]=|| |'|      o  |'||
+               ||      || |'|        _| ';
+               ||      || |'|    _.-'_.-'
+               |'-._   || |'|_.-'_.-'
+                '-._'-.|| |' `_.-'
+                    '-.||_/.-'
+
+
+
+
+Trovi solo un documento scritto che cita:
+
+ ___________________________________________
+/                                           \
+|“Io, Guenda, madre di Avis e Robert affido |
+| il regno a mio figlio Robert in caso di   |
+|morte prematura, sperando che un giorno    |
+|possa far cambiare lo spirito sinistro di  |
+|Avis e possano regnare insieme”            |
+\___________________________________________/
+
+
+Sul fondo della stanza noti due figure.
+
+
+Ti avvicini: un cadavere e una persona in fin di vita che mormora qualcosa! 
+
+
+È Robert, il legittimo Re del regno, rinchiuso nelle segrete dal fratello Avis 
+in modo tale che potesse regnare indisturbato.
+
+
+Il cadavere accanto al fratello è la loro madre Guenda, uccisa da Avis per poter attuare il piano. 
+
+Ora che hai il documento scritto e il legittimo erede al trono puoi finalmente spodestare Avis 
+e avere dalla tua le guardie del regno grazie al documento con il sigillo reale di Guenda. 
+
+Senti di essere vicino alla tua fine, il veleno del serpente ti ha quasi ucciso.
+
+
+Torni con il legittimo Re e il documento dal resto delle guardie e attendi insieme a loro
+il ritorno di Avis.
+
+
+Ora che il regno è nelle mani del legittimo Re decidi di affrontare Avis per avere la tua
+personale vendetta prima che la morte sopraggiunga.
+
+
+Le vostre spade si incrociano in un duello all'ultimo sangue
+
+              /\                    /\
+              \ \                  / /
+               \ \                / /
+                \.\              /./
+                 \.\            /./
+                  \.\          /./
+                   \\\        ///
+                    \.\      /./
+                     \.\    /./
+                      \.\__/./
+                     _/)))(((\_
+                     \|)\##/(|/
+                     _|)/##\(|_
+                     \|)))(((|/
+                      /o/  \o\
+                     /o/    \o\
+                    /_/      \_\
+
+Con un colpo di fortuna ferisci a morte Avis.
+
+Poco dopo la sua morte arriva anche la tua ora, il veleno ha ormai avvolto il tuo corpo.
+
+Cadi a terra ma con un sorriso:
+
+Hai attuato la tua vendetta e salvato il regno.
+
+
+TTTTTTTTTTTTTTTTTTTTTTTHHHHHHHHH     HHHHHHHHHEEEEEEEEEEEEEEEEEEEEEE     EEEEEEEEEEEEEEEEEEEEEENNNNNNNN        NNNNNNNNDDDDDDDDDDDDD        
+T:::::::::::::::::::::TH:::::::H     H:::::::HE::::::::::::::::::::E     E::::::::::::::::::::EN:::::::N       N::::::ND::::::::::::DDD     
+T:::::::::::::::::::::TH:::::::H     H:::::::HE::::::::::::::::::::E     E::::::::::::::::::::EN::::::::N      N::::::ND:::::::::::::::DD   
+T:::::TT:::::::TT:::::THH::::::H     H::::::HHEE::::::EEEEEEEEE::::E     EE::::::EEEEEEEEE::::EN:::::::::N     N::::::NDDD:::::DDDDD:::::D  
+TTTTTT  T:::::T  TTTTTT  H:::::H     H:::::H    E:::::E       EEEEEE       E:::::E       EEEEEEN::::::::::N    N::::::N  D:::::D    D:::::D 
+        T:::::T          H:::::H     H:::::H    E:::::E                    E:::::E             N:::::::::::N   N::::::N  D:::::D     D:::::D
+        T:::::T          H::::::HHHHH::::::H    E::::::EEEEEEEEEE          E::::::EEEEEEEEEE   N:::::::N::::N  N::::::N  D:::::D     D:::::D
+        T:::::T          H:::::::::::::::::H    E:::::::::::::::E          E:::::::::::::::E   N::::::N N::::N N::::::N  D:::::D     D:::::D
+        T:::::T          H:::::::::::::::::H    E:::::::::::::::E          E:::::::::::::::E   N::::::N  N::::N:::::::N  D:::::D     D:::::D
+        T:::::T          H::::::HHHHH::::::H    E::::::EEEEEEEEEE          E::::::EEEEEEEEEE   N::::::N   N:::::::::::N  D:::::D     D:::::D
+        T:::::T          H:::::H     H:::::H    E:::::E                    E:::::E             N::::::N    N::::::::::N  D:::::D     D:::::D
+        T:::::T          H:::::H     H:::::H    E:::::E       EEEEEE       E:::::E       EEEEEEN::::::N     N:::::::::N  D:::::D    D:::::D 
+      TT:::::::TT      HH::::::H     H::::::HHEE::::::EEEEEEEE:::::E     EE::::::EEEEEEEE:::::EN::::::N      N::::::::NDDD:::::DDDDD:::::D  
+      T:::::::::T      H:::::::H     H:::::::HE::::::::::::::::::::E     E::::::::::::::::::::EN::::::N       N:::::::ND:::::::::::::::DD   
+      T:::::::::T      H:::::::H     H:::::::HE::::::::::::::::::::E     E::::::::::::::::::::EN::::::N        N::::::ND::::::::::::DDD     
+      TTTTTTTTTTT      HHHHHHHHH     HHHHHHHHHEEEEEEEEEEEEEEEEEEEEEE     EEEEEEEEEEEEEEEEEEEEEENNNNNNNN         NNNNNNNDDDDDDDDDDDDD    
