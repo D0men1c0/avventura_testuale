@@ -6,6 +6,7 @@
 #include "../gestione_file/file_binari/lettura_file_binari.h"
 #include "../analizzatore/strutture_analizzatore.h"
 #include "../personaggio/personaggio.h"
+#include "../inventario/gestione_inventario.h"
 
 void impostare_avventura();
 
