@@ -28,6 +28,7 @@ bool controllare_simboli_tabella()
 	}
 	else if(simb == HLP)
 	{
+
 		esito = true;
 
 		if(leggere_dimensione_tabella_simboli() > 1)
@@ -57,6 +58,7 @@ bool controllare_simboli_tabella()
 			{
 				gestire_errore_sintattico();
 			}
+
 		}
 	}
 	else if(simb == VRB)

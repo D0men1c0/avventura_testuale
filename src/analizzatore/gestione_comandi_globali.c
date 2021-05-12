@@ -4,6 +4,7 @@
 #include "comandi.h"
 #include "strutture_analizzatore.h"
 #include "../personaggio/personaggio.h"
+#include "../gestione_file/file_di_testo/lettura_file_testo.h"
 
 #define NUOVA "nuova"
 #define AIUTO "aiuto"
@@ -41,6 +42,15 @@ bool gestire_comandi_globali()
 		}
 		while(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == false && confrontare_stringhe(convertire_stringa_minuscolo(risposta), "no") == false);
 	}
-
+	else if(confrontare_stringhe(token,AIUTO) == true)
+	{
+		if (leggere_dimensione_tabella_simboli() < 2)
+		{
+			risposta = leggere_file_testo("aiuto.txt", risposta);
+			rallentare_output(risposta, MILLISECONDI);
+			esito = true;
+		}
+	}
 	return esito;
 }
+

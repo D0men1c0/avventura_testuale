@@ -5,6 +5,6 @@ salva carica nuova aiuto
 3
 partita
 4
-prendi sfonda analizza esamina visualizza
+prendi sfonda analizza esamina visualizza apri
 5
-chiave porta frammento mappa botola stanza attributi
+chiave porta frammento mappa botola stanza attributi inventario

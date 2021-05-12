@@ -1,0 +1,24 @@
+
+Ciao i comandi di movimento sono i seguenti:
+1) nord  -> se vuoi spostarti in avanti
+2) sud   -> se vuoi spostarti indietro
+3) est   -> se vuoi spostarti a destra
+4) ovest -> se vuoi spostarti a sinistra
+
+Comandi per la gestione della partita:
+1) salva                   -> se vuoi salvare la partita
+2) carica o carica partita -> se vuoi caricare la partita
+3) nuova o nuova partita   -> se vuoi iniziare una nuova partita perdendo i salvataggi
+4) aiuto                   -> per visualizzare questa schermata
+
+Comandi per la storia:
+1) chiave o prendi chiave                   -> per prendere la chiave
+2) frammento mappa o prendi frammento mappa -> per raccogliere il frammento di mappa
+3) frammento o mappa                        -> per raccogliere il frammento di mappa
+4) sfonda porta                             -> per sfondare la porta
+5) analizza frammento mappa                 -> per analizzare il frammento della mappa
+6) esamina stanza                           -> per esaminare la stanza
+7) attributi o visualizza attributi         -> per visualizzare gli attributi
+8) inventario o visualizza inventario       -> per visualizzare l'inventario
+9) botola o apri botola                     -> per aprire la botola
+
