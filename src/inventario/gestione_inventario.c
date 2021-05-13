@@ -178,11 +178,37 @@ stringa visualizzare_frammenti_mappa(stringa risposta)
 			i++;
 		}
 		pos_2++;
+		risposta = scrivere_carattere(risposta, i, '\n');
+		i++;
+
+		}while(pos_2 < leggere_lunghezza(frammento_est));
+
+	pos_1=0;
+	pos_2=0;
+
+	do{
+
+		while(frammento_ovest[pos_1] != '\n')
+		{
+			risposta = scrivere_carattere(risposta, i, frammento_ovest[pos_1]);
+			pos_1++;
+			i++;
+		}
+			pos_1++;
+
+		while(frammento_sud[pos_2] != '\n')
+		{
+			risposta = scrivere_carattere(risposta, i, frammento_sud[pos_2]);
+			pos_2++;
+			i++;
+		}
+			pos_2++;
 
 		risposta = scrivere_carattere(risposta, i, '\n');
 		i++;
 
-	}while(pos_2 < leggere_lunghezza(frammento_est));
+	}while(pos_2 < leggere_lunghezza(frammento_sud));
+
 
 	/*frammento_corrente = frammento_ovest;
 
