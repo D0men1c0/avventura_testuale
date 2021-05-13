@@ -1,11 +1,11 @@
-Hai trovato un'altra stanza, per fortuna la porta è aperta.
+Hai trovato un'altra stanza, per fortuna la porta e' aperta.
 
-Dopo il trauma del risveglio ti senti subito più energico.
+Dopo il trauma del risveglio ti senti subito piu' energico.
 
-La tua forza è aumentata!
+La tua forza e' aumentata!
 
 Adesso inizi a ricordare qualcosa...
 
 
-...il nome del Re è Avis.
+...il nome del Re e' Avis.
 

@@ -1,2 +1,2 @@
-C'è un muro, non puoi proseguire in questa direzione.
+C'e' un muro, non puoi proseguire in questa direzione.
 
