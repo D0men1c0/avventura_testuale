@@ -9,25 +9,32 @@ typedef struct
 	bool frammento_mappa_nord;
 	bool frammento_mappa_sud;
 	bool chiave_semplice;
-	bool chiave_del_re;
-}
-inventario;
+	bool chiave_re;
+}inventario;
+
+inventario inv;
+
 //prototipi lettura
-bool leggere_frammento_est(inventario mappa_est);
-bool leggere_frammento_ovest(inventario mappa_ovest);
-bool leggere_frammento_nord(inventario mappa_nord);
-bool leggere_frammento_sud(inventario mappa_sud);
-bool leggere_chiave_semplice(inventario chiave_semplice);
-bool leggere_chiave_re(inventario chiave_re);
+bool leggere_frammento_est(inventario inv);
+bool leggere_frammento_ovest(inventario inv);
+bool leggere_frammento_nord(inventario inv);
+bool leggere_frammento_sud(inventario inv);
+bool leggere_chiave_semplice(inventario inv);
+bool leggere_chiave_re(inventario inv);
+
 //prototipi scrittura
-void scrivere_frammento_est(inventario *mappa_est, bool valore);
-void scrivere_frammento_ovest(inventario *mappa_ovest, bool valore);
-void scrivere_frammento_nord(inventario *mappa_nord, bool valore);
-void scrivere_frammento_sud(inventario *mappa_sud, bool valore);
-void scrivere_chiave_semplice(inventario *chiave_semplice, bool valore);
-void scrivere_chiave_re(inventario *chiave_re, bool valore);
+void scrivere_frammento_est(inventario *inv, bool valore);
+void scrivere_frammento_ovest(inventario *inv, bool valore);
+void scrivere_frammento_nord(inventario *inv, bool valore);
+void scrivere_frammento_sud(inventario *inv, bool valore);
+void scrivere_chiave_semplice(inventario *inv, bool valore);
+void scrivere_chiave_re(inventario *inv, bool valore);
 
+//inizializzazione inventario
+void inizializza_inventario(inventario *inv);
 
-
+//visualizzazione inventario e mappa
+stringa visualizzare_inventario(stringa risposta);
+stringa visualizzare_frammenti_mappa(stringa risposta);
 
 #endif

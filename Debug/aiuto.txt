@@ -12,13 +12,11 @@ Comandi per la gestione della partita:
 4) aiuto                   -> per visualizzare questa schermata
 
 Comandi per la storia:
-1) chiave o prendi chiave                   -> per prendere la chiave
+1) prendi chiave                            -> per prendere la chiave
 2) frammento mappa o prendi frammento mappa -> per raccogliere il frammento di mappa
-3) frammento o mappa                        -> per raccogliere il frammento di mappa
-4) sfonda porta                             -> per sfondare la porta
-5) analizza frammento mappa                 -> per analizzare il frammento della mappa
-6) esamina stanza                           -> per esaminare la stanza
-7) attributi o visualizza attributi         -> per visualizzare gli attributi
-8) inventario o visualizza inventario       -> per visualizzare l'inventario
-9) botola o apri botola                     -> per aprire la botola
+3) sfonda porta                             -> per sfondare la porta
+4) esamina stanza                           -> per esaminare la stanza
+5) visualizza attributi                     -> per visualizzare gli attributi
+6) visualizza inventario                    -> per visualizzare l'inventario
+7) apri botola                              -> per aprire la botola
 
