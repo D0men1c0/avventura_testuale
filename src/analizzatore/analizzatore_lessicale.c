@@ -52,6 +52,8 @@ stringa estrarre_token()
 		}
 	}
 
+	token[i] = '\0';
+
 	return token;
 }
 

@@ -18,6 +18,6 @@ Comandi per la storia:
 4) esamina stanza                           -> per esaminare la stanza
 5) visualizza attributi                     -> per visualizzare gli attributi
 6) visualizza inventario                    -> per visualizzare l'inventario
-7) visualizza mappa							-> per visualizzare i frammenti di mappa posseduti
+7) visualizza mappa			    -> per visualizzare i frammenti di mappa posseduti
 8) apri botola                              -> per aprire la botola
 
