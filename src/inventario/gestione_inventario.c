@@ -66,9 +66,9 @@ void scrivere_chiave_re(inventario *inv, bool valore)
 
 void inizializza_inventario(inventario *inv)
 {
-	scrivere_frammento_nord(inv, true);
-	scrivere_frammento_sud(inv, true);
-	scrivere_frammento_est(inv, true);
+	scrivere_frammento_nord(inv, false);
+	scrivere_frammento_sud(inv, false);
+	scrivere_frammento_est(inv, false);
 	scrivere_frammento_ovest(inv, true);
 	scrivere_chiave_re(inv, false);
 	scrivere_chiave_semplice(inv, false);
@@ -126,7 +126,7 @@ stringa visualizzare_frammenti_mappa(stringa risposta)
 	}
 	else
 	{
-		frammento_nord = leggere_file_testo("mappa/pezzo_mappa_vuoto.txt", frammento_nord);
+		frammento_nord = leggere_file_testo("mappa/pezzo_mappa_vuoto_2.txt", frammento_nord);
 	}
 
 	if(leggere_frammento_est(inv) == true)
@@ -144,7 +144,7 @@ stringa visualizzare_frammenti_mappa(stringa risposta)
 	}
 	else
 	{
-		frammento_ovest = leggere_file_testo("mappa/pezzo_mappa_vuoto.txt", frammento_ovest);
+		frammento_ovest = leggere_file_testo("mappa/pezzo_mappa_vuoto_3.txt", frammento_ovest);
 	}
 
 	if(leggere_frammento_sud(inv) == true)
