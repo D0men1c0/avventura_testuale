@@ -4,7 +4,7 @@
 #include "comandi.h"
 #include "strutture_analizzatore.h"
 #include "analizzatore_lessicale.h"
-#include "gestione_comandi_globali.h"
+#include "gestione_comandi.h"
 
 bool gestire_errore_sintattico();
 
@@ -16,7 +16,6 @@ bool controllare_simboli_tabella()
 	simb = leggere_simbolo_tabella_simboli(0);
 
 	esito = false;
-
 	if(simb == MOV)
 	{
 		esito = true;
@@ -28,7 +27,6 @@ bool controllare_simboli_tabella()
 	}
 	else if(simb == HLP)
 	{
-
 		esito = true;
 
 		if(leggere_dimensione_tabella_simboli() > 1)
@@ -58,7 +56,6 @@ bool controllare_simboli_tabella()
 			{
 				gestire_errore_sintattico();
 			}
-
 		}
 	}
 	else if(simb == VRB)
@@ -101,6 +98,20 @@ bool controllare_simboli_tabella()
 		{
 			esito = gestire_errore_sintattico();
 		}
+
+		if(esito == true)
+		{
+			esito = gestire_azioni_partita();
+
+			if(esito == false)
+			{
+				gestire_errore_sintattico();
+			}
+		}
+	}
+	else
+	{
+		esito = gestire_errore_sintattico();
 	}
 
 	return esito;

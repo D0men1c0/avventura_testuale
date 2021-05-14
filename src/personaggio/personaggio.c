@@ -3,6 +3,7 @@
 #include "../gestione_file/file_di_testo/lettura_file_testo.h"
 #include "../gestione_file/file_binari/scrittura_file_binari.h"
 #include "../utility/utility.h"
+#include "../inventario/gestione_inventario.h"
 #include "personaggio.h"
 
 stringa leggere_nome(personaggio personaggio_nome)
@@ -71,7 +72,6 @@ int controllare_valori_inseriti(int min, int max, stringa attributo)
 
 void impostare_valori_personaggio()
 {
-	personaggio inizio_personaggio;
 	stringa stringa_file = "";
 	stringa str = "";
 	stringa risposta = "";
@@ -81,12 +81,12 @@ void impostare_valori_personaggio()
 	int punti;
 
 	pulire_schermo();
-	scrivere_vita(&inizio_personaggio,5);
+	scrivere_vita(&giocatore,5);
 
 	rallentare_output("Benvenuto in questa nuova avventura!!\nInserisci il tuo nome: ", MILLISECONDI);
 
 	str = leggere_stringa_tastiera(str);
-	scrivere_nome(&inizio_personaggio, str);
+	scrivere_nome(&giocatore, str);
 
 	stringa_out = allocare_stringa(stringa_out, 0);
 	sprintf(stringa_out, "\nCiao %s!", str);
@@ -101,15 +101,15 @@ void impostare_valori_personaggio()
 		forza = controllare_valori_inseriti(0, punti, "forza");
 		punti -= forza;
 
-		scrivere_forza(&inizio_personaggio, forza);
-		scrivere_intelligenza(&inizio_personaggio, punti);
+		scrivere_forza(&giocatore, forza);
+		scrivere_intelligenza(&giocatore, punti);
 
 		stringa_out = allocare_stringa(stringa_out, 0);
-		sprintf(stringa_out, "\nHai inserito il valore %d alla forza.\n", leggere_forza(inizio_personaggio));
+		sprintf(stringa_out, "\nHai inserito il valore %d alla forza.\n", leggere_forza(giocatore));
 		rallentare_output(stringa_out, MILLISECONDI);
 
 		stringa_out = allocare_stringa(stringa_out, 0);
-		sprintf(stringa_out, "Di conseguenza intelligenza e' stato impostato a %d.\n", leggere_intelligenza(inizio_personaggio));
+		sprintf(stringa_out, "Di conseguenza intelligenza e' stato impostato a %d.\n", leggere_intelligenza(giocatore));
 		rallentare_output(stringa_out, MILLISECONDI);
 
 		do
@@ -125,4 +125,6 @@ void impostare_valori_personaggio()
 		while(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == false && confrontare_stringhe(convertire_stringa_minuscolo(risposta), "no") == false);
 	}
 	while(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == false);
+
+	inizializza_inventario(&inv);
 }
