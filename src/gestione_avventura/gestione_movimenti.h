@@ -12,6 +12,7 @@ typedef struct
 	int y;
 }posizione;
 
+
 void scrivere_x(posizione *personaggio, int x);
 void scrivere_y(posizione *personaggio, int y);
 int leggere_x(posizione personaggio);

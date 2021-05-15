@@ -11,6 +11,7 @@
 #include "../../utility/utility.h"
 
 stringa leggere_file_testo(stringa nome_file, stringa stringa_file);
+void leggere_mappa_file(stringa nome_file);
 
 #endif
 

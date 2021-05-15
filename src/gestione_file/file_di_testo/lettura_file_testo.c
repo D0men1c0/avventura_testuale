@@ -11,6 +11,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../../utility/utility.h"
+#include "../../gestione_avventura/gestione_avventura.h"
+#include "../../gestione_avventura/gestione_mappa.h"
 
 stringa leggere_file_testo(stringa nome_file, stringa stringa_file)
 {
@@ -42,3 +44,35 @@ stringa leggere_file_testo(stringa nome_file, stringa stringa_file)
 	return stringa_file;
 }
 
+void leggere_mappa_file(stringa nome_file)
+{
+	int i;
+	int j;
+	int intero;
+
+	i = 0;
+	j = 0;
+
+	FILE * fp;
+
+	if((fp = fopen(nome_file, "r")) != NULL)
+	{
+		while(i < RIGHE)
+		{
+			j = 0;
+			while(j < COLONNE)
+			{
+				fscanf(fp, "%d", &intero);
+				scrivere_valore_matrice(mappa, i, j, intero);
+				j++;
+			}
+			i++;
+		}
+	}
+	else
+	{
+		printf("Errore nell'apertura del file.");
+	}
+
+	fclose(fp);
+}

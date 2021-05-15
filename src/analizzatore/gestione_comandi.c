@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "../utility/stringa/stringa.h"
 #include "comandi.h"
 #include "strutture_analizzatore.h"
@@ -8,6 +9,9 @@
 #include "../gestione_file/file_di_testo/lettura_file_testo.h"
 #include "../gestione_file/file_binari/scrittura_file_binari.h"
 #include "../gestione_file/file_binari/lettura_file_binari.h"
+#include "../gestione_avventura/gestione_avventura.h"
+#include "../gestione_avventura/gestione_mappa.h"
+#include "../gestione_avventura/gestione_movimenti.h"
 
 void gestire_errore_semantico();
 
@@ -34,6 +38,14 @@ bool gestire_comandi_globali()
 			if(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == true)
 			{
 				impostare_valori_personaggio();
+
+				//aggiungere nello pseudo
+				leggere_mappa(mappa);
+
+				pos.y = 8;
+				pos.x = 4;
+				//scrivere_y(pos, 8);
+				//scrivere_x(pos, 4);
 			}
 			else if(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == false && confrontare_stringhe(convertire_stringa_minuscolo(risposta), "no") == false)
 			{
@@ -54,9 +66,10 @@ bool gestire_comandi_globali()
 	}
 	else if(confrontare_stringhe(token, SALVA) == true)
 	{
-		if(leggere_nome(giocatore) != NULL)
+
+		if(strlen(leggere_nome(giocatore)) != 0)
 		{
-			esito = accodare_file_salvataggio("salvataggi.dat", giocatore, inv);
+			esito = accodare_file_salvataggio("salvataggi.dat", giocatore, inv, mappa, pos);
 
 			if(esito == true)
 			{
@@ -83,6 +96,19 @@ bool gestire_comandi_globali()
 		{
 			pulire_schermo();
 			rallentare_output("Hai caricato correttamente i dati di gioco! \n", MILLISECONDI);
+
+			if(pos.x < 4)
+			{
+				rallentare_output("Ti trovavi nella sala del trono! \n", MILLISECONDI);
+			}
+			else if(pos.x <= 7)
+			{
+				rallentare_output("Ti trovavi all'interno delle celle! \n", MILLISECONDI);
+			}
+			else
+			{
+				rallentare_output("Ti trovavi nelle segrete! \n", MILLISECONDI);
+			}
 		}
 		else
 		{
@@ -119,7 +145,7 @@ bool gestire_azioni_partita()
 			{
 				esito = true;
 
-				if(leggere_nome(giocatore) != NULL)
+				if(strlen(leggere_nome(giocatore)) != 0)
 				{
 					sprintf(risposta, "\nATTRIBUTI:\nTi chiami: %s \nLa vita e': %d \nLa forza e': %d\nL'intelligenza e': %d\n\n", leggere_nome(giocatore), leggere_vita(giocatore), leggere_forza(giocatore), leggere_intelligenza(giocatore));
 					rallentare_output(risposta, MILLISECONDI);
@@ -133,7 +159,7 @@ bool gestire_azioni_partita()
 			{
 				esito = true;
 
-				if(leggere_nome(giocatore) != NULL)
+				if(strlen(leggere_nome(giocatore)) != 0)
 				{
 					risposta = visualizzare_inventario(risposta);
 					rallentare_output("\nINVENTARIO:\n", MILLISECONDI);
@@ -148,7 +174,7 @@ bool gestire_azioni_partita()
 			{
 				esito = true;
 
-				if(leggere_nome(giocatore) != NULL)
+				if(strlen(leggere_nome(giocatore)) != 0)
 				{
 					risposta = visualizzare_frammenti_mappa(risposta);
 					rallentare_output(risposta, MILLISECONDI);

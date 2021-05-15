@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "../gestione_file/file_di_testo/lettura_file_testo.h"
 #include "../gestione_file/file_binari/scrittura_file_binari.h"
 #include "../utility/utility.h"
@@ -8,12 +9,35 @@
 
 stringa leggere_nome(personaggio personaggio_nome)
 {
-	return personaggio_nome.nome;
+	stringa nome;
+	int i;
+
+	i = 0;
+
+	while(i < strlen(personaggio_nome.nome))
+	{
+		nome = scrivere_carattere(nome, i, personaggio_nome.nome[i]);
+		i++;
+	}
+
+	nome = scrivere_carattere(nome, i, '\0');
+
+	return nome;
 }
 
-void scrivere_nome(personaggio *personaggio_nome,stringa nome)
+void scrivere_nome(personaggio *personaggio_nome, stringa nome)
 {
-	personaggio_nome->nome = nome;
+	int i;
+
+	i = 0;
+
+	while(i < leggere_lunghezza(nome))
+	{
+		personaggio_nome->nome[i] = leggere_carattere(nome, i);
+		i++;
+	}
+
+	personaggio_nome->nome[i] = '\0';
 }
 
 int leggere_vita(personaggio personaggio_vita)

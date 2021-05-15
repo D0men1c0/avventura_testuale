@@ -3,9 +3,13 @@
 #include "../../utility/utility.h"
 #include "../../personaggio/personaggio.h"
 #include "../../inventario/gestione_inventario.h"
+#include "../../gestione_avventura/gestione_avventura.h"
+#include "../../gestione_avventura/gestione_mappa.h"
+#include "../../gestione_avventura/gestione_movimenti.h"
 
 bool leggere_file_salvataggio(stringa nome_file)
 {
+	int i;
 	bool esito;
 
 	FILE * fp;
@@ -15,7 +19,16 @@ bool leggere_file_salvataggio(stringa nome_file)
 	if((fp = fopen(nome_file,"rb")) != NULL)  		// apre il file binario in modalità "append", se non esiste viene creato
 	{
 		fread(&giocatore, sizeof(personaggio), 1, fp);
-		//fread(&inv, sizeof(inventario), 1, fp);
+		fread(&inv, sizeof(inventario), 1, fp);
+
+		i = 0;
+		while(i < RIGHE)
+		{
+			fread(mappa[i], sizeof(mappa[i][0]), COLONNE, fp);
+			i++;
+		}
+
+		fread(&pos, sizeof(posizione), 1, fp);
 	}
 	else
 	{

@@ -47,17 +47,17 @@ void stampare_matrice(matrice matrice_a)
 		printf("[");
 		while (j < COLONNE - 1)
 		{
-			if (leggere_valore_matrice(matrice_a, i, j) < 10)
+			/*if (leggere_valore_matrice(matrice_a, i, j) < 10)
 			{
 				printf(" ");
-			}
+			}*/
 			printf("%d, ", leggere_valore_matrice(matrice_a, i, j));
 			j++;
 		}
-		if (leggere_valore_matrice(matrice_a, i, j) < 10)
+		/*if (leggere_valore_matrice(matrice_a, i, j) < 10)
 		{
 			printf(" ");
-		}
+		}*/
 		printf("%d]\n", leggere_valore_matrice(matrice_a, i, j));
 		i++;
 	}

@@ -10,20 +10,19 @@
 
 void leggere_mappa(matrice mappa)
 {
-	int i, j, k, l;
-	stringa valori_mappa = "";
-	stringa valore = "";
+	//int i, j, intero;
+	//stringa valori_mappa = "";
+	/*stringa valore = "";
 
 	valore = allocare_stringa(valore, 0);
 
 	//scrivere_colonna_matrice(mappa, COLONNE);
 	//scrivere_riga_matrice(mappa, RIGHE);
+*/
+	leggere_mappa_file("mappa.txt");
 
-	valori_mappa = leggere_file_testo("mappa.txt", valori_mappa);
-
-	i = 0;
-	k = 0;
-	while(i < RIGHE)
+	//k = 0;
+	/*while(i < RIGHE)
 	{
 		j = 0;
 		while(j < COLONNE)
@@ -42,10 +41,12 @@ void leggere_mappa(matrice mappa)
 			j++;
 		}
 		i++;
-	}
+	}*/
 
-	free(valore);
-	free(valori_mappa);
+
+
+	//free(valore);
+	//free(valori_mappa);
 }
 
 void gestire_cella(matrice mappa, posizione posizione_personaggio, personaggio *info_giocatore, inventario *inventario_giocatore)

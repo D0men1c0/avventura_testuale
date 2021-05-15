@@ -3,9 +3,11 @@
 
 #include "../utility/utility.h"
 
+#define DIM_NOME 50
+
 typedef struct
 {
-	stringa nome;
+	char nome[DIM_NOME];
 	int vita;
 	int forza;
 	int intelligenza;
