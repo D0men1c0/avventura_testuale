@@ -2,10 +2,7 @@
 #define STRUTTURE_ANALIZZATORE_H
 
 #include "../utility/utility.h"
-
-#define MAX_SIMBOLI 10
-#define MAX_TOKEN 10
-#define MAX_PAROLE 50
+#include "comandi.h"
 
 stringa token;
 stringa sorgente;

@@ -8,19 +8,9 @@
 #include "../gestione_file/file_di_testo/lettura_file_testo.h"
 
 void gestire_errore_semantico();
-stringa gestire_risposta_inventario(stringa risposta);
 
-// COMANDI GLOBALI
-#define NUOVA "nuova"
-#define AIUTO "aiuto"
-#define CARICA "carica"
-#define SALVA "salva"
 
-// AZIONI PARTITA
-#define VISUALIZZA "visualizza"
-#define ATTRIBUTI "attributi"
-#define INVENTARIO "inventario"
-#define MAPPA "mappa"
+
 
 bool gestire_comandi_globali()
 {
