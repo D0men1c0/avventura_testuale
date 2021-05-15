@@ -6,10 +6,10 @@
 #include "../personaggio/personaggio.h"
 #include "../inventario/gestione_inventario.h"
 #include "../gestione_file/file_di_testo/lettura_file_testo.h"
+#include "../gestione_file/file_binari/scrittura_file_binari.h"
+#include "../gestione_file/file_binari/lettura_file_binari.h"
 
 void gestire_errore_semantico();
-
-
 
 
 bool gestire_comandi_globali()
@@ -43,7 +43,7 @@ bool gestire_comandi_globali()
 		}
 		while(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == false && confrontare_stringhe(convertire_stringa_minuscolo(risposta), "no") == false);
 	}
-	else if(confrontare_stringhe(token,AIUTO) == true)
+	else if(confrontare_stringhe(token, AIUTO) == true)
 	{
 		if (leggere_dimensione_tabella_simboli() < 2)
 		{
@@ -52,6 +52,47 @@ bool gestire_comandi_globali()
 			esito = true;
 		}
 	}
+	else if(confrontare_stringhe(token, SALVA) == true)
+	{
+		if(leggere_nome(giocatore) != NULL)
+		{
+			esito = accodare_file_salvataggio("salvataggi.dat", giocatore, inv);
+
+			if(esito == true)
+			{
+				rallentare_output("\nHai salvato correttamente i dati di gioco! \n", MILLISECONDI);
+			}
+			else
+			{
+				rallentare_output("\nErrore nel salvataggio della partita in corso! \n", MILLISECONDI);
+			}
+		}
+		else
+		{
+			gestire_errore_semantico();
+		}
+
+		esito = true;
+	}
+	else if(confrontare_stringhe(token, CARICA) == true)
+	{
+
+		esito = leggere_file_salvataggio("salvataggi.dat");
+
+		if(esito == true)
+		{
+			pulire_schermo();
+			rallentare_output("Hai caricato correttamente i dati di gioco! \n", MILLISECONDI);
+		}
+		else
+		{
+			rallentare_output("\nErrore nel caricamento dei dati di gioco! \n", MILLISECONDI);
+		}
+
+
+		esito = true;
+	}
+
 
 	free(risposta);
 

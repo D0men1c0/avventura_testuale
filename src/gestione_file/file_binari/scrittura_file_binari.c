@@ -1,24 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../../utility/utility.h"
+#include "../../personaggio/personaggio.h"
+#include "../../inventario/gestione_inventario.h"
 
-void accodare_file_binario(stringa nome_file, void * dato, int tipologia_struttura)
+bool accodare_file_salvataggio(stringa nome_file, personaggio giocatore, inventario inv)
 {
+	bool esito;
+
 	FILE * fp;
+
+	esito = true;
 
 	if((fp = fopen(nome_file,"ab+")) != NULL)  		// apre il file binario in modalità "append", se non esiste viene creato
 	{
-		if(tipologia_struttura == TIPO_INT)
-		{
-			int * intero;
-
-			intero = (int *)dato;
-
-			fwrite(intero, sizeof(int), 1, fp);
-		}
-		//AGGIUNGERE MANO A MANO CHE SI VOGLIONO SALVARE ALTRE TIPOLOGIE
+		fwrite(&giocatore, sizeof(personaggio), 1, fp);
+		//fwrite(&inv, sizeof(inventario), 1, fp);
+	}
+	else
+	{
+		esito = false;
 	}
 
 	fclose(fp);
 
+	return esito;
 }

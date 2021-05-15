@@ -8,7 +8,9 @@
 #define LETTURA_FILE_BINARI_H
 
 #include "../../utility/utility.h"
+#include "../../personaggio/personaggio.h"
+#include "../../inventario/gestione_inventario.h"
 
-void * leggere_file_binario(stringa nome_file, int tipologia_struttura);
+bool leggere_file_salvataggio(stringa nome_file);
 
 #endif

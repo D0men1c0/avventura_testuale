@@ -6,7 +6,6 @@
 #include "input/gestione_input.h"
 #include "array/matrice.h"
 #include "array/vettore.h"
-#include "costanti.h"
 #include "bool.h"
 
 #define MILLISECONDI 0

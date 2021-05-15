@@ -1,27 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../../utility/utility.h"
+#include "../../personaggio/personaggio.h"
+#include "../../inventario/gestione_inventario.h"
 
-void * leggere_file_binario(stringa nome_file, int tipologia_struttura)
+bool leggere_file_salvataggio(stringa nome_file)
 {
-	void * puntatore;
+	bool esito;
 
 	FILE * fp;
 
+	esito = true;
+
 	if((fp = fopen(nome_file,"rb")) != NULL)  		// apre il file binario in modalità "append", se non esiste viene creato
 	{
-		if(tipologia_struttura == TIPO_INT)
-		{
-			int intero;
-
-			fread(&intero, sizeof(int), 1, fp);
-
-			puntatore = &intero;
-		}
-		//AGGIUNGERE MANO A MANO CHE SI VOGLIONO SALVARE ALTRE TIPOLOGIE
+		fread(&giocatore, sizeof(personaggio), 1, fp);
+		//fread(&inv, sizeof(inventario), 1, fp);
+	}
+	else
+	{
+		esito = false;
 	}
 
 	fclose(fp);
 
-	return puntatore;
+	return esito;
 }
