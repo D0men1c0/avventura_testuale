@@ -127,6 +127,10 @@ bool gestire_azioni_partita()
 					gestire_errore_semantico();
 				}
 			}
+			else
+			{
+				gestire_errore_semantico();
+			}
 		}
 	}
 
