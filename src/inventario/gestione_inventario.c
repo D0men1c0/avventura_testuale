@@ -73,7 +73,7 @@ void inizializza_inventario(inventario *inv)
 	scrivere_frammento_nord(inv, true);
 	scrivere_frammento_sud(inv, true);
 	scrivere_frammento_est(inv, true);
-	scrivere_frammento_ovest(inv, false);
+	scrivere_frammento_ovest(inv, true);
 	scrivere_chiave_re(inv, false);
 	scrivere_chiave_semplice(inv, false);
 }
@@ -171,36 +171,39 @@ stringa visualizzare_frammenti_mappa(stringa risposta)
 
 stringa concatenare_frammenti_file(stringa * frammenti, int indice, stringa risposta)
 {
-	int pos_1;
-	int pos_2;
-	int i;
-	pos_1=0;
-	pos_2=0;
+	int pos, pos_precedente;
+	int i, j;
+	int temp;
+
+	pos = 0;
+	pos_precedente = 0;
 	i = leggere_lunghezza(risposta);
 
-	do{
-		while(frammenti[indice][pos_1] != '\n')
-		{
-			risposta = scrivere_carattere(risposta, i, frammenti[indice][pos_1]);
-			pos_1++;
-			i++;
-		}
-		pos_1++;
-		indice++;
+	do
+	{
+		j = indice + 2;
 
-		while(frammenti[indice][pos_2] != '\n')
+		while(indice < j)
 		{
-			risposta = scrivere_carattere(risposta, i, frammenti[indice][pos_2]);
-			pos_2++;
-			i++;
+			while(frammenti[indice][pos] != '\n')
+			{
+				risposta = scrivere_carattere(risposta, i, frammenti[indice][pos]);
+				pos++;
+				i++;
+			}
+
+			pos++;
+			indice++;
+
+			temp = pos;
+			pos = pos_precedente;
+			pos_precedente = temp;
 		}
-		pos_2++;
+
 		risposta = scrivere_carattere(risposta, i, '\n');
 		i++;
-		indice--;
-
-	}while(pos_2 < leggere_lunghezza(frammenti[indice+1]));
-
+		indice -= 2;
+	}while(pos_precedente < leggere_lunghezza(frammenti[indice+1]));
 
 	return risposta;
 }
