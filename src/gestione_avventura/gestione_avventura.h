@@ -8,5 +8,7 @@ void gestire_avventura();
 
 matrice mappa;
 posizione pos;
+inventario inv;
+personaggio giocatore;
 
 #endif

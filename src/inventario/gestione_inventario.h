@@ -1,6 +1,8 @@
+#include "../utility/utility.h"
+#include "../gestione_avventura/gestione_avventura.h"
+
 #ifndef GESTIONE_INVENTARIO_H
 #define GESTIONE_INVENTARIO_H
-#include "../utility/utility.h"
 
 typedef struct
 {
@@ -12,7 +14,7 @@ typedef struct
 	bool chiave_re;
 }inventario;
 
-inventario inv;
+
 
 //prototipi lettura
 bool leggere_frammento_est(inventario inv);

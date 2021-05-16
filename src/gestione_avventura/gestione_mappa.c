@@ -7,6 +7,7 @@
 #include "gestione_movimenti.h"
 #include "../personaggio/personaggio.h"
 #include "../inventario/gestione_inventario.h"
+#include "../utility/bool.h"
 
 void leggere_mappa(matrice mappa)
 {
@@ -72,29 +73,15 @@ void gestire_cella(matrice mappa, posizione posizione_personaggio, personaggio *
 			rallentare_output(stringa_file, MILLISECONDI);
 		}
 
-		if(cella_attuale % PORTA_LIBERA == 0)
-		{
-			//print messaggio porta libera
-		}
-
 		if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0)
 		{
 
 		}
 
-		if(cella_attuale % PORTA_SEMPLICE == 0)
-		{
-
-		}
-
-		if(cella_attuale % PORTA_RE == 0)
-		{
-
-		}
 
 		if(cella_attuale % SALA_TRONO == 0)
 		{
-
+			//messaggio entrata sala trono
 		}
 
 		if(cella_attuale % CHIAVE_SEMPLICE == 0)
@@ -114,7 +101,7 @@ void gestire_cella(matrice mappa, posizione posizione_personaggio, personaggio *
 
 		if(cella_attuale % MALUS == 0)
 		{
-
+			scrivere_vita(info_giocatore, leggere_vita(*info_giocatore) - 1);
 		}
 
 		if(cella_attuale % BOTOLA == 0)
@@ -124,22 +111,26 @@ void gestire_cella(matrice mappa, posizione posizione_personaggio, personaggio *
 
 		if(cella_attuale % PEZZO_MAPPA_OVEST == 0)
 		{
-
+			//if comando prendere pezzo
+			scrivere_frammento_ovest(inventario_giocatore, true);
 		}
 
 		if(cella_attuale % PEZZO_MAPPA_EST == 0)
 		{
-
+			//if comando prendere pezzo
+			scrivere_frammento_est(inventario_giocatore, true);
 		}
 
 		if(cella_attuale % PEZZO_MAPPA_NORD == 0)
 		{
-
+			//if comando prendere pezzo
+			scrivere_frammento_nord(inventario_giocatore, true);
 		}
 
 		if(cella_attuale % PEZZO_MAPPA_SUD == 0)
 		{
-
+			//if comando prendere pezzo
+			scrivere_frammento_sud(inventario_giocatore, true);
 		}
 	}
 

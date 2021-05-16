@@ -1,7 +1,8 @@
+#include "../utility/utility.h"
+#include "../gestione_avventura/gestione_avventura.h"
+
 #ifndef PERSONAGGIO_H
 #define PERSONAGGIO_H
-
-#include "../utility/utility.h"
 
 #define DIM_NOME 50
 
@@ -12,8 +13,6 @@ typedef struct
 	int forza;
 	int intelligenza;
 }personaggio;
-
-personaggio giocatore;
 
 stringa leggere_nome(personaggio personaggio_nome);
 void scrivere_nome(personaggio *personaggio_nome, stringa nome);

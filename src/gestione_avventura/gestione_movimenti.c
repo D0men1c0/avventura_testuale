@@ -7,24 +7,24 @@
 #include "../inventario/gestione_inventario.h"
 #include "../personaggio/personaggio.h"
 
-void scrivere_x(posizione *personaggio, int x)
+void scrivere_x(posizione *posizione_personaggio, int x)
 {
-	personaggio->x = x;
+	posizione_personaggio->x = x;
 }
 
-void scrivere_y(posizione *personaggio, int y)
+void scrivere_y(posizione *posizione_personaggio, int y)
 {
-	personaggio->y = y;
+	posizione_personaggio->y = y;
 }
 
-int leggere_x(posizione personaggio)
+int leggere_x(posizione posizione_personaggio)
 {
-	return personaggio.x;
+	return posizione_personaggio.x;
 }
 
-int leggere_y(posizione personaggio)
+int leggere_y(posizione posizione_personaggio)
 {
-	return personaggio.y;
+	return posizione_personaggio.y;
 }
 
 void muovere_personaggio(matrice mappa, stringa direzione, posizione *posizione_personaggio, personaggio *info_giocatore, inventario *inventario_giocatore)

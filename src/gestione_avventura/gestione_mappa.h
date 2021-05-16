@@ -2,6 +2,7 @@
 #include "gestione_movimenti.h"
 #include "../personaggio/personaggio.h"
 #include "../inventario/gestione_inventario.h"
+#include "gestione_avventura.h"
 
 #ifndef GESTIONE_MAPPA_H_
 #define GESTIONE_MAPPA_H_
