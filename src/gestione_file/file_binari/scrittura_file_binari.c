@@ -16,7 +16,7 @@ bool accodare_file_salvataggio(stringa nome_file, personaggio giocatore, inventa
 
 	esito = true;
 
-	if((fp = fopen(nome_file,"ab+")) != NULL)  		// apre il file binario in modalità "append", se non esiste viene creato
+	if((fp = fopen(nome_file,"wb")) != NULL)  		// apre il file binario in modalità "append", se non esiste viene creato
 	{
 		fwrite(&giocatore, sizeof(personaggio), 1, fp);
 		fwrite(&inv, sizeof(inventario), 1, fp);

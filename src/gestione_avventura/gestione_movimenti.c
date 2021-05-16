@@ -7,37 +7,36 @@
 #include "../inventario/gestione_inventario.h"
 #include "../personaggio/personaggio.h"
 
-void scrivere_x(posizione *posizione_personaggio, int x)
+void scrivere_x(posizione * pos, int x)
 {
-	posizione_personaggio->x = x;
+	pos->x = x;
 }
 
-void scrivere_y(posizione *posizione_personaggio, int y)
+void scrivere_y(posizione * pos, int y)
 {
-	posizione_personaggio->y = y;
+	pos->y = y;
 }
 
-int leggere_x(posizione posizione_personaggio)
+int leggere_x(posizione pos)
 {
-	return posizione_personaggio.x;
+	return pos.x;
 }
 
-int leggere_y(posizione posizione_personaggio)
+int leggere_y(posizione pos)
 {
-	return posizione_personaggio.y;
+	return pos.y;
 }
 
-void muovere_personaggio(matrice mappa, stringa direzione, posizione *posizione_personaggio, personaggio *info_giocatore, inventario *inventario_giocatore)
+void muovere_personaggio(stringa direzione)
 {
-	leggere_mappa(mappa);
 	stringa stringa_file = "";
 
 	if(confrontare_stringhe(direzione, "nord"))
 	{
-		if(leggere_valore_matrice(mappa, leggere_y(*posizione_personaggio) - 1, leggere_x(*posizione_personaggio)) != 1)
+		if(leggere_valore_matrice(mappa, leggere_y(pos) - 1, leggere_x(pos)) != 1)
 		{
-			scrivere_y(posizione_personaggio, leggere_y(*posizione_personaggio) - 1);
-			gestire_cella(mappa, *posizione_personaggio, info_giocatore, inventario_giocatore);
+			scrivere_y(&pos, leggere_y(pos) - 1);
+			gestire_cella(mappa, pos, giocatore, inv);
 		}
 		else
 		{
@@ -48,10 +47,10 @@ void muovere_personaggio(matrice mappa, stringa direzione, posizione *posizione_
 
 	if(confrontare_stringhe(direzione, "sud"))
 	{
-		if(leggere_valore_matrice(mappa, leggere_y(*posizione_personaggio) + 1, leggere_x(*posizione_personaggio)) != 1)
+		if(leggere_valore_matrice(mappa, leggere_y(pos) + 1, leggere_x(pos)) != 1)
 		{
-			scrivere_y(posizione_personaggio, leggere_y(*posizione_personaggio) + 1);
-			gestire_cella(mappa, *posizione_personaggio, info_giocatore, inventario_giocatore);
+			scrivere_y(&pos, leggere_y(pos) + 1);
+			gestire_cella(mappa, pos, giocatore, inv);
 		}
 		else
 		{
@@ -62,10 +61,10 @@ void muovere_personaggio(matrice mappa, stringa direzione, posizione *posizione_
 
 	if(confrontare_stringhe(direzione, "ovest"))
 	{
-		if(leggere_valore_matrice(mappa, leggere_y(*posizione_personaggio), leggere_x(*posizione_personaggio) - 1) != 1)
+		if(leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos) - 1) != 1)
 		{
-			scrivere_x(posizione_personaggio, leggere_x(*posizione_personaggio) - 1);
-			gestire_cella(mappa, *posizione_personaggio, info_giocatore, inventario_giocatore);
+			scrivere_x(&pos, leggere_x(pos) - 1);
+			gestire_cella(mappa, pos, giocatore, inv);
 		}
 		else
 		{
@@ -76,10 +75,10 @@ void muovere_personaggio(matrice mappa, stringa direzione, posizione *posizione_
 
 	if(confrontare_stringhe(direzione, "est"))
 	{
-		if(leggere_valore_matrice(mappa, leggere_y(*posizione_personaggio), leggere_x(*posizione_personaggio) + 1) != 1)
+		if(leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos) + 1) != 1)
 		{
-			scrivere_x(posizione_personaggio, leggere_x(*posizione_personaggio) + 1);
-			gestire_cella(mappa, *posizione_personaggio, info_giocatore, inventario_giocatore);
+			scrivere_x(&pos, leggere_x(pos) + 1);
+			gestire_cella(mappa, pos, giocatore, inv);
 		}
 		else
 		{

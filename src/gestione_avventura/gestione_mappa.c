@@ -3,6 +3,7 @@
 #include "../utility/array/matrice.h"
 #include "../utility/stringa/stringa.h"
 #include "../gestione_file/file_di_testo/lettura_file_testo.h"
+#include "gestione_avventura.h"
 #include "gestione_mappa.h"
 #include "gestione_movimenti.h"
 #include "../personaggio/personaggio.h"
@@ -11,46 +12,10 @@
 
 void leggere_mappa(matrice mappa)
 {
-	//int i, j, intero;
-	//stringa valori_mappa = "";
-	/*stringa valore = "";
-
-	valore = allocare_stringa(valore, 0);
-
-	//scrivere_colonna_matrice(mappa, COLONNE);
-	//scrivere_riga_matrice(mappa, RIGHE);
-*/
 	leggere_mappa_file("mappa.txt");
-
-	//k = 0;
-	/*while(i < RIGHE)
-	{
-		j = 0;
-		while(j < COLONNE)
-		{
-			l = 0;
-			while((valori_mappa[k] >= '0' && valori_mappa[k] <= '9'))
-			{
-				valore[l] = valori_mappa[k];
-				k++;
-				l++;
-			}
-			if((valori_mappa[k] == ' ' || valori_mappa[k] == '\n'))
-				k++;
-			valore[l] = '\0';
-			scrivere_valore_matrice(mappa, i, j, convertire_intero(valore));
-			j++;
-		}
-		i++;
-	}*/
-
-
-
-	//free(valore);
-	//free(valori_mappa);
 }
 
-void gestire_cella(matrice mappa, posizione posizione_personaggio, personaggio *info_giocatore, inventario *inventario_giocatore)
+void gestire_cella()
 {
 	int cella_attuale;
 	stringa nome_file = "";
@@ -58,7 +23,7 @@ void gestire_cella(matrice mappa, posizione posizione_personaggio, personaggio *
 
 	nome_file = allocare_stringa(nome_file, 0);
 
-	cella_attuale = leggere_valore_matrice(mappa, leggere_y(posizione_personaggio), leggere_x(posizione_personaggio));
+	cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
 
 	if(cella_attuale == 0)
 	{
@@ -68,7 +33,7 @@ void gestire_cella(matrice mappa, posizione posizione_personaggio, personaggio *
 	{
 		if(cella_attuale % STORIA == 0)
 		{
-			sprintf(nome_file, "storia/[%d][%d].txt", leggere_y(posizione_personaggio), leggere_x(posizione_personaggio));
+			sprintf(nome_file, "storia/[%d][%d].txt", leggere_y(pos), leggere_x(pos));
 			stringa_file = leggere_file_testo(nome_file, stringa_file);
 			rallentare_output(stringa_file, MILLISECONDI);
 		}
@@ -101,7 +66,7 @@ void gestire_cella(matrice mappa, posizione posizione_personaggio, personaggio *
 
 		if(cella_attuale % MALUS == 0)
 		{
-			scrivere_vita(info_giocatore, leggere_vita(*info_giocatore) - 1);
+			scrivere_vita(&giocatore, leggere_vita(giocatore) - 1);
 		}
 
 		if(cella_attuale % BOTOLA == 0)
@@ -112,25 +77,25 @@ void gestire_cella(matrice mappa, posizione posizione_personaggio, personaggio *
 		if(cella_attuale % PEZZO_MAPPA_OVEST == 0)
 		{
 			//if comando prendere pezzo
-			scrivere_frammento_ovest(inventario_giocatore, true);
+			scrivere_frammento_ovest(&inv, true);
 		}
 
 		if(cella_attuale % PEZZO_MAPPA_EST == 0)
 		{
 			//if comando prendere pezzo
-			scrivere_frammento_est(inventario_giocatore, true);
+			scrivere_frammento_est(&inv, true);
 		}
 
 		if(cella_attuale % PEZZO_MAPPA_NORD == 0)
 		{
 			//if comando prendere pezzo
-			scrivere_frammento_nord(inventario_giocatore, true);
+			scrivere_frammento_nord(&inv, true);
 		}
 
 		if(cella_attuale % PEZZO_MAPPA_SUD == 0)
 		{
 			//if comando prendere pezzo
-			scrivere_frammento_sud(inventario_giocatore, true);
+			scrivere_frammento_sud(&inv, true);
 		}
 	}
 

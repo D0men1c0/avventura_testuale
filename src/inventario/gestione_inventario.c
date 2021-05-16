@@ -70,9 +70,9 @@ void scrivere_chiave_re(inventario *inv, bool valore)
 
 void inizializza_inventario(inventario *inv)
 {
-	scrivere_frammento_nord(inv, true);
-	scrivere_frammento_sud(inv, true);
-	scrivere_frammento_est(inv, true);
+	scrivere_frammento_nord(inv, false);
+	scrivere_frammento_sud(inv, false);
+	scrivere_frammento_est(inv, false);
 	scrivere_frammento_ovest(inv, true);
 	scrivere_chiave_re(inv, false);
 	scrivere_chiave_semplice(inv, false);
@@ -159,6 +159,9 @@ stringa visualizzare_frammenti_mappa(stringa risposta)
 
 	i = 0;
 
+	free(risposta);
+	risposta = allocare_stringa(risposta, 0);
+
 	while(i < 4)
 	{
 		risposta = concatenare_frammenti_file(frammenti,  i, risposta);
@@ -166,13 +169,17 @@ stringa visualizzare_frammenti_mappa(stringa risposta)
 		i += 2;
 	}
 
+	risposta = scrivere_carattere(risposta, leggere_lunghezza(risposta), '\0');
+
 	return risposta;
 }
 
 stringa concatenare_frammenti_file(stringa * frammenti, int indice, stringa risposta)
 {
-	int pos, pos_precedente;
-	int i, j;
+	int pos;
+	int pos_precedente;
+	int i;
+	int j;
 	int temp;
 
 	pos = 0;

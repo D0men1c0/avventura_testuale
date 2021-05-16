@@ -44,6 +44,11 @@ bool gestire_comandi_globali()
 
 				scrivere_y(&pos, 8);
 				scrivere_x(&pos, 4);
+
+				pulire_schermo();
+				ritardare_programma(2000);
+
+				gestire_cella(mappa, pos, &giocatore, &inv);
 			}
 			else if(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == false && confrontare_stringhe(convertire_stringa_minuscolo(risposta), "no") == false)
 			{
@@ -175,7 +180,7 @@ bool gestire_azioni_partita()
 				if(strlen(leggere_nome(giocatore)) != 0)
 				{
 					risposta = visualizzare_frammenti_mappa(risposta);
-					rallentare_output(risposta, MILLISECONDI);
+					rallentare_output(risposta, MILLISEC_MAPPA);
 				}
 				else
 				{
@@ -190,6 +195,29 @@ bool gestire_azioni_partita()
 	}
 
 	free(risposta);
+	return esito;
+}
+
+bool gestire_movimenti()
+{
+	bool esito;
+
+	esito = false;
+
+	if(leggere_dimensione_tabella_simboli() == 1)
+	{
+		esito = true;
+
+		if(strlen(leggere_nome(giocatore)) != 0)
+		{
+			muovere_personaggio(leggere_token_tabella_simboli(0));
+		}
+		else
+		{
+			gestire_errore_semantico();
+		}
+	}
+
 	return esito;
 }
 

@@ -8,8 +8,9 @@
 #include "array/vettore.h"
 #include "bool.h"
 
-#define MILLISECONDI 0
-#define MILLISEC_CASTELLO 0
+#define MILLISECONDI 0//35
+#define MILLISEC_CASTELLO 0//7
+#define MILLISEC_MAPPA 0
 
 #endif
 

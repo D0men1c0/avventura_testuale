@@ -17,6 +17,6 @@ void scrivere_x(posizione *posizione_personaggio, int x);
 void scrivere_y(posizione *posizione_personaggio, int y);
 int leggere_x(posizione posizione_personaggio);
 int leggere_y(posizione posizione_personaggio);
-void muovere_personaggio(matrice mappa, stringa direzione, posizione *posizione_personaggio, personaggio *info_giocatore, inventario *inventario_giocatore);
+void muovere_personaggio(stringa direzione);
 
 #endif

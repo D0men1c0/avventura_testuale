@@ -24,6 +24,16 @@ bool controllare_simboli_tabella()
 		{
 			esito = gestire_errore_sintattico();
 		}
+
+		if(esito == true)
+		{
+			esito = gestire_movimenti();
+
+			if(esito == false)
+			{
+				gestire_errore_sintattico();
+			}
+		}
 	}
 	else if(simb == HLP)
 	{

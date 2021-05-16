@@ -30,7 +30,7 @@
 
 
 void leggere_mappa(matrice mappa);
-void gestire_cella(matrice mappa, posizione posizione_personaggio, personaggio *info_giocatore, inventario *inventario_giocatore);
+void gestire_cella();
 
 #endif
 
