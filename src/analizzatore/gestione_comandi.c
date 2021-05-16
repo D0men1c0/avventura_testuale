@@ -42,10 +42,8 @@ bool gestire_comandi_globali()
 				//aggiungere nello pseudo
 				leggere_mappa(mappa);
 
-				pos.y = 8;
-				pos.x = 4;
-				//scrivere_y(pos, 8);
-				//scrivere_x(pos, 4);
+				scrivere_y(&pos, 8);
+				scrivere_x(&pos, 4);
 			}
 			else if(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == false && confrontare_stringhe(convertire_stringa_minuscolo(risposta), "no") == false)
 			{
@@ -97,11 +95,11 @@ bool gestire_comandi_globali()
 			pulire_schermo();
 			rallentare_output("Hai caricato correttamente i dati di gioco! \n", MILLISECONDI);
 
-			if(pos.x < 4)
+			if(leggere_x(pos) < 4)
 			{
 				rallentare_output("Ti trovavi nella sala del trono! \n", MILLISECONDI);
 			}
-			else if(pos.x <= 7)
+			else if(leggere_x(pos) <= 7)
 			{
 				rallentare_output("Ti trovavi all'interno delle celle! \n", MILLISECONDI);
 			}
