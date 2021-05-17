@@ -118,19 +118,20 @@ void inserire_parole_chiave()
 	inserire_parola_chiave_tabella("carica");
 	inserire_parola_chiave_tabella("nuova");
 	inserire_parola_chiave_tabella("aiuto");
-	struttura_simboli.numero_parole_chiave[1] = leggere_dimensione_parole_chiave();
-
+	//inserimento all'interno della struttura
+	scrivere_parola_chiave_struttura_simboli(1,leggere_dimensione_parole_chiave());
 
 	inserire_parola_chiave_tabella("partita");
-	struttura_simboli.numero_parole_chiave[2] = leggere_dimensione_parole_chiave();
-
+	//inserimento all'interno della struttura
+	scrivere_parola_chiave_struttura_simboli(2,leggere_dimensione_parole_chiave());
 
 	inserire_parola_chiave_tabella("prendi");
 	inserire_parola_chiave_tabella("sfonda");
 	inserire_parola_chiave_tabella("esamina");
 	inserire_parola_chiave_tabella("visualizza");
 	inserire_parola_chiave_tabella("apri");
-	struttura_simboli.numero_parole_chiave[3] = leggere_dimensione_parole_chiave();
+	//inserimento all'interno della struttura
+	scrivere_parola_chiave_struttura_simboli(3,leggere_dimensione_parole_chiave());
 
 	inserire_parola_chiave_tabella("chiave");
 	inserire_parola_chiave_tabella("porta");
@@ -140,7 +141,8 @@ void inserire_parole_chiave()
 	inserire_parola_chiave_tabella("stanza");
 	inserire_parola_chiave_tabella("attributi");
 	inserire_parola_chiave_tabella("inventario");
-	struttura_simboli.numero_parole_chiave[4] = leggere_dimensione_parole_chiave();
+	//inserimento all'interno della struttura
+	scrivere_parola_chiave_struttura_simboli(4,leggere_dimensione_parole_chiave());
 }
 
 void inserire_simbolo_tabella(simbolo simb)
@@ -148,8 +150,7 @@ void inserire_simbolo_tabella(simbolo simb)
 	int dimensione;
 
 	dimensione = leggere_dimensione_simboli();
-
-	struttura_simboli.simboli[dimensione] = simb;
+	scrivere_simboli_struttura_simboli(dimensione,simb);
 
 	scrivere_dimensione_simboli(dimensione + 1);
 }
@@ -159,11 +160,12 @@ void inserire_parola_chiave_tabella(parola_chiave parola)
 	int dimensione;
 
 	dimensione = leggere_dimensione_parole_chiave();
-
-	struttura_parole_chiave.parole_chiave[dimensione] = parola;
+	scrivere_parola_chiave_struttura_parole_chiave(dimensione, parola);
 
 	scrivere_dimensione_parole_chiave(dimensione + 1);
 }
+
+
 
 void scrivere_dimensione_simboli(int dimensione)
 {
@@ -195,3 +197,17 @@ stringa leggere_parola_chiave_tabella(int indice)
 	return leggere_stringa(struttura_parole_chiave.parole_chiave[indice]);
 }
 
+void scrivere_parola_chiave_struttura_simboli(int indice, int valore)
+{
+	struttura_simboli.numero_parole_chiave[indice] = valore;
+}
+
+void scrivere_simboli_struttura_simboli(int indice, simbolo simb)
+{
+	struttura_simboli.simboli[indice] = simb;
+}
+
+void scrivere_parola_chiave_struttura_parole_chiave(int indice, parola_chiave parola)
+{
+	struttura_parole_chiave.parole_chiave[indice] = parola;
+}
