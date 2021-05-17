@@ -4,7 +4,6 @@
 #include "../utility/utility.h"
 #include "../gestione_file/file_di_testo/lettura_file_testo.h"
 #include "analizzatore_lessicale.h"
-#include "analizzatore_sintattico.h"
 
 #define NOME_FILE_LINGUAGGIO "parole_linguaggio.txt"
 
@@ -12,20 +11,15 @@ void scrivere_dimensione_simboli(int dimensione);
 void inserire_simbolo_tabella(simbolo simb);
 void scrivere_dimensione_parole_chiave(int dimensione);
 void inserire_parola_chiave_tabella(parola_chiave parola);
-void inserire_parole_chiave(stringa str);
-void inserire_simboli(stringa str);
+void inserire_parole_chiave();
+void inserire_simboli();
 
 
 void inizializzare_strutture_analizzatore()
 {
-	stringa str = "";
+	inserire_simboli();
 
-	str = leggere_file_testo(NOME_FILE_LINGUAGGIO, str);
-
-
-	inserire_simboli(str);
-
-	inserire_parole_chiave(str);
+	inserire_parole_chiave();
 }
 
 void leggere_comando()
@@ -93,96 +87,60 @@ parola_chiave leggere_token_tabella_simboli(int indice)
 	return tabella_simboli.token[indice];
 }
 
-void inserire_simboli(stringa str)
+void inserire_simboli()
 {
 	int i;
-	int pos;
-	stringa identificativo_simbolo = "";
-	simbolo simb;
-	bool leggere;
 
-	i = 0;
-	pos = 0;
-	leggere = true;
+	i = 1;
 
-	identificativo_simbolo = allocare_stringa(identificativo_simbolo, 0);
 	scrivere_dimensione_simboli(0);
 
-	while(i < leggere_lunghezza(str))
+
+	while(i <= 5)
 	{
-		if(leggere == true)
-		{
-			if((str[i] == '\n'))
-			{
-				identificativo_simbolo[pos] = '\0';
-				simb = convertire_intero(identificativo_simbolo);
-
-				inserire_simbolo_tabella(simb);
-				pos = 0;
-				leggere = false;
-			}
-			else
-			{
-				identificativo_simbolo[pos] = str[i];
-				pos++;
-			}
-		}
-		else
-		{
-			if(str[i] == '\n')
-				leggere = true;
-		}
-
+		inserire_simbolo_tabella(i);
 		i++;
 	}
 }
 
-void inserire_parole_chiave(stringa str)
+void inserire_parole_chiave()
 {
-	bool leggere;
-	int i;
-	int pos;
-	int numero_parole;
-	int indice_simbolo;
-	parola_chiave parola;
-
-	leggere = false;
-	i = 0;
-	numero_parole = 0;
-	indice_simbolo = 0;
 	scrivere_dimensione_parole_chiave(0);
 
-	while(i < leggere_lunghezza(str) + 1)
-	{
-		if(leggere == true)
-		{
-			if(str[i] != ' ' && (str[i] != '\n' && str[i] != '\0'))
-			{
-				parola = scrivere_carattere(parola, pos, str[i]);
-				pos++;
-			}
-			else
-			{
-				parola = scrivere_carattere(parola, pos, '\0');
-				pos = 0;
-				inserire_parola_chiave_tabella(parola);
-				numero_parole++;
+	inserire_parola_chiave_tabella("nord");
+	inserire_parola_chiave_tabella("sud");
+	inserire_parola_chiave_tabella("est");
+	inserire_parola_chiave_tabella("ovest");
+	struttura_simboli.numero_parole_chiave[0] = leggere_dimensione_parole_chiave();
 
-				if(str[i] == '\n'|| str[i] == '\0')
-				{
-					leggere = false;
 
-					struttura_simboli.numero_parole_chiave[indice_simbolo] = numero_parole;
+	inserire_parola_chiave_tabella("salva");
+	inserire_parola_chiave_tabella("carica");
+	inserire_parola_chiave_tabella("nuova");
+	inserire_parola_chiave_tabella("aiuto");
+	struttura_simboli.numero_parole_chiave[1] = leggere_dimensione_parole_chiave();
 
-					indice_simbolo++;
-				}
-			}
-		}
-		else if(str[i] == '\n')
-			leggere = true;
 
-		i++;
-	}
+	inserire_parola_chiave_tabella("partita");
+	struttura_simboli.numero_parole_chiave[2] = leggere_dimensione_parole_chiave();
+
+
+	inserire_parola_chiave_tabella("prendi");
+	inserire_parola_chiave_tabella("sfonda");
+	inserire_parola_chiave_tabella("esamina");
+	inserire_parola_chiave_tabella("visualizza");
+	inserire_parola_chiave_tabella("apri");
+	struttura_simboli.numero_parole_chiave[3] = leggere_dimensione_parole_chiave();
+
+	inserire_parola_chiave_tabella("chiave");
+	inserire_parola_chiave_tabella("porta");
+	inserire_parola_chiave_tabella("frammento");
+	inserire_parola_chiave_tabella("mappa");
+	inserire_parola_chiave_tabella("botola");
+	inserire_parola_chiave_tabella("stanza");
+	inserire_parola_chiave_tabella("attributi");
+	inserire_parola_chiave_tabella("inventario");
+	struttura_simboli.numero_parole_chiave[4] = leggere_dimensione_parole_chiave();
 }
 
 void inserire_simbolo_tabella(simbolo simb)

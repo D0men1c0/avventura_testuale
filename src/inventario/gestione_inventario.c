@@ -114,7 +114,7 @@ stringa visualizzare_inventario(stringa risposta)
 	return risposta;
 }
 
-stringa visualizzare_frammenti_mappa(stringa risposta)
+/*stringa visualizzare_frammenti_mappa(stringa risposta)
 {
 	stringa frammenti[4];
 
@@ -156,11 +156,8 @@ stringa visualizzare_frammenti_mappa(stringa risposta)
 		frammenti[3] = leggere_file_testo("mappa/pezzo_mappa_vuoto.txt", frammenti[3]);
 	}
 
-
 	i = 0;
 
-	free(risposta);
-	risposta = allocare_stringa(risposta, 0);
 
 	while(i < 4)
 	{
@@ -168,8 +165,6 @@ stringa visualizzare_frammenti_mappa(stringa risposta)
 
 		i += 2;
 	}
-
-	risposta = scrivere_carattere(risposta, leggere_lunghezza(risposta), '\0');
 
 	return risposta;
 }
@@ -213,7 +208,94 @@ stringa concatenare_frammenti_file(stringa * frammenti, int indice, stringa risp
 	}while(pos_precedente < leggere_lunghezza(frammenti[indice+1]));
 
 	return risposta;
+}*/
+
+
+stringa visualizzare_frammenti_mappa(stringa risposta)
+{
+	stringa frammenti[4];
+	stringa frammento_nord = "";
+	stringa frammento_est = "";
+	stringa frammento_sud = "";
+	stringa frammento_ovest = "";
+
+	int i, pos_1, pos_2, j, k;
+
+	if(leggere_frammento_nord(inv) == true)
+	{
+		frammento_nord = leggere_file_testo("mappa/pezzo_mappa1.txt", frammento_nord);
+	}
+	else
+	{
+		frammento_nord = leggere_file_testo("mappa/pezzo_mappa_vuoto_2.txt", frammento_nord);
+	}
+
+	if(leggere_frammento_est(inv) == true)
+	{
+		frammento_est = leggere_file_testo("mappa/pezzo_mappa2.txt", frammento_est);
+	}
+	else
+	{
+		frammento_est = leggere_file_testo("mappa/pezzo_mappa_vuoto.txt", frammento_est);
+	}
+
+	if(leggere_frammento_ovest(inv) == true)
+	{
+		frammento_ovest = leggere_file_testo("mappa/pezzo_mappa3.txt", frammento_ovest);
+	}
+	else
+	{
+		frammento_ovest = leggere_file_testo("mappa/pezzo_mappa_vuoto_3.txt", frammento_ovest);
+	}
+
+	if(leggere_frammento_sud(inv) == true)
+	{
+		frammento_sud = leggere_file_testo("mappa/pezzo_mappa4.txt", frammento_sud);
+	}
+	else
+	{
+		frammento_sud = leggere_file_testo("mappa/pezzo_mappa_vuoto.txt", frammento_sud);
+	}
+
+	frammenti[0] = frammento_nord;
+	frammenti[1] = frammento_est;
+	frammenti[2] = frammento_ovest;
+	frammenti[3] = frammento_sud;
+
+	i = 0;
+	j = 0;
+	k = 0;
+
+	while(j < 2)
+	{
+		pos_1=0;
+		pos_2=0;
+		do{
+			while(frammenti[k][pos_1] != '\n')
+			{
+				risposta = scrivere_carattere(risposta, i, frammenti[k][pos_1]);
+				pos_1++;
+				i++;
+			}
+			pos_1++;
+			k++;
+
+			while(frammenti[k][pos_2] != '\n')
+			{
+				risposta = scrivere_carattere(risposta, i, frammenti[k][pos_2]);
+				pos_2++;
+				i++;
+			}
+			pos_2++;
+			risposta = scrivere_carattere(risposta, i, '\n');
+			i++;
+			k--;
+
+		}while(pos_2 < leggere_lunghezza(frammenti[k+1]));
+
+		k = 2;
+		j++;
+	}
+
+	return risposta;
 }
-
-
-
