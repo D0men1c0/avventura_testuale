@@ -111,8 +111,8 @@ void inserire_parole_chiave()
 	inserire_parola_chiave_tabella("sud");
 	inserire_parola_chiave_tabella("est");
 	inserire_parola_chiave_tabella("ovest");
-	struttura_simboli.numero_parole_chiave[0] = leggere_dimensione_parole_chiave();
-
+	//inserimento all'interno della struttura
+	scrivere_parola_chiave_struttura_simboli(0,leggere_dimensione_parole_chiave());
 
 	inserire_parola_chiave_tabella("salva");
 	inserire_parola_chiave_tabella("carica");
