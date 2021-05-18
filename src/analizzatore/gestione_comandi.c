@@ -39,15 +39,7 @@ bool gestire_comandi_globali()
 			{
 				impostare_valori_personaggio();
 				//aggiungere in pseudo
-				leggere_mappa(mappa);
-
-				scrivere_y(&pos, 8);
-				scrivere_x(&pos, 4);
-
-				pulire_schermo();
-				ritardare_programma(2000);
-
-				gestire_cella(mappa, pos, &giocatore, &inv);
+				impostare_inizio();
 			}
 			else if(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == false && confrontare_stringhe(convertire_stringa_minuscolo(risposta), "no") == false)
 			{

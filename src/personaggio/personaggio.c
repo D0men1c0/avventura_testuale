@@ -124,7 +124,7 @@ void impostare_valori_personaggio()
 
 	pulire_schermo();
 
-	scrivere_vita(&giocatore,5);
+	scrivere_vita(&giocatore,1);
 
 	rallentare_output("Benvenuto in questa nuova avventura!!\nInserisci il tuo nome: ", MILLISECONDI);
 
@@ -172,9 +172,8 @@ void impostare_valori_personaggio()
 	inizializza_inventario(&inv);
 }
 
-void inizializzare_personaggio()
+void impostare_inizio()
 {
-	impostare_valori_personaggio();
 	leggere_mappa(mappa);
 
 	scrivere_y(&pos, 8);
@@ -184,4 +183,11 @@ void inizializzare_personaggio()
 	ritardare_programma(2000);
 
 	gestire_cella(mappa, pos, &giocatore, &inv);
+}
+
+void inizializzare_personaggio()
+{
+	impostare_valori_personaggio();
+
+	impostare_inizio();
 }
