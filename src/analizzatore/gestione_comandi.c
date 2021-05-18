@@ -133,7 +133,7 @@ bool gestire_azioni_partita()
 {
 	bool esito;
 	stringa risposta = "";
-	int cella_attuale;
+
 	parola_chiave token = leggere_token_tabella_simboli(0);
 
 	risposta = allocare_stringa(risposta, 0);
@@ -192,7 +192,8 @@ bool gestire_azioni_partita()
 				gestire_errore_semantico();
 			}
 		}
-	}else if(confrontare_stringhe(token, ESAMINA))
+	}
+	else if(confrontare_stringhe(token, ESAMINA))
 	{
 		if(leggere_dimensione_tabella_simboli() == 2)
 		{
@@ -205,8 +206,6 @@ bool gestire_azioni_partita()
 				stringa nome_file = "";
 
 				nome_file = allocare_stringa(nome_file, 0);
-
-				cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
 
 				sprintf(nome_file, "storia/[%d][%d].txt", leggere_y(pos), leggere_x(pos));
 				risposta = leggere_file_storia(nome_file, risposta);

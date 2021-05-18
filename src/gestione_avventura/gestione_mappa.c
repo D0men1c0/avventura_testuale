@@ -69,7 +69,7 @@ void gestire_cella()
 			scrivere_vita(&giocatore, leggere_vita(giocatore) - 1);
 		}
 
-		if(cella_attuale % BOTOLA == 0)
+		if(cella_attuale % BOTOLE == 0)
 		{
 
 		}

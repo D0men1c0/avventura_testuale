@@ -19,7 +19,7 @@
 #define CHIAVE_PORTA_RE 19
 #define POWER_UP 23
 #define MALUS 29
-#define BOTOLA 31
+#define BOTOLE 31
 #define PEZZO_MAPPA_OVEST 37
 #define PEZZO_MAPPA_EST 41
 #define PEZZO_MAPPA_NORD 43
