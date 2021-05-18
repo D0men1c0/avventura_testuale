@@ -3,10 +3,6 @@
 #include "gestione_inventario.h"
 #include "../gestione_file/file_di_testo/lettura_file_testo.h"
 
-
-stringa concatenare_frammenti_file(stringa * frammenti, int indice, stringa risposta);
-
-
 bool leggere_frammento_est(inventario inv)
 {
 	return inv.frammento_mappa_est;
@@ -79,39 +75,39 @@ void inizializza_inventario(inventario *inv)
 }
 
 
-stringa visualizzare_inventario(stringa risposta)
+void visualizzare_inventario()
 {
 	if(leggere_frammento_nord(inv) == true)
 	{
-		risposta = concatenare_stringhe(risposta, "\nPossiedi il frammento di mappa nord!\n");
+		rallentare_output("\nPossiedi il frammento di mappa nord!\n", MILLISECONDI);
 	}
 
 	if(leggere_frammento_est(inv) == true)
 	{
-		risposta = concatenare_stringhe(risposta, "\nPossiedi il frammento di mappa est!\n");
+		rallentare_output("\nPossiedi il frammento di mappa est!\n", MILLISECONDI);
 	}
 
 	if(leggere_frammento_sud(inv) == true)
 	{
-		risposta = concatenare_stringhe(risposta, "\nPossiedi il frammento di mappa sud!\n");
+		rallentare_output("\nPossiedi il frammento di mappa sud!\n", MILLISECONDI);
 	}
 
 	if(leggere_frammento_ovest(inv) == true)
 	{
-		risposta = concatenare_stringhe(risposta, "\nPossiedi il frammento di mappa ovest!\n");
+		rallentare_output("\nPossiedi il frammento di mappa ovest!\n", MILLISECONDI);
 	}
 
 	if(leggere_chiave_semplice(inv) == true)
 	{
-		risposta = concatenare_stringhe(risposta, "\nPossiedi la chiave semplice!\n");
+		rallentare_output("\nPossiedi la chiave semplice!\n", MILLISECONDI);
 	}
 
 	if(leggere_chiave_re(inv) == true)
 	{
-		risposta = concatenare_stringhe(risposta, "\nPossiedi la chiave del re!\n");
+		rallentare_output("\nPossiedi la chiave del re!\n", MILLISECONDI);
 	}
 
-	return risposta;
+	rallentare_output("\n", MILLISECONDI);
 }
 
 /*stringa visualizzare_frammenti_mappa(stringa risposta)

@@ -98,19 +98,19 @@ bool gestire_comandi_globali()
 		if(esito == true)
 		{
 			pulire_schermo();
-			rallentare_output("Hai caricato correttamente i dati di gioco! \n", MILLISECONDI);
+			rallentare_output("Hai caricato correttamente i dati di gioco! \n\n", MILLISECONDI);
 
 			if(leggere_x(pos) < 4)
 			{
-				rallentare_output("Ti trovavi nella sala del trono! \n", MILLISECONDI);
+				rallentare_output("Ti trovavi nella sala del trono! \n\n", MILLISECONDI);
 			}
 			else if(leggere_x(pos) <= 7)
 			{
-				rallentare_output("Ti trovavi all'interno delle celle! \n", MILLISECONDI);
+				rallentare_output("Ti trovavi all'interno delle celle! \n\n", MILLISECONDI);
 			}
 			else
 			{
-				rallentare_output("Ti trovavi nelle segrete! \n", MILLISECONDI);
+				rallentare_output("Ti trovavi nelle segrete! \n\n", MILLISECONDI);
 			}
 		}
 		else
@@ -133,6 +133,7 @@ bool gestire_azioni_partita()
 {
 	bool esito;
 	stringa risposta = "";
+	int cella_attuale;
 	parola_chiave token = leggere_token_tabella_simboli(0);
 
 	risposta = allocare_stringa(risposta, 0);
@@ -164,9 +165,8 @@ bool gestire_azioni_partita()
 
 				if(strlen(leggere_nome(giocatore)) != 0)
 				{
-					risposta = visualizzare_inventario(risposta);
 					rallentare_output("\nINVENTARIO:\n", MILLISECONDI);
-					rallentare_output(risposta, MILLISECONDI);
+					visualizzare_inventario(risposta);
 				}
 				else
 				{
@@ -191,6 +191,35 @@ bool gestire_azioni_partita()
 			{
 				gestire_errore_semantico();
 			}
+		}
+	}else if(confrontare_stringhe(token, ESAMINA))
+	{
+		if(leggere_dimensione_tabella_simboli() == 2)
+		{
+			token = leggere_token_tabella_simboli(1);
+
+			if(confrontare_stringhe(token, STANZA))
+			{
+				esito = true;
+
+				stringa nome_file = "";
+
+				nome_file = allocare_stringa(nome_file, 0);
+
+				cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
+
+				sprintf(nome_file, "storia/[%d][%d].txt", leggere_y(pos), leggere_x(pos));
+				risposta = leggere_file_storia(nome_file, risposta);
+				rallentare_output(risposta, MILLISECONDI);
+			}
+			else
+			{
+				gestire_errore_semantico();
+			}
+		}
+		else
+		{
+			gestire_errore_semantico();
 		}
 	}
 

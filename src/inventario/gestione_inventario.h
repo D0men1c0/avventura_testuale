@@ -36,7 +36,7 @@ void scrivere_chiave_re(inventario *inv, bool valore);
 void inizializza_inventario(inventario *inv);
 
 //visualizzazione inventario e mappa
-stringa visualizzare_inventario(stringa risposta);
+void visualizzare_inventario();
 stringa visualizzare_frammenti_mappa(stringa risposta);
 
 #endif

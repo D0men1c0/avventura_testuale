@@ -20,9 +20,22 @@
 #define SALVA "salva"
 
 // AZIONI PARTITA
+
+//VERBI
 #define VISUALIZZA "visualizza"
+#define ESAMINA "esamina"
+#define APRI "apri"
+#define SFONDA "sfonda"
+#define PRENDI "prendi"
+
+//PAROLE
 #define ATTRIBUTI "attributi"
 #define INVENTARIO "inventario"
 #define MAPPA "mappa"
+#define BOTOLA "botola"
+#define FRAMMENTO "frammento"
+#define STANZA "stanza"
+#define CHIAVE "chiave"
+#define PORTA "porta"
 
 #endif

@@ -44,6 +44,35 @@ stringa leggere_file_testo(stringa nome_file, stringa stringa_file)
 	return stringa_file;
 }
 
+stringa leggere_file_storia(stringa nome_file, stringa stringa_file)
+{
+	int i;
+
+	FILE * fp;
+
+	if((fp = fopen(nome_file, "r")) != NULL)
+	{
+		i = 0;
+
+		while(!feof(fp))
+		{
+			stringa_file = scrivere_carattere(stringa_file, i, fgetc(fp));
+
+			i++;
+		}
+
+		stringa_file = scrivere_carattere(stringa_file, i-1, '\0'); //serve per gestire il carattere di fine stringa cioè \0
+	}
+	else
+	{
+		printf("\nNon c'e' nulla di interessante qui!\n");
+	}
+
+	fclose(fp);
+
+	return stringa_file;
+}
+
 void leggere_mappa_file(stringa nome_file)
 {
 	int i;
