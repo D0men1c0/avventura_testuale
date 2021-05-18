@@ -34,6 +34,7 @@ struct{
 
 void leggere_comando();
 void inizializzare_strutture_analizzatore();
+
 int leggere_dimensione_parole_chiave();
 int leggere_numero_parole_chiave(int indice);
 int leggere_dimensione_simboli();
@@ -45,4 +46,8 @@ void scrivere_token_tabella_simboli(parola_chiave token, int indice);
 parola_chiave leggere_token_tabella_simboli(int indice);
 stringa leggere_parola_chiave_tabella(int indice);
 
+void scrivere_parola_chiave_struttura_parole_chiave(int indice, parola_chiave parola);
+
+void scrivere_parola_chiave_struttura_simboli(int indice, int valore);
+void scrivere_simboli_struttura_simboli(int indice, simbolo simb);
 #endif
