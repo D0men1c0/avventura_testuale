@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../gestione_avventura/gestione_avventura.h"
 #include "../gestione_file/file_di_testo/lettura_file_testo.h"
 #include "../gestione_file/file_binari/scrittura_file_binari.h"
 #include "../utility/utility.h"
@@ -45,13 +46,7 @@ int leggere_vita(personaggio personaggio_vita)
 	return personaggio_vita.vita;
 }
 
-void scrivere_vita(personaggio *personaggio_vita, int valore)
-{
-	if(leggere_vita(*personaggio_vita) < 5)
-	{
-		personaggio_vita->vita = valore;
-	}
-}
+
 
 int leggere_forza(personaggio personaggio_forza)
 {
@@ -76,6 +71,23 @@ void scrivere_intelligenza(personaggio *personaggio_intelligenza, int valore)
 	if(leggere_intelligenza(*personaggio_intelligenza) < 5)
 	{
 		personaggio_intelligenza->intelligenza = valore;
+	}
+}
+
+void scrivere_vita(personaggio *personaggio_vita, int valore)
+{
+	if(leggere_vita(*personaggio_vita) < 5)
+	{
+		personaggio_vita->vita = valore;
+	}
+
+	if (leggere_vita(*personaggio_vita) <= 0)
+	{
+		rallentare_output("\nOh no! hai esaurito le vite a disposizione. Hai perso...\n",MILLISECONDI);
+		ritardare_programma(4000);
+		pulire_schermo();
+
+		gestire_avventura();
 	}
 }
 
@@ -114,7 +126,7 @@ void impostare_valori_personaggio()
 	int punti;
 
 	pulire_schermo();
-	scrivere_vita(&giocatore,5);
+	scrivere_vita(&giocatore,1);
 
 	rallentare_output("Benvenuto in questa nuova avventura!!\nInserisci il tuo nome: ", MILLISECONDI);
 
@@ -159,5 +171,13 @@ void impostare_valori_personaggio()
 	}
 	while(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == false);
 
+	inizializza_inventario(&inv);
+}
+
+void azzerare_valori()
+{
+	//nome
+	scrivere_forza(&giocatore,0);
+	scrivere_intelligenza(&giocatore,0);
 	inizializza_inventario(&inv);
 }
