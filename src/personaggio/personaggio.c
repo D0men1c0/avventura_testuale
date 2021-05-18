@@ -124,7 +124,7 @@ void impostare_valori_personaggio()
 
 	pulire_schermo();
 
-	scrivere_vita(&giocatore,1);
+	scrivere_vita(&giocatore,5);
 
 	rallentare_output("Benvenuto in questa nuova avventura!!\nInserisci il tuo nome: ", MILLISECONDI);
 
