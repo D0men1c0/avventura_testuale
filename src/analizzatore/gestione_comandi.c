@@ -38,8 +38,7 @@ bool gestire_comandi_globali()
 			if(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == true)
 			{
 				impostare_valori_personaggio();
-
-				//aggiungere nello pseudo
+				//aggiungere in pseudo
 				leggere_mappa(mappa);
 
 				scrivere_y(&pos, 8);
@@ -203,22 +202,22 @@ bool gestire_azioni_partita()
 			{
 				esito = true;
 
-				stringa nome_file = "";
+				if(strlen(leggere_nome(giocatore)) != 0)
+				{
 
-				nome_file = allocare_stringa(nome_file, 0);
+					stringa nome_file = "";
 
-				sprintf(nome_file, "storia/[%d][%d].txt", leggere_y(pos), leggere_x(pos));
-				risposta = leggere_file_storia(nome_file, risposta);
-				rallentare_output(risposta, MILLISECONDI);
+					nome_file = allocare_stringa(nome_file, 0);
+
+					sprintf(nome_file, "storia/[%d][%d].txt", leggere_y(pos), leggere_x(pos));
+					risposta = leggere_file_storia(nome_file, risposta);
+					rallentare_output(risposta, MILLISECONDI);
+				}
+				else
+				{
+					gestire_errore_semantico();
+				}
 			}
-			else
-			{
-				gestire_errore_semantico();
-			}
-		}
-		else
-		{
-			gestire_errore_semantico();
 		}
 	}
 

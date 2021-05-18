@@ -24,6 +24,6 @@ int leggere_intelligenza(personaggio personaggio_intelligenza);
 void scrivere_intelligenza(personaggio *personaggio_intelligenza, int valore);
 int controllare_valori_inseriti(int min, int max, stringa attributo);
 void impostare_valori_personaggio();
-void azzerare_valori();
+void inizializzare_personaggio();
 
 #endif

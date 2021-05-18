@@ -46,7 +46,21 @@ int leggere_vita(personaggio personaggio_vita)
 	return personaggio_vita.vita;
 }
 
+void scrivere_vita(personaggio *personaggio_vita, int valore)
+{
+	if(leggere_vita(*personaggio_vita) <= 5)
+	{
+		personaggio_vita->vita = valore;
+	}
 
+	if (leggere_vita(*personaggio_vita) <= 0)
+	{
+		rallentare_output("\nOh no! Hai esaurito le vite a disposizione. Hai perso...\n",MILLISECONDI);
+		ritardare_programma(3000);
+		pulire_schermo();
+		inizializzare_personaggio();
+	}
+}
 
 int leggere_forza(personaggio personaggio_forza)
 {
@@ -55,7 +69,7 @@ int leggere_forza(personaggio personaggio_forza)
 
 void scrivere_forza(personaggio *personaggio_forza,int valore)
 {
-	if(leggere_forza(*personaggio_forza) < 5)
+	if(leggere_forza(*personaggio_forza) <= 5)
 	{
 		personaggio_forza->forza = valore;
 	}
@@ -68,26 +82,9 @@ int leggere_intelligenza(personaggio personaggio_intelligenza)
 
 void scrivere_intelligenza(personaggio *personaggio_intelligenza, int valore)
 {
-	if(leggere_intelligenza(*personaggio_intelligenza) < 5)
+	if(leggere_intelligenza(*personaggio_intelligenza) <= 5)
 	{
 		personaggio_intelligenza->intelligenza = valore;
-	}
-}
-
-void scrivere_vita(personaggio *personaggio_vita, int valore)
-{
-	if(leggere_vita(*personaggio_vita) < 5)
-	{
-		personaggio_vita->vita = valore;
-	}
-
-	if (leggere_vita(*personaggio_vita) <= 0)
-	{
-		rallentare_output("\nOh no! hai esaurito le vite a disposizione. Hai perso...\n",MILLISECONDI);
-		ritardare_programma(4000);
-		pulire_schermo();
-
-		gestire_avventura();
 	}
 }
 
@@ -126,7 +123,8 @@ void impostare_valori_personaggio()
 	int punti;
 
 	pulire_schermo();
-	scrivere_vita(&giocatore,1);
+
+	scrivere_vita(&giocatore,5);
 
 	rallentare_output("Benvenuto in questa nuova avventura!!\nInserisci il tuo nome: ", MILLISECONDI);
 
@@ -174,10 +172,16 @@ void impostare_valori_personaggio()
 	inizializza_inventario(&inv);
 }
 
-void azzerare_valori()
+void inizializzare_personaggio()
 {
-	//nome
-	scrivere_forza(&giocatore,0);
-	scrivere_intelligenza(&giocatore,0);
-	inizializza_inventario(&inv);
+	impostare_valori_personaggio();
+	leggere_mappa(mappa);
+
+	scrivere_y(&pos, 8);
+	scrivere_x(&pos, 4);
+
+	pulire_schermo();
+	ritardare_programma(2000);
+
+	gestire_cella(mappa, pos, &giocatore, &inv);
 }
