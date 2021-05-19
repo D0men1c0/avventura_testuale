@@ -174,6 +174,7 @@ void impostare_valori_personaggio()
 
 void impostare_inizio()
 {
+	impostare_valori_personaggio();
 	leggere_mappa(mappa);
 
 	scrivere_y(&pos, 8);
@@ -187,7 +188,5 @@ void impostare_inizio()
 
 void inizializzare_personaggio()
 {
-	impostare_valori_personaggio();
-
 	impostare_inizio();
 }

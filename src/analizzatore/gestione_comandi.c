@@ -37,7 +37,6 @@ bool gestire_comandi_globali()
 
 			if(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == true)
 			{
-				impostare_valori_personaggio();
 				//aggiungere in pseudo
 				impostare_inizio();
 			}
@@ -212,6 +211,89 @@ bool gestire_azioni_partita()
 			}
 		}
 	}
+	else if(confrontare_stringhe(token, APRI))
+	{
+		if(leggere_dimensione_tabella_simboli() == 2)
+		{
+			token = leggere_token_tabella_simboli(1);
+
+			if(confrontare_stringhe(token, PORTA))
+			{
+				esito = true;
+
+				if(strlen(leggere_nome(giocatore)) != 0)
+				{
+					int cella_attuale;
+
+					cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
+
+					if(cella_attuale % PORTA_SEMPLICE == 0 && cella_attuale != 0)
+					{
+						if(leggere_chiave_semplice(inv) == true)
+						{
+							rallentare_output("\nHai aperto con successo la porta, utilizzando la chiave semplice!\n",MILLISECONDI);
+							cella_attuale /= PORTA_SEMPLICE;
+							scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+						}
+						else
+						{
+							rallentare_output("\nNon possiedi la chiave semplice, dunque non puoi entrare qui!\n",MILLISECONDI);
+						}
+					}
+					else
+					{
+						gestire_errore_semantico();
+					}
+				}
+				else
+				{
+					gestire_errore_semantico();
+				}
+			}
+		}
+	}
+	else if(confrontare_stringhe(token, SFONDA))
+	{
+		if(leggere_dimensione_tabella_simboli() == 2)
+		{
+			token = leggere_token_tabella_simboli(1);
+
+			if(confrontare_stringhe(token, PORTA))
+			{
+				esito = true;
+
+				if(strlen(leggere_nome(giocatore)) != 0)
+				{
+					int cella_attuale;
+
+					cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
+
+					if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 && cella_attuale != 0)
+					{
+						if(leggere_forza(giocatore) > 2)
+						{
+							rallentare_output("\nHai sfondato con successo la porta.\n",MILLISECONDI);
+							cella_attuale /= PORTA_CHIUSA_SFONDABILE;
+							scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+						}
+						else
+						{
+							rallentare_output("\nNon puoi sfondare la porta perche' non hai forza sufficiente.\n",MILLISECONDI);
+						}
+					}
+					else
+					{
+						gestire_errore_semantico();
+					}
+				}
+				else
+				{
+					gestire_errore_semantico();
+				}
+			}
+		}
+	}
+
 
 	free(risposta);
 	return esito;
