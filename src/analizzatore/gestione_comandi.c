@@ -14,6 +14,7 @@
 #include "../gestione_avventura/gestione_movimenti.h"
 
 void gestire_errore_semantico();
+void gestire_finale(bool cifrato);
 
 
 bool gestire_comandi_globali()
@@ -198,7 +199,6 @@ bool gestire_azioni_partita()
 
 				if(strlen(leggere_nome(giocatore)) != 0)
 				{
-
 					stringa nome_file = "";
 
 					nome_file = allocare_stringa(nome_file, 0);
@@ -263,6 +263,37 @@ bool gestire_azioni_partita()
 					else
 					{
 						gestire_errore_semantico();
+					}
+				}
+				else
+				{
+					gestire_errore_semantico();
+				}
+			}
+			else if(confrontare_stringhe(token, BOTOLA))
+			{
+				esito = true;
+
+				int cella_attuale;
+
+				cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
+
+				if(cella_attuale % BOTOLE == 0 && cella_attuale != 0)
+				{
+					if(leggere_frammento_sud(inv) && leggere_frammento_est(inv) && leggere_frammento_nord(inv))
+					{
+						if(leggere_intelligenza(giocatore) > 2)
+						{
+							gestire_finale(false);
+						}
+						else
+						{
+							gestire_finale(true);
+						}
+					}
+					else
+					{
+						rallentare_output("\nNon hai ancora raccolto tutti i frammenti di mappa!\n", MILLISECONDI);
 					}
 				}
 				else
@@ -380,34 +411,29 @@ bool gestire_azioni_partita()
 					}
 				}
 			}
-			else if(confrontare_stringhe(token, CHIAVE))
+			else if(confrontare_stringhe(token, CHIAVE) && leggere_dimensione_tabella_simboli() == 2)
 			{
 				esito = true;
 
-					int cella_attuale;
+				int cella_attuale;
 
-					cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
+				cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
 
-					if(cella_attuale % CHIAVE_SEMPLICE == 0 && cella_attuale != 0)
-					{
-						scrivere_chiave_semplice(&inv, true);
-						rallentare_output("\nHai raccolto la chiave semplice!\n", MILLISECONDI);
-						cella_attuale /= CHIAVE_SEMPLICE;
-						scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
-						rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
-					}
-					else
-					{
-						gestire_errore_semantico();
-					}
-
-
+				if(cella_attuale % CHIAVE_SEMPLICE == 0 && cella_attuale != 0)
+				{
+					scrivere_chiave_semplice(&inv, true);
+					rallentare_output("\nHai raccolto la chiave semplice!\n", MILLISECONDI);
+					cella_attuale /= CHIAVE_SEMPLICE;
+					scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+					rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+				}
+				else
+				{
+					gestire_errore_semantico();
+				}
 			}
 		}
 	}
-
-
-
 
 	free(risposta);
 	return esito;
@@ -439,6 +465,65 @@ bool gestire_movimenti()
 void gestire_errore_semantico()
 {
 	rallentare_output("\nNon puoi usare questo comando qui!\n\n", MILLISECONDI);
+}
+
+void gestire_finale(bool cifrato)
+{
+	stringa risposta = "";
+	stringa risposta_indovinello = "";
+	risposta = allocare_stringa(risposta, 0);
+	risposta_indovinello = allocare_stringa(risposta_indovinello, 0);
+
+	pulire_schermo();
+
+	if(cifrato == true)
+	{
+		risposta = leggere_file_storia("storia/finale cifrato.txt", risposta);
+		rallentare_output(risposta, MILLISEC_FINALE);
+
+		do
+		{
+			rallentare_output("\nQual'e' la risposta alla domanda?\n", MILLISECONDI);
+			risposta_indovinello = leggere_stringa_tastiera(risposta_indovinello);
+
+			if(confrontare_stringhe(convertire_stringa_minuscolo(risposta_indovinello), "prova") == false)
+			{
+				rallentare_output("\nRisposta sbagliata!\n", MILLISECONDI);
+			}
+		}
+		while(confrontare_stringhe(convertire_stringa_minuscolo(risposta_indovinello), "prova") == false);
+
+		pulire_schermo();
+
+		risposta = leggere_file_storia("storia/finale cifrato2.txt", risposta);
+		rallentare_output(risposta, MILLISEC_FINALE);
+
+	}
+	else
+	{
+		risposta = leggere_file_storia("storia/finale.txt", risposta);
+		rallentare_output(risposta, MILLISEC_FINALE);
+		ritardare_programma(5000);
+
+		pulire_schermo();
+
+		risposta = leggere_file_storia("storia/finale2.txt", risposta);
+		rallentare_output(risposta, MILLISEC_FINALE);
+	}
+
+
+	ritardare_programma(5000);
+	pulire_schermo();
+
+	risposta = leggere_file_storia("storia/end.txt", risposta);
+	rallentare_output(risposta, END);
+
+	ritardare_programma(10000);
+	pulire_schermo();
+
+	impostare_avventura();
+	free(risposta);
+	free(risposta_indovinello);
 }
 
 

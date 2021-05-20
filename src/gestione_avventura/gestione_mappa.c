@@ -61,6 +61,11 @@ void gestire_cella()
 		{
 			rallentare_output("\nC'e' una porta chiusa davanti a te!\n", MILLISECONDI);
 		}
+
+		if((cella_attuale % BOTOLE == 0))
+		{
+			rallentare_output("Davanti a te c'e' una botola!\n\n", MILLISECONDI);
+		}
 	}
 
 	scrivere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos), cella_attuale);

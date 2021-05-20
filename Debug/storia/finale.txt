@@ -1,0 +1,59 @@
+
+La mappa ti mostra una stanza nascosta poco vicino...
+
+...si tratta di un passaggio segreto.
+
+Ti avvicini al muro e noti un mattone fuori posto.
+
+ __|_____|_____|_____|_____|_____|_____|_____|_____|_
+|_____|_____|_____|_____|_____|_____|_____|_____|___
+___|_____|_____|_____|_____|__~__|_____|_____|_____|___
+|_____|_____|_____|_____|_____|_____|_____|_____|___
+___|_____|_____|_____|_____|_____|_____|_____|_____|__
+
+Lo premi e si apre una botola in fondo alla stanza.
+
+Finalmente dopo tante difficolta' hai trovato il tesoro...
+
+...e sei pronto a fargliela pagare.
+
+Apri il baule.
+
+                          _.--.
+                        _.-'_:-'||
+                    _.-'_.-::::'||
+               _.-:'_.-::::::'  ||
+             .'`-.-:::::::'     ||
+            /.'`;|:::::::'      ||_
+           ||   ||::::::'     _.;._'-._
+           ||   ||:::::'  _.-!oo @.!-._'-.
+           \'.  ||:::::.-!()oo @!()@.-'_.|
+            '.'-;|:.-'.&$@.& ()$%-'o.'\U||
+              `>'-.!@%()@'@_%-'_.-o _.|'||
+               ||-._'-.@.-'_.-' _.-o  |'||
+               ||=[ '-._.-\U/.-'    o |'||
+               || '-.]=|| |'|      o  |'||
+               ||      || |'|        _| ';
+               ||      || |'|    _.-'_.-'
+               |'-._   || |'|_.-'_.-'
+                '-._'-.|| |' `_.-'
+                    '-.||_/.-'
+
+
+
+
+Trovi solo un documento scritto. 
+
+Grazie alla tua intelligenza riesci a interpretarlo!
+
+Il documento cita:
+
+ ___________________________________________
+/                                           \
+|'Io, Guenda, madre di Avis e Robert affido |
+| il regno a mio figlio Robert in caso di   |
+|morte prematura, sperando che un giorno    |
+|possa far cambiare lo spirito sinistro di  |
+|Avis e possano regnare insieme'            |
+\___________________________________________/
+

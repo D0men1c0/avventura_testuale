@@ -11,6 +11,8 @@
 #define MILLISECONDI 0//35
 #define MILLISEC_CASTELLO 0//7
 #define MILLISEC_MAPPA 0
+#define MILLISEC_FINALE 0 //45
+#define END 5
 
 #endif
 

@@ -5,6 +5,7 @@
 #include "gestione_movimenti.h"
 
 void gestire_avventura();
+void impostare_avventura();
 
 matrice mappa;
 posizione pos;

@@ -1,0 +1,66 @@
+
+La mappa ti mostra una stanza nascosta poco vicino...
+
+...si tratta di un passaggio segreto.
+
+Ti avvicini al muro e noti un mattone fuori posto.
+
+ __|_____|_____|_____|_____|_____|_____|_____|_____|_
+|_____|_____|_____|_____|_____|_____|_____|_____|___
+___|_____|_____|_____|_____|__~__|_____|_____|_____|___
+|_____|_____|_____|_____|_____|_____|_____|_____|___
+___|_____|_____|_____|_____|_____|_____|_____|_____|__
+
+Lo premi e si apre una botola in fondo alla stanza.
+
+Finalmente dopo tante difficolta' hai trovato il tesoro...
+
+...e sei pronto a fargliela pagare.
+
+Apri il baule.
+
+                          _.--.
+                        _.-'_:-'||
+                    _.-'_.-::::'||
+               _.-:'_.-::::::'  ||
+             .'`-.-:::::::'     ||
+            /.'`;|:::::::'      ||_
+           ||   ||::::::'     _.;._'-._
+           ||   ||:::::'  _.-!oo @.!-._'-.
+           \'.  ||:::::.-!()oo @!()@.-'_.|
+            '.'-;|:.-'.&$@.& ()$%-'o.'\U||
+              `>'-.!@%()@'@_%-'_.-o _.|'||
+               ||-._'-.@.-'_.-' _.-o  |'||
+               ||=[ '-._.-\U/.-'    o |'||
+               || '-.]=|| |'|      o  |'||
+               ||      || |'|        _| ';
+               ||      || |'|    _.-'_.-'
+               |'-._   || |'|_.-'_.-'
+                '-._'-.|| |' `_.-'
+                    '-.||_/.-'
+
+
+
+
+Trovi solo un documento scritto. 
+
+Il documento sembra incomprensibile!
+
+Il documento cita:
+
+ ___________________________________________
+/                                           \
+|'IFIofo, Gufuefendafa, mafadrefe difi 	    |
+|AFAvifis efe Rofobefert afaffifidofo ifil  |
+|refegnofo afa mifiofo fifiglifiofo Rofobefe|
+|rt ifin cafasofo difi mofortefe prefemafatu|
+|furafa, speferafandofo chefe ufun gifioforn|
+|ofo pofossafa fafar cafambifiafarefe lofo  | 
+|spifirifitofo sifinifistrofo difi AFAvifis |
+|efe pofossafanofo refegnafarefe ifinsifi   |
+|efemefe.'				    |
+|           				    |
+\___________________________________________/
+
+
+ 
