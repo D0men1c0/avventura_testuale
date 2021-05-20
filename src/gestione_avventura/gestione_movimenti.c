@@ -110,7 +110,7 @@ void muovere_personaggio(stringa direzione)
 		cella_successiva = leggere_valore_matrice(mappa, leggere_y(pos) - 1, leggere_x(pos));
 		if(cella_successiva != MURO)
 		{
-			if((cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 || cella_attuale % PORTA_SEMPLICE == 0 || cella_attuale % PORTA_RE == 0))
+			if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 || cella_attuale % PORTA_SEMPLICE == 0 || cella_attuale % PORTA_RE == 0)
 			{
 				if(leggere_y(posizione_precedente) != leggere_y(posizione_nord) || leggere_x(posizione_precedente) != leggere_x(posizione_nord))
 				{
@@ -147,7 +147,7 @@ void muovere_personaggio(stringa direzione)
 		cella_successiva = leggere_valore_matrice(mappa, leggere_y(pos) + 1, leggere_x(pos));
 		if(cella_successiva != MURO)
 		{
-			if((cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 || cella_attuale % PORTA_SEMPLICE == 0 || cella_attuale % PORTA_RE == 0))
+			if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 || cella_attuale % PORTA_SEMPLICE == 0 || cella_attuale % PORTA_RE == 0)
 			{
 				if(leggere_y(posizione_precedente) != leggere_y(posizione_sud) || leggere_x(posizione_precedente) != leggere_x(posizione_sud))
 				{
@@ -184,7 +184,7 @@ void muovere_personaggio(stringa direzione)
 		cella_successiva = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos) - 1);
 		if(cella_successiva != MURO)
 		{
-			if((cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 || cella_attuale % PORTA_SEMPLICE == 0 || cella_attuale % PORTA_RE == 0))
+			if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 || cella_attuale % PORTA_SEMPLICE == 0 || cella_attuale % PORTA_RE == 0)
 			{
 				if(leggere_y(posizione_precedente) != leggere_y(posizione_ovest) || leggere_x(posizione_precedente) != leggere_x(posizione_ovest))
 				{
@@ -221,7 +221,7 @@ void muovere_personaggio(stringa direzione)
 		cella_successiva = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos) + 1);
 		if(cella_successiva != MURO)
 		{
-			if((cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 || cella_attuale % PORTA_SEMPLICE == 0 || cella_attuale % PORTA_RE == 0))
+			if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 || cella_attuale % PORTA_SEMPLICE == 0 || cella_attuale % PORTA_RE == 0)
 			{
 				if(leggere_y(posizione_precedente) != leggere_y(posizione_est) || leggere_x(posizione_precedente) != leggere_x(posizione_est))
 				{
