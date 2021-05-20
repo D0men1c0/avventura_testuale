@@ -483,15 +483,15 @@ void gestire_finale(bool cifrato)
 
 		do
 		{
-			rallentare_output("\nQual'e' la risposta alla domanda?\n", MILLISECONDI);
+			rallentare_output("\n\nInserisci il nome di tale animale: ", MILLISECONDI);
 			risposta_indovinello = leggere_stringa_tastiera(risposta_indovinello);
 
-			if(confrontare_stringhe(convertire_stringa_minuscolo(risposta_indovinello), "prova") == false)
+			if(confrontare_stringhe(convertire_stringa_minuscolo(risposta_indovinello), "serpente") == false)
 			{
 				rallentare_output("\nRisposta sbagliata!\n", MILLISECONDI);
 			}
 		}
-		while(confrontare_stringhe(convertire_stringa_minuscolo(risposta_indovinello), "prova") == false);
+		while(confrontare_stringhe(convertire_stringa_minuscolo(risposta_indovinello), "serpente") == false);
 
 		pulire_schermo();
 
