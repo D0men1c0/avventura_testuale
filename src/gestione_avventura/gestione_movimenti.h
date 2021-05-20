@@ -17,6 +17,7 @@ void scrivere_x(posizione *posizione_personaggio, int x);
 void scrivere_y(posizione *posizione_personaggio, int y);
 int leggere_x(posizione posizione_personaggio);
 int leggere_y(posizione posizione_personaggio);
+stringa trovare_direzioni_disponibili();
 void muovere_personaggio(stringa direzione);
 
 #endif

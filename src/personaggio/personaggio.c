@@ -183,7 +183,7 @@ void impostare_inizio()
 	pulire_schermo();
 	ritardare_programma(2000);
 
-	gestire_cella(mappa, pos, &giocatore, &inv);
+	gestire_cella();
 }
 
 void inizializzare_personaggio()

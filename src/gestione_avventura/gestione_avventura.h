@@ -8,6 +8,7 @@ void gestire_avventura();
 
 matrice mappa;
 posizione pos;
+posizione posizione_precedente;
 inventario inv;
 personaggio giocatore;
 
