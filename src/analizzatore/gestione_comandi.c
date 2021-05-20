@@ -102,6 +102,9 @@ bool gestire_comandi_globali()
 			{
 				rallentare_output("Ti trovavi nelle segrete! \n\n", MILLISECONDI);
 			}
+
+			rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+			rallentare_output("\n", MILLISECONDI);
 		}
 		else
 		{
@@ -234,6 +237,23 @@ bool gestire_azioni_partita()
 							rallentare_output("\nHai aperto con successo la porta, utilizzando la chiave semplice!\n",MILLISECONDI);
 							cella_attuale /= PORTA_SEMPLICE;
 							scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+							rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+							rallentare_output("\n", MILLISECONDI);
+						}
+						else
+						{
+							rallentare_output("\nNon possiedi la chiave semplice, dunque non puoi entrare qui!\n",MILLISECONDI);
+						}
+					}
+					else if(cella_attuale % PORTA_RE == 0 && cella_attuale != 0)
+					{
+						if(leggere_chiave_re(inv) == true)
+						{
+							rallentare_output("\nHai aperto con successo la porta del re, utilizzando la chiave del re!\n",MILLISECONDI);
+							cella_attuale /= PORTA_RE;
+							scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+							rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+							rallentare_output("\n", MILLISECONDI);
 						}
 						else
 						{
@@ -275,11 +295,17 @@ bool gestire_azioni_partita()
 							rallentare_output("\nHai sfondato con successo la porta.\n",MILLISECONDI);
 							cella_attuale /= PORTA_CHIUSA_SFONDABILE;
 							scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+							rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+							rallentare_output("\n", MILLISECONDI);
 						}
 						else
 						{
 							rallentare_output("\nNon puoi sfondare la porta perche' non hai forza sufficiente.\n",MILLISECONDI);
 						}
+					}
+					else if((cella_attuale % PORTA_RE == 0 || cella_attuale % PORTA_SEMPLICE == 0) && cella_attuale != 0)
+					{
+						rallentare_output("\nQuesta porta e' piu' dura rispetto alle altre, non riesci a sfondarla!\n",MILLISECONDI);
 					}
 					else
 					{
@@ -290,6 +316,67 @@ bool gestire_azioni_partita()
 				{
 					gestire_errore_semantico();
 				}
+			}
+		}
+	}
+	else if(confrontare_stringhe(token, PRENDI))
+	{
+		if(leggere_dimensione_tabella_simboli() > 1)
+		{
+			token = leggere_token_tabella_simboli(1);
+
+			if(confrontare_stringhe(token, FRAMMENTO))
+			{
+				if(leggere_dimensione_tabella_simboli() == 3)
+				{
+					token = leggere_token_tabella_simboli(2);
+
+					if(confrontare_stringhe(token, MAPPA))
+					{
+						esito = true;
+					}
+				}
+				else
+				{
+					esito = true;
+				}
+
+				if(esito == true)
+				{
+					int cella_attuale;
+
+					cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
+
+					if(cella_attuale % PEZZO_MAPPA_EST == 0 && cella_attuale != 0)
+					{
+						scrivere_frammento_est(&inv, true);
+						cella_attuale /= PEZZO_MAPPA_EST;
+						scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+						rallentare_output("\nHai preso il frammento di mappa EST!\n", MILLISECONDI);
+					}
+					else if(cella_attuale % PEZZO_MAPPA_NORD == 0 && cella_attuale != 0)
+					{
+						scrivere_frammento_nord(&inv, true);
+						cella_attuale /= PEZZO_MAPPA_NORD;
+						scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+						rallentare_output("\nHai preso il frammento di mappa NORD!\n", MILLISECONDI);
+					}
+					else if(cella_attuale % PEZZO_MAPPA_SUD == 0 && cella_attuale != 0)
+					{
+						scrivere_frammento_sud(&inv, true);
+						cella_attuale /= PEZZO_MAPPA_SUD;
+						scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+						rallentare_output("\nHai preso il frammento di mappa SUD!\n", MILLISECONDI);
+					}
+					else
+					{
+						gestire_errore_semantico();
+					}
+				}
+			}
+			else if(confrontare_stringhe(token, CHIAVE))
+			{
+				rallentare_output("si", MILLISECONDI);
 			}
 		}
 	}

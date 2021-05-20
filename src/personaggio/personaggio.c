@@ -6,6 +6,7 @@
 #include "../gestione_file/file_binari/scrittura_file_binari.h"
 #include "../utility/utility.h"
 #include "../inventario/gestione_inventario.h"
+#include "../gestione_avventura/gestione_movimenti.h"
 #include "personaggio.h"
 
 stringa leggere_nome(personaggio personaggio_nome)
@@ -58,7 +59,7 @@ void scrivere_vita(personaggio *personaggio_vita, int valore)
 		rallentare_output("\nOh no! Hai esaurito le vite a disposizione. Hai perso...\n",MILLISECONDI);
 		ritardare_programma(3000);
 		pulire_schermo();
-		inizializzare_personaggio();
+		impostare_inizio();
 	}
 }
 
@@ -184,9 +185,7 @@ void impostare_inizio()
 	ritardare_programma(2000);
 
 	gestire_cella();
-}
-
-void inizializzare_personaggio()
-{
-	impostare_inizio();
+	rallentare_output("Ti vedo disorientato, per maggiori informazioni inserisci \"aiuto\".\n", MILLISECONDI);
+	rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+	rallentare_output("\n", MILLISECONDI);
 }

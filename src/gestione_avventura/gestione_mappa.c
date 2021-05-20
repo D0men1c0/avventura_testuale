@@ -25,29 +25,42 @@ void gestire_cella()
 
 	cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
 
-	if(cella_attuale % STORIA == 0)
+	if(cella_attuale == CELLA_VUOTA)
 	{
-		sprintf(nome_file, "storia/[%d][%d].txt", leggere_y(pos), leggere_x(pos));
-		stringa_file = leggere_file_testo(nome_file, stringa_file);
-		rallentare_output(stringa_file, MILLISECONDI);
-		cella_attuale /= STORIA;
+		rallentare_output("Non c'e' niente di interessante qui!\n\n", MILLISECONDI);
 	}
-	if(cella_attuale % POWER_UP_VITA == 0)
+	else
 	{
-		scrivere_vita(&giocatore, leggere_vita(giocatore) + 1);
-		cella_attuale /= POWER_UP_VITA;
-	}
+		if(cella_attuale % STORIA == 0)
+		{
+			sprintf(nome_file, "storia/[%d][%d].txt", leggere_y(pos), leggere_x(pos));
+			stringa_file = leggere_file_testo(nome_file, stringa_file);
+			rallentare_output(stringa_file, MILLISECONDI);
+			cella_attuale /= STORIA;
+		}
 
-	if(cella_attuale % POWER_UP_FORZA == 0)
-	{
-		scrivere_forza(&giocatore, leggere_forza(giocatore) + 1);
-		cella_attuale /= POWER_UP_FORZA;
-	}
+		if(cella_attuale % POWER_UP_VITA == 0)
+		{
+			scrivere_vita(&giocatore, leggere_vita(giocatore) + 1);
+			cella_attuale /= POWER_UP_VITA;
+		}
 
-	if(cella_attuale % MALUS == 0)
-	{
-		scrivere_vita(&giocatore, leggere_vita(giocatore) - 1);
-		cella_attuale /= MALUS;
+		if(cella_attuale % POWER_UP_FORZA == 0)
+		{
+			scrivere_forza(&giocatore, leggere_forza(giocatore) + 1);
+			cella_attuale /= POWER_UP_FORZA;
+		}
+
+		if(cella_attuale % MALUS == 0)
+		{
+			scrivere_vita(&giocatore, leggere_vita(giocatore) - 1);
+			cella_attuale /= MALUS;
+		}
+
+		if((cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 || cella_attuale % PORTA_SEMPLICE == 0 || cella_attuale % PORTA_RE == 0))
+		{
+			rallentare_output("\nC'e' una porta chiusa davanti a te!\n", MILLISECONDI);
+		}
 	}
 
 	scrivere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos), cella_attuale);
