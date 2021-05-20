@@ -350,23 +350,29 @@ bool gestire_azioni_partita()
 					if(cella_attuale % PEZZO_MAPPA_EST == 0 && cella_attuale != 0)
 					{
 						scrivere_frammento_est(&inv, true);
+						rallentare_output("\nHai preso il frammento di mappa EST!\n", MILLISECONDI);
 						cella_attuale /= PEZZO_MAPPA_EST;
 						scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
-						rallentare_output("\nHai preso il frammento di mappa EST!\n", MILLISECONDI);
+						rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+
 					}
 					else if(cella_attuale % PEZZO_MAPPA_NORD == 0 && cella_attuale != 0)
 					{
 						scrivere_frammento_nord(&inv, true);
+						rallentare_output("\nHai preso il frammento di mappa NORD!\n", MILLISECONDI);
 						cella_attuale /= PEZZO_MAPPA_NORD;
 						scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
-						rallentare_output("\nHai preso il frammento di mappa NORD!\n", MILLISECONDI);
+						rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+
 					}
 					else if(cella_attuale % PEZZO_MAPPA_SUD == 0 && cella_attuale != 0)
 					{
 						scrivere_frammento_sud(&inv, true);
+						rallentare_output("\nHai preso il frammento di mappa SUD!\n", MILLISECONDI);
 						cella_attuale /= PEZZO_MAPPA_SUD;
 						scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
-						rallentare_output("\nHai preso il frammento di mappa SUD!\n", MILLISECONDI);
+						rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+
 					}
 					else
 					{
@@ -376,10 +382,31 @@ bool gestire_azioni_partita()
 			}
 			else if(confrontare_stringhe(token, CHIAVE))
 			{
-				rallentare_output("si", MILLISECONDI);
+				esito = true;
+
+					int cella_attuale;
+
+					cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
+
+					if(cella_attuale % CHIAVE_SEMPLICE == 0 && cella_attuale != 0)
+					{
+						scrivere_chiave_semplice(&inv, true);
+						rallentare_output("\nHai raccolto la chiave semplice!\n", MILLISECONDI);
+						cella_attuale /= CHIAVE_SEMPLICE;
+						scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+						rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+					}
+					else
+					{
+						gestire_errore_semantico();
+					}
+
+
 			}
 		}
 	}
+
+
 
 
 	free(risposta);
@@ -413,4 +440,5 @@ void gestire_errore_semantico()
 {
 	rallentare_output("\nNon puoi usare questo comando qui!\n\n", MILLISECONDI);
 }
+
 
