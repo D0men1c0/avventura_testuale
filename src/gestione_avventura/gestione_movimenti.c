@@ -41,9 +41,10 @@ stringa trovare_direzioni_disponibili()
 	bool est;
 	bool ovest;
 
+	stringa direzioni = "";
+
 	cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
 
-	stringa direzioni = "";
 	direzioni = allocare_stringa(direzioni, 0);
 	direzioni = scrivere_stringa(direzioni, "");
 	direzioni = strcat(direzioni, "Direzioni disponibili: ");
