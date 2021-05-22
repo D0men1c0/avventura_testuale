@@ -178,8 +178,8 @@ void impostare_inizio()
 	impostare_valori_personaggio();
 	leggere_mappa(mappa);
 
-	scrivere_y(&pos, 7);
-	scrivere_x(&pos, 9);
+	scrivere_y(&pos, 8);
+	scrivere_x(&pos, 4);
 
 	pulire_schermo();
 	ritardare_programma(2000);
