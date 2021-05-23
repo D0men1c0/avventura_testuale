@@ -5,13 +5,12 @@
 #include "output/gestione_output.h"
 #include "input/gestione_input.h"
 #include "array/matrice.h"
-#include "array/vettore.h"
 #include "bool.h"
 
-#define MILLISECONDI 0//35
-#define MILLISEC_CASTELLO 0//7
+#define MILLISECONDI 35//0
+#define MILLISEC_CASTELLO 7
 #define MILLISEC_MAPPA 0
-#define MILLISEC_FINALE 0 //45
+#define MILLISEC_FINALE 45
 #define END 5
 
 #endif

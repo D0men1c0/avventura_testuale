@@ -83,7 +83,6 @@ bool gestire_comandi_globali()
 	}
 	else if(confrontare_stringhe(token, CARICA) == true)
 	{
-
 		esito = leggere_file_salvataggio("salvataggi.dat");
 
 		if(esito == true)
@@ -422,8 +421,16 @@ bool gestire_azioni_partita()
 				if(cella_attuale % CHIAVE_SEMPLICE == 0 && cella_attuale != 0)
 				{
 					scrivere_chiave_semplice(&inv, true);
-					rallentare_output("\nHai raccolto la chiave semplice!\n", MILLISECONDI);
+					rallentare_output("\nHai raccolto la chiave semplice!\n\n", MILLISECONDI);
 					cella_attuale /= CHIAVE_SEMPLICE;
+					scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+					rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+				}
+				else if(cella_attuale % CHIAVE_PORTA_RE == 0 && cella_attuale != 0)
+				{
+					scrivere_chiave_re(&inv, true);
+					rallentare_output("\nHai raccolto la chiave del re!\n\n", MILLISECONDI);
+					cella_attuale /= CHIAVE_PORTA_RE;
 					scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 					rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
 				}
@@ -522,6 +529,7 @@ void gestire_finale(bool cifrato)
 	pulire_schermo();
 
 	impostare_avventura();
+	scrivere_nome(&giocatore, "\0");
 	free(risposta);
 	free(risposta_indovinello);
 }
