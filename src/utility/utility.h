@@ -7,18 +7,7 @@ typedef int bool;
 #define UTILITY_H
 
 #include "stringa/stringa.h"
-#include "output/gestione_output.h"
-#include "input/gestione_input.h"
-#include "array/matrice.h"
-
-
-#define MILLISECONDI 0 //35
-#define MILLISEC_CASTELLO 7
-#define MILLISEC_MAPPA 0
-#define MILLISEC_FINALE 45
-#define END 5
-
-
+#include "input_output/gestione_input_output.h"
 
 #endif
 

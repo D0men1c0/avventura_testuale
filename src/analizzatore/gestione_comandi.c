@@ -9,11 +9,11 @@
 #include "../gestione_avventura/gestione_avventura.h"
 #include "../gestione_avventura/gestione_mappa.h"
 #include "../gestione_avventura/gestione_movimenti.h"
-#include "../gestione_file/file_binari/gestione_file_binari.h"
+#include "../gestione_file/gestione_file.h"
 
 void gestire_errore_semantico();
 void gestire_finale(bool cifrato);
-bool gestire_movimenti();
+stringa iniziare_partita(stringa risposta);
 
 bool gestire_comandi_globali()
 {
@@ -28,24 +28,8 @@ bool gestire_comandi_globali()
 	if(confrontare_stringhe(token, NUOVA))
 	{
 		esito = true;
+		risposta = iniziare_partita(risposta);
 
-		do
-		{
-			rallentare_output("\nSei sicuro di voler iniziare una nuova partita? Tutti i tuoi dati non salvati verranno persi! (si/no): ", MILLISECONDI);
-			risposta = leggere_stringa_tastiera(risposta);
-
-			if(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == true)
-			{
-				//aggiungere in pseudo
-				impostare_inizio();
-			}
-			else if(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == false && confrontare_stringhe(convertire_stringa_minuscolo(risposta), "no") == false)
-			{
-				rallentare_output("\nComando non riconosciuto!", MILLISECONDI);
-			}
-
-		}
-		while(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == false && confrontare_stringhe(convertire_stringa_minuscolo(risposta), "no") == false);
 	}
 	else if(confrontare_stringhe(token, AIUTO) == true)
 	{
@@ -530,6 +514,28 @@ void gestire_finale(bool cifrato)
 	scrivere_nome(&giocatore, "\0");
 	free(risposta);
 	free(risposta_indovinello);
+}
+
+stringa iniziare_partita(stringa risposta)
+{
+	do
+	{
+		rallentare_output("\nSei sicuro di voler iniziare una nuova partita? Tutti i tuoi dati non salvati verranno persi! (si/no): ", MILLISECONDI);
+		risposta = leggere_stringa_tastiera(risposta);
+
+		if(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == true)
+		{
+			impostare_inizio();
+		}
+		else if(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == false && confrontare_stringhe(convertire_stringa_minuscolo(risposta), "no") == false)
+		{
+			rallentare_output("\nComando non riconosciuto!", MILLISECONDI);
+		}
+
+	}
+	while(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == false && confrontare_stringhe(convertire_stringa_minuscolo(risposta), "no") == false);
+
+	return risposta;
 }
 
 

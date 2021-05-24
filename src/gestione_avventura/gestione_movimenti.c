@@ -3,7 +3,7 @@
 #include "../utility/array/matrice.h"
 #include "../utility/stringa/stringa.h"
 #include "gestione_movimenti.h"
-#include "../gestione_file/file_di_testo/lettura_file_testo.h"
+#include "../gestione_file/gestione_file.h"
 #include "../inventario/gestione_inventario.h"
 #include "../personaggio/personaggio.h"
 #include "gestione_mappa.h"

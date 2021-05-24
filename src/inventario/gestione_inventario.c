@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "gestione_inventario.h"
-#include "../gestione_file/file_di_testo/lettura_file_testo.h"
+#include "../gestione_file/gestione_file.h"
 
 bool leggere_frammento_est(inventario inv)
 {

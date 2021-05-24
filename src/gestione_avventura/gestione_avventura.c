@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../utility/utility.h"
-#include "../gestione_file/file_di_testo/lettura_file_testo.h"
 #include "../analizzatore/strutture_analizzatore.h"
-#include "../gestione_file/file_binari/gestione_file_binari.h"
+#include "../gestione_file/gestione_file.h"
 #include "../personaggio/personaggio.h"
 #include "../inventario/gestione_inventario.h"
 

@@ -1,5 +1,4 @@
-#include "../utility/array/matrice.h"
-#include "../utility/stringa/stringa.h"
+#include "../utility/utility.h"
 #include "../inventario/gestione_inventario.h"
 #include "../personaggio/personaggio.h"
 #include "gestione_avventura.h"

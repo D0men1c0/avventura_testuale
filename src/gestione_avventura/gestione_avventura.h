@@ -3,6 +3,8 @@
 
 #include "gestione_mappa.h"
 #include "gestione_movimenti.h"
+#include "../personaggio/personaggio.h"
+#include "../inventario/gestione_inventario.h"
 
 void gestire_avventura();
 void impostare_avventura();

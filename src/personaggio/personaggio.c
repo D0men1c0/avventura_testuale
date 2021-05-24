@@ -2,12 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../gestione_avventura/gestione_avventura.h"
-#include "../gestione_file/file_di_testo/lettura_file_testo.h"
-#include "../gestione_file/file_binari/gestione_file_binari.h"
 #include "../utility/utility.h"
 #include "../inventario/gestione_inventario.h"
 #include "../gestione_avventura/gestione_movimenti.h"
 #include "personaggio.h"
+#include "../gestione_file/gestione_file.h"
 
 stringa leggere_nome(personaggio personaggio_nome)
 {
@@ -178,8 +177,8 @@ void impostare_inizio()
 	impostare_valori_personaggio();
 	leggere_mappa(mappa);
 
-	scrivere_y(&pos, 8);
-	scrivere_x(&pos, 4);
+	scrivere_y(&pos, SPAWN_Y);
+	scrivere_x(&pos, SPAWN_X);
 
 	pulire_schermo();
 	ritardare_programma(2000);

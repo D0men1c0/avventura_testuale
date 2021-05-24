@@ -7,6 +7,9 @@
 #ifndef GESTIONE_MAPPA_H_
 #define GESTIONE_MAPPA_H_
 
+#define SPAWN_X 4
+#define SPAWN_Y 8
+
 #define MURO 0
 #define CELLA_VUOTA 1
 #define STORIA 2

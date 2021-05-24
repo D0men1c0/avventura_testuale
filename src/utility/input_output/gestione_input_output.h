@@ -8,14 +8,21 @@
  * ha il solo compito di ripulire il CMD da tutti i messaggi.
  */
 
-#ifndef GESTIONE_OUTPUT_H
-#define GESTIONE_OUTPUT_H
+#ifndef GESTIONE_INPUT_OUTPUT_H
+#define GESTIONE_INPUT_OUTPUT_H
 
 #include "../stringa/stringa.h"
 
+#define MILLISECONDI 0 //35
+#define MILLISEC_CASTELLO 7
+#define MILLISEC_MAPPA 0
+#define MILLISEC_FINALE 45
+#define END 5
 
 void ritardare_programma(int millisecondi);
 void rallentare_output(stringa messaggio, int millisecondi);
 void pulire_schermo();
+int leggere_intero_tastiera();
+stringa leggere_stringa_tastiera(stringa str);
 
 #endif

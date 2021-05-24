@@ -1,3 +1,82 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "../utility/utility.h"
+#include "../personaggio/personaggio.h"
+#include "../inventario/gestione_inventario.h"
+#include "../gestione_avventura/gestione_avventura.h"
+#include "../gestione_avventura/gestione_mappa.h"
+#include "../gestione_avventura/gestione_movimenti.h"
+
+// FILE BINARI
+
+bool leggere_file_salvataggio(stringa nome_file)
+{
+	int i;
+	bool esito;
+
+	FILE * fp;
+
+	esito = true;
+
+	if((fp = fopen(nome_file,"rb")) != NULL)  		// apre il file binario in modalità "append", se non esiste viene creato
+	{
+		fread(&giocatore, sizeof(personaggio), 1, fp);
+		fread(&inv, sizeof(inventario), 1, fp);
+
+		i = 0;
+		while(i < RIGHE)
+		{
+			fread(mappa[i], sizeof(mappa[i][0]), COLONNE, fp);
+			i++;
+		}
+
+		fread(&pos, sizeof(posizione), 1, fp);
+	}
+	else
+	{
+		esito = false;
+	}
+
+	fclose(fp);
+
+	return esito;
+}
+
+bool accodare_file_salvataggio(stringa nome_file, personaggio giocatore, inventario inv, matrice mappa, posizione pos)
+{
+	int i;
+	bool esito;
+
+	FILE * fp;
+
+	esito = true;
+
+	if((fp = fopen(nome_file,"wb")) != NULL)  		// apre il file binario in modalità "append", se non esiste viene creato
+	{
+		fwrite(&giocatore, sizeof(personaggio), 1, fp);
+		fwrite(&inv, sizeof(inventario), 1, fp);
+
+		i = 0;
+		while(i < RIGHE)
+		{
+			fwrite(mappa[i], sizeof(mappa[i][0]), COLONNE, fp);
+			i++;
+		}
+
+		fwrite(&pos, sizeof(posizione), 1, fp);
+	}
+	else
+	{
+		esito = false;
+	}
+
+	fclose(fp);
+
+	return esito;
+}
+
+// FILE DI TESTO
+
 /**
  * La seguente funzione leggere_file_testo serve a gestire l'apertura del file di testo in modalità di lettura, la quale è gestita mediante
  * fopen che a sua volta richiama un altra funzione leggere_stringa, che serve per riferirsi al nome del file di testo.Inoltre è presente
@@ -7,12 +86,6 @@
  * fine stringa cioè \0. Infine se l'apertura del file dovesse andare a buon fine, quindi non dando alcun messaggio di errore (!NULL),
  * si chiuderà il file.
  */
-
-#include <stdio.h>
-#include <stdlib.h>
-#include "../../utility/utility.h"
-#include "../../gestione_avventura/gestione_avventura.h"
-#include "../../gestione_avventura/gestione_mappa.h"
 
 stringa leggere_file_testo(stringa nome_file, stringa stringa_file)
 {
@@ -105,3 +178,4 @@ void leggere_mappa_file(stringa nome_file)
 
 	fclose(fp);
 }
+
