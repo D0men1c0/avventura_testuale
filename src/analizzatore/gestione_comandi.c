@@ -10,8 +10,7 @@
 #include "../gestione_avventura/gestione_movimenti.h"
 #include "../gestione_file/gestione_file.h"
 
-void gestire_errore_semantico();
-void gestire_finale(bool cifrato);
+//funzioni per i comandi
 stringa iniziare_partita(stringa risposta);
 bool salvare_partita(stringa nome_file);
 void caricare_partita();
@@ -25,6 +24,32 @@ stringa aprire_porta(stringa risposta);
 stringa aprire_botola(stringa risposta);
 stringa sfondare_porta(stringa risposta);
 stringa prendere_frammento(stringa risposta);
+stringa prendere_chiave(stringa risposta);
+void gestire_errore_semantico();
+void gestire_finale(bool cifrato);
+
+bool gestire_movimenti()
+{
+	bool esito;
+
+	esito = false;
+
+	if(leggere_dimensione_tabella_simboli() == 1)
+	{
+		esito = true;
+
+		if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
+		{
+			muovere_personaggio(leggere_token_tabella_simboli(0));
+		}
+		else
+		{
+			gestire_errore_semantico();
+		}
+	}
+
+	return esito;
+}
 
 bool gestire_comandi_globali()
 {
@@ -171,126 +196,14 @@ bool gestire_azioni_partita()
 			}
 			else if(confrontare_stringhe(token, CHIAVE) && leggere_dimensione_tabella_simboli() == 2)
 			{
+				risposta = prendere_chiave(risposta);
 				esito = true;
-
-				int cella_attuale;
-
-				cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
-
-				if(cella_attuale % CHIAVE_SEMPLICE == 0 && cella_attuale != 0)
-				{
-					scrivere_chiave_semplice(&inv, true);
-					rallentare_output("\nHai raccolto la chiave semplice!\n\n", MILLISECONDI);
-					cella_attuale /= CHIAVE_SEMPLICE;
-					scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
-					rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
-				}
-				else if(cella_attuale % CHIAVE_PORTA_RE == 0 && cella_attuale != 0)
-				{
-					scrivere_chiave_re(&inv, true);
-					rallentare_output("\nHai raccolto la chiave del re!\n\n", MILLISECONDI);
-					cella_attuale /= CHIAVE_PORTA_RE;
-					scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
-					rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
-				}
-				else
-				{
-					gestire_errore_semantico();
-				}
 			}
 		}
 	}
 
 	free(risposta);
 	return esito;
-}
-
-bool gestire_movimenti()
-{
-	bool esito;
-
-	esito = false;
-
-	if(leggere_dimensione_tabella_simboli() == 1)
-	{
-		esito = true;
-
-		if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
-		{
-			muovere_personaggio(leggere_token_tabella_simboli(0));
-		}
-		else
-		{
-			gestire_errore_semantico();
-		}
-	}
-
-	return esito;
-}
-
-void gestire_errore_semantico()
-{
-	rallentare_output("\nNon puoi usare questo comando qui!\n\n", MILLISECONDI);
-}
-
-void gestire_finale(bool cifrato)
-{
-	stringa risposta = "";
-	stringa risposta_indovinello = "";
-	risposta = allocare_stringa(risposta, 0);
-	risposta_indovinello = allocare_stringa(risposta_indovinello, 0);
-
-	pulire_schermo();
-
-	if(cifrato == true)
-	{
-		risposta = leggere_file_storia("storia/finale cifrato.txt", risposta);
-		rallentare_output(risposta, MILLISEC_FINALE);
-
-		do
-		{
-			rallentare_output("\n\nInserisci il nome di tale animale: ", MILLISECONDI);
-			risposta_indovinello = leggere_stringa_tastiera(risposta_indovinello);
-
-			if(confrontare_stringhe(convertire_stringa_minuscolo(risposta_indovinello), "serpente") == false)
-			{
-				rallentare_output("\nRisposta sbagliata!\n", MILLISECONDI);
-			}
-		}
-		while(confrontare_stringhe(convertire_stringa_minuscolo(risposta_indovinello), "serpente") == false);
-
-		pulire_schermo();
-
-		risposta = leggere_file_storia("storia/finale cifrato2.txt", risposta);
-		rallentare_output(risposta, MILLISEC_FINALE);
-
-	}
-	else
-	{
-		risposta = leggere_file_storia("storia/finale.txt", risposta);
-		rallentare_output(risposta, MILLISEC_FINALE);
-		ritardare_programma(5000);
-
-		pulire_schermo();
-
-		risposta = leggere_file_storia("storia/finale2.txt", risposta);
-		rallentare_output(risposta, MILLISEC_FINALE);
-	}
-
-
-	ritardare_programma(5000);
-	pulire_schermo();
-
-	risposta = leggere_file_storia("storia/end.txt", risposta);
-	rallentare_output(risposta, END);
-
-	ritardare_programma(10000);
-	pulire_schermo();
-
-	impostare_avventura();
-	scrivere_nome(&giocatore, "\0");
-	free(risposta);
-	free(risposta_indovinello);
 }
 
 stringa iniziare_partita(stringa risposta)
@@ -614,4 +527,99 @@ stringa prendere_frammento(stringa risposta)
 	}
 
 	return risposta;
+}
+
+stringa prendere_chiave(stringa risposta)
+{
+	int cella_attuale;
+
+	cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
+
+	if(cella_attuale % CHIAVE_SEMPLICE == 0 && cella_attuale != 0)
+	{
+		scrivere_chiave_semplice(&inv, true);
+		rallentare_output("\nHai raccolto la chiave semplice!\n\n", MILLISECONDI);
+		cella_attuale /= CHIAVE_SEMPLICE;
+		scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+	}
+	else if(cella_attuale % CHIAVE_PORTA_RE == 0 && cella_attuale != 0)
+	{
+		scrivere_chiave_re(&inv, true);
+		rallentare_output("\nHai raccolto la chiave del re!\n\n", MILLISECONDI);
+		cella_attuale /= CHIAVE_PORTA_RE;
+		scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+	}
+	else
+	{
+		gestire_errore_semantico();
+	}
+
+	return risposta;
+}
+
+void gestire_errore_semantico()
+{
+	rallentare_output("\nNon puoi usare questo comando qui!\n\n", MILLISECONDI);
+}
+
+void gestire_finale(bool cifrato)
+{
+	stringa risposta = "";
+	stringa risposta_indovinello = "";
+	risposta = allocare_stringa(risposta, 0);
+	risposta_indovinello = allocare_stringa(risposta_indovinello, 0);
+
+	pulire_schermo();
+
+	if(cifrato == true)
+	{
+		risposta = leggere_file_storia("storia/finale cifrato.txt", risposta);
+		rallentare_output(risposta, MILLISEC_FINALE);
+
+		do
+		{
+			rallentare_output("\n\nInserisci il nome di tale animale: ", MILLISECONDI);
+			risposta_indovinello = leggere_stringa_tastiera(risposta_indovinello);
+
+			if(confrontare_stringhe(convertire_stringa_minuscolo(risposta_indovinello), "serpente") == false)
+			{
+				rallentare_output("\nRisposta sbagliata!\n", MILLISECONDI);
+			}
+		}
+		while(confrontare_stringhe(convertire_stringa_minuscolo(risposta_indovinello), "serpente") == false);
+
+		pulire_schermo();
+
+		risposta = leggere_file_storia("storia/finale cifrato2.txt", risposta);
+		rallentare_output(risposta, MILLISEC_FINALE);
+
+	}
+	else
+	{
+		risposta = leggere_file_storia("storia/finale.txt", risposta);
+		rallentare_output(risposta, MILLISEC_FINALE);
+		ritardare_programma(5000);
+
+		pulire_schermo();
+
+		risposta = leggere_file_storia("storia/finale2.txt", risposta);
+		rallentare_output(risposta, MILLISEC_FINALE);
+	}
+
+
+	ritardare_programma(5000);
+	pulire_schermo();
+
+	risposta = leggere_file_storia("storia/end.txt", risposta);
+	rallentare_output(risposta, END);
+
+	ritardare_programma(10000);
+	pulire_schermo();
+
+	impostare_avventura();
+	scrivere_nome(&giocatore, "\0");
+	free(risposta);
+	free(risposta_indovinello);
 }
