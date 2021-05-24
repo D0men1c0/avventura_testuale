@@ -13,6 +13,7 @@
 
 #include "../stringa/stringa.h"
 
+
 void ritardare_programma(int millisecondi);
 void rallentare_output(stringa messaggio, int millisecondi);
 void pulire_schermo();

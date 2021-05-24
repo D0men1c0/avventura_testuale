@@ -5,6 +5,8 @@
 #include "strutture_analizzatore.h"
 #include "analizzatore_lessicale.h"
 #include "gestione_comandi.h"
+#include "analizzatore_sintattico.h"
+
 
 bool gestire_errore_sintattico();
 

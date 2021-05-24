@@ -6,16 +6,14 @@
 #include "strutture_analizzatore.h"
 #include "../personaggio/personaggio.h"
 #include "../inventario/gestione_inventario.h"
-#include "../gestione_file/file_di_testo/lettura_file_testo.h"
-#include "../gestione_file/file_binari/scrittura_file_binari.h"
-#include "../gestione_file/file_binari/lettura_file_binari.h"
 #include "../gestione_avventura/gestione_avventura.h"
 #include "../gestione_avventura/gestione_mappa.h"
 #include "../gestione_avventura/gestione_movimenti.h"
+#include "../gestione_file/file_binari/gestione_file_binari.h"
 
 void gestire_errore_semantico();
 void gestire_finale(bool cifrato);
-
+bool gestire_movimenti();
 
 bool gestire_comandi_globali()
 {

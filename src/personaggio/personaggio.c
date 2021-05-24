@@ -3,7 +3,7 @@
 #include <string.h>
 #include "../gestione_avventura/gestione_avventura.h"
 #include "../gestione_file/file_di_testo/lettura_file_testo.h"
-#include "../gestione_file/file_binari/scrittura_file_binari.h"
+#include "../gestione_file/file_binari/gestione_file_binari.h"
 #include "../utility/utility.h"
 #include "../inventario/gestione_inventario.h"
 #include "../gestione_avventura/gestione_movimenti.h"

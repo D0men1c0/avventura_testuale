@@ -2,7 +2,6 @@
 #include <string.h>
 #include "../utility/array/matrice.h"
 #include "../utility/stringa/stringa.h"
-#include "../utility/bool.h"
 #include "gestione_movimenti.h"
 #include "../gestione_file/file_di_testo/lettura_file_testo.h"
 #include "../inventario/gestione_inventario.h"

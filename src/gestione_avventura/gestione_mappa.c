@@ -8,7 +8,7 @@
 #include "gestione_movimenti.h"
 #include "../personaggio/personaggio.h"
 #include "../inventario/gestione_inventario.h"
-#include "../utility/bool.h"
+
 
 void leggere_mappa(matrice mappa)
 {

@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "stringa.h"
-#include "../bool.h"
+#include "../utility.h"
 
 stringa leggere_stringa(stringa str)
 {

@@ -12,5 +12,6 @@
 #include "../../inventario/gestione_inventario.h"
 
 bool leggere_file_salvataggio(stringa nome_file);
+bool accodare_file_salvataggio(stringa nome_file, personaggio giocatore, inventario inv, matrice mappa, posizione pos);
 
 #endif

@@ -1,3 +1,4 @@
+#include "../utility.h"
 #ifndef STRINGA_H
 #define STRINGA_H
 
@@ -19,7 +20,7 @@
  * allocare_stringa.
  */
 
-#include "../bool.h"
+
 
 #define DIM_STRINGA 100
 
