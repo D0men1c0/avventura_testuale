@@ -8,8 +8,8 @@
 #define LETTURA_FILE_H
 
 #include "../utility/utility.h"
-#include "../personaggio/personaggio.h"
 #include "../inventario/gestione_inventario.h"
+#include "../personaggio/gestione_personaggio.h"
 
 bool leggere_file_salvataggio(stringa nome_file);
 bool accodare_file_salvataggio(stringa nome_file, personaggio giocatore, inventario inv, matrice mappa, posizione pos);

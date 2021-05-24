@@ -1,3 +1,5 @@
+#include "gestione_personaggio.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -5,7 +7,6 @@
 #include "../utility/utility.h"
 #include "../inventario/gestione_inventario.h"
 #include "../gestione_avventura/gestione_movimenti.h"
-#include "personaggio.h"
 #include "../gestione_file/gestione_file.h"
 
 stringa leggere_nome(personaggio personaggio_nome)

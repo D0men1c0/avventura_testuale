@@ -3,11 +3,10 @@
 #include "../utility/utility.h"
 #include "../analizzatore/strutture_analizzatore.h"
 #include "../gestione_file/gestione_file.h"
-#include "../personaggio/personaggio.h"
 #include "../inventario/gestione_inventario.h"
+#include "../personaggio/gestione_personaggio.h"
 
 void impostare_avventura();
-
 
 void gestire_avventura()
 {
@@ -17,7 +16,6 @@ void gestire_avventura()
 	{
 		leggere_comando();
 	}
-
 }
 
 void impostare_avventura()

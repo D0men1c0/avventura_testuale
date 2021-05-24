@@ -11,7 +11,7 @@
 #include "gestione_movimenti.h"
 #include "../gestione_file/gestione_file.h"
 #include "../inventario/gestione_inventario.h"
-#include "../personaggio/personaggio.h"
+#include "../personaggio/gestione_personaggio.h"
 #include "gestione_mappa.h"
 
 void scrivere_x(posizione * posizione_personaggio, int x)

@@ -6,7 +6,7 @@
 
 #include "../utility/utility.h"
 #include "../inventario/gestione_inventario.h"
-#include "../personaggio/personaggio.h"
+#include "../personaggio/gestione_personaggio.h"
 #include "gestione_avventura.h"
 
 #ifndef GESTIONE_MOVIMENTI_H_

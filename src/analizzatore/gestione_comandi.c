@@ -3,12 +3,12 @@
 #include "../utility/stringa/stringa.h"
 #include "comandi.h"
 #include "strutture_analizzatore.h"
-#include "../personaggio/personaggio.h"
 #include "../inventario/gestione_inventario.h"
 #include "../gestione_avventura/gestione_avventura.h"
 #include "../gestione_avventura/gestione_mappa.h"
 #include "../gestione_avventura/gestione_movimenti.h"
 #include "../gestione_file/gestione_file.h"
+#include "../personaggio/gestione_personaggio.h"
 
 //funzioni per i comandi
 stringa iniziare_partita(stringa risposta);

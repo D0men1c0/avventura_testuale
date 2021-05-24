@@ -16,8 +16,8 @@
 #include "gestione_avventura.h"
 #include "gestione_mappa.h"
 #include "gestione_movimenti.h"
-#include "../personaggio/personaggio.h"
 #include "../inventario/gestione_inventario.h"
+#include "../personaggio/gestione_personaggio.h"
 
 void leggere_mappa(matrice mappa)
 {

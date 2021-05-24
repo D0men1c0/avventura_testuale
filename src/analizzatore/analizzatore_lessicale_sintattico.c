@@ -11,6 +11,8 @@ bool gestire_errore_lessicale();
 
 bool gestire_errore_sintattico();
 
+char eliminare_spazi_sorgente();
+
 void leggere_sorgente()
 {
 	stringa str = "";
@@ -28,13 +30,7 @@ stringa estrarre_token()
 
 	i = 0;
 
-	c = convertire_minuscolo(leggere_carattere(sorgente, 0));
-
-	while(c == ' ')
-	{
-		sorgente = shiftare_sinistra(sorgente, 1);
-		c = convertire_minuscolo(leggere_carattere(sorgente, 0));
-	}
+	c = eliminare_spazi_sorgente();
 
 	while(c != ' ' && c != '\0')
 	{
@@ -44,6 +40,18 @@ stringa estrarre_token()
 	}
 
 	sorgente = shiftare_sinistra(sorgente, i+1);
+
+
+	c = eliminare_spazi_sorgente();
+
+	token[i] = '\0';
+
+	return token;
+}
+
+char eliminare_spazi_sorgente()
+{
+	char c;
 
 	if(leggere_lunghezza(sorgente) > 0)
 	{
@@ -56,9 +64,7 @@ stringa estrarre_token()
 		}
 	}
 
-	token[i] = '\0';
-
-	return token;
+	return c;
 }
 
 
@@ -78,7 +84,7 @@ bool scansionare_token(stringa token, int indice)
 		{
 			j = 0;
 
-			while(j < leggere_dimensione_simboli() && leggere_numero_parole_chiave(j) <= i)
+			while(j < leggere_dimensione_parole_chiave() && leggere_numero_parole_chiave(j) <= i)
 			{
 				j++;
 			}
@@ -91,9 +97,8 @@ bool scansionare_token(stringa token, int indice)
 
 	if(esito == SUCCESSO)
 	{
-		scrivere_simbolo_tabella_simboli(struttura_simboli.simboli[j], indice);
+		scrivere_simbolo_tabella_simboli(leggere_simboli_struttura_simboli(j), indice);
 		scrivere_token_tabella_simboli(token, indice);
-		scrivere_dimensione_tabella_simboli(leggere_dimensione_tabella_simboli() + 1);
 	}
 	else
 	{
