@@ -3,8 +3,8 @@
 #include "strutture_analizzatore.h"
 #include "../utility/utility.h"
 #include "../gestione_file/gestione_file.h"
-#include "analizzatore_lessicale.h"
-#include "analizzatore_sintattico.h"
+#include "analizzatore_lessicale_sintattico.h"
+
 
 #define NOME_FILE_LINGUAGGIO "parole_linguaggio.txt"
 
