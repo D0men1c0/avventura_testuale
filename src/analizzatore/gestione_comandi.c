@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 #include "../utility/stringa/stringa.h"
 #include "comandi.h"
 #include "strutture_analizzatore.h"
@@ -14,6 +13,18 @@
 void gestire_errore_semantico();
 void gestire_finale(bool cifrato);
 stringa iniziare_partita(stringa risposta);
+bool salvare_partita(stringa nome_file);
+void caricare_partita();
+stringa stampare_aiuto(stringa risposta, bool * esito);
+stringa visualizzare_attributi();
+stringa visualizzare_attributi(stringa risposta);
+stringa visualizzare_inventario(stringa risposta);
+stringa visualizzare_mappa(stringa risposta);
+stringa esaminare_stanza(stringa risposta);
+stringa aprire_porta(stringa risposta);
+stringa aprire_botola(stringa risposta);
+stringa sfondare_porta(stringa risposta);
+stringa prendere_frammento(stringa risposta);
 
 bool gestire_comandi_globali()
 {
@@ -27,76 +38,22 @@ bool gestire_comandi_globali()
 
 	if(confrontare_stringhe(token, NUOVA))
 	{
-		esito = true;
 		risposta = iniziare_partita(risposta);
-
+		esito = true;
 	}
 	else if(confrontare_stringhe(token, AIUTO) == true)
 	{
-		if (leggere_dimensione_tabella_simboli() < 2)
-		{
-			risposta = leggere_file_testo("aiuto.txt", risposta);
-			rallentare_output(risposta, MILLISECONDI);
-			esito = true;
-		}
+		risposta = stampare_aiuto(risposta, &esito);
 	}
 	else if(confrontare_stringhe(token, SALVA) == true)
 	{
-
-		if(strlen(leggere_nome(giocatore)) != 0)
-		{
-			esito = accodare_file_salvataggio("salvataggi.dat", giocatore, inv, mappa, pos);
-
-			if(esito == true)
-			{
-				rallentare_output("\nHai salvato correttamente i dati di gioco! \n", MILLISECONDI);
-			}
-			else
-			{
-				rallentare_output("\nErrore nel salvataggio della partita in corso! \n", MILLISECONDI);
-			}
-		}
-		else
-		{
-			gestire_errore_semantico();
-		}
-
-		esito = true;
+		esito = salvare_partita(FILE_SALVATAGGIO);
 	}
 	else if(confrontare_stringhe(token, CARICA) == true)
 	{
-		esito = leggere_file_salvataggio("salvataggi.dat");
-
-		if(esito == true)
-		{
-			pulire_schermo();
-			rallentare_output("Hai caricato correttamente i dati di gioco! \n\n", MILLISECONDI);
-
-			if(leggere_x(pos) < 4)
-			{
-				rallentare_output("Ti trovavi nella sala del trono! \n\n", MILLISECONDI);
-			}
-			else if(leggere_x(pos) <= 7)
-			{
-				rallentare_output("Ti trovavi all'interno delle celle! \n\n", MILLISECONDI);
-			}
-			else
-			{
-				rallentare_output("Ti trovavi nelle segrete! \n\n", MILLISECONDI);
-			}
-
-			rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
-			rallentare_output("\n", MILLISECONDI);
-		}
-		else
-		{
-			rallentare_output("\nErrore nel caricamento dei dati di gioco! \n", MILLISECONDI);
-		}
-
-
+		caricare_partita();
 		esito = true;
 	}
-
 
 	free(risposta);
 
@@ -122,45 +79,18 @@ bool gestire_azioni_partita()
 
 			if(confrontare_stringhe(token, ATTRIBUTI))
 			{
+				risposta = visualizzare_attributi(risposta);
 				esito = true;
-
-				if(strlen(leggere_nome(giocatore)) != 0)
-				{
-					sprintf(risposta, "\nATTRIBUTI:\nTi chiami: %s \nLa vita e': %d \nLa forza e': %d\nL'intelligenza e': %d\n\n", leggere_nome(giocatore), leggere_vita(giocatore), leggere_forza(giocatore), leggere_intelligenza(giocatore));
-					rallentare_output(risposta, MILLISECONDI);
-				}
-				else
-				{
-					gestire_errore_semantico();
-				}
 			}
 			else if(confrontare_stringhe(token, INVENTARIO))
 			{
+				risposta = visualizzare_inventario(risposta);
 				esito = true;
-
-				if(strlen(leggere_nome(giocatore)) != 0)
-				{
-					rallentare_output("\nINVENTARIO:\n", MILLISECONDI);
-					visualizzare_inventario(risposta);
-				}
-				else
-				{
-					gestire_errore_semantico();
-				}
 			}
 			else if(confrontare_stringhe(token, MAPPA))
 			{
+				risposta = visualizzare_mappa(risposta);
 				esito = true;
-
-				if(strlen(leggere_nome(giocatore)) != 0)
-				{
-					risposta = visualizzare_frammenti_mappa(risposta);
-					rallentare_output(risposta, MILLISEC_MAPPA);
-				}
-				else
-				{
-					gestire_errore_semantico();
-				}
 			}
 			else
 			{
@@ -176,22 +106,8 @@ bool gestire_azioni_partita()
 
 			if(confrontare_stringhe(token, STANZA))
 			{
+				risposta = esaminare_stanza(risposta);
 				esito = true;
-
-				if(strlen(leggere_nome(giocatore)) != 0)
-				{
-					stringa nome_file = "";
-
-					nome_file = allocare_stringa(nome_file, 0);
-
-					sprintf(nome_file, "storia/[%d][%d].txt", leggere_y(pos), leggere_x(pos));
-					risposta = leggere_file_storia(nome_file, risposta);
-					rallentare_output(risposta, MILLISECONDI);
-				}
-				else
-				{
-					gestire_errore_semantico();
-				}
 			}
 		}
 	}
@@ -203,84 +119,13 @@ bool gestire_azioni_partita()
 
 			if(confrontare_stringhe(token, PORTA))
 			{
+				risposta = aprire_porta(risposta);
 				esito = true;
-
-				if(strlen(leggere_nome(giocatore)) != 0)
-				{
-					int cella_attuale;
-
-					cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
-
-					if(cella_attuale % PORTA_SEMPLICE == 0 && cella_attuale != 0)
-					{
-						if(leggere_chiave_semplice(inv) == true)
-						{
-							rallentare_output("\nHai aperto con successo la porta, utilizzando la chiave semplice!\n",MILLISECONDI);
-							cella_attuale /= PORTA_SEMPLICE;
-							scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
-							rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
-							rallentare_output("\n", MILLISECONDI);
-						}
-						else
-						{
-							rallentare_output("\nNon possiedi la chiave semplice, dunque non puoi entrare qui!\n",MILLISECONDI);
-						}
-					}
-					else if(cella_attuale % PORTA_RE == 0 && cella_attuale != 0)
-					{
-						if(leggere_chiave_re(inv) == true)
-						{
-							rallentare_output("\nHai aperto con successo la porta del re, utilizzando la chiave del re!\n",MILLISECONDI);
-							cella_attuale /= PORTA_RE;
-							scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
-							rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
-							rallentare_output("\n", MILLISECONDI);
-						}
-						else
-						{
-							rallentare_output("\nNon possiedi la chiave semplice, dunque non puoi entrare qui!\n",MILLISECONDI);
-						}
-					}
-					else
-					{
-						gestire_errore_semantico();
-					}
-				}
-				else
-				{
-					gestire_errore_semantico();
-				}
 			}
 			else if(confrontare_stringhe(token, BOTOLA))
 			{
+				risposta = aprire_botola(risposta);
 				esito = true;
-
-				int cella_attuale;
-
-				cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
-
-				if(cella_attuale % BOTOLE == 0 && cella_attuale != 0)
-				{
-					if(leggere_frammento_sud(inv) && leggere_frammento_est(inv) && leggere_frammento_nord(inv))
-					{
-						if(leggere_intelligenza(giocatore) > 2)
-						{
-							gestire_finale(false);
-						}
-						else
-						{
-							gestire_finale(true);
-						}
-					}
-					else
-					{
-						rallentare_output("\nNon hai ancora raccolto tutti i frammenti di mappa!\n", MILLISECONDI);
-					}
-				}
-				else
-				{
-					gestire_errore_semantico();
-				}
 			}
 		}
 	}
@@ -292,42 +137,8 @@ bool gestire_azioni_partita()
 
 			if(confrontare_stringhe(token, PORTA))
 			{
+				risposta = sfondare_porta(risposta);
 				esito = true;
-
-				if(strlen(leggere_nome(giocatore)) != 0)
-				{
-					int cella_attuale;
-
-					cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
-
-					if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 && cella_attuale != 0)
-					{
-						if(leggere_forza(giocatore) > 2)
-						{
-							rallentare_output("\nHai sfondato con successo la porta.\n",MILLISECONDI);
-							cella_attuale /= PORTA_CHIUSA_SFONDABILE;
-							scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
-							rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
-							rallentare_output("\n", MILLISECONDI);
-						}
-						else
-						{
-							rallentare_output("\nNon puoi sfondare la porta perche' non hai forza sufficiente.\n",MILLISECONDI);
-						}
-					}
-					else if((cella_attuale % PORTA_RE == 0 || cella_attuale % PORTA_SEMPLICE == 0) && cella_attuale != 0)
-					{
-						rallentare_output("\nQuesta porta e' piu' dura rispetto alle altre, non riesci a sfondarla!\n",MILLISECONDI);
-					}
-					else
-					{
-						gestire_errore_semantico();
-					}
-				}
-				else
-				{
-					gestire_errore_semantico();
-				}
 			}
 		}
 	}
@@ -355,41 +166,7 @@ bool gestire_azioni_partita()
 
 				if(esito == true)
 				{
-					int cella_attuale;
-
-					cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
-
-					if(cella_attuale % PEZZO_MAPPA_EST == 0 && cella_attuale != 0)
-					{
-						scrivere_frammento_est(&inv, true);
-						rallentare_output("\nHai preso il frammento di mappa EST!\n", MILLISECONDI);
-						cella_attuale /= PEZZO_MAPPA_EST;
-						scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
-						rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
-
-					}
-					else if(cella_attuale % PEZZO_MAPPA_NORD == 0 && cella_attuale != 0)
-					{
-						scrivere_frammento_nord(&inv, true);
-						rallentare_output("\nHai preso il frammento di mappa NORD!\n", MILLISECONDI);
-						cella_attuale /= PEZZO_MAPPA_NORD;
-						scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
-						rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
-
-					}
-					else if(cella_attuale % PEZZO_MAPPA_SUD == 0 && cella_attuale != 0)
-					{
-						scrivere_frammento_sud(&inv, true);
-						rallentare_output("\nHai preso il frammento di mappa SUD!\n", MILLISECONDI);
-						cella_attuale /= PEZZO_MAPPA_SUD;
-						scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
-						rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
-
-					}
-					else
-					{
-						gestire_errore_semantico();
-					}
+					risposta = prendere_frammento(risposta);
 				}
 			}
 			else if(confrontare_stringhe(token, CHIAVE) && leggere_dimensione_tabella_simboli() == 2)
@@ -438,7 +215,7 @@ bool gestire_movimenti()
 	{
 		esito = true;
 
-		if(strlen(leggere_nome(giocatore)) != 0)
+		if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
 		{
 			muovere_personaggio(leggere_token_tabella_simboli(0));
 		}
@@ -538,4 +315,303 @@ stringa iniziare_partita(stringa risposta)
 	return risposta;
 }
 
+bool salvare_partita(stringa nome_file)
+{
+	bool esito;
 
+	if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
+	{
+		esito = accodare_file_salvataggio(nome_file, giocatore, inv, mappa, pos);
+
+		if(esito == true)
+		{
+			rallentare_output("\nHai salvato correttamente i dati di gioco! \n", MILLISECONDI);
+		}
+		else
+		{
+			rallentare_output("\nErrore nel salvataggio della partita in corso! \n", MILLISECONDI);
+		}
+	}
+	else
+	{
+		gestire_errore_semantico();
+	}
+
+	esito = true;
+
+	return esito;
+}
+
+void caricare_partita()
+{
+	bool esito;
+
+	esito = leggere_file_salvataggio(FILE_SALVATAGGIO);
+
+	if(esito == true)
+	{
+		pulire_schermo();
+		rallentare_output("Hai caricato correttamente i dati di gioco! \n\n", MILLISECONDI);
+
+		if(leggere_x(pos) < 4)
+		{
+			rallentare_output("Ti trovavi nella sala del trono! \n\n", MILLISECONDI);
+		}
+		else if(leggere_x(pos) <= 7)
+		{
+			rallentare_output("Ti trovavi all'interno delle celle! \n\n", MILLISECONDI);
+		}
+		else
+		{
+			rallentare_output("Ti trovavi nelle segrete! \n\n", MILLISECONDI);
+		}
+
+		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+		rallentare_output("\n", MILLISECONDI);
+	}
+	else
+	{
+		rallentare_output("\nErrore nel caricamento dei dati di gioco! \n", MILLISECONDI);
+	}
+}
+
+stringa stampare_aiuto(stringa risposta, bool * esito)
+{
+	if (leggere_dimensione_tabella_simboli() < 2)
+	{
+		risposta = leggere_file_testo("aiuto.txt", risposta);
+		rallentare_output(risposta, MILLISECONDI);
+		*esito = true;
+	}
+
+	return risposta;
+}
+
+stringa visualizzare_attributi(stringa risposta)
+{
+	if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
+	{
+		sprintf(risposta, "\nATTRIBUTI:\nTi chiami: %s \nLa vita e': %d \nLa forza e': %d\nL'intelligenza e': %d\n\n", leggere_nome(giocatore), leggere_vita(giocatore), leggere_forza(giocatore), leggere_intelligenza(giocatore));
+		rallentare_output(risposta, MILLISECONDI);
+	}
+	else
+	{
+		gestire_errore_semantico();
+	}
+
+	return risposta;
+}
+
+stringa visualizzare_inventario(stringa risposta)
+{
+	if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
+	{
+		rallentare_output("\nINVENTARIO:\n", MILLISECONDI);
+		stampare_inventario();
+	}
+	else
+	{
+		gestire_errore_semantico();
+	}
+
+	return risposta;
+}
+
+stringa visualizzare_mappa(stringa risposta)
+{
+	if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
+	{
+		risposta = visualizzare_frammenti_mappa(risposta);
+		rallentare_output(risposta, MILLISEC_MAPPA);
+	}
+	else
+	{
+		gestire_errore_semantico();
+	}
+
+	return risposta;
+}
+
+stringa esaminare_stanza(stringa risposta)
+{
+	stringa nome_file = "";
+
+	if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
+	{
+		nome_file = allocare_stringa(nome_file, 0);
+
+		sprintf(nome_file, "storia/[%d][%d].txt", leggere_y(pos), leggere_x(pos));
+		risposta = leggere_file_storia(nome_file, risposta);
+		rallentare_output(risposta, MILLISECONDI);
+	}
+	else
+	{
+		gestire_errore_semantico();
+	}
+
+	return risposta;
+}
+
+stringa aprire_porta(stringa risposta)
+{
+	int cella_attuale;
+
+	if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
+	{
+		cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
+
+		if(cella_attuale % PORTA_SEMPLICE == 0 && cella_attuale != 0)
+		{
+			if(leggere_chiave_semplice(inv) == true)
+			{
+				rallentare_output("\nHai aperto con successo la porta, utilizzando la chiave semplice!\n",MILLISECONDI);
+				cella_attuale /= PORTA_SEMPLICE;
+				scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+				rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+				rallentare_output("\n", MILLISECONDI);
+			}
+			else
+			{
+				rallentare_output("\nNon possiedi la chiave semplice, dunque non puoi entrare qui!\n",MILLISECONDI);
+			}
+		}
+		else if(cella_attuale % PORTA_RE == 0 && cella_attuale != 0)
+		{
+			if(leggere_chiave_re(inv) == true)
+			{
+				rallentare_output("\nHai aperto con successo la porta del re, utilizzando la chiave del re!\n",MILLISECONDI);
+				cella_attuale /= PORTA_RE;
+				scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+				rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+				rallentare_output("\n", MILLISECONDI);
+			}
+			else
+			{
+				rallentare_output("\nNon possiedi la chiave semplice, dunque non puoi entrare qui!\n",MILLISECONDI);
+			}
+		}
+		else
+		{
+			gestire_errore_semantico();
+		}
+	}
+	else
+	{
+		gestire_errore_semantico();
+	}
+
+	return risposta;
+}
+
+stringa aprire_botola(stringa risposta)
+{
+	int cella_attuale;
+
+	cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
+
+	if(cella_attuale % BOTOLE == 0 && cella_attuale != 0)
+	{
+		if(leggere_frammento_sud(inv) && leggere_frammento_est(inv) && leggere_frammento_nord(inv))
+		{
+			if(leggere_intelligenza(giocatore) > 2)
+			{
+				gestire_finale(false);
+			}
+			else
+			{
+				gestire_finale(true);
+			}
+		}
+		else
+		{
+			rallentare_output("\nNon hai ancora raccolto tutti i frammenti di mappa!\n", MILLISECONDI);
+		}
+	}
+	else
+	{
+		gestire_errore_semantico();
+	}
+
+	return risposta;
+}
+
+stringa sfondare_porta(stringa risposta)
+{
+	int cella_attuale;
+
+	if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
+	{
+		cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
+
+		if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 && cella_attuale != 0)
+		{
+			if(leggere_forza(giocatore) > 2)
+			{
+				rallentare_output("\nHai sfondato con successo la porta.\n",MILLISECONDI);
+				cella_attuale /= PORTA_CHIUSA_SFONDABILE;
+				scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+				rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+				rallentare_output("\n", MILLISECONDI);
+			}
+			else
+			{
+				rallentare_output("\nNon puoi sfondare la porta perche' non hai forza sufficiente.\n",MILLISECONDI);
+			}
+		}
+		else if((cella_attuale % PORTA_RE == 0 || cella_attuale % PORTA_SEMPLICE == 0) && cella_attuale != 0)
+		{
+			rallentare_output("\nQuesta porta e' piu' dura rispetto alle altre, non riesci a sfondarla!\n",MILLISECONDI);
+		}
+		else
+		{
+			gestire_errore_semantico();
+		}
+	}
+	else
+	{
+		gestire_errore_semantico();
+	}
+
+	return risposta;
+}
+
+stringa prendere_frammento(stringa risposta)
+{
+	int cella_attuale;
+
+	cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
+
+	if(cella_attuale % PEZZO_MAPPA_EST == 0 && cella_attuale != 0)
+	{
+		scrivere_frammento_est(&inv, true);
+		rallentare_output("\nHai preso il frammento di mappa EST!\n", MILLISECONDI);
+		cella_attuale /= PEZZO_MAPPA_EST;
+		scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+
+	}
+	else if(cella_attuale % PEZZO_MAPPA_NORD == 0 && cella_attuale != 0)
+	{
+		scrivere_frammento_nord(&inv, true);
+		rallentare_output("\nHai preso il frammento di mappa NORD!\n", MILLISECONDI);
+		cella_attuale /= PEZZO_MAPPA_NORD;
+		scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+
+	}
+	else if(cella_attuale % PEZZO_MAPPA_SUD == 0 && cella_attuale != 0)
+	{
+		scrivere_frammento_sud(&inv, true);
+		rallentare_output("\nHai preso il frammento di mappa SUD!\n", MILLISECONDI);
+		cella_attuale /= PEZZO_MAPPA_SUD;
+		scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+
+	}
+	else
+	{
+		gestire_errore_semantico();
+	}
+
+	return risposta;
+}

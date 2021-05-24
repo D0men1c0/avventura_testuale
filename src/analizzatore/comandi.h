@@ -1,7 +1,9 @@
 #ifndef COMANDI_H
 #define COMANDI_H
 
-//costati per l'array delle parole, simboli e token
+#define FILE_SALVATAGGIO "salvataggi.dat"
+
+//costanti per l'array delle parole, simboli e token
 #define MAX_SIMBOLI 10
 #define MAX_TOKEN 10
 #define MAX_PAROLE 50
