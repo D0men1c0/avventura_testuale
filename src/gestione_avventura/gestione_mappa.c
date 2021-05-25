@@ -163,9 +163,16 @@ void gestire_cella()
 	{
 		sprintf(nome_file, "storia/[%d][%d].txt", leggere_y(pos), leggere_x(pos));		//Utilizzo della funzione sprintf per assegnare a "nome_file" un valore particolare.
 		stringa_file = leggere_file_testo(nome_file, stringa_file);						//Assegnazione a stringa_file del contenuto del file di testo.
+		if (confrontare_stringhe(nome_file,"storia/[8][4].txt"))
+		{
+			rallentare_output(stringa_file, MILLISECONDI);
+		}
+		else
+		{
 		printf("--------------------------------------------------------------------------\n\n");
 		rallentare_output(stringa_file, MILLISECONDI);									//Chiamata della funzione che permette di rallentare l'output della stringa.
 		printf("--------------------------------------------------------------------------\n\n");
+		}
 		cella_attuale /= STORIA;														//Rimozione dell'elemento STORIA dalla cella attuale.
 	}
 

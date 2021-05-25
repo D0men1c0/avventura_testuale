@@ -185,7 +185,9 @@ void impostare_inizio()
 	ritardare_programma(2000);
 
 	gestire_cella();
-	//rallentare_output("Ti vedo disorientato, per maggiori informazioni inserisci \"aiuto\".\n", MILLISECONDI);
-	//rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
-	//rallentare_output("\n", MILLISECONDI);
+	rallentare_output("Ti vedo disorientato, per maggiori informazioni inserisci \"aiuto\".\n", MILLISECONDI);
+
+	rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+	rallentare_output("\n", MILLISECONDI);
+
 }
