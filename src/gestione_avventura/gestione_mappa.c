@@ -147,82 +147,90 @@ void gestire_cella()
 
 	if(cella_attuale == CELLA_VUOTA)
 	{
+		printf("--------------------------------------------------------------------------\n\n");
 		rallentare_output("Non c'e' niente di interessante qui!\n\n", MILLISECONDI);		//Chiamata della funzione che permette di rallentare l'output.
+		printf("--------------------------------------------------------------------------\n\n");
 	}
-	else
+
+	/**
+	 * Se la cella attuale contiene l'elemento STORIA tra i suoi divisori, viene utilizzata una funzione particolare per assegnare alla stringa
+	 * "nome_file" un valore specifico, basato sulla posizione del personaggio in quel momento. Successivamente viene aperto un file con il nome
+	 * pari al valore di quella stringa e il contenuto viene assegnato a "stringa_file", che poi sarà sfruttata per la stampa del messaggio.
+	 * Infine l'elemento STORIA viene rimosso dalla cella attuale per evitare che queste operazioni si ripetino ogni volta che il giocatore passi
+	 * sulla stessa cella.
+	*/
+	if(cella_attuale % STORIA == 0)
 	{
-		/**
-		 * Se la cella attuale contiene l'elemento STORIA tra i suoi divisori, viene utilizzata una funzione particolare per assegnare alla stringa
-		 * "nome_file" un valore specifico, basato sulla posizione del personaggio in quel momento. Successivamente viene aperto un file con il nome
-		 * pari al valore di quella stringa e il contenuto viene assegnato a "stringa_file", che poi sarà sfruttata per la stampa del messaggio.
-		 * Infine l'elemento STORIA viene rimosso dalla cella attuale per evitare che queste operazioni si ripetino ogni volta che il giocatore passi
-		 * sulla stessa cella.
-		*/
-
-		if(cella_attuale % STORIA == 0)
-		{
-			sprintf(nome_file, "storia/[%d][%d].txt", leggere_y(pos), leggere_x(pos));		//Utilizzo della funzione sprintf per assegnare a "nome_file" un valore particolare.
-			stringa_file = leggere_file_testo(nome_file, stringa_file);						//Assegnazione a stringa_file del contenuto del file di testo.
-			rallentare_output(stringa_file, MILLISECONDI);									//Chiamata della funzione che permette di rallentare l'output della stringa.
-			cella_attuale /= STORIA;														//Rimozione dell'elemento STORIA dalla cella attuale.
-		}
-
-		/**
-		 * Se la cella attuale contiene l'elemento POWER_UP_VITA tra i suoi divisori, vengono incrementate le vite a disposizione del giocatore.
-		 * Successivamente l'elemento in questione viene rimosso dalla cella attuale per evitare che questa operazione si ripeta ogni volta
-		 * che il giocatore passa sulla stessa cella.
-		*/
-
-		if(cella_attuale % POWER_UP_VITA == 0)
-		{
-			scrivere_vita(&giocatore, leggere_vita(giocatore) + 1);							//Chiamata della funzione scrivere_vita per incrementare le vite a disposizione.
-			cella_attuale /= POWER_UP_VITA;													//Rimozione dell'elemento POWER_UP_VITA dalla cella attuale.
-		}
-
-		/**
-		 * Se la cella attuale contiene l'elemento POWER_UP_FORZA tra i suoi divisori, viene incrementata la forza del giocatore.
-		 * Successivamente l'elemento in questione viene rimosso dalla cella attuale per evitare che questa operazione si ripeta ogni volta
-		 * che il giocatore passa sulla stessa cella.
-		*/
-
-		if(cella_attuale % POWER_UP_FORZA == 0)
-		{
-			scrivere_forza(&giocatore, leggere_forza(giocatore) + 1);						//Chiamata della funzione scrivere_forza per incrementare la forza.
-			cella_attuale /= POWER_UP_FORZA;												//Rimozione dell'elemento POWER_UP_FORZA dalla cella attuale.
-		}
-
-		/**
-		 * Se la cella attuale contiene l'elemento MALUS tra i suoi divisori, vengono decrementate le vite a disposizione del giocatore.
-		 * Successivamente l'elemento in questione viene rimosso dalla cella attuale per evitare che questa operazione si ripeta ogni volta
-		 * che il giocatore passa sulla stessa cella.
-		*/
-
-		if(cella_attuale % MALUS == 0)
-		{
-			scrivere_vita(&giocatore, leggere_vita(giocatore) - 1);							//Chiamata della funzione scrivere_vita per decrementare le vite a disposizione.
-			cella_attuale /= MALUS;															//Rimozione dell'elemento MALUS dalla cella attuale.
-		}
-
-		/**
-		 * Se la cella attuale contiene l'elemento PORTA_CHIUSA_SFONDABILE, PORTA_SEMPLICE o PORTA_RE tra i suoi divisori,
-		 * viene stampato un messaggio che avvisa il giocatore dell'ostacolo incontrato.
-		*/
-
-		if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 || cella_attuale % PORTA_SEMPLICE == 0 || cella_attuale % PORTA_RE == 0)
-		{
-			rallentare_output("\nC'e' una porta chiusa davanti a te!\n", MILLISECONDI);		//Chiamata della funzione che permette di rallentare l'output.
-		}
-
-		/**
-		 * Se la cella attuale contiene l'elemento BOTOLE tra i suoi divisori, viene stampato un messaggio che avvisa il giocatore
-		 * dell'ostacolo incontrato.
-		 */
-
-		if(cella_attuale % BOTOLE == 0)
-		{
-			rallentare_output("Davanti a te c'e' una botola!\n\n", MILLISECONDI);			//Chiamata della funzione che permette di rallentare l'output.
-		}
+		sprintf(nome_file, "storia/[%d][%d].txt", leggere_y(pos), leggere_x(pos));		//Utilizzo della funzione sprintf per assegnare a "nome_file" un valore particolare.
+		stringa_file = leggere_file_testo(nome_file, stringa_file);						//Assegnazione a stringa_file del contenuto del file di testo.
+		printf("--------------------------------------------------------------------------\n\n");
+		rallentare_output(stringa_file, MILLISECONDI);									//Chiamata della funzione che permette di rallentare l'output della stringa.
+		printf("--------------------------------------------------------------------------\n\n");
+		cella_attuale /= STORIA;														//Rimozione dell'elemento STORIA dalla cella attuale.
 	}
+
+	/**
+	 * Se la cella attuale contiene l'elemento POWER_UP_VITA tra i suoi divisori, vengono incrementate le vite a disposizione del giocatore.
+	 * Successivamente l'elemento in questione viene rimosso dalla cella attuale per evitare che questa operazione si ripeta ogni volta
+	 * che il giocatore passa sulla stessa cella.
+	*/
+
+	if(cella_attuale % POWER_UP_VITA == 0)
+	{
+		scrivere_vita(&giocatore, leggere_vita(giocatore) + 1);							//Chiamata della funzione scrivere_vita per incrementare le vite a disposizione.
+		cella_attuale /= POWER_UP_VITA;													//Rimozione dell'elemento POWER_UP_VITA dalla cella attuale.
+	}
+
+	/**
+	 * Se la cella attuale contiene l'elemento POWER_UP_FORZA tra i suoi divisori, viene incrementata la forza del giocatore.
+	 * Successivamente l'elemento in questione viene rimosso dalla cella attuale per evitare che questa operazione si ripeta ogni volta
+	 * che il giocatore passa sulla stessa cella.
+	*/
+
+	if(cella_attuale % POWER_UP_FORZA == 0)
+	{
+		scrivere_forza(&giocatore, leggere_forza(giocatore) + 1);						//Chiamata della funzione scrivere_forza per incrementare la forza.
+		cella_attuale /= POWER_UP_FORZA;												//Rimozione dell'elemento POWER_UP_FORZA dalla cella attuale.
+	}
+
+	/**
+	 * Se la cella attuale contiene l'elemento MALUS tra i suoi divisori, vengono decrementate le vite a disposizione del giocatore.
+	 * Successivamente l'elemento in questione viene rimosso dalla cella attuale per evitare che questa operazione si ripeta ogni volta
+	 * che il giocatore passa sulla stessa cella.
+	*/
+
+	if(cella_attuale % MALUS == 0)
+	{
+		scrivere_vita(&giocatore, leggere_vita(giocatore) - 1);							//Chiamata della funzione scrivere_vita per decrementare le vite a disposizione.
+		cella_attuale /= MALUS;															//Rimozione dell'elemento MALUS dalla cella attuale.
+	}
+
+	/**
+	 * Se la cella attuale contiene l'elemento PORTA_CHIUSA_SFONDABILE, PORTA_SEMPLICE o PORTA_RE tra i suoi divisori,
+	 * viene stampato un messaggio che avvisa il giocatore dell'ostacolo incontrato.
+	*/
+
+	if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 || cella_attuale % PORTA_SEMPLICE == 0 || cella_attuale % PORTA_RE == 0)
+	{
+		rallentare_output("C'e' una porta chiusa davanti a te!\n\n", MILLISECONDI);		//Chiamata della funzione che permette di rallentare l'output.
+	}
+
+	/**
+	 * Se la cella attuale contiene l'elemento BOTOLE tra i suoi divisori, viene stampato un messaggio che avvisa il giocatore
+	 * dell'ostacolo incontrato.
+	 */
+
+	if(cella_attuale % BOTOLE == 0)
+	{
+		rallentare_output("Davanti a te c'e' una botola!\n\n", MILLISECONDI);			//Chiamata della funzione che permette di rallentare l'output.
+	}
+
+	if(cella_attuale % CELLA_VUOTA == 0)
+	{
+		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+		printf("\n");
+	}
+
 
 	scrivere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos), cella_attuale);			//Modifica effettiva della mappa con le celle aggiornate.
 

@@ -356,7 +356,9 @@ stringa esaminare_stanza(stringa risposta)
 
 		sprintf(nome_file, "storia/[%d][%d].txt", leggere_y(pos), leggere_x(pos));
 		risposta = leggere_file_storia(nome_file, risposta);
+		printf("--------------------------------------------------------------------------\n\n");
 		rallentare_output(risposta, MILLISECONDI);
+		printf("--------------------------------------------------------------------------\n\n");
 	}
 	else
 	{
@@ -378,30 +380,30 @@ stringa aprire_porta(stringa risposta)
 		{
 			if(leggere_chiave_semplice(inv) == true)
 			{
-				rallentare_output("\nHai aperto con successo la porta, utilizzando la chiave semplice!\n",MILLISECONDI);
+				rallentare_output("\nHai aperto con successo la porta, utilizzando la chiave semplice!\n\n",MILLISECONDI);
 				cella_attuale /= PORTA_SEMPLICE;
 				scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 				rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
-				rallentare_output("\n", MILLISECONDI);
+				printf("\n");
 			}
 			else
 			{
-				rallentare_output("\nNon possiedi la chiave semplice, dunque non puoi entrare qui!\n",MILLISECONDI);
+				rallentare_output("\nNon possiedi la chiave semplice, dunque non puoi entrare qui!\n\n",MILLISECONDI);
 			}
 		}
 		else if(cella_attuale % PORTA_RE == 0 && cella_attuale != 0)
 		{
 			if(leggere_chiave_re(inv) == true)
 			{
-				rallentare_output("\nHai aperto con successo la porta del re, utilizzando la chiave del re!\n",MILLISECONDI);
+				rallentare_output("\nHai aperto con successo la porta del re, utilizzando la chiave del re!\n\n",MILLISECONDI);
 				cella_attuale /= PORTA_RE;
 				scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 				rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
-				rallentare_output("\n", MILLISECONDI);
+				printf("\n");
 			}
 			else
 			{
-				rallentare_output("\nNon possiedi la chiave semplice, dunque non puoi entrare qui!\n",MILLISECONDI);
+				rallentare_output("\nNon possiedi la chiave semplice, dunque non puoi entrare qui!\n\n",MILLISECONDI);
 			}
 		}
 		else
@@ -438,7 +440,7 @@ stringa aprire_botola(stringa risposta)
 		}
 		else
 		{
-			rallentare_output("\nNon hai ancora raccolto tutti i frammenti di mappa!\n", MILLISECONDI);
+			rallentare_output("\nNon hai ancora raccolto tutti i frammenti di mappa!\n\n", MILLISECONDI);
 		}
 	}
 	else
@@ -461,20 +463,20 @@ stringa sfondare_porta(stringa risposta)
 		{
 			if(leggere_forza(giocatore) > 2)
 			{
-				rallentare_output("\nHai sfondato con successo la porta.\n",MILLISECONDI);
+				rallentare_output("\nHai sfondato con successo la porta.\n\n",MILLISECONDI);
 				cella_attuale /= PORTA_CHIUSA_SFONDABILE;
 				scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 				rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
-				rallentare_output("\n", MILLISECONDI);
+				printf("\n");
 			}
 			else
 			{
-				rallentare_output("\nNon puoi sfondare la porta perche' non hai forza sufficiente.\n",MILLISECONDI);
+				rallentare_output("\nNon puoi sfondare la porta perche' non hai forza sufficiente.\n\n",MILLISECONDI);
 			}
 		}
 		else if((cella_attuale % PORTA_RE == 0 || cella_attuale % PORTA_SEMPLICE == 0) && cella_attuale != 0)
 		{
-			rallentare_output("\nQuesta porta e' piu' dura rispetto alle altre, non riesci a sfondarla!\n",MILLISECONDI);
+			rallentare_output("\nQuesta porta e' piu' dura rispetto alle altre, non riesci a sfondarla!\n\n",MILLISECONDI);
 		}
 		else
 		{
@@ -498,7 +500,7 @@ stringa prendere_frammento(stringa risposta)
 	if(cella_attuale % PEZZO_MAPPA_EST == 0 && cella_attuale != 0)
 	{
 		scrivere_frammento_est(&inv, true);
-		rallentare_output("\nHai preso il frammento di mappa EST!\n", MILLISECONDI);
+		rallentare_output("\nHai preso il frammento di mappa EST!\n\n", MILLISECONDI);
 		cella_attuale /= PEZZO_MAPPA_EST;
 		scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
@@ -507,7 +509,7 @@ stringa prendere_frammento(stringa risposta)
 	else if(cella_attuale % PEZZO_MAPPA_NORD == 0 && cella_attuale != 0)
 	{
 		scrivere_frammento_nord(&inv, true);
-		rallentare_output("\nHai preso il frammento di mappa NORD!\n", MILLISECONDI);
+		rallentare_output("\nHai preso il frammento di mappa NORD!\n\n", MILLISECONDI);
 		cella_attuale /= PEZZO_MAPPA_NORD;
 		scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
@@ -516,7 +518,7 @@ stringa prendere_frammento(stringa risposta)
 	else if(cella_attuale % PEZZO_MAPPA_SUD == 0 && cella_attuale != 0)
 	{
 		scrivere_frammento_sud(&inv, true);
-		rallentare_output("\nHai preso il frammento di mappa SUD!\n", MILLISECONDI);
+		rallentare_output("\nHai preso il frammento di mappa SUD!\n\n", MILLISECONDI);
 		cella_attuale /= PEZZO_MAPPA_SUD;
 		scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
@@ -562,7 +564,7 @@ stringa prendere_chiave(stringa risposta)
 
 void gestire_errore_semantico()
 {
-	rallentare_output("\nNon puoi usare questo comando qui!\n\n", MILLISECONDI);
+	rallentare_output("\n\nNon puoi usare questo comando qui!\n\n", MILLISECONDI);
 }
 
 void gestire_finale(bool cifrato)
@@ -693,14 +695,15 @@ void muovere_personaggio(stringa direzione)
 		{
 			if(leggere_y(posizione_precedente) != leggere_y(pos_successiva) || leggere_x(posizione_precedente) != leggere_x(pos_successiva))
 			{
-				rallentare_output("C'e' una porta chiusa davanti a te! Cerca un modo per superarla...\n", MILLISECONDI);		//Visualizzazione messaggio porta.
+				rallentare_output("\nC'e' una porta chiusa davanti a te! Cerca un modo per superarla...\n\n", MILLISECONDI);		//Visualizzazione messaggio porta.
 				rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);		//Visualizzazione lenta delle direzioni disponibili.
+				printf("\n");
 			}
 			else
 			{
 				posizione_precedente = pos;						//Aggiornamento posizione precedente.
 				pos = pos_successiva;							//Modifica della posizione attuale.
-				rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);		//Visualizzazione lenta delle direzioni disponibili.
+				//rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);		//Visualizzazione lenta delle direzioni disponibili.
 				printf("\n");									//Stampa carattere di new line.
 				gestire_cella();								//Chiamata della funzione per la gestione delle celle.
 			}
@@ -709,7 +712,7 @@ void muovere_personaggio(stringa direzione)
 		{
 			posizione_precedente = pos;							//Aggiornamento posizione precedente.
 			pos = pos_successiva;								//Modifica della posizione attuale.
-			rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);		//Visualizzazione lenta delle direzioni disponibili.
+			//rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);		//Visualizzazione lenta delle direzioni disponibili.
 			printf("\n");										//Stampa carattere di new line.
 			gestire_cella();									//Chiamata della funzione per la gestione delle celle.
 		}
@@ -719,6 +722,7 @@ void muovere_personaggio(stringa direzione)
 		percorso_file = allocare_stringa(percorso_file, 0);
 		sprintf(percorso_file, "storia/muri/muro%d.txt", rand() % 4 + 1);
 		stringa_file = leggere_file_testo(percorso_file, stringa_file);		//Assegnazione a stringa_file del contenuto del file di testo.
+		printf("\n");
 		rallentare_output(stringa_file, MILLISECONDI);			//Visualizzazione lenta del contenuto del file di testo.
 	}
 }
