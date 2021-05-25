@@ -2,7 +2,7 @@ Questa porta ti ricorda qualcosa...
 
 ...e' la porta verso la sala del trono!
 
-E' malmessa, provi a sfondarla e si rompe.
+E' malmessa, provi ad aprirla ma rimane chiusa e ha prodotto un forte cigolio.
 
 Il rumore deve aver attirato qualcuno...
 
@@ -21,4 +21,10 @@ o+o \ / \0                      0/ \ / (=)
 
 ...sono delle guardie. 
 Parlano di una stanza segreta in cui il re nasconde il suo tesoro. 
+
+
+Ora che le guardie sono andate via si potrebbe pensare di sfondare la porta.
+
+
+
 
