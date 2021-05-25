@@ -1,6 +1,7 @@
-#include "../utility.h"
 #ifndef STRINGA_H
 #define STRINGA_H
+
+#include "../bool.h"
 
 /**
  * Questo modulo contiene il tipo di dato stringa con le relative funzioni legate ad esso. Il tipo di dato stringa è composto da un vettore

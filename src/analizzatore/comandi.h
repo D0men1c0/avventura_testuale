@@ -23,6 +23,12 @@
 
 // AZIONI PARTITA
 
+// MOVIMENTI
+#define NORD "nord"
+#define SUD "sud"
+#define EST "est"
+#define OVEST "ovest"
+
 //VERBI
 #define VISUALIZZA "visualizza"
 #define ESAMINA "esamina"

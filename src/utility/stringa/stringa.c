@@ -75,17 +75,7 @@ stringa allocare_stringa(stringa str, int dimensione)
 
 stringa concatenare_stringhe(stringa str, stringa str_2)
 {
-	int i = 0;
-
-	while(i < leggere_lunghezza(str_2))
-	{
-		str = scrivere_carattere(str, i + leggere_lunghezza(str),  str_2[i]);
-		i++;
-	}
-
-	str = scrivere_carattere(str, i + leggere_lunghezza(str),  '\0');
-
-	return str;
+	return strcat(str, str_2);
 }
 
 int leggere_lunghezza(stringa str)

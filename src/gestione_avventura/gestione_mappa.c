@@ -10,14 +10,120 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../utility/array/matrice.h"
-#include "../utility/stringa/stringa.h"
+#include "../utility/utility.h"
 #include "../gestione_file/gestione_file.h"
 #include "gestione_avventura.h"
 #include "gestione_mappa.h"
-#include "gestione_movimenti.h"
 #include "../inventario/gestione_inventario.h"
 #include "../personaggio/gestione_personaggio.h"
+
+int leggere_valore_matrice(matrice matrice_a, int riga, int colonna)
+{
+	return matrice_a[riga][colonna];
+}
+
+
+void scrivere_valore_matrice(matrice matrice_a, int riga, int colonna, int valore)
+{
+	matrice_a[riga][colonna] = valore;
+	return;
+}
+
+void scrivere_x(posizione * posizione_personaggio, int x)
+{
+	posizione_personaggio->x = x;		//Sovrascrittura della x nella posizione del personaggio.
+}
+
+void scrivere_y(posizione * posizione_personaggio, int y)
+{
+	posizione_personaggio->y = y;		//Sovrascrittura della y nella posizione del personaggio.
+}
+
+int leggere_x(posizione posizione_personaggio)
+{
+	return posizione_personaggio.x;		//Restituzione della x della posizione del personaggio.
+}
+
+int leggere_y(posizione posizione_personaggio)
+{
+	return posizione_personaggio.y;		//Restituzione della y della posizione del personaggio.
+}
+
+stringa trovare_direzioni_disponibili()
+{
+	int cella_attuale;												//Cella in cui il personaggio si trova attualmente.
+	posizione posizione_nord;										//Posizione a nord del personaggio.
+	posizione posizione_sud;										//Posizione a sud del personaggio.
+	posizione posizione_est;										//Posizione a est del personaggio.
+	posizione posizione_ovest;										//Posizione a ovest del personaggio.
+	bool nord;														//Variabile che stabilisce se il nord è disponibile.
+	bool sud;														//Variabile che stabilisce se il sud è disponibile.
+	bool est;														//Variabile che stabilisce se il est è disponibile.
+	bool ovest;														//Variabile che stabilisce se il ovest è disponibile.
+
+	stringa direzioni = "";											//Stringa contenente le varie direzioni percorribili.
+
+	cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));		//Assegnazione del valore corrispondente alla cella attuale della mappa.
+
+	direzioni = allocare_stringa(direzioni, 0);						//Allocazione della stringa "direzioni".
+	direzioni = scrivere_stringa(direzioni, "Direzioni disponibili: ");		//Inizializzazione della stringa "direzioni"
+
+	posizione_nord = posizione_sud = posizione_est = posizione_ovest = pos;		//Assegnazione alle varie variabili di posizione lo stesso valore della posizione del personaggio.
+
+	scrivere_y(&posizione_nord, leggere_y(pos) - 1);				//Modifica di "posizione_nord" per impostarla a nord della posizione del personaggio.
+	scrivere_y(&posizione_sud, leggere_y(pos) + 1);					//Modifica di "posizione_sud" per impostarla a sud della posizione del personaggio.
+	scrivere_x(&posizione_est, leggere_x(pos) + 1);					//Modifica di "posizione_est" per impostarla a est della posizione del personaggio.
+	scrivere_x(&posizione_ovest, leggere_x(pos) - 1);				//Modifica di "posizione_ovest" per impostarla a ovest della posizione del personaggio.
+
+	/**
+	 * Se la cella attuale contiene l'elemento PORTA_CHIUSA_SFONDABILE, PORTA_SEMPLICE o PORTA_RE tra i suoi divisori,
+	 * si controlla se la cella nella posizione in corrispondenza di ogni punto cardinale è diversa da un muro
+	 * e se questa è uguale alla posizione precedente del giocatore. Se queste condizioni sono entrambi vere,
+	 * allora la variabile diverrà true e la direzione sarà segnata come disponibile.
+	 * Se la cella attuale non contiene nessuno di quei tre elementi, viene controllata la sola presenza di un muro nella posizione
+	 * in corrispondenza di ogni punto cardinale. Se questo non è presente, la variabile diverrà true e
+	 * la direzione sarà segnata come disponibile.
+	*/
+
+	if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 || cella_attuale % PORTA_SEMPLICE == 0 || cella_attuale % PORTA_RE == 0)
+	{
+		nord = leggere_valore_matrice(mappa, leggere_y(pos) - 1, leggere_x(pos)) != MURO && (leggere_y(posizione_precedente) == leggere_y(posizione_nord) && leggere_x(posizione_precedente) == leggere_x(posizione_nord));
+		sud = leggere_valore_matrice(mappa, leggere_y(pos) + 1, leggere_x(pos)) != MURO && (leggere_y(posizione_precedente) == leggere_y(posizione_sud) && leggere_x(posizione_precedente) == leggere_x(posizione_sud));
+		est = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos) + 1) != MURO && (leggere_y(posizione_precedente) == leggere_y(posizione_est) && leggere_x(posizione_precedente) == leggere_x(posizione_est));
+		ovest = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos) - 1) != MURO && (leggere_y(posizione_precedente) == leggere_y(posizione_ovest) && leggere_x(posizione_precedente) == leggere_x(posizione_ovest));
+	}
+	else
+	{
+		nord = leggere_valore_matrice(mappa, leggere_y(pos) - 1, leggere_x(pos)) != MURO;
+		sud = leggere_valore_matrice(mappa, leggere_y(pos) + 1, leggere_x(pos)) != MURO;
+		est = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos) + 1) != MURO;
+		ovest = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos) - 1) != MURO;
+	}
+
+	/**
+	 * Se le variabili corrispondenti ai punti cardinali sono vere, la direzione sarà concatenata alla stringa "direzioni".
+	*/
+
+	if(nord)
+		direzioni = concatenare_stringhe(direzioni, "NORD - ");					//Concatenazione della direzione nord alla stringa "direzioni".
+	if(sud)
+		direzioni = concatenare_stringhe(direzioni, "SUD - ");					//Concatenazione della direzione sud alla stringa "direzioni".
+	if(est)
+		direzioni = concatenare_stringhe(direzioni, "EST - ");					//Concatenazione della direzione est alla stringa "direzioni".
+	if(ovest)
+		direzioni = concatenare_stringhe(direzioni, "OVEST - ");				//Concatenazione della direzione ovest alla stringa "direzioni".
+
+	/**
+	 * Con le successive due istruzioni viene sovrascritto lo spazio successivo all'ultima delle direzioni disponibili
+	 * con un carattere di new line e il carattere successivo viene sovrascritto dal carattere di fine stringa.
+	 * È stato fatto ciò allo scopo di migliorare esteticamente il messaggio delle direzioni.
+	*/
+
+	direzioni[leggere_lunghezza(direzioni) - 3] = '\n';
+	direzioni[leggere_lunghezza(direzioni) - 2] = '\0';
+
+	return direzioni;												//Restituzione della stringa contenente le direzioni disponibili.
+}
 
 void leggere_mappa(matrice mappa)
 {

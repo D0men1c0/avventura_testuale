@@ -4,7 +4,6 @@
 #include "../inventario/gestione_inventario.h"
 #include "../gestione_avventura/gestione_avventura.h"
 #include "../gestione_avventura/gestione_mappa.h"
-#include "../gestione_avventura/gestione_movimenti.h"
 #include "../personaggio/gestione_personaggio.h"
 
 // FILE BINARI

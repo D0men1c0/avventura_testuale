@@ -6,7 +6,7 @@
 #include "../gestione_avventura/gestione_avventura.h"
 #include "../utility/utility.h"
 #include "../inventario/gestione_inventario.h"
-#include "../gestione_avventura/gestione_movimenti.h"
+#include "../gestione_avventura/gestione_mappa.h"
 #include "../gestione_file/gestione_file.h"
 
 stringa leggere_nome(personaggio personaggio_nome)

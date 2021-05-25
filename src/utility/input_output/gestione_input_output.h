@@ -11,7 +11,7 @@
 #ifndef GESTIONE_INPUT_OUTPUT_H
 #define GESTIONE_INPUT_OUTPUT_H
 
-#include "../stringa/stringa.h"
+#include "../utility.h"
 
 #define MILLISECONDI 0 //35
 #define MILLISEC_CASTELLO 7

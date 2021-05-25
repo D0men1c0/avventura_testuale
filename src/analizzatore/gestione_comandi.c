@@ -1,12 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 #include "../utility/stringa/stringa.h"
 #include "comandi.h"
 #include "strutture_analizzatore.h"
 #include "../inventario/gestione_inventario.h"
 #include "../gestione_avventura/gestione_avventura.h"
 #include "../gestione_avventura/gestione_mappa.h"
-#include "../gestione_avventura/gestione_movimenti.h"
 #include "../gestione_file/gestione_file.h"
 #include "../personaggio/gestione_personaggio.h"
 
@@ -27,6 +27,7 @@ stringa prendere_frammento(stringa risposta);
 stringa prendere_chiave(stringa risposta);
 void gestire_errore_semantico();
 void gestire_finale(bool cifrato);
+void muovere_personaggio(stringa direzione);					//Funzione per lo spostamento del personaggio.
 
 bool gestire_movimenti()
 {
@@ -622,4 +623,102 @@ void gestire_finale(bool cifrato)
 	scrivere_nome(&giocatore, "\0");
 	free(risposta);
 	free(risposta_indovinello);
+}
+
+void muovere_personaggio(stringa direzione)
+{
+	stringa stringa_file = "";										//Stringa in cui verrà inserito il contenuto dei file di testo.
+	int cella_successiva;											//Cella il cui il personaggio si troverà dopo lo spostamento
+	int cella_attuale;												//Cella in cui il personaggio si trova attualmente.
+	posizione posizione_nord;										//Posizione a nord del personaggio.
+	posizione posizione_sud;										//Posizione a sud del personaggio.
+	posizione posizione_est;										//Posizione a est del personaggio.
+	posizione posizione_ovest;										//Posizione a ovest del personaggio.
+	posizione pos_successiva;
+	time_t tempo;
+	stringa percorso_file = "";
+	srand((unsigned) time(&tempo));
+
+	posizione_nord = posizione_sud = posizione_est = posizione_ovest = pos;		//Assegnazione alle varie variabili di posizione lo stesso valore della posizione del personaggio.
+
+	scrivere_y(&posizione_nord, leggere_y(pos) - 1);				//Modifica di "posizione_nord" per impostarla a nord della posizione del personaggio.
+	scrivere_y(&posizione_sud, leggere_y(pos) + 1);					//Modifica di "posizione_sud" per impostarla a sud della posizione del personaggio.
+	scrivere_x(&posizione_est, leggere_x(pos) + 1);					//Modifica di "posizione_est" per impostarla a est della posizione del personaggio.
+	scrivere_x(&posizione_ovest, leggere_x(pos) - 1);				//Modifica di "posizione_ovest" per impostarla a ovest della posizione del personaggio.
+
+	cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));		//Assegnazione del valore corrispondente alla cella attuale della mappa.
+
+	/**
+	 * Questa sequenza di selezioni ci permette di confrontare la stringa "direzione" passata in input dalla funzione
+	 * con i vari punti cardinali. Dentro ogni selezione viene prima impostata la cella successiva in base al punto cardinale
+	 * con cui si sta confrontando attualmente la direzione, poi si controlla che questa non contenga un muro.
+	 * Se contiene un muro, lo spostamento non avviene e viene stampato un file di testo che avverte della presenza di esso,
+	 * altrimenti si procede con i controlli. Quindi è presente un altro controllo che verifica che la cella attuale contenga una porta:
+	 * in questo caso l'unica direzione consentita sarà quella da cui siamo venuti. Quindi, dopo aver controllato che la posizione
+	 * corrispondente al punto cardinale in questione è uguale alla posizione precedente, viene effettuato lo spostamento aggiornando
+	 * prima la posizione precedente e poi aggiornando le coordinate interessate della posizione corrente, stampando le nuove direzioni
+	 * disponibili e richiamando la funzione che ci permette di gestire la cella. Altrimenti verrà visualizzato un messaggio che ci
+	 * avverte della presenza della porta e lo spostamento non avverrà.
+	 * Se la cella attuale non contiene nessuna porta, vengono effettuate direttamente le operazioni di spostamento sopra descritte.
+	*/
+
+	if(confrontare_stringhe(direzione, NORD))
+	{
+		cella_successiva = leggere_valore_matrice(mappa, leggere_y(pos) - 1, leggere_x(pos));		//Assegnazione del valore corrispondente alla cella a nord della mappa.
+		pos_successiva = posizione_nord;
+	}
+
+	if(confrontare_stringhe(direzione, SUD))
+	{
+		cella_successiva = leggere_valore_matrice(mappa, leggere_y(pos) + 1, leggere_x(pos));		//Assegnazione del valore corrispondente alla cella a nord della mappa.
+		pos_successiva = posizione_sud;
+	}
+
+	if(confrontare_stringhe(direzione, EST))
+	{
+		cella_successiva = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos) + 1);		//Assegnazione del valore corrispondente alla cella a nord della mappa.
+		pos_successiva = posizione_est;
+	}
+
+	if(confrontare_stringhe(direzione, OVEST))
+	{
+		cella_successiva = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos) - 1);		//Assegnazione del valore corrispondente alla cella a nord della mappa.
+		pos_successiva = posizione_ovest;
+	}
+
+
+	if(cella_successiva != MURO)
+	{
+		if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 || cella_attuale % PORTA_SEMPLICE == 0 || cella_attuale % PORTA_RE == 0)
+		{
+			if(leggere_y(posizione_precedente) != leggere_y(pos_successiva) || leggere_x(posizione_precedente) != leggere_x(pos_successiva))
+			{
+				rallentare_output("C'e' una porta chiusa davanti a te! Cerca un modo per superarla...\n", MILLISECONDI);		//Visualizzazione messaggio porta.
+				rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);		//Visualizzazione lenta delle direzioni disponibili.
+			}
+			else
+			{
+				posizione_precedente = pos;						//Aggiornamento posizione precedente.
+				pos = pos_successiva;							//Modifica della posizione attuale.
+				rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);		//Visualizzazione lenta delle direzioni disponibili.
+				printf("\n");									//Stampa carattere di new line.
+				gestire_cella();								//Chiamata della funzione per la gestione delle celle.
+			}
+		}
+		else
+		{
+			posizione_precedente = pos;							//Aggiornamento posizione precedente.
+			pos = pos_successiva;								//Modifica della posizione attuale.
+			rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);		//Visualizzazione lenta delle direzioni disponibili.
+			printf("\n");										//Stampa carattere di new line.
+			gestire_cella();									//Chiamata della funzione per la gestione delle celle.
+		}
+	}
+	else
+	{
+		percorso_file = allocare_stringa(percorso_file, 0);
+		sprintf(percorso_file, "storia/muri/muro%d.txt", rand() % 4 + 1);
+		stringa_file = leggere_file_testo(percorso_file, stringa_file);		//Assegnazione a stringa_file del contenuto del file di testo.
+		rallentare_output(stringa_file, MILLISECONDI);			//Visualizzazione lenta del contenuto del file di testo.
+	}
 }

@@ -7,15 +7,12 @@
  * La funzione leggere_mappa() ha il compito di leggere la mappa da file, la funzione gestire_cella() ha invece il compito di stabilire il comportamento
  * delle celle nelle quali non sono presenti comandi particolari effettuati dal giocatore oppure la semplice gestione di messaggi di output.
 */
+#ifndef GESTIONE_MAPPA_H_
+#define GESTIONE_MAPPA_H_
 
-#include "../utility/array/matrice.h"
-#include "gestione_movimenti.h"
 #include "../inventario/gestione_inventario.h"
 #include "../personaggio/gestione_personaggio.h"
 #include "gestione_avventura.h"
-
-#ifndef GESTIONE_MAPPA_H_
-#define GESTIONE_MAPPA_H_
 
 #define SPAWN_X 4
 #define SPAWN_Y 8
@@ -38,8 +35,27 @@
 #define PEZZO_MAPPA_NORD 43             //Costante intera rappresentante una cella contenente la parte nord della mappa.
 #define PEZZO_MAPPA_SUD 47              //Costante intera rappresentante una cella contenente la parte sud della mappa.
 
-void leggere_mappa(matrice mappa);      //Funzione per la lettura della mappa da file.
-void gestire_cella();                   //Funzione per la gestione delle singole celle.
+#define RIGHE 10
+#define COLONNE 14
+
+typedef int matrice[RIGHE][COLONNE];
+
+typedef struct
+{
+	int x;														//Valore della posizione nelle ascisse.
+	int y;														//Valore della posizione nelle ordinate.
+}posizione;
+
+int leggere_valore_matrice(matrice matrice_a, int riga, int colonna);
+void scrivere_valore_matrice(matrice matrice_a, int riga, int colonna, int valore);
+
+void scrivere_x(posizione *posizione_personaggio, int x);		//Funzione per la modifica della x nella struttura della posizione.
+void scrivere_y(posizione *posizione_personaggio, int y);		//Funzione per la modifica della y nella struttura della posizione.
+int leggere_x(posizione posizione_personaggio);					//Funzione per la lettura della x nella struttura della posizione.
+int leggere_y(posizione posizione_personaggio);					//Funzione per la lettura della y nella struttura della posizione.
+void leggere_mappa(matrice mappa);      						//Funzione per la lettura della mappa da file.
+void gestire_cella();         							        //Funzione per la gestione delle singole celle.
+stringa trovare_direzioni_disponibili();						//Funzione per la ricerca delle direzioni disponibili al giocatore.
 
 #endif
 
