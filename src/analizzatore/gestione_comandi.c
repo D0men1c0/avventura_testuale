@@ -356,7 +356,7 @@ stringa esaminare_stanza(stringa risposta)
 
 		sprintf(nome_file, "storia/[%d][%d].txt", leggere_y(pos), leggere_x(pos));
 		risposta = leggere_file_storia(nome_file, risposta);
-		printf("--------------------------------------------------------------------------\n\n");
+		printf("\n--------------------------------------------------------------------------\n\n");
 		rallentare_output(risposta, MILLISECONDI);
 		printf("--------------------------------------------------------------------------\n\n");
 	}

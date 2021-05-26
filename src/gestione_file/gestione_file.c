@@ -137,7 +137,7 @@ stringa leggere_file_storia(stringa nome_file, stringa stringa_file)
 	}
 	else
 	{
-		printf("\nNon c'e' nulla di interessante qui!\n");
+		stringa_file = scrivere_stringa(stringa_file, "Non c'e' nulla di interessante qui!\n\n");
 	}
 
 	fclose(fp);
