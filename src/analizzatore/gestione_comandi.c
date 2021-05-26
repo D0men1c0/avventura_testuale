@@ -465,6 +465,7 @@ stringa sfondare_porta(stringa risposta)
 			{
 				rallentare_output("\nHai sfondato con successo la porta.\n\n",MILLISECONDI);
 				cella_attuale /= PORTA_CHIUSA_SFONDABILE;
+				scrivere_forza(&giocatore,leggere_forza(giocatore)-2);
 				scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 				rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
 				printf("\n");
