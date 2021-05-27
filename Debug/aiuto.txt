@@ -1,17 +1,17 @@
 
-Ciao i comandi di movimento sono i seguenti:
+#COLORE_ROSSO#Ciao i comandi di movimento sono i seguenti:
 #COLORE_GIALLO#1) nord  					-> se vuoi spostarti in avanti
 2) sud   					-> se vuoi spostarti indietro
 3) est   					-> se vuoi spostarti a destra
-4) ovest 					-> se vuoi spostarti a sinistra#COLORE_BIANCO#
+4) ovest 					-> se vuoi spostarti a sinistra
 
-Comandi per la gestione della partita:
-#COLORE_BLU#1) salva                   			-> se vuoi salvare la partita
+#COLORE_ROSSO#Comandi per la gestione della partita:
+#COLORE_CIANO#1) salva                   			-> se vuoi salvare la partita
 2) carica o carica partita 			-> se vuoi caricare la partita
 3) nuova o nuova partita   			-> se vuoi iniziare una nuova partita perdendo i salvataggi
-4) aiuto                   			-> per visualizzare questa schermata#COLORE_BIANCO#
+4) aiuto                   			-> per visualizzare questa schermata
 
-Comandi per la storia:
+#COLORE_ROSSO#Comandi per la storia:
 #COLORE_VERDE#1) prendi chiave                            	-> per prendere la chiave
 2) prendi frammento mappa 		    	-> per raccogliere il frammento di mappa
 3) sfonda porta                             	-> per sfondare la porta

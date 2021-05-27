@@ -22,8 +22,9 @@
 #define STRINGA_COLORE_VERDE "COLORE_VERDE#"
 #define STRINGA_COLORE_GIALLO "COLORE_GIALLO#"
 #define STRINGA_COLORE_BLU "COLORE_BLU#"
+#define STRINGA_COLORE_CIANO  "COLORE_CIANO#"
+#define STRINGA_COLORE_PORPORA 	"COLORE_PORPORA#"
 #define STRINGA_COLORE_BIANCO "COLORE_BIANCO#"
-
 
 void leggi_linea();
 int controllare_colore(stringa messaggio, int indice);
@@ -130,10 +131,19 @@ int controllare_colore(stringa messaggio, int indice)
 		{
 			printf(COLORE_VERDE);
 		}
+		else if(confrontare_stringhe(colore, STRINGA_COLORE_CIANO))
+		{
+			printf(COLORE_CIANO);
+		}
+		else if(confrontare_stringhe(colore, STRINGA_COLORE_PORPORA))
+		{
+			printf(COLORE_PORPORA);
+		}
 		else if(confrontare_stringhe(colore, STRINGA_COLORE_BIANCO))
 		{
 			printf(COLORE_BIANCO);
 		}
+
 		else
 		{
 			lunghezza_colore = 0;
