@@ -464,9 +464,10 @@ stringa sfondare_porta(stringa risposta)
 			if(leggere_forza(giocatore) > 2)
 			{
 				rallentare_output("\nHai sfondato con successo la porta.\n\n",MILLISECONDI);
+				rallentare_output("\nVisto il grande sforzo dovuto allo sfondamento della porta, ti sei indebolito. Hai perso 2 punti forza.\n\n",MILLISECONDI);
 				cella_attuale /= PORTA_CHIUSA_SFONDABILE;
-				scrivere_forza(&giocatore,leggere_forza(giocatore)-2);
-				scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+				scrivere_forza(&giocatore, leggere_forza(giocatore) - 2);
+				scrivere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos), cella_attuale);
 				rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
 				printf("\n");
 			}
@@ -541,11 +542,19 @@ stringa prendere_chiave(stringa risposta)
 
 	if(cella_attuale % CHIAVE_SEMPLICE == 0 && cella_attuale != 0)
 	{
-		scrivere_chiave_semplice(&inv, true);
-		rallentare_output("\nHai raccolto la chiave semplice!\n\n", MILLISECONDI);
-		cella_attuale /= CHIAVE_SEMPLICE;
-		scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
-		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+		if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0)
+		{
+			rallentare_output("\nNon riesci ad afferrare la chiave, bisogna necessariamente superare questa porta!\n\n", MILLISECONDI);
+		}
+		else
+		{
+			scrivere_chiave_semplice(&inv, true);
+			rallentare_output("\nHai raccolto la chiave semplice!\n\n", MILLISECONDI);
+			cella_attuale /= CHIAVE_SEMPLICE;
+			scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
+			rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+			printf("\n");
+		}
 	}
 	else if(cella_attuale % CHIAVE_PORTA_RE == 0 && cella_attuale != 0)
 	{
@@ -554,6 +563,7 @@ stringa prendere_chiave(stringa risposta)
 		cella_attuale /= CHIAVE_PORTA_RE;
 		scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+		printf("\n");
 	}
 	else
 	{
@@ -565,7 +575,7 @@ stringa prendere_chiave(stringa risposta)
 
 void gestire_errore_semantico()
 {
-	rallentare_output("\n\nNon puoi usare questo comando qui!\n\n", MILLISECONDI);
+	rallentare_output("\nNon puoi usare questo comando qui!\n\n", MILLISECONDI);
 }
 
 void gestire_finale(bool cifrato)
