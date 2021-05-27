@@ -11,15 +11,15 @@
 |  Sembra essere una mappa, ma e' incompleta.                               |
 |                                                                           |
 |                                                                           |
-|        		#COLORE_GIALLO#|   _|   |  ___|                                    |
-|			|  |     | |_       				    |
-|			|  |     |   |      				    |
-|			|  |     |   |__                                    |
-|			|  |     |      |                                   |
-|			|  |     |  ____|                                   |
-|			|  |_____| |________                                |
-|			|                                                   |
-|			\___________________#COLORE_BIANCO#                                |   	
+|        		    #COLORE_GIALLO#|   _|   |  ___|    #COLORE_BIANCO#                            |
+|			    #COLORE_GIALLO#|  |     | |_       #COLORE_BIANCO#                            |
+|			    #COLORE_GIALLO#|  |     |   |      #COLORE_BIANCO#                            |
+|			    #COLORE_GIALLO#|  |     |   |__    #COLORE_BIANCO#                            |
+|			    #COLORE_GIALLO#|  |     |      |   #COLORE_BIANCO#                            |
+|			    #COLORE_GIALLO#|  |     |  ____|   #COLORE_BIANCO#                            |
+|			    #COLORE_GIALLO#|  |_____| |________#COLORE_BIANCO#                            |
+|			    #COLORE_GIALLO#|                   #COLORE_BIANCO#                            |
+|			    #COLORE_GIALLO#\___________________#COLORE_BIANCO#                            |   	
 |									    |
 |                                                                           |
 |_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|                                                                             

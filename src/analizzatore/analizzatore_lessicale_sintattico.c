@@ -112,7 +112,7 @@ bool gestire_errore_lessicale()
 {
 	bool esito;
 
-	rallentare_output("Comando non riconosciuto! ", MILLISECONDI);
+	rallentare_output("\nComando non riconosciuto! ", MILLISECONDI);
 	esito = ERRORE;
 
 	return esito;
@@ -243,7 +243,7 @@ bool gestire_errore_sintattico()
 {
 	bool esito;
 
-	rallentare_output("Sintassi non riconosciuta! ", MILLISECONDI);
+	rallentare_output("\nSintassi non riconosciuta! ", MILLISECONDI);
 	esito = false;
 
 	return esito;
