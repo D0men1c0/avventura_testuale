@@ -178,6 +178,9 @@ void impostare_inizio()
 	impostare_valori_personaggio();
 	leggere_mappa(mappa);
 
+	if(leggere_intelligenza(giocatore) < 3)
+		scrivere_valore_matrice(mappa, 4, 1, 0);
+
 	scrivere_y(&pos, SPAWN_Y);
 	scrivere_x(&pos, SPAWN_X);
 

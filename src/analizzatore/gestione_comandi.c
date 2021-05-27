@@ -464,7 +464,7 @@ stringa sfondare_porta(stringa risposta)
 			if(leggere_forza(giocatore) > 2)
 			{
 				rallentare_output("\nHai sfondato con successo la porta.\n\n",MILLISECONDI);
-				rallentare_output("\nVisto il grande sforzo dovuto allo sfondamento della porta, ti sei indebolito. Hai perso 2 punti forza.\n\n",MILLISECONDI);
+				rallentare_output("Visto il grande sforzo dovuto allo sfondamento della porta, ti sei indebolito. Hai perso 2 punti forza.\n\n",MILLISECONDI);
 				cella_attuale /= PORTA_CHIUSA_SFONDABILE;
 				scrivere_forza(&giocatore, leggere_forza(giocatore) - 2);
 				scrivere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos), cella_attuale);
@@ -506,6 +506,7 @@ stringa prendere_frammento(stringa risposta)
 		cella_attuale /= PEZZO_MAPPA_EST;
 		scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+		printf("\n");
 
 	}
 	else if(cella_attuale % PEZZO_MAPPA_NORD == 0 && cella_attuale != 0)
@@ -515,6 +516,7 @@ stringa prendere_frammento(stringa risposta)
 		cella_attuale /= PEZZO_MAPPA_NORD;
 		scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+		printf("\n");
 
 	}
 	else if(cella_attuale % PEZZO_MAPPA_SUD == 0 && cella_attuale != 0)
@@ -524,6 +526,7 @@ stringa prendere_frammento(stringa risposta)
 		cella_attuale /= PEZZO_MAPPA_SUD;
 		scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
+		printf("\n");
 
 	}
 	else
@@ -714,7 +717,6 @@ void muovere_personaggio(stringa direzione)
 			{
 				posizione_precedente = pos;						//Aggiornamento posizione precedente.
 				pos = pos_successiva;							//Modifica della posizione attuale.
-				//rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);		//Visualizzazione lenta delle direzioni disponibili.
 				printf("\n");									//Stampa carattere di new line.
 				gestire_cella();								//Chiamata della funzione per la gestione delle celle.
 			}
@@ -723,7 +725,6 @@ void muovere_personaggio(stringa direzione)
 		{
 			posizione_precedente = pos;							//Aggiornamento posizione precedente.
 			pos = pos_successiva;								//Modifica della posizione attuale.
-			//rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);		//Visualizzazione lenta delle direzioni disponibili.
 			printf("\n");										//Stampa carattere di new line.
 			gestire_cella();									//Chiamata della funzione per la gestione delle celle.
 		}

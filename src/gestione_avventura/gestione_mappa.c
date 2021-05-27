@@ -201,7 +201,7 @@ void gestire_cella()
 	}
 
 	/**
-	 * Se la cella attuale contiene l'elemento POWER_UP_FORZA tra i suoi divisori, viene incrementata la forza del giocatore.
+	 * Se la cella attuale contiene l'elemento POWER_UP_FORZA o POWER_UP_FORZA_2 tra i suoi divisori, viene incrementata la forza del giocatore.
 	 * Successivamente l'elemento in questione viene rimosso dalla cella attuale per evitare che questa operazione si ripeta ogni volta
 	 * che il giocatore passa sulla stessa cella.
 	*/
@@ -210,6 +210,12 @@ void gestire_cella()
 	{
 		scrivere_forza(&giocatore, leggere_forza(giocatore) + 1);						//Chiamata della funzione scrivere_forza per incrementare la forza.
 		cella_attuale /= POWER_UP_FORZA;												//Rimozione dell'elemento POWER_UP_FORZA dalla cella attuale.
+	}
+
+	if(cella_attuale % POWER_UP_FORZA_2 == 0)
+	{
+		scrivere_forza(&giocatore, leggere_forza(giocatore) + 2);						//Chiamata della funzione scrivere_forza per incrementare la forza di 2.
+		cella_attuale /= POWER_UP_FORZA_2;												//Rimozione dell'elemento POWER_UP_FORZA_2 dalla cella attuale.
 	}
 
 	/**
@@ -222,6 +228,13 @@ void gestire_cella()
 	{
 		scrivere_vita(&giocatore, leggere_vita(giocatore) - 1);							//Chiamata della funzione scrivere_vita per decrementare le vite a disposizione.
 		cella_attuale /= MALUS;															//Rimozione dell'elemento MALUS dalla cella attuale.
+	}
+
+	if(cella_attuale % MURO_INTELLIGENZA == 0)
+	{
+		printf(COLORE_CIANO);
+		rallentare_output("Data la tua elevata intelligenza sei riuscito a scoprire un passaggio segreto!\n\n", MILLISECONDI);
+		printf(COLORE_BIANCO);
 	}
 
 	/**

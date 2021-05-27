@@ -34,6 +34,8 @@
 #define PEZZO_MAPPA_EST 41              //Costante intera rappresentante una cella contenente la parte est della mappa.
 #define PEZZO_MAPPA_NORD 43             //Costante intera rappresentante una cella contenente la parte nord della mappa.
 #define PEZZO_MAPPA_SUD 47              //Costante intera rappresentante una cella contenente la parte sud della mappa.
+#define POWER_UP_FORZA_2 53
+#define MURO_INTELLIGENZA 59
 
 #define RIGHE 10
 #define COLONNE 14

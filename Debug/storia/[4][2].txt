@@ -1,23 +1,23 @@
 C'è una porta arrugginita...
 
 +------------------------------------+ 
-|#####|WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW| 
-|#####|WWWWWWWWWW.----.WWWWWWWWWWWWWW| 
-|#####|WWWWWWWW,'  ||  `.WWWWWWWWWWWW| 
-|#####|WWWWWWWI    ||    IWWWWWWWWWWW| 
-|#####|WWWWWWWI    ||    IWWWWWWWWWWW| 
-|#####|WWWWWWWI    ||    IWWWWWWWWWWW| 
-|#####|WWWWWWWI   _||_   IWWWWWWWWWWW| 
-|#####|WWWWWWWI  ' || `  IWWWWWWWWWWW| 
-|#####|WWWWWWWI    ||    IWWWWWWWWWWW| 
-|#####|WWWWWWWI    ||    IWWWWWWWWWWW| 
-|#####|WWWWWWWI    ||    IWWWWWWWWWWW| 
-|#####|WWWWWWWI____||____IWWWWWWWWWWW| 
-|#####/                              | 
-|####/                               | 
-|###/                                | 
-|##/                                 | 
-|#/                                  | 
+|WWWWW|WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW| 
+|WWWWW|WWWWWWWWWW.----.WWWWWWWWWWWWWW| 
+|WWWWW|WWWWWWWW,'  ||  `.WWWWWWWWWWWW| 
+|WWWWW|WWWWWWWI    ||    IWWWWWWWWWWW| 
+|WWWWW|WWWWWWWI    ||    IWWWWWWWWWWW| 
+|WWWWW|WWWWWWWI    ||    IWWWWWWWWWWW| 
+|WWWWW|WWWWWWWI   _||_   IWWWWWWWWWWW| 
+|WWWWW|WWWWWWWI  ' || `  IWWWWWWWWWWW| 
+|WWWWW|WWWWWWWI    ||    IWWWWWWWWWWW| 
+|WWWWW|WWWWWWWI    ||    IWWWWWWWWWWW| 
+|WWWWW|WWWWWWWI    ||    IWWWWWWWWWWW| 
+|WWWWW|WWWWWWWI____||____IWWWWWWWWWWW| 
+|WWWWW/                              | 
+|WWWW/                               | 
+|WWW/                                | 
+|WW/                                 | 
+|W/                                  | 
 |/                                   | 
 +------------------------------------+ 
 

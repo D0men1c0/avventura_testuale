@@ -1,5 +1,5 @@
 
-#COLORE_ROSSO#Ciao i comandi di movimento sono i seguenti:
+#COLORE_ROSSO#Ciao, i comandi di movimento sono i seguenti:
 #COLORE_GIALLO#1) nord  					-> se vuoi spostarti in avanti
 2) sud   					-> se vuoi spostarti indietro
 3) est   					-> se vuoi spostarti a destra
