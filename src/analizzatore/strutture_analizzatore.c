@@ -27,7 +27,9 @@ void leggere_comando()
 	int i;
 	int esito;
 
+	printf(COLORE_ROSSO);
 	rallentare_output("Inserisci il comando: ", MILLISECONDI);
+	printf(COLORE_BIANCO);
 
 	leggere_sorgente();
 

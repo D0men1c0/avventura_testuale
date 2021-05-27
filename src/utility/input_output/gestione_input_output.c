@@ -12,8 +12,21 @@
 #include <time.h>
 #include <stdlib.h>
 #include "../stringa/stringa.h"
+#include "gestione_input_output.h"
+
+
+//DEFINIZIONE COLORI
+
+
+#define STRINGA_COLORE_ROSSO "COLORE_ROSSO#"
+#define STRINGA_COLORE_VERDE "COLORE_VERDE#"
+#define STRINGA_COLORE_GIALLO "COLORE_GIALLO#"
+#define STRINGA_COLORE_BLU "COLORE_BLU#"
+#define STRINGA_COLORE_BIANCO "COLORE_BIANCO#"
+
 
 void leggi_linea();
+int controllare_colore(stringa messaggio, int indice);
 
 void ritardare_programma(int millisecondi)
 {
@@ -45,16 +58,96 @@ void ritardare_programma(int millisecondi)
 
 void rallentare_output(stringa messaggio, int millisecondi)
 {
-    int i;                                                  //Indice utilizzato per indicare il carattere corrente della stringa
+	int pos;
+
+    int i;	                                                //Indice utilizzato per indicare il carattere corrente della stringa
     i = 0;                                                  //Inizializzazione a zero dell'indice
 
     while (messaggio[i] != '\0')                            //Iterazione che dura finché non si incontra il carattere di fine stringa
     {
-        printf("%c", messaggio[i]);                         //Stampa del carattere corrente
         if (messaggio[i] != ' ')                            //Struttura di controllo per evitare che il ritardo venga utilizzato su spaziature
-            ritardare_programma(millisecondi);              //Chiamata della funzione per il ritardo
+        {
+        	if(messaggio[i] == '#')
+        	{
+        		pos = controllare_colore(messaggio, i+1);
+        		i += pos;
+        	}
+
+        	ritardare_programma(millisecondi);              //Chiamata della funzione per il ritardo
+        }
+
+
+        printf("%c", messaggio[i]);							//Stampa del carattere corrente
+
         i++;
   }
+}
+
+int controllare_colore(stringa messaggio, int indice)
+{
+	int lunghezza_colore;
+	lunghezza_colore = 0;
+
+	bool esito;
+	esito = false;
+
+	stringa colore = "";
+	colore = allocare_stringa(colore, 0);
+
+	while(indice < leggere_lunghezza(messaggio) && esito == false)
+	{
+		if(messaggio[indice] == '#')
+		{
+			esito = true;
+		}
+
+		colore[lunghezza_colore] = messaggio[indice];
+
+		lunghezza_colore++;
+		indice++;
+	}
+
+	colore[lunghezza_colore] = '\0';
+
+
+	if(esito == true)
+	{
+		lunghezza_colore += +1;
+
+		if(confrontare_stringhe(colore, STRINGA_COLORE_ROSSO))
+		{
+			printf(COLORE_ROSSO);
+		}
+		else if(confrontare_stringhe(colore, STRINGA_COLORE_BLU))
+		{
+			printf(COLORE_BLU);
+		}
+		else if(confrontare_stringhe(colore, STRINGA_COLORE_GIALLO))
+		{
+			printf(COLORE_GIALLO);
+		}
+		else if(confrontare_stringhe(colore, STRINGA_COLORE_VERDE))
+		{
+			printf(COLORE_VERDE);
+		}
+		else if(confrontare_stringhe(colore, STRINGA_COLORE_BIANCO))
+		{
+			printf(COLORE_BIANCO);
+		}
+		else
+		{
+			lunghezza_colore = 0;
+		}
+	}
+
+	if(esito == false)
+	{
+		lunghezza_colore = 0;
+	}
+
+	free(colore);
+
+	return lunghezza_colore;
 }
 
 void pulire_schermo()

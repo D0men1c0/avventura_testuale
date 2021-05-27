@@ -19,6 +19,13 @@
 #define MILLISEC_FINALE 45
 #define END 5
 
+#define COLORE_ROSSO     "\033[0;31m"
+#define COLORE_VERDE     "\033[0;32m"
+#define COLORE_GIALLO     "\033[0;33m"
+#define COLORE_BLU        "\033[0;34m"
+#define COLORE_BIANCO  "\033[0;37m"
+
+
 void ritardare_programma(int millisecondi);
 void rallentare_output(stringa messaggio, int millisecondi);
 void pulire_schermo();
