@@ -196,7 +196,13 @@ void gestire_cella()
 
 	if(cella_attuale % POWER_UP_VITA == 0)
 	{
-		scrivere_vita(&giocatore, leggere_vita(giocatore) + 1);							//Chiamata della funzione scrivere_vita per incrementare le vite a disposizione.
+		if(leggere_vita(giocatore) < 5)
+		{
+			scrivere_vita(&giocatore, leggere_vita(giocatore) + 1);							//Chiamata della funzione scrivere_vita per incrementare le vite a disposizione.
+			printf(COLORE_PORPORA);
+			rallentare_output("La tua vita e' aumentata!\n\n",MILLISECONDI);
+			printf(COLORE_BIANCO);
+		}
 		cella_attuale /= POWER_UP_VITA;													//Rimozione dell'elemento POWER_UP_VITA dalla cella attuale.
 	}
 
@@ -208,13 +214,25 @@ void gestire_cella()
 
 	if(cella_attuale % POWER_UP_FORZA == 0)
 	{
+		if(leggere_forza(giocatore) < 5)
+		{
 		scrivere_forza(&giocatore, leggere_forza(giocatore) + 1);						//Chiamata della funzione scrivere_forza per incrementare la forza.
+		printf(COLORE_PORPORA);
+		rallentare_output("La tua forza e' aumentata!\n\n",MILLISECONDI);
+		printf(COLORE_BIANCO);
+		}
 		cella_attuale /= POWER_UP_FORZA;												//Rimozione dell'elemento POWER_UP_FORZA dalla cella attuale.
 	}
 
 	if(cella_attuale % POWER_UP_FORZA_2 == 0)
 	{
-		scrivere_forza(&giocatore, leggere_forza(giocatore) + 2);						//Chiamata della funzione scrivere_forza per incrementare la forza di 2.
+		if(leggere_forza(giocatore) < 4)
+		{
+			scrivere_forza(&giocatore, leggere_forza(giocatore) + 2);						//Chiamata della funzione scrivere_forza per incrementare la forza di 2.
+			printf(COLORE_PORPORA);
+			rallentare_output("La tua forza e' aumentata!\n\n",MILLISECONDI);
+			printf(COLORE_BIANCO);
+		}
 		cella_attuale /= POWER_UP_FORZA_2;												//Rimozione dell'elemento POWER_UP_FORZA_2 dalla cella attuale.
 	}
 
@@ -227,6 +245,9 @@ void gestire_cella()
 	if(cella_attuale % MALUS == 0)
 	{
 		scrivere_vita(&giocatore, leggere_vita(giocatore) - 1);							//Chiamata della funzione scrivere_vita per decrementare le vite a disposizione.
+		printf(COLORE_PORPORA);
+		rallentare_output("Oh no hai perso una vita!\n\n",MILLISECONDI);
+		printf(COLORE_BIANCO);
 		cella_attuale /= MALUS;															//Rimozione dell'elemento MALUS dalla cella attuale.
 	}
 
@@ -244,8 +265,11 @@ void gestire_cella()
 
 	if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 || cella_attuale % PORTA_SEMPLICE == 0 || cella_attuale % PORTA_RE == 0)
 	{
+		printf(COLORE_GIALLO);
 		rallentare_output("C'e' una porta chiusa davanti a te!\n\n", MILLISECONDI);		//Chiamata della funzione che permette di rallentare l'output.
+		printf(COLORE_BIANCO);
 	}
+
 
 	/**
 	 * Se la cella attuale contiene l'elemento BOTOLE tra i suoi divisori, viene stampato un messaggio che avvisa il giocatore
@@ -254,7 +278,9 @@ void gestire_cella()
 
 	if(cella_attuale % BOTOLE == 0)
 	{
+		printf(COLORE_CIANO),
 		rallentare_output("Davanti a te c'e' una botola!\n\n", MILLISECONDI);			//Chiamata della funzione che permette di rallentare l'output.
+		printf(COLORE_BIANCO);
 	}
 
 	if(cella_attuale % CELLA_VUOTA == 0)

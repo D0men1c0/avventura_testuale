@@ -160,6 +160,7 @@ int controllare_colore(stringa messaggio, int indice)
 	return lunghezza_colore;
 }
 
+
 void pulire_schermo()
 {
     system("cls");                                          //Istruzione per la pulizia lo schermo

@@ -239,7 +239,7 @@ bool salvare_partita(stringa nome_file)
 
 		if(esito == true)
 		{
-			rallentare_output("\nHai salvato correttamente i dati di gioco! \n", MILLISECONDI);
+			rallentare_output("\nHai salvato correttamente i dati di gioco! \n\n", MILLISECONDI);
 		}
 		else
 		{
@@ -269,15 +269,21 @@ void caricare_partita()
 
 		if(leggere_x(pos) < 4)
 		{
+			printf(COLORE_VERDE);
 			rallentare_output("Ti trovavi nella sala del trono! \n\n", MILLISECONDI);
+			printf(COLORE_BIANCO);
 		}
 		else if(leggere_x(pos) <= 7)
 		{
+			printf(COLORE_VERDE);
 			rallentare_output("Ti trovavi all'interno delle celle! \n\n", MILLISECONDI);
+			printf(COLORE_BIANCO);
 		}
 		else
 		{
+			printf(COLORE_VERDE);
 			rallentare_output("Ti trovavi nelle segrete! \n\n", MILLISECONDI);
+			printf(COLORE_BIANCO);
 		}
 
 		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
@@ -285,7 +291,9 @@ void caricare_partita()
 	}
 	else
 	{
+		printf(COLORE_ROSSO);
 		rallentare_output("\nErrore nel caricamento dei dati di gioco! \n", MILLISECONDI);
+		printf(COLORE_BIANCO);
 	}
 }
 
@@ -380,7 +388,9 @@ stringa aprire_porta(stringa risposta)
 		{
 			if(leggere_chiave_semplice(inv) == true)
 			{
+				printf(COLORE_CIANO);
 				rallentare_output("\nHai aperto con successo la porta, utilizzando la chiave semplice!\n\n",MILLISECONDI);
+				printf(COLORE_BIANCO);
 				cella_attuale /= PORTA_SEMPLICE;
 				scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 				rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
@@ -395,7 +405,9 @@ stringa aprire_porta(stringa risposta)
 		{
 			if(leggere_chiave_re(inv) == true)
 			{
+				printf(COLORE_CIANO);
 				rallentare_output("\nHai aperto con successo la porta del re, utilizzando la chiave del re!\n\n",MILLISECONDI);
+				printf(COLORE_BIANCO);
 				cella_attuale /= PORTA_RE;
 				scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 				rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
@@ -403,7 +415,7 @@ stringa aprire_porta(stringa risposta)
 			}
 			else
 			{
-				rallentare_output("\nNon possiedi la chiave semplice, dunque non puoi entrare qui!\n\n",MILLISECONDI);
+				rallentare_output("\nNon possiedi la chiave del Re, dunque non puoi entrare qui!\n\n",MILLISECONDI);
 			}
 		}
 		else
@@ -464,7 +476,9 @@ stringa sfondare_porta(stringa risposta)
 			if(leggere_forza(giocatore) > 2)
 			{
 				rallentare_output("\nHai sfondato con successo la porta.\n\n",MILLISECONDI);
+				printf(COLORE_CIANO);
 				rallentare_output("Visto il grande sforzo dovuto allo sfondamento della porta, ti sei indebolito. Hai perso 2 punti forza.\n\n",MILLISECONDI);
+				printf(COLORE_BIANCO);
 				cella_attuale /= PORTA_CHIUSA_SFONDABILE;
 				scrivere_forza(&giocatore, leggere_forza(giocatore) - 2);
 				scrivere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos), cella_attuale);
@@ -502,7 +516,9 @@ stringa prendere_frammento(stringa risposta)
 	if(cella_attuale % PEZZO_MAPPA_EST == 0 && cella_attuale != 0)
 	{
 		scrivere_frammento_est(&inv, true);
+		printf(COLORE_VERDE);
 		rallentare_output("\nHai preso il frammento di mappa EST!\n\n", MILLISECONDI);
+		printf(COLORE_BIANCO);
 		cella_attuale /= PEZZO_MAPPA_EST;
 		scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
@@ -512,7 +528,9 @@ stringa prendere_frammento(stringa risposta)
 	else if(cella_attuale % PEZZO_MAPPA_NORD == 0 && cella_attuale != 0)
 	{
 		scrivere_frammento_nord(&inv, true);
+		printf(COLORE_VERDE);
 		rallentare_output("\nHai preso il frammento di mappa NORD!\n\n", MILLISECONDI);
+		printf(COLORE_BIANCO);
 		cella_attuale /= PEZZO_MAPPA_NORD;
 		scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
@@ -522,7 +540,9 @@ stringa prendere_frammento(stringa risposta)
 	else if(cella_attuale % PEZZO_MAPPA_SUD == 0 && cella_attuale != 0)
 	{
 		scrivere_frammento_sud(&inv, true);
+		printf(COLORE_VERDE);
 		rallentare_output("\nHai preso il frammento di mappa SUD!\n\n", MILLISECONDI);
+		printf(COLORE_BIANCO);
 		cella_attuale /= PEZZO_MAPPA_SUD;
 		scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
@@ -552,7 +572,9 @@ stringa prendere_chiave(stringa risposta)
 		else
 		{
 			scrivere_chiave_semplice(&inv, true);
+			printf(COLORE_GIALLO);
 			rallentare_output("\nHai raccolto la chiave semplice!\n\n", MILLISECONDI);
+			printf(COLORE_BIANCO);
 			cella_attuale /= CHIAVE_SEMPLICE;
 			scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 			rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
@@ -562,7 +584,9 @@ stringa prendere_chiave(stringa risposta)
 	else if(cella_attuale % CHIAVE_PORTA_RE == 0 && cella_attuale != 0)
 	{
 		scrivere_chiave_re(&inv, true);
+		printf(COLORE_GIALLO);
 		rallentare_output("\nHai raccolto la chiave del re!\n\n", MILLISECONDI);
+		printf(COLORE_BIANCO);
 		cella_attuale /= CHIAVE_PORTA_RE;
 		scrivere_valore_matrice(mappa,leggere_y(pos), leggere_x(pos),cella_attuale);
 		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);

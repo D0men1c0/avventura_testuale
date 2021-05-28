@@ -8,7 +8,7 @@ Il rumore deve aver attirato qualcuno...
 
 ...senti dei passi in avvicinamento e corri a nasconderti...
         
- ^       |                      |       ^
+#COLORE_BLU# ^       |                      |       ^
  |       |                      |       |
  |  (*)  |                      |  \^/  |
  | _<">_ |                      | _(W)_ |
@@ -16,7 +16,7 @@ o+o \ / \0                      0/ \ / (=)
  0'\ ^ /\/                      \/\ ^ /`0
    /_^_\ |                      | /_^_\
    || || |                      | || ||
-   d|_|b_|______________________|_d|_|b
+   d|_|b_|______________________|_d|_|b#COLORE_BIANCO#
 
 
 ...sono delle guardie. 

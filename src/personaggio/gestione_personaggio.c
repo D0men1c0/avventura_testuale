@@ -70,10 +70,7 @@ int leggere_forza(personaggio personaggio_forza)
 
 void scrivere_forza(personaggio *personaggio_forza,int valore)
 {
-	if(leggere_forza(*personaggio_forza) <= 5)
-	{
-		personaggio_forza->forza = valore;
-	}
+	personaggio_forza->forza = valore;
 }
 
 int leggere_intelligenza(personaggio personaggio_intelligenza)
@@ -83,10 +80,7 @@ int leggere_intelligenza(personaggio personaggio_intelligenza)
 
 void scrivere_intelligenza(personaggio *personaggio_intelligenza, int valore)
 {
-	if(leggere_intelligenza(*personaggio_intelligenza) <= 5)
-	{
-		personaggio_intelligenza->intelligenza = valore;
-	}
+	personaggio_intelligenza->intelligenza = valore;
 }
 
 int controllare_valori_inseriti(int min, int max, stringa attributo)
