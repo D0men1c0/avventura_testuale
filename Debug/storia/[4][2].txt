@@ -1,5 +1,5 @@
-C'è una porta arrugginita...
-
+C'e' una porta arrugginita...
+#COLORE_CIANO#
 +------------------------------------+ 
 |WWWWW|WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW| 
 |WWWWW|WWWWWWWWWW.----.WWWWWWWWWWWWWW| 
@@ -20,14 +20,14 @@ C'è una porta arrugginita...
 |W/                                  | 
 |/                                   | 
 +------------------------------------+ 
-
+#COLORE_BIANCO#
 ...provi a sfondarla compiendo uno sforzo estremo ma nell'intento ti tagli.
 
 Nonostante l'incoveniente sei riuscito ad accedere nella sala del trono!
 
 
 Lo intuisci dalla poltrona reale al centro
-
+#COLORE_PORPORA#
    /~~|~~~~~~~~~~~~~~~~~~~~|~~\
   (   |                    |   )
    \  |    *    *    *     |  / 
@@ -47,7 +47,7 @@ Lo intuisci dalla poltrona reale al centro
    |                          |
    |                          | 
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+#COLORE_BIANCO#
 
 
 

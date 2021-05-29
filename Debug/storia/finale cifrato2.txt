@@ -1,6 +1,6 @@
 
 Il documento decifrato cita:
-
+#COLORE_ROSSO#
  ___________________________________________
 /                                           \
 |"Io, Guenda, madre di Avis e Robert affido |
@@ -9,7 +9,7 @@ Il documento decifrato cita:
 | possa far cambiare lo spirito sinistro di |
 | Avis e possano regnare insieme."          |
 \___________________________________________/
-
+#COLORE_BIANCO#
 
 Sul fondo della stanza noti due figure.
 
@@ -38,7 +38,7 @@ personale vendetta prima che la morte sopraggiunga.
 
 
 Le vostre spade si incrociano in un duello all'ultimo sangue
-
+#COLORE_CIANO#
               /\                    /\
               \ \                  / /
                \ \                / /
@@ -56,7 +56,7 @@ Le vostre spade si incrociano in un duello all'ultimo sangue
                       /o/  \o\
                      /o/    \o\
                     /_/      \_\
-
+#COLORE_BIANCO#
 Con un colpo di fortuna ferisci a morte Avis.
 
 Poco dopo la sua morte arriva anche la tua ora, il veleno ha ormai avvolto il tuo corpo.

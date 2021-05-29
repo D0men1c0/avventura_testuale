@@ -26,7 +26,7 @@ personale vendetta prima che la morte sopraggiunga.
 
 
 Le vostre spade si incrociano in un duello all'ultimo sangue
-
+#COLORE_CIANO#
               /\                    /\
               \ \                  / /
                \ \                / /
@@ -44,7 +44,7 @@ Le vostre spade si incrociano in un duello all'ultimo sangue
                       /o/  \o\
                      /o/    \o\
                     /_/      \_\
-
+#COLORE_BIANCO#
 Con un colpo di fortuna ferisci a morte Avis.
 
 Poco dopo la sua morte arriva anche la tua ora, il veleno ha ormai avvolto il tuo corpo.

@@ -4,13 +4,13 @@ La mappa ti mostra una stanza nascosta poco vicino...
 ...si tratta di un passaggio segreto.
 
 Ti avvicini al muro e noti un mattone fuori posto.
-
+#COLORE_CIANO#
  __|_____|_____|_____|_____|_____|_____|_____|_____|_
 |_____|_____|_____|_____|_____|_____|_____|_____|___
 ___|_____|_____|_____|_____|__~__|_____|_____|_____|___
 |_____|_____|_____|_____|_____|_____|_____|_____|___
 ___|_____|_____|_____|_____|_____|_____|_____|_____|__
-
+#COLORE_BIANCO#
 Lo premi e si apre una botola in fondo alla stanza.
 
 Finalmente dopo tante difficolta' hai trovato il tesoro...
@@ -18,7 +18,7 @@ Finalmente dopo tante difficolta' hai trovato il tesoro...
 ...e sei pronto a fargliela pagare.
 
 Apri il baule.
-
+#COLORE_GIALLO#
                           _.--.
                         _.-'_:-'||
                     _.-'_.-::::'||
@@ -41,13 +41,13 @@ Apri il baule.
 
 
 
-
+#COLORE_BIANCO#
 Trovi solo un documento scritto. 
 
 Il documento sembra incomprensibile!
 
 Il documento cita:
-
+#COLORE_ROSSO#
  ___________________________________________
 /                                           \
 |'IFIofo, Gufuefendafa, mafadrefe difi 	    |
@@ -62,7 +62,7 @@ Il documento cita:
 |           				    |
 \___________________________________________/
 
-
+#COLORE_BIANCO#
 Sei quasi riuscito a scoprire il finale, pero' per proseguire 
 e decifrare il messaggio, devi prima rispondere a questa domanda:
 Nel corso di questo difficoltoso cammino hai incontrato un'animale molto insidioso.

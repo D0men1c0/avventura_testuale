@@ -1,7 +1,7 @@
 Avverti un odore nauseabondo.
 
 Devono essere le pozioni tossiche usate dal Re contro i suoi oppositori.
-
+#COLORE_CIANO#
         _________
        [_________]
         |  .-.  |
@@ -10,7 +10,7 @@ Devono essere le pozioni tossiche usate dal Re contro i suoi oppositori.
         |` `"` `|
         |POISON!|
         `"""""""`
-
+#COLORE_BIANCO#
 Riesci a salvarti coprendo il volto con la tua maglia...
 
 
