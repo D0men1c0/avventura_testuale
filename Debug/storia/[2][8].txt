@@ -5,14 +5,14 @@ L'aria si fa da subito piu' cupa...
 
 Noti subito dei teschi lungo il corridoio
 
-                           ,--.
+                           #COLORE_GIALLO#,--.
                           {    }
                           K,   }
                          /  `Y`
                     _   /   /
                    {_'-K.__/
                      `/-.__L._
-                     /  ' /`\_}
+                     /  ' /`\_}#COLORE_BIANCO#
                     /  ' /     
             ____   /  ' /
      ,-'~~~~    ~~/  ' /_

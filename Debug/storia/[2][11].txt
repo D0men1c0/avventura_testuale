@@ -1,6 +1,6 @@
 Una porta davanti a te...
 
-      ______
+      #COLORE_GIALLO#______
    ,-' ;  ! `-.
   / :  !  :  . \
  |_ ;   __:  ;  |
@@ -11,7 +11,7 @@ Una porta davanti a te...
  |_ !  ,  ;  ;  |
  || .  .  :  :  |
  |" .  |  :  .  |
- |___.------.___|
+ |___.------.___|#COLORE_BIANCO#
 
 ...sembra non abbia una serratura.
 

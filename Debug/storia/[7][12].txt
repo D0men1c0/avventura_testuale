@@ -1,5 +1,5 @@
 Avverti un rumore di catene...
-
+#COLORE_CIANO#
  __|HM\                         
 /HH\.M|                         
 HMHH\.|                         
@@ -32,7 +32,7 @@ HHH\HMHH\
                      \HMH\      
                       \HMH\     
                        \HMH\
-
+#COLORE_BIANCO#
 ...un prigioniero legato a muro ti attacca e ti ferisce.
 
 

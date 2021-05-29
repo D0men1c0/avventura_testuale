@@ -7,12 +7,12 @@ Un'altra porta...
 ...ma questa volta c'e' una guardia che parte all'attacco!
 
 
-      /| ________________
+      #COLORE_CIANO#/| ________________
 O|===|* >________________>
-      \|
+      \|#COLORE_BIANCO#
 
 La guardia ti ferisce, ma riesci a difenderti grazie ad uno scudo trovato a terra!
-
+#COLORE_BLU#
   |`-._/\_.-`|
   |    ||    |
   |___o()o___|
@@ -22,7 +22,7 @@ La guardia ti ferisce, ma riesci a difenderti grazie ad uno scudo trovato a terr
     \  ||  /
      '.||.'
        ``
-
+#COLORE_BIANCO#
 Con un contrattacco degno di nota stordisci la guardia, cade e sviene...
 
 

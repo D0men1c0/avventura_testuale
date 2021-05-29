@@ -1,5 +1,5 @@
 Una porta aperta...
-
+#COLORE_GIALLO#
      /|
     / |
    /__|______
@@ -11,6 +11,6 @@ Una porta aperta...
   | |  ||  | |
   | |__||__| |
   |__________|  
-
+#COLORE_BIANCO#
 ...la oltrepassi e continui la tua avventura.
 

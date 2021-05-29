@@ -1,7 +1,7 @@
 Senti ringhiare in lontananza...
 
 ...un lupo feroce ti corre incontro!
-
+#COLORE_CIANO#
                         ,     ,
                         |\---/|
                        /  , , |
@@ -17,7 +17,7 @@ Senti ringhiare in lontananza...
      | /|.'       '.l \\_
      || ||             '-'
      '-''-'
-
+#COLORE_BIANCO#
 Inizi a correre e ti ricordi subito del teschio e delle ossa!
 
 Ne recuperi una e la lanci in una cella.

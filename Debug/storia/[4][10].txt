@@ -1,5 +1,5 @@
 Ti avventuri nel cunicolo e avverti un sibilio.
-
+#COLORE_VERDE#
     Y
   .-^-.
  /     \      .- ~ ~ -.
@@ -17,7 +17,7 @@ Ti avventuri nel cunicolo e avverti un sibilio.
                     `.   ~ - - - - ~   .'
                        ~ . _ _ _ _ . ~
 
-
+#COLORE_BIANCO#
 E' un serpente, sembra velenoso.
 
 Vieni morso e il suo veleno ti causa ricorrenti mal di testa.
