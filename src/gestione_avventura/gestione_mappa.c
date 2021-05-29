@@ -117,13 +117,36 @@ stringa trovare_direzioni_disponibili()
 	*/
 
 	if(nord)
-		direzioni = concatenare_stringhe(direzioni, "NORD - ");					//Concatenazione della direzione nord alla stringa "direzioni".
+	{
+		if(leggere_y(posizione_precedente) == leggere_y(posizione_nord) && leggere_x(posizione_precedente) == leggere_x(posizione_nord))
+			direzioni = concatenare_stringhe(direzioni, "#COLORE_GIALLO#NORD#COLORE_BIANCO# - ");					//Concatenazione della direzione nord colorata di giallo alla stringa "direzioni".
+		else
+			direzioni = concatenare_stringhe(direzioni, "NORD - ");					//Concatenazione della direzione nord alla stringa "direzioni".
+	}
 	if(sud)
-		direzioni = concatenare_stringhe(direzioni, "SUD - ");					//Concatenazione della direzione sud alla stringa "direzioni".
+	{
+		if(leggere_y(posizione_precedente) == leggere_y(posizione_sud) && leggere_x(posizione_precedente) == leggere_x(posizione_sud))
+			direzioni = concatenare_stringhe(direzioni, "#COLORE_GIALLO#SUD#COLORE_BIANCO# - ");					//Concatenazione della direzione sud colorata di giallo alla stringa "direzioni".
+		else
+			direzioni = concatenare_stringhe(direzioni, "SUD - ");					//Concatenazione della direzione sud alla stringa "direzioni".
+	}
+
 	if(est)
-		direzioni = concatenare_stringhe(direzioni, "EST - ");					//Concatenazione della direzione est alla stringa "direzioni".
+	{
+		if(leggere_y(posizione_precedente) == leggere_y(posizione_est) && leggere_x(posizione_precedente) == leggere_x(posizione_est))
+			direzioni = concatenare_stringhe(direzioni, "#COLORE_GIALLO#EST#COLORE_BIANCO# - ");					//Concatenazione della direzione est colorata di giallo alla stringa "direzioni".
+		else
+			direzioni = concatenare_stringhe(direzioni, "EST - ");					//Concatenazione della direzione est alla stringa "direzioni".
+	}
+
 	if(ovest)
-		direzioni = concatenare_stringhe(direzioni, "OVEST - ");				//Concatenazione della direzione ovest alla stringa "direzioni".
+	{
+		if(leggere_y(posizione_precedente) == leggere_y(posizione_ovest) && leggere_x(posizione_precedente) == leggere_x(posizione_ovest))
+			direzioni = concatenare_stringhe(direzioni, "#COLORE_GIALLO#OVEST#COLORE_BIANCO# - ");				//Concatenazione della direzione ovest colorata di giallo alla stringa "direzioni".
+		else
+			direzioni = concatenare_stringhe(direzioni, "OVEST - ");				//Concatenazione della direzione ovest alla stringa "direzioni".
+	}
+
 
 	/**
 	 * Con le successive due istruzioni viene sovrascritto lo spazio successivo all'ultima delle direzioni disponibili
@@ -246,7 +269,7 @@ void gestire_cella()
 	{
 		scrivere_vita(&giocatore, leggere_vita(giocatore) - 1);							//Chiamata della funzione scrivere_vita per decrementare le vite a disposizione.
 		printf(COLORE_PORPORA);
-		rallentare_output("Oh no hai perso una vita!\n\n",MILLISECONDI);
+		rallentare_output("Oh no, hai perso una vita!\n\n",MILLISECONDI);
 		printf(COLORE_BIANCO);
 		cella_attuale /= MALUS;															//Rimozione dell'elemento MALUS dalla cella attuale.
 	}
@@ -254,7 +277,7 @@ void gestire_cella()
 	if(cella_attuale % MURO_INTELLIGENZA == 0)
 	{
 		printf(COLORE_CIANO);
-		rallentare_output("Data la tua elevata intelligenza sei riuscito a scoprire un passaggio segreto!\n\n", MILLISECONDI);
+		rallentare_output("Data la tua elevata intelligenza, sei riuscito a scoprire un passaggio segreto!\n\n", MILLISECONDI);
 		printf(COLORE_BIANCO);
 	}
 
