@@ -179,7 +179,7 @@ void impostare_inizio()
 	scrivere_x(&pos, SPAWN_X);
 
 	pulire_schermo();
-	ritardare_programma(2000);
+	ritardare_programma(3000);
 
 	gestire_cella();
 	rallentare_output("Ti vedo disorientato, per maggiori informazioni inserisci \"aiuto\".\n\n", MILLISECONDI);

@@ -267,10 +267,10 @@ void gestire_cella()
 
 	if(cella_attuale % MALUS == 0)
 	{
-		scrivere_vita(&giocatore, leggere_vita(giocatore) - 1);							//Chiamata della funzione scrivere_vita per decrementare le vite a disposizione.
 		printf(COLORE_PORPORA);
 		rallentare_output("Oh no, hai perso una vita!\n\n",MILLISECONDI);
 		printf(COLORE_BIANCO);
+		scrivere_vita(&giocatore, leggere_vita(giocatore) - 1);							//Chiamata della funzione scrivere_vita per decrementare le vite a disposizione.
 		cella_attuale /= MALUS;															//Rimozione dell'elemento MALUS dalla cella attuale.
 	}
 
