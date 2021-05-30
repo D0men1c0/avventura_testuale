@@ -256,13 +256,6 @@ void gestire_cella()
 			rallentare_output("La tua forza e' aumentata!\n\n",MILLISECONDI);
 			printf(COLORE_BIANCO);
 		}
-		else if(leggere_forza(giocatore) == 4)
-		{
-			scrivere_forza(&giocatore, leggere_forza(giocatore) + 1);						//Chiamata della funzione scrivere_forza per incrementare la forza di 1.
-			printf(COLORE_PORPORA);
-			rallentare_output("La tua forza e' aumentata!\n\n",MILLISECONDI);
-			printf(COLORE_BIANCO);
-		}
 		cella_attuale /= POWER_UP_FORZA_2;												//Rimozione dell'elemento POWER_UP_FORZA_2 dalla cella attuale.
 	}
 
