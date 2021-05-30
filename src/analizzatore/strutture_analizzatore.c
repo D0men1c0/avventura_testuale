@@ -1,3 +1,16 @@
+/**
+ * Questo modulo definisce le funzioni di gestione struttura parole chiavi e struttura tabella simboli. Innanzitutto è presente
+ * la funzione di inizializzare_strutture_analizzatore: questa funzione inserisce tramite un ciclo i simboli(intero) all'interno
+ * della struttura parole chiave, dopodichè uno alla volta inserisce le parole chiavi legali riconosciute dall'analizzatore,
+ * quindi scrive il numero di parole chiave legate a quella classe di simboli(esempio: se il simbolo dello spostamento ha 4
+ * parole chiave ad esso legato, verrà inserito il numero 4 all'interno del campo numero_parole_chiave il cui indice è proprio
+ * il simbolo).
+ * L'altra funzione principale è leggere_comando: questa funzione legge la sorgente da tastiera e ripete in ciclo l'analisi lessicale
+ * richiamando la funzione estrarre_token e di conseguenza la scansionare_token. Dall'analisi lessicale di ogni token verrà restituito
+ * un esito, se true l'analisi lessicale procede fin quando sorgente non ha più token, altrimenti si ferma e stampa un messaggio di
+ * "Comando non riconosciuto".
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "strutture_analizzatore.h"
@@ -5,55 +18,112 @@
 #include "../gestione_file/gestione_file.h"
 #include "analizzatore_lessicale_sintattico.h"
 
-#define NOME_FILE_LINGUAGGIO "parole_linguaggio.txt"
-
 void scrivere_dimensione_simboli(int dimensione);
 void inserire_simbolo_tabella(simbolo simb);
 void scrivere_dimensione_parole_chiave(int dimensione);
-void scrivere_parola_chiave_struttura(parola_chiave parola);
-void inserire_parole_chiave();
-void inserire_simboli();
-
+void scrivere_parola_chiave_struttura_parole_chiave(parola_chiave parola);
 
 void inizializzare_strutture_analizzatore()
 {
-	inserire_simboli();
+	// INIZIALIZZAZIONE SIMBOLI
+	int i;
 
-	inserire_parole_chiave();
+	i = 1;
+
+	scrivere_dimensione_simboli(0);							// Inizializza la dimensione dei simboli a 0
+
+	while(i <= MAX_SIMBOLI)									// Ripete il ciclo tot volte(quanti sono i simboli)
+	{
+		inserire_simbolo_tabella(i);						// Inserisce il simbolo(intero) nella struttura parole chiave
+		i++;
+	}
+
+	// INIZIALIZZAZIONE PAROLE CHIAVE
+
+	scrivere_dimensione_parole_chiave(0);					// Inizializza la dimensione delle parole chiave a 0
+
+	// Inserisce le parole chiave dello spostamento e imposta il numero di parole chiave dello spostamento
+	scrivere_parola_chiave_struttura_parole_chiave(NORD);
+	scrivere_parola_chiave_struttura_parole_chiave(SUD);
+	scrivere_parola_chiave_struttura_parole_chiave(EST);
+	scrivere_parola_chiave_struttura_parole_chiave(OVEST);
+	scrivere_numero_parola_chiave_struttura_parole_chiave(0, leggere_dimensione_parole_chiave());
+
+	// Inserisce le parole chiave dei comandi globali e imposta il numero di parole chiave dei comandi globali
+	scrivere_parola_chiave_struttura_parole_chiave(SALVA);
+	scrivere_parola_chiave_struttura_parole_chiave(CARICA);
+	scrivere_parola_chiave_struttura_parole_chiave(NUOVA);
+	scrivere_parola_chiave_struttura_parole_chiave(AIUTO);
+	scrivere_numero_parola_chiave_struttura_parole_chiave(1, leggere_dimensione_parole_chiave());
+
+	/**
+	 * Inserisce le parole chiave delle parole relative ai comandi globali e imposta il numero di parole chiave
+	 * delle parole relative ai comandi globali
+	 */
+	scrivere_parola_chiave_struttura_parole_chiave(PARTITA);
+	scrivere_numero_parola_chiave_struttura_parole_chiave(2, leggere_dimensione_parole_chiave());
+
+	// Inserisce le parole chiave dei verbi e imposta il numero di parole chiave dei verbi
+	scrivere_parola_chiave_struttura_parole_chiave(PRENDI);
+	scrivere_parola_chiave_struttura_parole_chiave(SFONDA);
+	scrivere_parola_chiave_struttura_parole_chiave(ESAMINA);
+	scrivere_parola_chiave_struttura_parole_chiave(VISUALIZZA);
+	scrivere_parola_chiave_struttura_parole_chiave(APRI);
+	scrivere_numero_parola_chiave_struttura_parole_chiave(3, leggere_dimensione_parole_chiave());
+
+	/**
+	 * Inserisce le parole chiave delle parole relative ai verbi e imposta il numero di parole chiave
+	 * delle parole relative ai verbi
+	 */
+	scrivere_parola_chiave_struttura_parole_chiave(CHIAVE);
+	scrivere_parola_chiave_struttura_parole_chiave(PORTA);
+	scrivere_parola_chiave_struttura_parole_chiave(FRAMMENTO);
+	scrivere_parola_chiave_struttura_parole_chiave(MAPPA);
+	scrivere_parola_chiave_struttura_parole_chiave(BOTOLA);
+	scrivere_parola_chiave_struttura_parole_chiave(STANZA);
+	scrivere_parola_chiave_struttura_parole_chiave(ATTRIBUTI);
+	scrivere_parola_chiave_struttura_parole_chiave(INVENTARIO);
+	scrivere_numero_parola_chiave_struttura_parole_chiave(4, leggere_dimensione_parole_chiave());
 }
 
 void leggere_comando()
 {
 	int i;
 	int esito;
+	stringa sorgente = "";
 
 	printf(COLORE_ROSSO);
 	rallentare_output("Inserisci il comando: ", MILLISECONDI);
 	printf(COLORE_BIANCO);
 
-	leggere_sorgente();
+	sorgente = leggere_stringa_tastiera(sorgente);			// Legge da tastiera la sorgente
 
 	i = 0;
 
-	esito = ERRORE;
+	esito = false;
 
-	scrivere_dimensione_tabella_simboli(0);
+	scrivere_dimensione_tabella_simboli(0);					// Inizializza la dimensione dei simboli a 0
 
-	if(leggere_lunghezza(sorgente) != 0)
+	if(leggere_lunghezza(sorgente) != 0)					// Se la sorgente non è vuota
 	{
-		esito = SUCCESSO;
+		esito = true;
 
-		while(leggere_lunghezza(sorgente) != 0 && esito == SUCCESSO)
+		/**
+		 * Continua a leggere la sorgente fino a quando la sua lunghezza è maggiore di 0 e fin quando
+		 * esito è uguale a true, quindi esce dal ciclo se almeno un token non è stato riconosciuto.
+		 * Esce dal ciclo anche se si leggono più token rispetto alla dimensione della tabella dei simboli,
+		 * cioè MAX_SIMBOLI
+		 */
+		while(leggere_lunghezza(sorgente) != 0 && esito == true && i < MAX_SIMBOLI)
 		{
-			esito = scansionare_token(estrarre_token(), i);
+			esito = scansionare_token(estrarre_token(sorgente), i);		// Estrae il token dalla sorgente e lo scansiona
 			i++;
 		}
 	}
 
-	if(esito == SUCCESSO)
+	if(esito == true)								// Se tutti i token sono stati riconosciuti, si passa all'analisi sintattica
 	{
 		esito = controllare_simboli_tabella();
-
 	}
 }
 
@@ -90,70 +160,13 @@ parola_chiave leggere_token_tabella_simboli(int indice)
 	return tabella_simboli.token[indice];
 }
 
-void inserire_simboli()
-{
-	int i;
-
-	i = 1;
-
-	scrivere_dimensione_simboli(0);
-
-
-	while(i <= 5)
-	{
-		inserire_simbolo_tabella(i);
-		i++;
-	}
-}
-
-void inserire_parole_chiave()
-{
-	scrivere_dimensione_parole_chiave(0);
-
-	scrivere_parola_chiave_struttura("nord");
-	scrivere_parola_chiave_struttura("sud");
-	scrivere_parola_chiave_struttura("est");
-	scrivere_parola_chiave_struttura("ovest");
-	//inserimento all'interno della struttura
-	scrivere_parola_chiave_struttura_simboli(0,leggere_dimensione_parole_chiave());
-
-	scrivere_parola_chiave_struttura("salva");
-	scrivere_parola_chiave_struttura("carica");
-	scrivere_parola_chiave_struttura("nuova");
-	scrivere_parola_chiave_struttura("aiuto");
-	//inserimento all'interno della struttura
-	scrivere_parola_chiave_struttura_simboli(1,leggere_dimensione_parole_chiave());
-
-	scrivere_parola_chiave_struttura("partita");
-	//inserimento all'interno della struttura
-	scrivere_parola_chiave_struttura_simboli(2,leggere_dimensione_parole_chiave());
-
-	scrivere_parola_chiave_struttura("prendi");
-	scrivere_parola_chiave_struttura("sfonda");
-	scrivere_parola_chiave_struttura("esamina");
-	scrivere_parola_chiave_struttura("visualizza");
-	scrivere_parola_chiave_struttura("apri");
-	//inserimento all'interno della struttura
-	scrivere_parola_chiave_struttura_simboli(3,leggere_dimensione_parole_chiave());
-
-	scrivere_parola_chiave_struttura("chiave");
-	scrivere_parola_chiave_struttura("porta");
-	scrivere_parola_chiave_struttura("frammento");
-	scrivere_parola_chiave_struttura("mappa");
-	scrivere_parola_chiave_struttura("botola");
-	scrivere_parola_chiave_struttura("stanza");
-	scrivere_parola_chiave_struttura("attributi");
-	scrivere_parola_chiave_struttura("inventario");
-	//inserimento all'interno della struttura
-	scrivere_parola_chiave_struttura_simboli(4,leggere_dimensione_parole_chiave());
-}
 
 void inserire_simbolo_tabella(simbolo simb)
 {
 	int dimensione;
 
 	dimensione = leggere_dimensione_parole_chiave();
-	scrivere_simboli_struttura_simboli(dimensione,simb);
+	scrivere_simboli_struttura_parole_chiave(dimensione, simb);
 
 	scrivere_dimensione_simboli(dimensione + 1);
 }
@@ -183,17 +196,17 @@ stringa leggere_parola_chiave_tabella(int indice)
 	return leggere_stringa(struttura_parole_chiave.parole_chiave[indice]);
 }
 
-void scrivere_parola_chiave_struttura_simboli(int indice, int valore)
+void scrivere_numero_parola_chiave_struttura_parole_chiave(int indice, int valore)
 {
 	struttura_parole_chiave.numero_parole_chiave[indice] = valore;
 }
 
-void scrivere_simboli_struttura_simboli(int indice, simbolo simb)
+void scrivere_simboli_struttura_parole_chiave(int indice, simbolo simb)
 {
 	struttura_parole_chiave.simboli[indice] = simb;
 }
 
-simbolo leggere_simboli_struttura_simboli(int indice)
+simbolo leggere_simboli_struttura_parole_chiave(int indice)
 {
 	simbolo simb;
 
@@ -202,7 +215,7 @@ simbolo leggere_simboli_struttura_simboli(int indice)
 	return simb;
 }
 
-void scrivere_parola_chiave_struttura(parola_chiave parola)
+void scrivere_parola_chiave_struttura_parole_chiave(parola_chiave parola)
 {
 	int dimensione;
 
@@ -210,5 +223,4 @@ void scrivere_parola_chiave_struttura(parola_chiave parola)
 	struttura_parole_chiave.parole_chiave[dimensione] = parola;
 
 	scrivere_dimensione_parole_chiave(dimensione + 1);
-
 }

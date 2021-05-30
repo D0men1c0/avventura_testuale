@@ -29,27 +29,16 @@ void gestire_errore_semantico();
 void gestire_finale(bool cifrato);
 void muovere_personaggio(stringa direzione);					//Funzione per lo spostamento del personaggio.
 
-bool gestire_movimenti()
+void gestire_movimenti()
 {
-	bool esito;
-
-	esito = false;
-
-	if(leggere_dimensione_tabella_simboli() == 1)
+	if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
 	{
-		esito = true;
-
-		if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
-		{
-			muovere_personaggio(leggere_token_tabella_simboli(0));
-		}
-		else
-		{
-			gestire_errore_semantico();
-		}
+		muovere_personaggio(leggere_token_tabella_simboli(0));
 	}
-
-	return esito;
+	else
+	{
+		gestire_errore_semantico();
+	}
 }
 
 bool gestire_comandi_globali()

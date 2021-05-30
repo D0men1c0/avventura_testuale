@@ -3,6 +3,6 @@
 
 bool gestire_comandi_globali();
 bool gestire_azioni_partita();
-bool gestire_movimenti();
+void gestire_movimenti();
 
 #endif
