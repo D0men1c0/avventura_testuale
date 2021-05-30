@@ -57,8 +57,8 @@ void scrivere_vita(personaggio *personaggio_vita, int valore)
 	if (leggere_vita(*personaggio_vita) <= 0)
 	{
 		rallentare_output("\nOh no! Hai esaurito le vite a disposizione. Hai perso...\n",MILLISECONDI);
-		ritardare_programma(3000);
-		pulire_schermo();
+		ritardare_programma(3000);                                                //serve per far ritardare l'intero programma
+		pulire_schermo();														  //pulisce lo schermo dai vecchi messaggi
 		impostare_inizio();
 	}
 }
