@@ -1,3 +1,24 @@
+/**
+ * Il seguente modulo serve per ptoer leggere su file di testo e leggere e scrivere su file binario.
+ * La funzione accodare_file_salvataggio apre in modalità append il file binario e scrive su quest'ultimo mediante la funzione di
+ * libreria fwrite in posizione 1 gli attributi del personaggio, lo stato dell'inventario, l'intera mappa mediante un ciclo per le
+ * righe e le colonne e infine la posizione. Se il salvataggio è andato a buon fine restituisce un esito positivo, altrimenti
+ * un'esito negativo.
+ * Funzione simile è leggere_file_salvataggio che invece legge da file binario mediante la funzione fread. Il file viene sempre
+ * aperto in modalità append e vengono letti le strutture memorizzate nel file quali: inventario, personaggio, matrice, posizione.
+ * La lettura avviene sempre sulla 1 riga cioè dove erano stati memporizzati in precedenza le strutture dalla funzione di scrittura.
+ * Sono presenti 3 funzioni di lettura da file di testo e sono: leggere_file_testo, leggere_file_storia, leggere_mappa_file.
+ * La funzione leggere_file_testo serve a gestire l'apertura del file di testo in modalità di lettura.
+ * Inoltre è presente anche la funzione scrivere_carattere, la quale avrà il compito di memorizzare all'interno della stringa tutti i
+ * caratteri presi volta per volta dal file di testo mediante fgetc(fp), fino a quando i caratteri del file non sono terminati(!feof).
+ * Inoltre alla fine del ciclo , viene richiamata ulteriormente la funzione scrivere carattere in modo tale da gestire il carattere di
+ * fine stringa cioè \0. Infine se l'apertura del file dovesse andare a buon fine, quindi non dando alcun messaggio di errore (!NULL),
+ * si chiuderà il file.
+ * Funzionamento analogo risulta per leggere_file_storia ma cambia semplicemente il messaggio di errore qualora il file fosse vuoto.
+ * Infine la funzione leggere_mappa_file serve per poter prendere ciascun valore dal file di testo mappa.txt, usando la fscanf e
+ * successivamente memorizzando all'interno dell'array bidimensionale, tutti gli interi presi volta per volta dal file ciclando per le
+ * righe e per le colonne.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include "../utility/utility.h"
@@ -41,7 +62,7 @@ bool leggere_file_salvataggio(stringa nome_file)
 	return esito;
 }
 
-bool accodare_file_salvataggio(stringa nome_file, personaggio giocatore, inventario inv, matrice mappa, posizione pos)
+bool accodare_file_salvataggio(stringa nome_file)
 {
 	int i;
 	bool esito;
@@ -75,16 +96,6 @@ bool accodare_file_salvataggio(stringa nome_file, personaggio giocatore, inventa
 }
 
 // FILE DI TESTO
-
-/**
- * La seguente funzione leggere_file_testo serve a gestire l'apertura del file di testo in modalità di lettura, la quale è gestita mediante
- * fopen che a sua volta richiama un altra funzione leggere_stringa, che serve per riferirsi al nome del file di testo.Inoltre è presente
- * anche la funzione scrivere_carattere, la quale avrà il compito di memorizzare all'interno della stringa tutti i caratteri presi volta
- * per volta dal file di testo mediante fgetc(fp), fino a quando i caratteri del file non sono terminati(!feof).
- * Inoltre alla fine del ciclo , viene richiamata ulteriormente la funzione scrivere carattere in modo tale da gestire il carattere di
- * fine stringa cioè \0. Infine se l'apertura del file dovesse andare a buon fine, quindi non dando alcun messaggio di errore (!NULL),
- * si chiuderà il file.
- */
 
 stringa leggere_file_testo(stringa nome_file, stringa stringa_file)
 {
