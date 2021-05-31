@@ -12,7 +12,7 @@
  * campi di un record in quanto gestisce l'input dei valori dell'avventura e la morte del personaggio richiamando la funzione
  * impostare_inizio. Quest'ultima ha il compito di reimpostare i valori del personaggio , leggere la mappa da file richiamando
  * l'apposita funzione e impostare lo spawn del personaggio.
- * La funzione impostare_valori_personaggio ha il compito di far inserire all'utente tutti i valori dei record presenti nella
+ * La funzione impostare_valori_personaggio ha il compito di far inserire all'utente tutti i valori dei campi presenti nella
  * struttura personaggio, ad eccezione della vita che viene settata a 5 senza l'intervento dell'utente e richiamare la funzione
  * inizializza inventario la quale viene descritta nell'apposito modulo.
  * Infine è presente la funzione controllare_valori_inseriti che riceve in input 2 interi che rappresentano i valori massimi
