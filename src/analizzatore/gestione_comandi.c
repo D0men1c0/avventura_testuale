@@ -11,20 +11,20 @@
 #include "../personaggio/gestione_personaggio.h"
 
 //funzioni per i comandi
-stringa iniziare_partita(stringa risposta);
+stringa iniziare_partita();
 bool salvare_partita(stringa nome_file);
 void caricare_partita();
-stringa stampare_aiuto(stringa risposta, bool * esito);
+stringa stampare_aiuto(bool * esito);
 stringa visualizzare_attributi();
-stringa visualizzare_attributi(stringa risposta);
-stringa visualizzare_inventario(stringa risposta);
-stringa visualizzare_mappa(stringa risposta);
-stringa esaminare_stanza(stringa risposta);
-stringa aprire_porta(stringa risposta);
-stringa aprire_botola(stringa risposta);
-stringa sfondare_porta(stringa risposta);
-stringa prendere_frammento(stringa risposta);
-stringa prendere_chiave(stringa risposta);
+stringa visualizzare_inventario();
+stringa visualizzare_mappa();
+stringa esaminare_stanza();
+stringa aprire_porta();
+//----------------------------------------------
+stringa aprire_botola();
+stringa sfondare_porta();
+stringa prendere_frammento();
+stringa prendere_chiave();
 void gestire_errore_semantico();
 void gestire_finale(bool cifrato);
 void muovere_personaggio(stringa direzione);					//Funzione per lo spostamento del personaggio.
@@ -53,12 +53,12 @@ bool gestire_comandi_globali()
 
 	if(confrontare_stringhe(token, NUOVA))
 	{
-		risposta = iniziare_partita(risposta);
+		risposta = iniziare_partita();
 		esito = true;
 	}
 	else if(confrontare_stringhe(token, AIUTO) == true)
 	{
-		risposta = stampare_aiuto(risposta, &esito);
+		risposta = stampare_aiuto(&esito);
 	}
 	else if(confrontare_stringhe(token, SALVA) == true)
 	{
@@ -94,17 +94,17 @@ bool gestire_azioni_partita()
 
 			if(confrontare_stringhe(token, ATTRIBUTI))
 			{
-				risposta = visualizzare_attributi(risposta);
+				risposta = visualizzare_attributi();
 				esito = true;
 			}
 			else if(confrontare_stringhe(token, INVENTARIO))
 			{
-				risposta = visualizzare_inventario(risposta);
+				risposta = visualizzare_inventario();
 				esito = true;
 			}
 			else if(confrontare_stringhe(token, MAPPA))
 			{
-				risposta = visualizzare_mappa(risposta);
+				risposta = visualizzare_mappa();
 				esito = true;
 			}
 			else
@@ -121,7 +121,7 @@ bool gestire_azioni_partita()
 
 			if(confrontare_stringhe(token, STANZA))
 			{
-				risposta = esaminare_stanza(risposta);
+				risposta = esaminare_stanza();
 				esito = true;
 			}
 		}
@@ -134,12 +134,12 @@ bool gestire_azioni_partita()
 
 			if(confrontare_stringhe(token, PORTA))
 			{
-				risposta = aprire_porta(risposta);
+				risposta = aprire_porta();
 				esito = true;
 			}
 			else if(confrontare_stringhe(token, BOTOLA))
 			{
-				risposta = aprire_botola(risposta);
+				risposta = aprire_botola();
 				esito = true;
 			}
 		}
@@ -152,7 +152,7 @@ bool gestire_azioni_partita()
 
 			if(confrontare_stringhe(token, PORTA))
 			{
-				risposta = sfondare_porta(risposta);
+				risposta = sfondare_porta();
 				esito = true;
 			}
 		}
@@ -181,12 +181,12 @@ bool gestire_azioni_partita()
 
 				if(esito == true)
 				{
-					risposta = prendere_frammento(risposta);
+					risposta = prendere_frammento();
 				}
 			}
 			else if(confrontare_stringhe(token, CHIAVE) && leggere_dimensione_tabella_simboli() == 2)
 			{
-				risposta = prendere_chiave(risposta);
+				risposta = prendere_chiave();
 				esito = true;
 			}
 		}
@@ -196,8 +196,11 @@ bool gestire_azioni_partita()
 	return esito;
 }
 
-stringa iniziare_partita(stringa risposta)
+stringa iniziare_partita()
 {
+	stringa risposta = "";
+	risposta = allocare_stringa(risposta, 0);
+
 	do
 	{
 		rallentare_output("\nSei sicuro di voler iniziare una nuova partita? Tutti i tuoi dati non salvati verranno persi! (si/no): ", MILLISECONDI);
@@ -286,8 +289,11 @@ void caricare_partita()
 	}
 }
 
-stringa stampare_aiuto(stringa risposta, bool * esito)
+stringa stampare_aiuto(bool * esito)
 {
+	stringa risposta = "";
+	risposta = allocare_stringa(risposta, 0);
+
 	if (leggere_dimensione_tabella_simboli() < 2)
 	{
 		risposta = leggere_file_testo("aiuto.txt", risposta);
@@ -298,8 +304,11 @@ stringa stampare_aiuto(stringa risposta, bool * esito)
 	return risposta;
 }
 
-stringa visualizzare_attributi(stringa risposta)
+stringa visualizzare_attributi()
 {
+	stringa risposta = "";
+	risposta = allocare_stringa(risposta, 0);
+
 	if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
 	{
 		sprintf(risposta, "\nATTRIBUTI:\nTi chiami: %s \nLa vita e': %d \nLa forza e': %d\nL'intelligenza e': %d\n\n", leggere_nome(giocatore), leggere_vita(giocatore), leggere_forza(giocatore), leggere_intelligenza(giocatore));
@@ -313,8 +322,11 @@ stringa visualizzare_attributi(stringa risposta)
 	return risposta;
 }
 
-stringa visualizzare_inventario(stringa risposta)
+stringa visualizzare_inventario()
 {
+	stringa risposta = "";
+	risposta = allocare_stringa(risposta, 0);
+
 	if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
 	{
 		rallentare_output("\nINVENTARIO:\n", MILLISECONDI);
@@ -328,8 +340,11 @@ stringa visualizzare_inventario(stringa risposta)
 	return risposta;
 }
 
-stringa visualizzare_mappa(stringa risposta)
+stringa visualizzare_mappa()
 {
+	stringa risposta = "";
+	risposta = allocare_stringa(risposta, 0);
+
 	if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
 	{
 		risposta = visualizzare_frammenti_mappa(risposta);
@@ -343,9 +358,11 @@ stringa visualizzare_mappa(stringa risposta)
 	return risposta;
 }
 
-stringa esaminare_stanza(stringa risposta)
+stringa esaminare_stanza()
 {
 	stringa nome_file = "";
+	stringa risposta = "";
+	risposta = allocare_stringa(risposta, 0);
 
 	if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
 	{
@@ -365,9 +382,12 @@ stringa esaminare_stanza(stringa risposta)
 	return risposta;
 }
 
-stringa aprire_porta(stringa risposta)
+stringa aprire_porta()
 {
 	int cella_attuale;
+	stringa risposta = "";
+
+	risposta = allocare_stringa(risposta, 0);
 
 	if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
 	{
@@ -420,28 +440,38 @@ stringa aprire_porta(stringa risposta)
 	return risposta;
 }
 
-stringa aprire_botola(stringa risposta)
+stringa aprire_botola()
 {
 	int cella_attuale;
+	stringa risposta = "";
+
+	risposta = allocare_stringa(risposta, 0);
 
 	cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
 
-	if(cella_attuale % BOTOLE == 0 && cella_attuale != 0)
+	if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
 	{
-		if(leggere_frammento_sud(inv) && leggere_frammento_est(inv) && leggere_frammento_nord(inv))
+		if(cella_attuale % BOTOLE == 0 && cella_attuale != 0)
 		{
-			if(leggere_intelligenza(giocatore) > 2)
+			if(leggere_frammento_sud(inv) && leggere_frammento_est(inv) && leggere_frammento_nord(inv))
 			{
-				gestire_finale(false);
+				if(leggere_intelligenza(giocatore) > 2)
+				{
+					gestire_finale(false);
+				}
+				else
+				{
+					gestire_finale(true);
+				}
 			}
 			else
 			{
-				gestire_finale(true);
+				rallentare_output("\nNon hai ancora raccolto tutti i frammenti di mappa!\n\n", MILLISECONDI);
 			}
 		}
 		else
 		{
-			rallentare_output("\nNon hai ancora raccolto tutti i frammenti di mappa!\n\n", MILLISECONDI);
+			gestire_errore_semantico();
 		}
 	}
 	else
@@ -452,9 +482,12 @@ stringa aprire_botola(stringa risposta)
 	return risposta;
 }
 
-stringa sfondare_porta(stringa risposta)
+stringa sfondare_porta()
 {
 	int cella_attuale;
+	stringa risposta = "";
+
+	risposta = allocare_stringa(risposta, 0);
 
 	if(leggere_lunghezza(leggere_nome(giocatore)) != 0)
 	{
@@ -496,9 +529,13 @@ stringa sfondare_porta(stringa risposta)
 	return risposta;
 }
 
-stringa prendere_frammento(stringa risposta)
+stringa prendere_frammento()
 {
 	int cella_attuale;
+
+	stringa risposta = "";
+
+	risposta = allocare_stringa(risposta, 0);
 
 	cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
 
@@ -546,9 +583,13 @@ stringa prendere_frammento(stringa risposta)
 	return risposta;
 }
 
-stringa prendere_chiave(stringa risposta)
+stringa prendere_chiave()
 {
 	int cella_attuale;
+
+	stringa risposta = "";
+
+	risposta = allocare_stringa(risposta, 0);
 
 	cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
 
