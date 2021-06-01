@@ -5,7 +5,7 @@
  * Poi questo modulo si occupa di descrivere la funzione che inizializza l'inventario, settando tutti i valori della struttura a false,
  * eccezion fatta per il frammento ovest della mappa. Un'altra funzione descritta è quella che si occupa di visualizzare a video l'inventario.
  * L'ultima funzione presente è quella che si occupa di visualizzare i frammenti della mappa che il giocatore possiede nell'inventario,
- * evitando di mostrare quindi anche quelli da lui non ancora raccolti.
+ * evitando di mostrare quindi anche quelli da lui non ancora raccolti, tramite una concatenazione di file di testo vuoti o con la mappa.
 */
 
 #include <stdio.h>
@@ -142,7 +142,7 @@ stringa visualizzare_frammenti_mappa(stringa risposta)
 	/**
 	 * Se il frammento nord della mappa è presente nell'inventario, allora nella stringa "frammento_nord"
 	 * andrà il frammento corrispondente preso da un file ad esso dedicato. Se il frammento in questione non è invece
-	 * presente nell'inventario, allora nella stringa verranno inserite delle spaziatura, anch'esse prese da un file di testo dedicato.
+	 * presente nell'inventario, allora nella stringa verranno concatenate delle spaziature, anch'esse prese da un file di testo dedicato.
 	*/
 
 	if(leggere_frammento_nord(inv) == true)
@@ -157,7 +157,7 @@ stringa visualizzare_frammenti_mappa(stringa risposta)
 	/**
 	 * Se il frammento est della mappa è presente nell'inventario, allora nella stringa "frammento_est"
 	 * andrà il frammento corrispondente preso da un file ad esso dedicato. Se il frammento in questione non è invece
-	 * presente nell'inventario, allora nella stringa verranno inserite delle spaziatura, anch'esse prese da un file di testo dedicato.
+	 * presente nell'inventario, allora nella stringa verranno concatenate delle spaziature, anch'esse prese da un file di testo dedicato.
 	*/
 
 	if(leggere_frammento_est(inv) == true)
@@ -172,7 +172,7 @@ stringa visualizzare_frammenti_mappa(stringa risposta)
 	/**
 	 * Se il frammento ovest della mappa è presente nell'inventario, allora nella stringa "frammento_ovest"
 	 * andrà il frammento corrispondente preso da un file ad esso dedicato. Se il frammento in questione non è invece
-	 * presente nell'inventario, allora nella stringa verranno inserite delle spaziatura, anch'esse prese da un file di testo dedicato.
+	 * presente nell'inventario, allora nella stringa verranno concatenate delle spaziature, anch'esse prese da un file di testo dedicato.
 	*/
 
 	if(leggere_frammento_ovest(inv) == true)
@@ -187,7 +187,7 @@ stringa visualizzare_frammenti_mappa(stringa risposta)
 	/**
 	 * Se il frammento sud della mappa è presente nell'inventario, allora nella stringa "frammento_sud"
 	 * andrà il frammento corrispondente preso da un file ad esso dedicato. Se il frammento in questione non è invece
-	 * presente nell'inventario, allora nella stringa verranno inserite delle spaziatura, anch'esse prese da un file di testo dedicato.
+	 * presente nell'inventario, allora nella stringa verranno concatenate delle spaziature, anch'esse prese da un file di testo dedicato.
 	*/
 	
 	if(leggere_frammento_sud(inv) == true)
