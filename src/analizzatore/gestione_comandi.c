@@ -1,3 +1,36 @@
+/**
+ * All'interno del seguente modulo vengono riportate tutte le funzioni per gestire i comandi della partita.
+ * La funzione iniziare_partita si occupa di inizializzare gli attributi del personaggio richiamando la funzione impostare inizio e fornisce
+ * all'utente la scelta di iniziare con la storia o resettare i valori inseriti a forza e intelligenza per poterli reinserire, ciclando fin
+ * quando c'è una risposta negativa da parte dell'utente nel voler iniziare la storia.
+ * La funzione salvare_partita ha il compito di scrivere su file binario, grazie alla funzione accodare_file_salvataggio, le strutture di:
+ * personaggio, inventario, matrice (mappa), posizione. Dunque ha il compito di salvare i progressi dell'utente fino a quel punto.
+ * La funzione caricare_partita ha il compito di leggere da file binario ciò che è stato scritto precedentemente dal comando salvare_partita.
+ * La funzione stampare_aiuto consente di stampare un file di testo che riepiloga tutti i comandi possibili che l'utente può effettuare con
+ * le corrispettive funzionalità.
+ * La funzione visualizzare_attributi , stampa a video quelli che sono gli attributi del giocatore cioè il nome, la vita, la forza e
+ * l'intelligenza. Comando simile è visualizzare_inventario che ha il compito di stampare gli oggetti presenti nell'inventario in base se
+ * questi ultimi sono avvalorati a true.
+ * Visualizzare_mappa invece permette di stampare a video la concatenazione dei file di testo che rappresentano i frammenti di mappa posseduti
+ * dall'utente, es: se l'utente possiede 2 frammenti mappa est e ovest(impostati a true nell'inventario) verranno concatenati i file di testo
+ * riguardanti il frammento mappa_est e ovest con due file contenenti spazi pari al numero di caratteri dei file di testo "mancanti"
+ * (nord e sud).
+ * La funzione esaminare_stanza ha il compito , qualora ci fossero dei file di testo sulla cella della matrice, di stamparne il contenuto.
+ * La funzione aprire_porta serve per poter aprire una porta_semplice se abbiamo nell'inventario la chiave_semplice e se ci troviamo nella
+ * cella della matrice appropriata (PORTA_SEMPLICE).
+ * La funzione aprire_botola serve per poter giungere al finale del gioco solo nel caso in cui l'utente possieda tutti e 4 i frammenti di mappa
+ * e si trovi nella cella della matrice appropriata(BOTOLE), inoltre è presente un'ulteriore condizione in base all'intelligenza posseduta
+ * dal personaggio che se sarà maggiore di 2 non dovrà risolvere alcun indovinello, altrimenti dovrà risolverlo prima di poter visualizzare
+ * il finale completo, tutto questo controllo è gestito dalla funzione gestire_finale che esegue dei controlli in base all'intelligenza.
+ * La funzione sfondare_porta serve, sempre se ci troviamo in una cella della matrice appropriata (PORTA_CHIUSA_SFONDABILE), di poter
+ * "oltrepassare" tale porta se il personaggio ha una forza maggiore di 2, altrimenti non può proseguire oltre e può solo tornare indietro.
+ * Le funzioni prendere_frammento e prendere_chiave hanno lo stesso scopo, cioè se il giocatore si trova nella cella appropriata può prendere
+ * il frammento di mappa o la chiave corrispondente, avvalorando a true (all'interno della struttura inventario)il campo corrispondente
+ * all'oggetto raccolto.
+ * La funzione muovere_personaggio ha il compito di effettuare una serie di controlli (muro, porte ecc), per far effettuare lo spostamento
+ * del personaggio (nord, sud, est o ovest).
+ * Infine la funzione gestire_errore_semantico stampa un messaggio di errore qualora ogni comando non presenti i vincoli contestuali richiesti.
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
@@ -430,13 +463,16 @@ void aprire_botola()
 {
 	int cella_attuale;
 
+	// Legge la cella attuale prelevando i dati dalla posizione attuale
 	cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
 
-
+	// Se la cella attuale contiene una BOTOLE
 	if(cella_attuale % BOTOLE == 0 && cella_attuale != 0)
 	{
+		// Se il giocatore possiede tutti e 4 i frammenti (ovest è gia impostato a true)
 		if(leggere_frammento_sud(inv) && leggere_frammento_est(inv) && leggere_frammento_nord(inv))
 		{
+			// Se il giocatore possiede un'intelligenza maggiore di 2 apre direttamente il finale, altrimenti deve risolvere un indovinello
 			if(leggere_intelligenza(giocatore) > 2)
 			{
 				gestire_finale(false);
@@ -446,6 +482,7 @@ void aprire_botola()
 				gestire_finale(true);
 			}
 		}
+		// Se non posside tutti i frammenti di mappa non può accedere al finale
 		else
 		{
 			rallentare_output("\nNon hai ancora raccolto tutti i frammenti di mappa!\n\n", MILLISECONDI);
@@ -461,11 +498,13 @@ void aprire_botola()
 void sfondare_porta()
 {
 	int cella_attuale;
-
+	// Legge la cella attuale prelevando i dati dalla posizione attuale
 	cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
 
+	// Se la cella contiene una porta_chiusa_sfondabile
 	if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 && cella_attuale != 0)
 	{
+		// Se la forza è maggiore di 2 può sfondare la porta
 		if(leggere_forza(giocatore) > 2)
 		{
 			rallentare_output("\nHai sfondato con successo la porta.\n\n",MILLISECONDI);
@@ -473,16 +512,19 @@ void sfondare_porta()
 			rallentare_output("Visto il grande sforzo dovuto allo sfondamento della porta, ti sei indebolito. Hai perso 2 punti forza.\n\n",MILLISECONDI);
 			printf(COLORE_BIANCO);
 			cella_attuale /= PORTA_CHIUSA_SFONDABILE;
+			// Perde 2 punti forza se ha sfondato con successo la porta
 			scrivere_forza(&giocatore, leggere_forza(giocatore) - 2);
 			scrivere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos), cella_attuale);
 			rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
 			printf("\n");
 		}
+		// Se l'utente ha una forza minore di 3 non può sfondare la porta e non può proseguire
 		else
 		{
 			rallentare_output("\nNon puoi sfondare la porta perche' non hai forza sufficiente.\n\n",MILLISECONDI);
 		}
 	}
+	// Se la cella invece non è una porta chiusa sfondabile non possiamo sfondare le altre porte
 	else if((cella_attuale % PORTA_RE == 0 || cella_attuale % PORTA_SEMPLICE == 0) && cella_attuale != 0)
 	{
 		rallentare_output("\nQuesta porta e' piu' dura rispetto alle altre, non riesci a sfondarla!\n\n",MILLISECONDI);
@@ -496,9 +538,9 @@ void sfondare_porta()
 void prendere_frammento()
 {
 	int cella_attuale;
-
+	// Legge la cella attuale prelevando i dati dalla posizione attuale
 	cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
-
+	// Se la cella contiene un pezzo_mappa_est avvaloriamo a true il campo frammento_est all'interno dell'inventario
 	if(cella_attuale % PEZZO_MAPPA_EST == 0 && cella_attuale != 0)
 	{
 		scrivere_frammento_est(&inv, true);
@@ -511,6 +553,7 @@ void prendere_frammento()
 		printf("\n");
 
 	}
+	// Se la cella contiene un pezzo_mappa_nord avvaloriamo a true il campo frammento_nord all'interno dell'inventario
 	else if(cella_attuale % PEZZO_MAPPA_NORD == 0 && cella_attuale != 0)
 	{
 		scrivere_frammento_nord(&inv, true);
@@ -523,6 +566,7 @@ void prendere_frammento()
 		printf("\n");
 
 	}
+	// Se la cella contiene un pezzo_mappa_sud avvaloriamo a true il campo frammento_sud all'interno dell'inventario
 	else if(cella_attuale % PEZZO_MAPPA_SUD == 0 && cella_attuale != 0)
 	{
 		scrivere_frammento_sud(&inv, true);
@@ -544,9 +588,9 @@ void prendere_frammento()
 void prendere_chiave()
 {
 	int cella_attuale;
-
+	// Legge la cella attuale prelevando i dati dalla posizione attuale
 	cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));
-
+	// Se la cella contiene una CHIAVE_SEMPLICE avvaloriamo a true il campo chiave_semplice nell'inventario
 	if(cella_attuale % CHIAVE_SEMPLICE == 0 && cella_attuale != 0)
 	{
 		if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0)
@@ -565,6 +609,7 @@ void prendere_chiave()
 			printf("\n");
 		}
 	}
+	// Se la cella contiene un CHIAVE_PORTA_RE avvaloriamo a true il campo chiave_re nell'inventario
 	else if(cella_attuale % CHIAVE_PORTA_RE == 0 && cella_attuale != 0)
 	{
 		scrivere_chiave_re(&inv, true);
@@ -589,6 +634,7 @@ void gestire_errore_semantico()
 
 void gestire_finale(bool cifrato)
 {
+	// Se abbiamo un'intelligenza minore di 3
 	stringa risposta = "";
 	stringa risposta_indovinello = "";
 	risposta = allocare_stringa(risposta, 0);
@@ -600,7 +646,7 @@ void gestire_finale(bool cifrato)
 	{
 		risposta = leggere_file_storia("storia/finale cifrato.txt", risposta);
 		rallentare_output(risposta, MILLISEC_FINALE);
-
+		// Cicla fin quando l'utente non inserisce il nome "serpente"
 		do
 		{
 			rallentare_output("\n\nInserisci il nome di tale animale: ", MILLISECONDI);
@@ -619,6 +665,7 @@ void gestire_finale(bool cifrato)
 		rallentare_output(risposta, MILLISEC_FINALE);
 
 	}
+	// Altrimenti l'utente non risolve nessun indovinello
 	else
 	{
 		risposta = leggere_file_storia("storia/finale.txt", risposta);
@@ -659,7 +706,7 @@ void muovere_personaggio(stringa direzione)
 	posizione pos_successiva;
 	time_t tempo;
 	stringa percorso_file = "";
-	srand((unsigned) time(&tempo));
+	srand((unsigned) time(&tempo));                                 //Serve per generare in modo randomico il file di testo dei muri
 
 	posizione_nord = posizione_sud = posizione_est = posizione_ovest = pos;		//Assegnazione alle varie variabili di posizione lo stesso valore della posizione del personaggio.
 
@@ -738,7 +785,7 @@ void muovere_personaggio(stringa direzione)
 	else
 	{
 		percorso_file = allocare_stringa(percorso_file, 0);
-		sprintf(percorso_file, "storia/muri/muro%d.txt", rand() % 4 + 1);
+		sprintf(percorso_file, "storia/muri/muro%d.txt", rand() % 4 + 1);	//Stampa del file di testo muro randomica
 		stringa_file = leggere_file_testo(percorso_file, stringa_file);		//Assegnazione a stringa_file del contenuto del file di testo.
 		printf("\n");
 		rallentare_output(stringa_file, MILLISECONDI);			//Visualizzazione lenta del contenuto del file di testo.
