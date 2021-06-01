@@ -14,12 +14,11 @@ Il cadavere accanto al fratello e' la loro madre Guenda, uccisa da Avis per pote
 Ora che hai il documento scritto e il legittimo erede al trono puoi finalmente spodestare Avis 
 e avere dalla tua le guardie del regno grazie al documento con il sigillo reale di Guenda. 
 
-Senti di essere vicino alla tua fine, il veleno del serpente ti ha quasi ucciso.
-
 
 Torni con il legittimo Re e il documento dal resto delle guardie e attendi insieme a loro
 il ritorno di Avis.
 
+Dopo un po' rientra Avis!
 
 Ora che il regno e' nelle mani del legittimo Re decidi di affrontare Avis per avere la tua
 personale vendetta prima che la morte sopraggiunga.
@@ -48,6 +47,8 @@ Le vostre spade si incrociano in un duello all'ultimo sangue
 Con un colpo di fortuna ferisci a morte Avis.
 
 Poco dopo la sua morte arriva anche la tua ora, il veleno ha ormai avvolto il tuo corpo.
+
+Senti di essere vicino alla tua fine, il veleno del serpente ti ha quasi ucciso.
 
 Cadi a terra ma con un sorriso:
 

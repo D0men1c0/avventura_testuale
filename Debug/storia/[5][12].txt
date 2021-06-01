@@ -1,4 +1,4 @@
-Una porta aperta...
+Una porta davanti a te...
 #COLORE_GIALLO#
      /|
     / |
@@ -10,7 +10,5 @@ Una porta aperta...
   | |  ||  | |
   | |  ||  | |
   | |__||__| |
-  |__________|  
-#COLORE_BIANCO#
-...la oltrepassi e continui la tua avventura.
+  |__________|#COLORE_BIANCO#
 
