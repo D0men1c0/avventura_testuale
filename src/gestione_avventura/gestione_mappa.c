@@ -19,13 +19,13 @@
 
 int leggere_valore_matrice(matrice matrice_a, int riga, int colonna)
 {
-	return matrice_a[riga][colonna];
+	return matrice_a[riga][colonna];	//Restituzione valore della matrice in posizione riga e colonna
 }
 
 
 void scrivere_valore_matrice(matrice matrice_a, int riga, int colonna, int valore)
 {
-	matrice_a[riga][colonna] = valore;
+	matrice_a[riga][colonna] = valore;	//Modifica dell'elemento della matrice in posizione riga e colonna con un valore passato tramite parametri
 	return;
 }
 
@@ -113,7 +113,9 @@ stringa trovare_direzioni_disponibili()
 	}
 
 	/**
-	 * Se le variabili corrispondenti ai punti cardinali sono vere, la direzione sarà concatenata alla stringa "direzioni".
+	 * Se le variabili corrispondenti ai punti cardinali sono vere, verrà controllato la posizione legata al punto cardinale
+	 * in questione corrisponde alla posizione precedente. In questo caso la direzione sarà colorata di giallo e concatenata alla stringa "direzioni".
+	 * Altrimenti sarà semplicemente concatenata.
 	*/
 
 	if(nord)
@@ -157,7 +159,7 @@ stringa trovare_direzioni_disponibili()
 	direzioni[leggere_lunghezza(direzioni) - 3] = '\n';
 	direzioni[leggere_lunghezza(direzioni) - 2] = '\0';
 
-	return direzioni;												//Restituzione della stringa contenente le direzioni disponibili.
+	return direzioni;													//Restituzione della stringa contenente le direzioni disponibili.
 }
 
 void leggere_mappa(matrice mappa)
@@ -198,15 +200,15 @@ void gestire_cella()
 	{
 		sprintf(nome_file, "storia/[%d][%d].txt", leggere_y(pos), leggere_x(pos));		//Utilizzo della funzione sprintf per assegnare a "nome_file" un valore particolare.
 		stringa_file = leggere_file_testo(nome_file, stringa_file);						//Assegnazione a stringa_file del contenuto del file di testo.
-		if (confrontare_stringhe(nome_file,"storia/[8][4].txt"))
+		if (confrontare_stringhe(nome_file,"storia/[8][4].txt"))						//Se il file è quello corrispondente allo spawn, viene visualizzato senza trattini.
 		{
-			rallentare_output(stringa_file, MILLISECONDI);
+			rallentare_output(stringa_file, MILLISECONDI);								//Visualizzazione lenta del contenuto del file di testo dello spawn.
 		}
 		else
 		{
-		printf("--------------------------------------------------------------------------\n\n");
-		rallentare_output(stringa_file, MILLISECONDI);									//Chiamata della funzione che permette di rallentare l'output della stringa.
-		printf("--------------------------------------------------------------------------\n\n");
+			printf("--------------------------------------------------------------------------\n\n");
+			rallentare_output(stringa_file, MILLISECONDI);								//Chiamata della funzione che permette di rallentare l'output della stringa.
+			printf("--------------------------------------------------------------------------\n\n");
 		}
 		cella_attuale /= STORIA;														//Rimozione dell'elemento STORIA dalla cella attuale.
 	}
@@ -219,12 +221,12 @@ void gestire_cella()
 
 	if(cella_attuale % POWER_UP_VITA == 0)
 	{
-		if(leggere_vita(giocatore) < 5)
+		if(leggere_vita(giocatore) < 5)													//La vita sarà incrementata solo se il giocatore non ce l'ha al massimo.	
 		{
-			scrivere_vita(&giocatore, leggere_vita(giocatore) + 1);							//Chiamata della funzione scrivere_vita per incrementare le vite a disposizione.
-			printf(COLORE_PORPORA);
-			rallentare_output("La tua vita e' aumentata!\n\n",MILLISECONDI);
-			printf(COLORE_BIANCO);
+			scrivere_vita(&giocatore, leggere_vita(giocatore) + 1);						//Chiamata della funzione scrivere_vita per incrementare le vite a disposizione.
+			printf(COLORE_PORPORA);														//Stampa che serve a colorare i successivi messaggi di porpora.
+			rallentare_output("La tua vita e' aumentata!\n\n",MILLISECONDI);			//Visualizzazione lenta del messaggio che avvisa dell'incremento della vita.
+			printf(COLORE_BIANCO);														//Stampa che serve a colorare i successivi messaggi di bianco.
 		}
 		cella_attuale /= POWER_UP_VITA;													//Rimozione dell'elemento POWER_UP_VITA dalla cella attuale.
 	}
@@ -237,24 +239,24 @@ void gestire_cella()
 
 	if(cella_attuale % POWER_UP_FORZA == 0)
 	{
-		if(leggere_forza(giocatore) < 5)
+		if(leggere_forza(giocatore) < 5)												//La forza sarà incrementata solo se il giocatore non ce l'ha al massimo.
 		{
-		scrivere_forza(&giocatore, leggere_forza(giocatore) + 1);						//Chiamata della funzione scrivere_forza per incrementare la forza.
-		printf(COLORE_PORPORA);
-		rallentare_output("La tua forza e' aumentata!\n\n",MILLISECONDI);
-		printf(COLORE_BIANCO);
+			scrivere_forza(&giocatore, leggere_forza(giocatore) + 1);					//Chiamata della funzione scrivere_forza per incrementare la forza.
+			printf(COLORE_PORPORA);														//Stampa che serve a colorare i successivi messaggi di porpora.
+			rallentare_output("La tua forza e' aumentata!\n\n",MILLISECONDI);			//Visualizzazione lenta del messaggio che avvisa dell'incremento della forza.
+			printf(COLORE_BIANCO);														//Stampa che serve a colorare i successivi messaggi di bianco.
 		}
 		cella_attuale /= POWER_UP_FORZA;												//Rimozione dell'elemento POWER_UP_FORZA dalla cella attuale.
 	}
 
 	if(cella_attuale % POWER_UP_FORZA_2 == 0)
 	{
-		if(leggere_forza(giocatore) < 4)
+		if(leggere_forza(giocatore) < 4)												//La forza sarà incrementata di due unità solo se il giocatore ce l'ha inferiore a 4.
 		{
-			scrivere_forza(&giocatore, leggere_forza(giocatore) + 2);						//Chiamata della funzione scrivere_forza per incrementare la forza di 2.
-			printf(COLORE_PORPORA);
-			rallentare_output("La tua forza e' aumentata!\n\n",MILLISECONDI);
-			printf(COLORE_BIANCO);
+			scrivere_forza(&giocatore, leggere_forza(giocatore) + 2);					//Chiamata della funzione scrivere_forza per incrementare la forza di 2.
+			printf(COLORE_PORPORA);														//Stampa che serve a colorare i successivi messaggi di porpora.
+			rallentare_output("La tua forza e' aumentata!\n\n",MILLISECONDI);			//Visualizzazione lenta del messaggio che avvisa dell'incremento della forza.
+			printf(COLORE_BIANCO);														//Stampa che serve a colorare i successivi messaggi di bianco.
 		}
 		cella_attuale /= POWER_UP_FORZA_2;												//Rimozione dell'elemento POWER_UP_FORZA_2 dalla cella attuale.
 	}
@@ -267,18 +269,23 @@ void gestire_cella()
 
 	if(cella_attuale % MALUS == 0)
 	{
-		printf(COLORE_PORPORA);
+		printf(COLORE_PORPORA);															//Stampa che serve a colorare i successivi messaggi di porpora.
 		rallentare_output("Oh no, hai perso una vita!\n\n",MILLISECONDI);
-		printf(COLORE_BIANCO);
+		printf(COLORE_BIANCO);															//Stampa che serve a colorare i successivi messaggi di bianco.
 		scrivere_vita(&giocatore, leggere_vita(giocatore) - 1);							//Chiamata della funzione scrivere_vita per decrementare le vite a disposizione.
 		cella_attuale /= MALUS;															//Rimozione dell'elemento MALUS dalla cella attuale.
 	}
 
+	/**
+	 * Se la cella attuale contiene l'elemento MURO_INTELLIGENZA tra i suoi divisori, viene visualizzato a video un messaggio che avvisa
+	 * il giocatore di essere entrato in un passaggio segreto.
+	*/
+
 	if(cella_attuale % MURO_INTELLIGENZA == 0)
 	{
-		printf(COLORE_CIANO);
+		printf(COLORE_CIANO);															//Stampa che serve a colorare i successivi messaggi di ciano.
 		rallentare_output("Data la tua elevata intelligenza, sei riuscito a scoprire un passaggio segreto!\n\n", MILLISECONDI);
-		printf(COLORE_BIANCO);
+		printf(COLORE_BIANCO);															//Stampa che serve a colorare i successivi messaggi di bianco.
 	}
 
 	/**
@@ -288,9 +295,9 @@ void gestire_cella()
 
 	if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 || cella_attuale % PORTA_SEMPLICE == 0 || cella_attuale % PORTA_RE == 0)
 	{
-		printf(COLORE_GIALLO);
+		printf(COLORE_GIALLO);															//Stampa che serve a colorare i successivi messaggi di giallo.
 		rallentare_output("C'e' una porta chiusa davanti a te!\n\n", MILLISECONDI);		//Chiamata della funzione che permette di rallentare l'output.
-		printf(COLORE_BIANCO);
+		printf(COLORE_BIANCO);															//Stampa che serve a colorare i successivi messaggi di bianco.
 	}
 
 
@@ -301,19 +308,15 @@ void gestire_cella()
 
 	if(cella_attuale % BOTOLE == 0)
 	{
-		printf(COLORE_CIANO),
+		printf(COLORE_CIANO);															//Stampa che serve a colorare i successivi messaggi di ciano.
 		rallentare_output("Davanti a te c'e' una botola!\n\n", MILLISECONDI);			//Chiamata della funzione che permette di rallentare l'output.
-		printf(COLORE_BIANCO);
+		printf(COLORE_BIANCO);															//Stampa che serve a colorare i successivi messaggi di bianco.
 	}
 
-	if(cella_attuale % CELLA_VUOTA == 0)
-	{
-		rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);
-		printf("\n");
-	}
+	rallentare_output(trovare_direzioni_disponibili(), MILLISECONDI);					//Visualizzazione delle direzioni disponibili.	
+	printf("\n");																		//Stampa del carattere di new line.
 
+	scrivere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos), cella_attuale);		//Modifica effettiva della mappa con le celle aggiornate.
 
-	scrivere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos), cella_attuale);			//Modifica effettiva della mappa con le celle aggiornate.
-
-	free(nome_file);																		//Deallocazione della stringa nome_file.
+	free(nome_file);																	//Deallocazione della stringa nome_file.
 }

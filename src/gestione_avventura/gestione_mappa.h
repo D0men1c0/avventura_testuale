@@ -14,13 +14,13 @@
 #include "../personaggio/gestione_personaggio.h"
 #include "gestione_avventura.h"
 
-#define SPAWN_X 4
-#define SPAWN_Y 8
+#define SPAWN_X 4						//Costante intera rappresentante la x della posizione di spawn.
+#define SPAWN_Y 8						//Costante intera rappresentante la y della posizione di spawn.
 
 #define MURO 0                          //Costante intera rappresentante una cella contenente il muro.
 #define CELLA_VUOTA 1                   //Costante intera rappresentante una cella vuota.
 #define STORIA 2                        //Costante intera rappresentante una cella contenente la storia.
-#define POWER_UP_FORZA 3                //Costante intera rappresentante una cella contenente un power up che aumenta la forza.
+#define POWER_UP_FORZA 3                //Costante intera rappresentante una cella contenente un power up che aumenta la forza di un'unità.
 #define PORTA_CHIUSA_SFONDABILE 5       //Costante intera rappresentante una cella contenente una porta chiusa sfondabile.
 #define PORTA_SEMPLICE 7                //Costante intera rappresentante una cella contenente una porta semplice.
 #define PORTA_RE 11                     //Costante intera rappresentante una cella contenente la porta del Re.
@@ -34,8 +34,8 @@
 #define PEZZO_MAPPA_EST 41              //Costante intera rappresentante una cella contenente la parte est della mappa.
 #define PEZZO_MAPPA_NORD 43             //Costante intera rappresentante una cella contenente la parte nord della mappa.
 #define PEZZO_MAPPA_SUD 47              //Costante intera rappresentante una cella contenente la parte sud della mappa.
-#define POWER_UP_FORZA_2 53
-#define MURO_INTELLIGENZA 59
+#define POWER_UP_FORZA_2 53				//Costante intera rappresentante una cella contenente un power up che aumenta la forza di due unità.
+#define MURO_INTELLIGENZA 59			//Costante intera rappresentante una cella contenente una cella accessibile solo con un'elevata intelligenza.
 
 #define RIGHE 10
 #define COLONNE 14
@@ -48,8 +48,8 @@ typedef struct
 	int y;														//Valore della posizione nelle ordinate.
 }posizione;
 
-int leggere_valore_matrice(matrice matrice_a, int riga, int colonna);
-void scrivere_valore_matrice(matrice matrice_a, int riga, int colonna, int valore);
+int leggere_valore_matrice(matrice matrice_a, int riga, int colonna);		//Funzione per la lettura del valore di una matrice.
+void scrivere_valore_matrice(matrice matrice_a, int riga, int colonna, int valore);		//Funzione per la modifica di un valore di una matrice.
 
 void scrivere_x(posizione *posizione_personaggio, int x);		//Funzione per la modifica della x nella struttura della posizione.
 void scrivere_y(posizione *posizione_personaggio, int y);		//Funzione per la modifica della y nella struttura della posizione.
