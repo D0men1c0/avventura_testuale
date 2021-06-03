@@ -10,7 +10,7 @@
  * della stringa dovessero essere molti, è presente la funzione realloc, la quale se si dovesse sforare la lunghezza viene richiamata
  * affichè si allochi nuovo spazio alla stringa.
  * La funzione concatenare_stringhe, grazie alla funzione di libreria strcat, restituisce i caratteri della prima stringa alla quale
- * sono stati concatenati i caratteri presenti nel vettore di caratteri.
+ * sono stati concatenati i caratteri presenti nella seconda stringa.
  * La funzione leggere_lunghezza serve a restituire la lunghezza della stringa passata in input grazie alla funzione di libreria strlen.
  * La funzione confrontare_stringhe ha il compito di restituire un esito (true o false) se le due stringhe passate in input sono uguali.
  * La funzione shiftare_sinistra ha il compito di shiftare tutta la stringa verso destra di n_ripetizioni cioè dell'intero passato in input.
