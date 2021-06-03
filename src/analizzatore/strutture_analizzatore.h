@@ -26,7 +26,6 @@ struct{
 	parola_chiave parole_chiave[MAX_PAROLE];
 	simbolo simboli[MAX_SIMBOLI];
 	int numero_parole_chiave[MAX_SIMBOLI];
-	int dimensione;
 }struttura_parole_chiave;
 
 /**
@@ -45,12 +44,9 @@ void leggere_comando();
 /**
  * FUNZIONI STRUTTURA PAROLE CHIAVE
  */
-int leggere_dimensione_parole_chiave();
 int leggere_numero_parole_chiave(int indice);
 stringa leggere_parola_chiave_tabella(int indice);
 simbolo leggere_simboli_struttura_parole_chiave(int indice);
-void scrivere_numero_parola_chiave_struttura_parole_chiave(int indice, int valore);
-void scrivere_simboli_struttura_parole_chiave(int indice, simbolo simb);
 
 /**
  * FUNZIONI STRUTTURA TABELLA SIMBOLI

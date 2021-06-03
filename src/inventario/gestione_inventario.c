@@ -91,6 +91,7 @@ void stampare_inventario()
 	 * Attraverso questa serie di strutture di controllo, il giocatore può sapere cosa è presente nel suo inventario tramite apposito
 	 * comando. Quindi tutti i valori che saranno impostati a true, saranno visualizzati nel messaggio.
 	*/
+	rallentare_output("\nINVENTARIO:\n", MILLISECONDI);
 
 	if(leggere_frammento_nord(inv) == true)
 	{

@@ -18,10 +18,9 @@
 #include "../gestione_file/gestione_file.h"
 #include "analizzatore_lessicale_sintattico.h"
 
-void scrivere_dimensione_simboli(int dimensione);
-void inserire_simbolo_tabella(simbolo simb);
-void scrivere_dimensione_parole_chiave(int dimensione);
-void scrivere_parola_chiave_struttura_parole_chiave(parola_chiave parola);
+void scrivere_numero_parola_chiave_struttura_parole_chiave(int indice, int valore);
+void scrivere_simbolo_struttura_parole_chiave(simbolo simb, int indice);
+void scrivere_parola_chiave_struttura_parole_chiave(parola_chiave parola, int indice);
 
 void inizializzare_strutture_analizzatore()
 {
@@ -30,60 +29,56 @@ void inizializzare_strutture_analizzatore()
 
 	i = 1;
 
-	scrivere_dimensione_simboli(0);							// Inizializza la dimensione dei simboli a 0
-
 	while(i <= MAX_SIMBOLI)									// Ripete il ciclo tot volte(quanti sono i simboli)
 	{
-		inserire_simbolo_tabella(i);						// Inserisce il simbolo(intero) nella struttura parole chiave
+		scrivere_simbolo_struttura_parole_chiave(i, i-1);						// Inserisce il simbolo(intero) nella struttura parole chiave
 		i++;
 	}
 
-	// INIZIALIZZAZIONE PAROLE CHIAVE
-
-	scrivere_dimensione_parole_chiave(0);					// Inizializza la dimensione delle parole chiave a 0
+	// INIZIALIZZAZIONE PAROLE CHIAVE0
 
 	// Inserisce le parole chiave dello spostamento e imposta il numero di parole chiave dello spostamento
-	scrivere_parola_chiave_struttura_parole_chiave(NORD);
-	scrivere_parola_chiave_struttura_parole_chiave(SUD);
-	scrivere_parola_chiave_struttura_parole_chiave(EST);
-	scrivere_parola_chiave_struttura_parole_chiave(OVEST);
-	scrivere_numero_parola_chiave_struttura_parole_chiave(0, leggere_dimensione_parole_chiave());
+	scrivere_parola_chiave_struttura_parole_chiave(NORD, 0);
+	scrivere_parola_chiave_struttura_parole_chiave(SUD, 1);
+	scrivere_parola_chiave_struttura_parole_chiave(EST, 2);
+	scrivere_parola_chiave_struttura_parole_chiave(OVEST, 3);
+	scrivere_numero_parola_chiave_struttura_parole_chiave(0, 4);
 
 	// Inserisce le parole chiave dei comandi globali e imposta il numero di parole chiave dei comandi globali
-	scrivere_parola_chiave_struttura_parole_chiave(SALVA);
-	scrivere_parola_chiave_struttura_parole_chiave(CARICA);
-	scrivere_parola_chiave_struttura_parole_chiave(NUOVA);
-	scrivere_parola_chiave_struttura_parole_chiave(AIUTO);
-	scrivere_numero_parola_chiave_struttura_parole_chiave(1, leggere_dimensione_parole_chiave());
+	scrivere_parola_chiave_struttura_parole_chiave(SALVA, 4);
+	scrivere_parola_chiave_struttura_parole_chiave(CARICA, 5);
+	scrivere_parola_chiave_struttura_parole_chiave(NUOVA, 6);
+	scrivere_parola_chiave_struttura_parole_chiave(AIUTO, 7);
+	scrivere_numero_parola_chiave_struttura_parole_chiave(1, 8);
 
 	/**
 	 * Inserisce le parole chiave delle parole relative ai comandi globali e imposta il numero di parole chiave
 	 * delle parole relative ai comandi globali
 	 */
-	scrivere_parola_chiave_struttura_parole_chiave(PARTITA);
-	scrivere_numero_parola_chiave_struttura_parole_chiave(2, leggere_dimensione_parole_chiave());
+	scrivere_parola_chiave_struttura_parole_chiave(PARTITA, 8);
+	scrivere_numero_parola_chiave_struttura_parole_chiave(2, 9);
 
 	// Inserisce le parole chiave dei verbi e imposta il numero di parole chiave dei verbi
-	scrivere_parola_chiave_struttura_parole_chiave(PRENDI);
-	scrivere_parola_chiave_struttura_parole_chiave(SFONDA);
-	scrivere_parola_chiave_struttura_parole_chiave(ESAMINA);
-	scrivere_parola_chiave_struttura_parole_chiave(VISUALIZZA);
-	scrivere_parola_chiave_struttura_parole_chiave(APRI);
-	scrivere_numero_parola_chiave_struttura_parole_chiave(3, leggere_dimensione_parole_chiave());
+	scrivere_parola_chiave_struttura_parole_chiave(PRENDI, 9);
+	scrivere_parola_chiave_struttura_parole_chiave(SFONDA, 10);
+	scrivere_parola_chiave_struttura_parole_chiave(ESAMINA, 11);
+	scrivere_parola_chiave_struttura_parole_chiave(VISUALIZZA, 12);
+	scrivere_parola_chiave_struttura_parole_chiave(APRI, 13);
+	scrivere_numero_parola_chiave_struttura_parole_chiave(3, 14);
 
 	/**
 	 * Inserisce le parole chiave delle parole relative ai verbi e imposta il numero di parole chiave
 	 * delle parole relative ai verbi
 	 */
-	scrivere_parola_chiave_struttura_parole_chiave(CHIAVE);
-	scrivere_parola_chiave_struttura_parole_chiave(PORTA);
-	scrivere_parola_chiave_struttura_parole_chiave(FRAMMENTO);
-	scrivere_parola_chiave_struttura_parole_chiave(MAPPA);
-	scrivere_parola_chiave_struttura_parole_chiave(BOTOLA);
-	scrivere_parola_chiave_struttura_parole_chiave(STANZA);
-	scrivere_parola_chiave_struttura_parole_chiave(ATTRIBUTI);
-	scrivere_parola_chiave_struttura_parole_chiave(INVENTARIO);
-	scrivere_numero_parola_chiave_struttura_parole_chiave(4, leggere_dimensione_parole_chiave());
+	scrivere_parola_chiave_struttura_parole_chiave(CHIAVE, 14);
+	scrivere_parola_chiave_struttura_parole_chiave(PORTA, 15);
+	scrivere_parola_chiave_struttura_parole_chiave(FRAMMENTO, 16);
+	scrivere_parola_chiave_struttura_parole_chiave(MAPPA, 17);
+	scrivere_parola_chiave_struttura_parole_chiave(BOTOLA, 18);
+	scrivere_parola_chiave_struttura_parole_chiave(STANZA, 19);
+	scrivere_parola_chiave_struttura_parole_chiave(ATTRIBUTI, 20);
+	scrivere_parola_chiave_struttura_parole_chiave(INVENTARIO, 21);
+	scrivere_numero_parola_chiave_struttura_parole_chiave(4, 22);
 }
 
 void leggere_comando()
@@ -160,35 +155,19 @@ parola_chiave leggere_token_tabella_simboli(int indice)
 	return tabella_simboli.token[indice];
 }
 
-
-void inserire_simbolo_tabella(simbolo simb)
+void scrivere_simbolo_struttura_parole_chiave(simbolo simb, int indice)
 {
-	int dimensione;
-
-	dimensione = leggere_dimensione_parole_chiave();
-	scrivere_simboli_struttura_parole_chiave(dimensione, simb);
-
-	scrivere_dimensione_simboli(dimensione + 1);
+	struttura_parole_chiave.simboli[indice] = simb;
 }
 
-void scrivere_dimensione_simboli(int dimensione)
+simbolo leggere_simboli_struttura_parole_chiave(int indice)
 {
-	struttura_parole_chiave.dimensione = dimensione;
+	return struttura_parole_chiave.simboli[indice];
 }
 
-int leggere_numero_parole_chiave(int indice)
+void scrivere_parola_chiave_struttura_parole_chiave(parola_chiave parola, int indice)
 {
-	return  struttura_parole_chiave.numero_parole_chiave[indice];
-}
-
-void scrivere_dimensione_parole_chiave(int dimensione)
-{
-	struttura_parole_chiave.dimensione = dimensione;
-}
-
-int leggere_dimensione_parole_chiave()
-{
-	return struttura_parole_chiave.dimensione;
+	struttura_parole_chiave.parole_chiave[indice] = parola;
 }
 
 stringa leggere_parola_chiave_tabella(int indice)
@@ -201,26 +180,7 @@ void scrivere_numero_parola_chiave_struttura_parole_chiave(int indice, int valor
 	struttura_parole_chiave.numero_parole_chiave[indice] = valore;
 }
 
-void scrivere_simboli_struttura_parole_chiave(int indice, simbolo simb)
+int leggere_numero_parole_chiave(int indice)
 {
-	struttura_parole_chiave.simboli[indice] = simb;
-}
-
-simbolo leggere_simboli_struttura_parole_chiave(int indice)
-{
-	simbolo simb;
-
-	simb = struttura_parole_chiave.simboli[indice];
-
-	return simb;
-}
-
-void scrivere_parola_chiave_struttura_parole_chiave(parola_chiave parola)
-{
-	int dimensione;
-
-	dimensione = leggere_dimensione_parole_chiave();
-	struttura_parole_chiave.parole_chiave[dimensione] = parola;
-
-	scrivere_dimensione_parole_chiave(dimensione + 1);
+	return  struttura_parole_chiave.numero_parole_chiave[indice];
 }

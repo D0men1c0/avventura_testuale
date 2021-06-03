@@ -50,7 +50,6 @@ bool stampare_aiuto();
 
 // Funzioni per i comandi in partita
 void visualizzare_attributi();
-void visualizzare_inventario();
 void visualizzare_mappa();
 void esaminare_stanza();
 void aprire_porta();
@@ -82,8 +81,9 @@ bool gestire_comandi_globali()
 {
 	bool esito;
 
+	parola_chiave token;
 
-	parola_chiave token = leggere_token_tabella_simboli(0);
+	token = leggere_token_tabella_simboli(0);
 
 	esito = false;
 
@@ -136,7 +136,7 @@ bool gestire_azioni_partita()
 				}
 				else if(confrontare_stringhe(token, INVENTARIO))
 				{
-					visualizzare_inventario();
+					stampare_inventario();
 					esito = true;
 				}
 				else if(confrontare_stringhe(token, MAPPA))
@@ -367,13 +367,6 @@ void visualizzare_attributi()
 	// Stampa la stringa leggendo i valori dal giocatore
 	sprintf(risposta, "\nATTRIBUTI:\nTi chiami: %s \nLa vita e': %d \nLa forza e': %d\nL'intelligenza e': %d\n\n", leggere_nome(giocatore), leggere_vita(giocatore), leggere_forza(giocatore), leggere_intelligenza(giocatore));
 	rallentare_output(risposta, MILLISECONDI);
-}
-
-void visualizzare_inventario()
-{
-	// Stampa l'inventario richiamando stampare_inventario nel modulo gestione_inventario
-	rallentare_output("\nINVENTARIO:\n", MILLISECONDI);
-	stampare_inventario();
 }
 
 void visualizzare_mappa()

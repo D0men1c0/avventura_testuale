@@ -54,7 +54,6 @@ stringa estrarre_token(stringa sorgente)
 
 	sorgente = shiftare_sinistra(sorgente, i+1);						// Shifta la sorgente di tot caratteri quant'è la lunghezza del token
 
-
 	c = eliminare_spazi_sorgente(sorgente);								// Elimina eventuali spazi dopo la lettura del token
 
 	token[i] = '\0';													// Imposta il fine stringa al token
@@ -92,7 +91,7 @@ bool scansionare_token(stringa token, int indice)
 	i = 0;
 
 	// Ripeti il ciclo fin quando non è stato trovato il token oppure esci dopo aver confrontato tutte le parole legali con il token
-	while(i < leggere_dimensione_parole_chiave() && esito == false)
+	while(i < MAX_PAROLE && esito == false)
 	{
 		// Se il token è uguale ad una parola legale riconosciuta dall'analizzatore
 		if(confrontare_stringhe(token, leggere_parola_chiave_tabella(i)))
@@ -240,11 +239,6 @@ bool controllare_simboli_tabella()
 		if(esito == true)												// Se tutti questi controlli hanno dato esito true
 		{
 			esito = gestire_azioni_partita();							// Richiamo la funzione gestire_azioni_partita ed assegna il risultato ad esito per un ulteriore controllo sintattico
-
-			if(esito == false)											// Se esito è uguale a false
-			{
-				gestire_errore_sintattico();							// Stampa un messaggio di errore
-			}
 		}
 	}
 	else																// Se il primo simbolo non è nè del movimento, nè di HELP e nè un verbo
