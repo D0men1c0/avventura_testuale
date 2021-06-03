@@ -13,7 +13,7 @@
 
 #include "../utility.h"
 
-#define MILLISECONDI 0 //35                 //Costante intera rappresentante i millisecondi di ritardo tra un carattere e l'altro nella visualizzazione lenta di un messaggio normale.
+#define MILLISECONDI 35                 	//Costante intera rappresentante i millisecondi di ritardo tra un carattere e l'altro nella visualizzazione lenta di un messaggio normale.
 #define MILLISEC_CASTELLO 7                 //Costante intera rappresentante i millisecondi di ritardo tra un carattere e l'altro nella visualizzazione lenta del castello.
 #define MILLISEC_MAPPA 0                    //Costante intera rappresentante i millisecondi di ritardo tra un carattere e l'altro nella visualizzazione lenta della mappa.
 #define MILLISEC_FINALE 45                  //Costante intera rappresentante i millisecondi di ritardo tra un carattere e l'altro nella visualizzazione lenta del finale.
