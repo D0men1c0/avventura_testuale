@@ -198,7 +198,7 @@ void impostare_valori_personaggio()
 void impostare_inizio()
 {
 	impostare_valori_personaggio();
-	leggere_mappa(mappa);
+	leggere_mappa_file("mappa.txt");
 
 	/**Se abbiamo impostato un'intelligenza maggiore di 3,
 	 *consideriamo la cella [4][1] come un muro, cioè con

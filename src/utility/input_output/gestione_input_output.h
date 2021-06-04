@@ -16,7 +16,7 @@
 #define MILLISECONDI 35                 	//Costante intera rappresentante i millisecondi di ritardo tra un carattere e l'altro nella visualizzazione lenta di un messaggio normale.
 #define MILLISEC_CASTELLO 7                 //Costante intera rappresentante i millisecondi di ritardo tra un carattere e l'altro nella visualizzazione lenta del castello.
 #define MILLISEC_MAPPA 0                    //Costante intera rappresentante i millisecondi di ritardo tra un carattere e l'altro nella visualizzazione lenta della mappa.
-#define MILLISEC_FINALE 45                  //Costante intera rappresentante i millisecondi di ritardo tra un carattere e l'altro nella visualizzazione lenta del finale.
+#define MILLISEC_FINALE 0//45                  //Costante intera rappresentante i millisecondi di ritardo tra un carattere e l'altro nella visualizzazione lenta del finale.
 #define END 5                               //Costante intera rappresentante i millisecondi di ritardo tra un carattere e l'altro nella visualizzazione lenta della scritta the end.
 
 #define COLORE_ROSSO     	"\033[0;31m"    //Costante stringa rappresentante il codice per il colore rosso.

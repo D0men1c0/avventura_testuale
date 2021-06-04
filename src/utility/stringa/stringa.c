@@ -1,6 +1,5 @@
 /**
- * Il seguente modulo ha il compito di racchiudere le vare funzioni per la gestione del tipo di dato stringa. La funzione leggere_stringa
- * serve per rendere più comodo il ritorno del tipo di dato stringa. La funzione scrivere_stringa, che ha in input due stringhe restituisce,
+ * Il seguente modulo ha il compito di racchiudere le vare funzioni per la gestione del tipo di dato stringa. La funzione scrivere_stringa, che ha in input due stringhe restituisce,
  * usando la funzione di libreria strcpy, la seconda stringa all'interno della prima stringa, senza dover copiare carattere per carattere,
  * La funzione scrivere_carattere, oltre a scrivere il carattere all'interno della stringa nella posizione indicata dall'indice, presenta
  * un SE che permette di allocare dinamicamente spazio alla stringa se quest'ultima presenta l'indice % 100 = 0.
@@ -26,10 +25,6 @@
 #include "stringa.h"
 #include "../utility.h"
 
-stringa leggere_stringa(stringa str)
-{
-  return str;
-}
 
 stringa scrivere_stringa(stringa str, stringa str_2)
 {
@@ -143,10 +138,7 @@ stringa convertire_stringa_minuscolo(stringa str)
 
 	while(i < leggere_lunghezza(str))
 	{
-		if(leggere_carattere(str, i) >= 'A' && leggere_carattere(str, i) <= 'Z')
-		{
-			str[i] = leggere_carattere(str, i) + 'a' - 'A';
-		}
+		str[i] = convertire_minuscolo(leggere_carattere(str, i));
 
 		i++;
 	}

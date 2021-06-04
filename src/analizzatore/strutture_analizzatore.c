@@ -172,7 +172,7 @@ void scrivere_parola_chiave_struttura_parole_chiave(parola_chiave parola, int in
 
 stringa leggere_parola_chiave_tabella(int indice)
 {
-	return leggere_stringa(struttura_parole_chiave.parole_chiave[indice]);
+	return struttura_parole_chiave.parole_chiave[indice];
 }
 
 void scrivere_numero_parola_chiave_struttura_parole_chiave(int indice, int valore)

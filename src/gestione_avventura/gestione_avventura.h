@@ -15,6 +15,8 @@
 #include "../inventario/gestione_inventario.h"
 #include "../personaggio/gestione_personaggio.h"
 
+bool chiusura_gioco;
+
 void gestire_avventura();									//Funzione per la gestione principale dell'avventura.
 void impostare_avventura();                                 //Funzione che imposta l'avventura e che visualizza la schermata iniziale del gioco.
 

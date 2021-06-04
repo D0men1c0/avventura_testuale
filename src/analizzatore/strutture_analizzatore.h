@@ -22,20 +22,24 @@ typedef stringa parola_chiave;
 /**
  * STRUTTURA PAROLE CHIAVE
  */
-struct{
+typedef struct{
 	parola_chiave parole_chiave[MAX_PAROLE];
 	simbolo simboli[MAX_SIMBOLI];
 	int numero_parole_chiave[MAX_SIMBOLI];
-}struttura_parole_chiave;
+}struct_parole;
+
+struct_parole struttura_parole_chiave;
 
 /**
  * STRUTTURA TABELLA SIMBOLI
  */
-struct{
+typedef struct{
 	simbolo simboli[MAX_SIMBOLI];
 	parola_chiave token[MAX_SIMBOLI];
 	int dimensione;
-}tabella_simboli;
+}tabella_token;
+
+tabella_token tabella_simboli;
 
 // FUNZIONI DI INIZIALIZZAZIONE STRUTTURE E LETTURA DELLA SORGENTE
 void inizializzare_strutture_analizzatore();

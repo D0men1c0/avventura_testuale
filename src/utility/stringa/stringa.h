@@ -2,9 +2,8 @@
  * Questo modulo contiene il tipo di dato stringa con le relative funzioni legate ad esso. Il tipo di dato stringa è composto da un vettore
  * di caratteri. Si è deciso di utilizzare il tipo di dato stringa in quanto riteniamo sia più comodo poter gestire il tipo di dato stringa
  * anzichè usare di volta in volta char * e poter sfruttare funzioni legate al tipo di dato. Perciò data la scelta dell'uso del tipo di dato,
- * sono state implementate le relative funzioni di leggere_stringa la quale ha in input la stringa e restituisce un vettore di caratteri,
- * scrivere_carattere che ha in input la stringa sulla quale bisogna operare, l'indice cioè la posizione in cui andare ad inserire il
- * carattere, e il carattere e restituisce la stringa di input in cui è stata aggiornata aggiungendo il carattere di input.
+ * sono state implementate le relative funzioni di scrivere_carattere che ha in input la stringa sulla quale bisogna operare,
+ * l'indice cioè la posizione in cui andare ad inserire il carattere, e il carattere e restituisce la stringa di input in cui è stata aggiornata aggiungendo il carattere di input.
  * Funzione simile è leggere_carattere la quale riceve in input la stringa e l'indice e restituisce il carattere che si vuole leggere.
  * La funzione scrivere_stringa che riceve in input due stringhe , ha il compito di copiare tutti i caratteri all'interno della
  * stringa senza dover inserire volta per volta ciascun carattere, infatti restituisce come output i la stringa con i caretteri copiati.
@@ -35,7 +34,6 @@
 
 typedef char * stringa;
 
-stringa leggere_stringa(stringa str);
 stringa scrivere_stringa(stringa str, stringa str_2);
 char leggere_carattere(stringa str, int indice);
 stringa scrivere_carattere(stringa str, int indice, char c);

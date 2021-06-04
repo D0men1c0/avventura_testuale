@@ -179,13 +179,13 @@ void pulire_schermo()
 
 int leggere_intero_tastiera()
 {
-	int intero;												//Variabile in cui andrà l'intero letto da tastiera.
+	int valore;												//Variabile in cui andrà l'intero letto da tastiera.
 
-	scanf("%d", &intero);									//Chiamata della funzione di stdin per la lettura di un intero da tastiera.
+	scanf("%d", &valore);									//Chiamata della funzione di stdin per la lettura di un intero da tastiera.
 
 	leggi_linea();											//Chiamata della funzione che legge una linea di input da tastiera.
 
-	return intero;											//Restituzione dell'intero letto da tastiera.
+	return valore;											//Restituzione dell'intero letto da tastiera.
 }
 
 stringa leggere_stringa_tastiera(stringa str)

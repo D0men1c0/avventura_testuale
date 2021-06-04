@@ -681,8 +681,30 @@ void gestire_finale(bool cifrato)
 	ritardare_programma(10000);
 	pulire_schermo();
 
-	impostare_avventura();
-	scrivere_nome(&giocatore, "\0");
+	do
+	{
+		rallentare_output("Vuoi ritornare alla home? (si/no)", MILLISECONDI);
+		risposta = leggere_stringa_tastiera(risposta);
+
+		if(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == true)
+		{
+
+			impostare_avventura();
+			scrivere_nome(&giocatore, "\0");
+		}
+		else if( confrontare_stringhe(convertire_stringa_minuscolo(risposta), "no") == true)
+		{
+			chiusura_gioco = true;
+		}
+		else
+		{
+			rallentare_output("\nComando non riconosciuto!", MILLISECONDI);
+		}
+
+	}
+	while(confrontare_stringhe(convertire_stringa_minuscolo(risposta), "si") == false && confrontare_stringhe(convertire_stringa_minuscolo(risposta), "no") == false);
+
+
 	free(risposta);
 	free(risposta_indovinello);
 }

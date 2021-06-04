@@ -14,8 +14,8 @@
 #include "../personaggio/gestione_personaggio.h"
 #include "gestione_avventura.h"
 
-#define SPAWN_X 4						//Costante intera rappresentante la x della posizione di spawn.
-#define SPAWN_Y 8						//Costante intera rappresentante la y della posizione di spawn.
+#define SPAWN_X 9//4						//Costante intera rappresentante la x della posizione di spawn.
+#define SPAWN_Y 7//8						//Costante intera rappresentante la y della posizione di spawn.
 
 #define MURO 0                          //Costante intera rappresentante una cella contenente il muro.
 #define CELLA_VUOTA 1                   //Costante intera rappresentante una cella vuota.
@@ -55,7 +55,6 @@ void scrivere_x(posizione *posizione_personaggio, int x);		//Funzione per la mod
 void scrivere_y(posizione *posizione_personaggio, int y);		//Funzione per la modifica della y nella struttura della posizione.
 int leggere_x(posizione posizione_personaggio);					//Funzione per la lettura della x nella struttura della posizione.
 int leggere_y(posizione posizione_personaggio);					//Funzione per la lettura della y nella struttura della posizione.
-void leggere_mappa(matrice mappa);      						//Funzione per la lettura della mappa da file.
 void gestire_cella();         							        //Funzione per la gestione delle singole celle.
 stringa trovare_direzioni_disponibili();						//Funzione per la ricerca delle direzioni disponibili al giocatore.
 

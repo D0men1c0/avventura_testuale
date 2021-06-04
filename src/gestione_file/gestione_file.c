@@ -1,12 +1,11 @@
 /**
  * Il seguente modulo serve per ptoer leggere su file di testo e leggere e scrivere su file binario.
  * La funzione accodare_file_salvataggio apre in modalità append il file binario e scrive su quest'ultimo mediante la funzione di
- * libreria fwrite in posizione 1 gli attributi del personaggio, lo stato dell'inventario, l'intera mappa mediante un ciclo per le
+ * libreria fwrite gli attributi del personaggio, lo stato dell'inventario, l'intera mappa mediante un ciclo per le
  * righe e le colonne e infine la posizione. Se il salvataggio è andato a buon fine restituisce un esito positivo, altrimenti
  * un'esito negativo.
  * Funzione simile è leggere_file_salvataggio che invece legge da file binario mediante la funzione fread. Il file viene sempre
  * aperto in modalità append e vengono letti le strutture memorizzate nel file quali: inventario, personaggio, matrice, posizione.
- * La lettura avviene sempre sulla 1 riga cioè dove erano stati memporizzati in precedenza le strutture dalla funzione di scrittura.
  * Sono presenti 3 funzioni di lettura da file di testo e sono: leggere_file_testo, leggere_file_storia, leggere_mappa_file.
  * La funzione leggere_file_testo serve a gestire l'apertura del file di testo in modalità di lettura.
  * Inoltre è presente anche la funzione scrivere_carattere, la quale avrà il compito di memorizzare all'interno della stringa tutti i

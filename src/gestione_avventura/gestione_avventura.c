@@ -23,11 +23,11 @@ void gestire_avventura()
 	impostare_avventura();									//Chiamata della funzione che serve a impostare l'avventura.
 	
 	/**
-	 * La lettura del comando da tastiera viene inserita in un ciclo infinito, cosÃ¬ da richiedere per ogni azione un nuovo comando
+	 * La lettura del comando da tastiera viene inserita in un ciclo infinito, così da richiedere per ogni azione un nuovo comando
 	 * da eseguire.
 	*/
 
-	while(true)
+	while(chiusura_gioco == false)
 	{
 		leggere_comando();									//Chiamata della funzione per la lettura del comando da tastiera.
 	}
@@ -35,6 +35,8 @@ void gestire_avventura()
 
 void impostare_avventura()
 {
+	chiusura_gioco = false;
+
 	rallentare_output(COLORE_ROSSO, 0);						//Stampa che serve a colorare i successivi messaggi di rosso.
 	rallentare_output(COLORE_BIANCO, 0);					//Stampa che serve a colorare i successivi messaggi di bianco.
 

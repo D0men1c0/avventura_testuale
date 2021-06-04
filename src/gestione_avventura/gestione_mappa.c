@@ -162,10 +162,6 @@ stringa trovare_direzioni_disponibili()
 	return direzioni;													//Restituzione della stringa contenente le direzioni disponibili.
 }
 
-void leggere_mappa(matrice mappa)
-{
-	leggere_mappa_file("mappa.txt");									//Chiamata della funzione che legge la mappa da file.
-}
 
 void gestire_cella()
 {
