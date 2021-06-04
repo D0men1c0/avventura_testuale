@@ -33,8 +33,8 @@ void ritardare_programma(int millisecondi)
 {
     setbuf(stdout, NULL);                                   //Disabilitazione del buffering su stdout.
     long ticks;                                             //Variabile contenente i tick presenti nella quantità di tempo desiderata.
-    clock_t tempo_attuale;                                  //Variabile contenente il tempo attuale.
-    clock_t tempo_iniziale;                                 //Variabile contenente il tempo iniziale.
+    clock_t tempo_attuale;									//Variabile contenente il tempo attuale.
+    clock_t tempo_iniziale;									//Variabile contenente il tempo iniziale.
 
     /**
      * La costante CLOCK_PER_SEC contiene il numero di tick presenti in un secondo. Per ottenere la quantità in millisecondi
@@ -59,7 +59,7 @@ void ritardare_programma(int millisecondi)
 
 void rallentare_output(stringa messaggio, int millisecondi)
 {
-	int lunghezza_colore;
+	int lunghezza_colore;									//Variabile contenente la lunghezza della costante del colore all'interno del messaggio.
 
     int i;	                                                //Indice utilizzato per indicare il carattere corrente della stringa.
     i = 0;                                                  //Inizializzazione a zero dell'indice.
@@ -86,7 +86,7 @@ void rallentare_output(stringa messaggio, int millisecondi)
         printf("%c", messaggio[i]);							//Stampa del carattere corrente.
 
         i++;												//Incremento dell'indice.
-  }
+  	}
 }
 
 int controllare_colore(stringa messaggio, int indice)
