@@ -14,8 +14,8 @@
 #include "../personaggio/gestione_personaggio.h"
 #include "gestione_avventura.h"
 
-#define SPAWN_X 9//4						//Costante intera rappresentante la x della posizione di spawn.
-#define SPAWN_Y 7//8						//Costante intera rappresentante la y della posizione di spawn.
+#define SPAWN_X 4						//Costante intera rappresentante la x della posizione di spawn.
+#define SPAWN_Y 8						//Costante intera rappresentante la y della posizione di spawn.
 
 #define MURO 0                          //Costante intera rappresentante una cella contenente il muro.
 #define CELLA_VUOTA 1                   //Costante intera rappresentante una cella vuota.

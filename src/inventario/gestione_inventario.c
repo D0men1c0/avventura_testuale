@@ -76,12 +76,12 @@ void scrivere_chiave_re(inventario *inv, bool valore)
 
 void inizializza_inventario(inventario *inv)
 {
-	scrivere_frammento_nord(inv, true);					//Inizializzazione dell'inventario senza frammento nord della mappa.
-	scrivere_frammento_sud(inv, true);						//Inizializzazione dell'inventario senza frammento sud della mappa.
-	scrivere_frammento_est(inv, true);						//Inizializzazione dell'inventario senza frammento est della mappa.
+	scrivere_frammento_nord(inv, false);					//Inizializzazione dell'inventario senza frammento nord della mappa.
+	scrivere_frammento_sud(inv, false);						//Inizializzazione dell'inventario senza frammento sud della mappa.
+	scrivere_frammento_est(inv, false);						//Inizializzazione dell'inventario senza frammento est della mappa.
 	scrivere_frammento_ovest(inv, true);					//Inizializzazione dell'inventario con il frammento ovest della mappa presente.
-	scrivere_chiave_re(inv, true);							//Inizializzazione dell'inventario senza chiave del Re.
-	scrivere_chiave_semplice(inv, true);					//Inizializzazione dell'inventario senza chiave semplice.
+	scrivere_chiave_re(inv, false);							//Inizializzazione dell'inventario senza chiave del Re.
+	scrivere_chiave_semplice(inv, false);					//Inizializzazione dell'inventario senza chiave semplice.
 }
 
 
