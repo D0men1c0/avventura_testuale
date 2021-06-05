@@ -113,11 +113,9 @@ bool gestire_comandi_globali()
 bool gestire_azioni_partita()
 {
 	bool esito;
-	stringa risposta = "";
 
 	parola_chiave token = leggere_token_tabella_simboli(0);
 
-	risposta = allocare_stringa(risposta, 0);
 	esito = false;
 
 	// Se ci si trova in partita in corso (quindi il nome del giocatore esiste)
