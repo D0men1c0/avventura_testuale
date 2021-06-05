@@ -147,6 +147,10 @@ bool gestire_azioni_partita()
 					gestire_errore_semantico();
 				}
 			}
+			else
+			{
+				rallentare_output("\nSintassi non riconosciuta! ", MILLISECONDI);
+			}
 		}
 		else if(confrontare_stringhe(token, ESAMINA))
 		{
@@ -159,6 +163,10 @@ bool gestire_azioni_partita()
 					esaminare_stanza();
 					esito = true;
 				}
+			}
+			else
+			{
+				rallentare_output("\nSintassi non riconosciuta! ", MILLISECONDI);
 			}
 		}
 		else if(confrontare_stringhe(token, APRI))
@@ -178,6 +186,10 @@ bool gestire_azioni_partita()
 					esito = true;
 				}
 			}
+			else
+			{
+				rallentare_output("\nSintassi non riconosciuta! ", MILLISECONDI);
+			}
 		}
 		else if(confrontare_stringhe(token, SFONDA))
 		{
@@ -190,6 +202,10 @@ bool gestire_azioni_partita()
 					sfondare_porta();
 					esito = true;
 				}
+			}
+			else
+			{
+				rallentare_output("\nSintassi non riconosciuta! ", MILLISECONDI);
 			}
 		}
 		else if(confrontare_stringhe(token, PRENDI))
@@ -223,6 +239,10 @@ bool gestire_azioni_partita()
 				{
 					prendere_chiave();
 					esito = true;
+				}
+				else
+				{
+					rallentare_output("\nSintassi non riconosciuta! ", MILLISECONDI);
 				}
 			}
 		}
