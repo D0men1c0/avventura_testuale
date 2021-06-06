@@ -1,11 +1,13 @@
 /**
- * Il seguente modulo contiene funzioni utili alla gestione dell'output di una stringa in modalit√† "lenta".
- * Ci√≤ √® reso possibile attraverso una funzione che permette di ottenere un delay sul programma, cos√¨ da poterlo
- * sfruttare per visualizzare una qualsiasi stringa pi√π lentamente e dare quindi un effetto migliore anche agli occhi del giocatore.
- * Nello specifico √® presente la funzione "ritardare_programma" grazie alla quale, dando in input i millisecondi, √® possibile
- * ottenere un delay di quella tempistica. Nella funzione "rallentare_output" invece ci sono istruzioni utili alla stampa
- * di un messaggio attraverso l'utilizzo del delay ottenuto con la precedente funzione. La funzione "pulire_schermo" infine
- * ha il solo compito di ripulire il CMD da tutti i messaggi.
+ * La funzione ritardare_programma riceve in input i millisecondi e blocca l'esecuzione del programma per quei millisecondi utilizzando la libreria time.h
+ * La funzione rallentare_output stampa il messaggio dato in input, rallentandolo di tot millisecondi(sempre dati in input). All'interno di questa funzione,
+ * inoltre, viene effettuato il controllo sul colore, cioË se un carattere Ë #, allora verr‡ richiamata la funzione apposita, cioË controllare_colore. Quest'ultima
+ * ha in input la stessa stringa di rallentare_output e in pi˘ anche l'indice da dove incominciare il controllo(cioË della posizione di #). Se Ë stata inserita la
+ * costante per il cambio di colore, allora verr‡ cambiato colore e restituito la lunghezza della costante(serve per non stampare a video la costante) altrimenti
+ * verr‡ restituito 0 e si continuer‡ a leggere la stringa. La funzione pulire_schermo ripulisce la console attraverso il comando "cls".
+ * Per le funzioni di input Ë presente leggere_intero_tastiera che legge un numero attraverso la funzione scanf mentre leggere_stringa_tastiera legge un'intera
+ * stringa attraverso la funzione fgets(si Ë evitata la scanf con le stringhe in quanto appena si incontrava uno spazio veniva ignorato quello che c'era dopo). E'
+ * presente anche la funzione leggi_linea che ripulisce tutti i caratteri presenti nel buffer dopo la funzione di leggere_intero_tastiera.
  */
 
 #include <stdio.h>
@@ -32,24 +34,24 @@ int controllare_colore(stringa messaggio, int indice);		//Funzione per controlla
 void ritardare_programma(int millisecondi)
 {
     setbuf(stdout, NULL);                                   //Disabilitazione del buffering su stdout.
-    long ticks;                                             //Variabile contenente i tick presenti nella quantit√† di tempo desiderata.
+    long ticks;                                             //Variabile contenente i tick presenti nella quantit‡† di tempo desiderata.
     clock_t tempo_attuale;									//Variabile contenente il tempo attuale.
     clock_t tempo_iniziale;									//Variabile contenente il tempo iniziale.
 
     /**
-     * La costante CLOCK_PER_SEC contiene il numero di tick presenti in un secondo. Per ottenere la quantit√† in millisecondi
-     * bisogna quindi dividere tale costante per mille e, per ottenere i tick desiderati per il tempo da noi scelto, √® sufficiente
+     * La costante CLOCK_PER_SEC contiene il numero di tick presenti in un secondo. Per ottenere la quantit‡† in millisecondi
+     * bisogna quindi dividere tale costante per mille e, per ottenere i tick desiderati per il tempo da noi scelto, Ë sufficiente
      * moltiplicare il risultato per i millisecondi desiderati.
     */
     ticks = millisecondi * (CLOCKS_PER_SEC / 1000);
 
     tempo_iniziale = clock();                               //Assegnazione dei tick trascorsi dall'avvio del programma.
-    tempo_attuale = tempo_iniziale;                         //Impostazione del tempo attuale alla stessa quantit√† del tempo iniziale.
+    tempo_attuale = tempo_iniziale;                         //Impostazione del tempo attuale alla stessa quantit‡† del tempo iniziale.
 
     /**
      * Tramite questa struttura di ripetizione si confronta la differenza tra i tick del tempo attuale e quelli del tempo iniziale
-     * con il numero dei tick presenti nella quantit√† di tempo desiderata. All'interno della struttura il tempo attuale viene
-     * costantemente aggiornato. Quando la differenza raggiunger√† i tick previsti, termineranno le ripetizioni e la pausa sar√† avvenuta.
+     * con il numero dei tick presenti nella quantit‡† di tempo desiderata. All'interno della struttura il tempo attuale viene
+     * costantemente aggiornato. Quando la differenza raggiunger‡† i tick previsti, termineranno le ripetizioni e la pausa sar‡† avvenuta.
     */
     while(tempo_attuale - tempo_iniziale < ticks)
     {
@@ -64,12 +66,12 @@ void rallentare_output(stringa messaggio, int millisecondi)
     int i;	                                                //Indice utilizzato per indicare il carattere corrente della stringa.
     i = 0;                                                  //Inizializzazione a zero dell'indice.
 
-    while (messaggio[i] != '\0')                            //Iterazione che dura finch√© non si incontra il carattere di fine stringa.
+    while (messaggio[i] != '\0')                            //Iterazione che dura finchË non si incontra il carattere di fine stringa.
     {
         if (messaggio[i] != ' ')                            //Struttura di controllo per evitare che il ritardo venga utilizzato su spaziature.
         {
 			/**
-			 * Se il carattere corrente √® #, viene inserita in "lunghezza_colore" la lunghezza della stringa che indica il colore
+			 * Se il carattere corrente Ë #, viene inserita in "lunghezza_colore" la lunghezza della stringa che indica il colore
 			 * presente nel messaggio. Successivamente l'indice viene incrementato di quella grandezza per evitare che il ritardo
 			 * venga utilizzato su una stringa dei colori.
 			*/
@@ -103,7 +105,7 @@ int controllare_colore(stringa messaggio, int indice)
 	/**
 	 * Questa struttura di ripetizione serve a controllare la presenza di un colore nel messaggio.
 	 * Quindi comincia ad inserire in "colore" (che usa lunghezza_colore come indice) i caratteri presenti nel messaggio,
-	 * finch√© non trova il carattere #. Se lo trova, la struttura di ripetizione si interrompe, altrimenti prosegue fino alla fine del
+	 * finchË non trova il carattere #. Se lo trova, la struttura di ripetizione si interrompe, altrimenti prosegue fino alla fine del
 	 * messaggio, lasciando la variabile "esito" pari a false.
 	*/
 
@@ -111,7 +113,7 @@ int controllare_colore(stringa messaggio, int indice)
 	{
 		if(messaggio[indice] == '#')						//Struttura di controllo che verifica la presenza del carattere #.
 		{
-			esito = true;									//Se il carattere # √® presente, esito diventer√† true.
+			esito = true;									//Se il carattere # Ë presente, esito diventer‡† true.
 		}
 
 		colore[lunghezza_colore] = messaggio[indice];		//Assegnazione del carattere corrente di colore con il carattere corrente di messaggio.
@@ -123,35 +125,35 @@ int controllare_colore(stringa messaggio, int indice)
 	colore[lunghezza_colore] = '\0';						//Assegnazione del carattere di fine stringa all'ultima posizione di "colore".
 
 
-	if(esito == true)										//Struttura di controllo che contiene le istruzioni che si verificano se "esito" √® true.
+	if(esito == true)										//Struttura di controllo che contiene le istruzioni che si verificano se "esito" Ë true.
 	{
 		lunghezza_colore++;									//Incremento della lunghezza del colore.
 
-		if(confrontare_stringhe(colore, STRINGA_COLORE_ROSSO))		//Struttura di controllo che verifica che "colore" √® uguale alla stringa indicante il colore rosso.
+		if(confrontare_stringhe(colore, STRINGA_COLORE_ROSSO))		//Struttura di controllo che verifica che "colore" Ë uguale alla stringa indicante il colore rosso.
 		{
 			printf(COLORE_ROSSO);							//Stampa che serve a colorare i successivi messaggi di rosso.
 		}
-		else if(confrontare_stringhe(colore, STRINGA_COLORE_BLU))		//Struttura di controllo che verifica che "colore" √® uguale alla stringa indicante il colore blu.
+		else if(confrontare_stringhe(colore, STRINGA_COLORE_BLU))		//Struttura di controllo che verifica che "colore" Ë uguale alla stringa indicante il colore blu.
 		{
 			printf(COLORE_BLU);								//Stampa che serve a colorare i successivi messaggi di blu.
 		}
-		else if(confrontare_stringhe(colore, STRINGA_COLORE_GIALLO))	//Struttura di controllo che verifica che "colore" √® uguale alla stringa indicante il colore giallo.
+		else if(confrontare_stringhe(colore, STRINGA_COLORE_GIALLO))	//Struttura di controllo che verifica che "colore" Ë uguale alla stringa indicante il colore giallo.
 		{
 			printf(COLORE_GIALLO);							//Stampa che serve a colorare i successivi messaggi di giallo.
 		}
-		else if(confrontare_stringhe(colore, STRINGA_COLORE_VERDE))		//Struttura di controllo che verifica che "colore" √® uguale alla stringa indicante il colore verde.
+		else if(confrontare_stringhe(colore, STRINGA_COLORE_VERDE))		//Struttura di controllo che verifica che "colore" Ë uguale alla stringa indicante il colore verde.
 		{
 			printf(COLORE_VERDE);							//Stampa che serve a colorare i successivi messaggi di verde.
 		}
-		else if(confrontare_stringhe(colore, STRINGA_COLORE_CIANO))		//Struttura di controllo che verifica che "colore" √® uguale alla stringa indicante il colore ciano.
+		else if(confrontare_stringhe(colore, STRINGA_COLORE_CIANO))		//Struttura di controllo che verifica che "colore" Ë uguale alla stringa indicante il colore ciano.
 		{
 			printf(COLORE_CIANO);							//Stampa che serve a colorare i successivi messaggi di ciano.
 		}
-		else if(confrontare_stringhe(colore, STRINGA_COLORE_PORPORA))	//Struttura di controllo che verifica che "colore" √® uguale alla stringa indicante il colore porpora.
+		else if(confrontare_stringhe(colore, STRINGA_COLORE_PORPORA))	//Struttura di controllo che verifica che "colore" Ë uguale alla stringa indicante il colore porpora.
 		{
 			printf(COLORE_PORPORA);							//Stampa che serve a colorare i successivi messaggi di porpora.
 		}
-		else if(confrontare_stringhe(colore, STRINGA_COLORE_BIANCO))	//Struttura di controllo che verifica che "colore" √® uguale alla stringa indicante il colore bianco.
+		else if(confrontare_stringhe(colore, STRINGA_COLORE_BIANCO))	//Struttura di controllo che verifica che "colore" Ë uguale alla stringa indicante il colore bianco.
 		{
 			printf(COLORE_BIANCO);							//Stampa che serve a colorare i successivi messaggi di bianco.
 		}
@@ -161,7 +163,7 @@ int controllare_colore(stringa messaggio, int indice)
 		}
 	}
 
-	if(esito == false)										//Se esito √® uguale a false, la lunghezza del colore sar√† uguale a zero.
+	if(esito == false)										//Se esito Ë uguale a false, la lunghezza del colore sar‡† uguale a zero.
 	{
 		lunghezza_colore = 0;								//Assegnazione di "lunghezza_colore" a zero.
 	}
@@ -179,7 +181,7 @@ void pulire_schermo()
 
 int leggere_intero_tastiera()
 {
-	int valore;												//Variabile in cui andr√† l'intero letto da tastiera.
+	int valore;												//Variabile in cui andr‡ l'intero letto da tastiera.
 
 	scanf("%d", &valore);									//Chiamata della funzione di stdin per la lettura di un intero da tastiera.
 
@@ -195,7 +197,7 @@ stringa leggere_stringa_tastiera(stringa str)
 	fgets (str, sizeof(char) * DIM_STRINGA, stdin);			//Chiamata della funzione che permette di leggere una stringa da tastiera.
 
 	/**
-	 * Se la lunghezza della stringa √® maggiore di zero e il penultimo carattere √® \n, allora questo sar√† sovrascritto dal carattere
+	 * Se la lunghezza della stringa Ë maggiore di zero e il penultimo carattere Ë \n, allora questo sar‡† sovrascritto dal carattere
 	 * di fine stringa.
 	*/
 
@@ -210,8 +212,7 @@ void leggi_linea()
 	int c;													//Variabile in cui andranno i valori letti da tastiera.
 	
 	/**
-	 * La struttura di ripetizione terminer√† quando "c" sar√† uguale al carattere EOF (che sar√† ricevuto quando non ci sar√† pi√π input)
-	 * o quando sar√† uguale al carattere di new line.
+	 * La struttura di ripetizione terminer‡† quando "c" sar‡†uguale al carattere EOF oppure al carattere di new line
 	*/
 
 	do

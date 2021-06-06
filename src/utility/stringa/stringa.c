@@ -1,6 +1,7 @@
 /**
- * Il seguente modulo ha il compito di racchiudere le vare funzioni per la gestione del tipo di dato stringa. La funzione scrivere_stringa, che ha in input due stringhe restituisce,
- * usando la funzione di libreria strcpy, la seconda stringa all'interno della prima stringa, senza dover copiare carattere per carattere,
+ * Il seguente modulo ha il compito di racchiudere le vare funzioni per la gestione del tipo di dato stringa. La funzione scrivere_stringa,
+ * che ha in input due stringhe restituisce, usando la funzione di libreria strcpy, la seconda stringa all'interno della prima stringa,
+ * senza dover copiare carattere per carattere.
  * La funzione scrivere_carattere, oltre a scrivere il carattere all'interno della stringa nella posizione indicata dall'indice, presenta
  * un SE che permette di allocare dinamicamente spazio alla stringa se quest'ultima presenta l'indice % 100 = 0.
  * La funzione leggere_carattere invece ha il compito di restituire appunto il carattere cercato all'interno della stringa in una determinata

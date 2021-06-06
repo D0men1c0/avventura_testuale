@@ -1,8 +1,8 @@
 /**
- * Questo Ã¨ uno dei moduli principali ai fini della gestione generale dell'avventura.
+ * Questo è uno dei moduli principali ai fini della gestione generale dell'avventura.
  * Esso contiene infatti tutte la variabili globali che servono a gestire interamente il personaggio e l'ambiente di gioco.
  * Sono inoltre presenti due funzioni molto importanti per il funzionamento del gioco.
- * La funzione per la gestione dell'avventura Ã¨ quella che di fatto la imposta, richiamando la funzione apposita e occupandosi
+ * La funzione per la gestione dell'avventura è quella che di fatto la imposta, richiamando la funzione apposita e occupandosi
  * della continua richiesta di input da parte del giocatore.
  * La funzione per l'impostazione dell'avventura visualizza la schermata principale del gioco tramite la funzione che permette
  * la visualizzazione lenta dei messaggi e successivamente imposta le strutture dell'analizzatore lessicale tramite funzione dedicata. 

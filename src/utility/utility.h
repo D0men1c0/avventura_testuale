@@ -4,6 +4,7 @@
  * E' stato realizzato questo modulo a parte in modo tale da evitare include ricorsive di altri moduli in quanto i moduli definiti
  * sono utilizzati per gran parte del programma e dunque anche negli altri moduli.
  */
+
 #ifndef UTILITY_H
 #define UTILITY_H
 

@@ -1,9 +1,9 @@
 /**
- * Questo Ã¨ uno dei moduli principali ai fini della gestione generale dell'avventura.
- * Esso contiene infatti tutte la variabili globali che servono a gestire interamente il personaggio e l'ambiente di gioco.
- * Sono inoltre presenti due funzioni molto importanti per il funzionamento del gioco.
- * La funzione per la gestione dell'avventura Ã¨ quella che di fatto la imposta, richiamando la funzione apposita e occupandosi
- * della continua richiesta di input da parte del giocatore.
+ * Questo è uno dei moduli principali ai fini della gestione generale dell'avventura.
+ * La funzione gestire_avventura non fa altro che richiamare la funzione impostare_avventura all'apertura del gioco e,
+ * in un ciclo legge continuamente il comando inserito dall'utente. L'unico modo per terminare la lettura del comando e quindi
+ * chiudere il gioco è impostare la variabile globale chiusura_gioco a false e questo è possibile solo se l'utente, dopo aver
+ * finito il gioco decide di uscire inserendo "si".
  * La funzione per l'impostazione dell'avventura visualizza la schermata principale del gioco tramite la funzione che permette
  * la visualizzazione lenta dei messaggi e successivamente imposta le strutture dell'analizzatore lessicale tramite funzione dedicata. 
 */
@@ -23,8 +23,8 @@ void gestire_avventura()
 	impostare_avventura();									//Chiamata della funzione che serve a impostare l'avventura.
 	
 	/**
-	 * La lettura del comando da tastiera viene inserita in un ciclo infinito, così da richiedere per ogni azione un nuovo comando
-	 * da eseguire.
+	 * La lettura del comando da tastiera viene inserita in un ciclo che non termina fino a quando l'utente finisce il gioco
+	 * ed inserisce "si".
 	*/
 
 	while(chiusura_gioco == false)
@@ -35,14 +35,14 @@ void gestire_avventura()
 
 void impostare_avventura()
 {
-	chiusura_gioco = false;
+	chiusura_gioco = false;									//La variabile chiusura_gioco viene di default impostata a false
 
 	rallentare_output(COLORE_ROSSO, 0);						//Stampa che serve a colorare i successivi messaggi di rosso.
 	rallentare_output(COLORE_BIANCO, 0);					//Stampa che serve a colorare i successivi messaggi di bianco.
 
 	pulire_schermo();										//Chiamata della funzione per la pulizia dello schermo.
 
-	stringa stringa_file = "";								//Inizializzazione della stringa che conterrÃ  il file contentente la schermata iniziale del gioco.
+	stringa stringa_file = "";								//Inizializzazione della stringa che conterrà  il file contentente la schermata iniziale del gioco.
 	
 	stringa_file = leggere_file_testo("start.txt", stringa_file);		//Assegnazione della schermata iniziale del gioco nella stringa "stringa_file".
 	rallentare_output(stringa_file, MILLISEC_CASTELLO);		//Visualizzazione della schermata iniziale del gioco.

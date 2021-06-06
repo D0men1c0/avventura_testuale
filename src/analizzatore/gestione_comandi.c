@@ -8,24 +8,24 @@
  * La funzione caricare_partita ha il compito di leggere da file binario ciò che è stato scritto precedentemente dal comando salvare_partita.
  * La funzione stampare_aiuto consente di stampare un file di testo che riepiloga tutti i comandi possibili che l'utente può effettuare con
  * le corrispettive funzionalità.
- * La funzione visualizzare_attributi , stampa a video quelli che sono gli attributi del giocatore cioè il nome, la vita, la forza e
+ * La funzione visualizzare_attributi stampa a video quelli che sono gli attributi del giocatore cioè il nome, la vita, la forza e
  * l'intelligenza. Comando simile è visualizzare_inventario che ha il compito di stampare gli oggetti presenti nell'inventario in base se
- * questi ultimi sono avvalorati a true.
+ * questi ultimi sono impostati a true.
  * Visualizzare_mappa invece permette di stampare a video la concatenazione dei file di testo che rappresentano i frammenti di mappa posseduti
  * dall'utente, es: se l'utente possiede 2 frammenti mappa est e ovest(impostati a true nell'inventario) verranno concatenati i file di testo
  * riguardanti il frammento mappa_est e ovest con due file contenenti spazi pari al numero di caratteri dei file di testo "mancanti"
  * (nord e sud).
- * La funzione esaminare_stanza ha il compito , qualora ci fossero dei file di testo sulla cella della matrice, di stamparne il contenuto.
- * La funzione aprire_porta serve per poter aprire una porta_semplice se abbiamo nell'inventario la chiave_semplice e se ci troviamo nella
+ * La funzione esaminare_stanza ha il compito, qualora ci fossero dei file di testo sulla cella della matrice, di stamparne il contenuto.
+ * La funzione aprire_porta serve per poter aprire una porta_semplice se si ha nell'inventario la chiave_semplice e se ci si trova nella
  * cella della matrice appropriata (PORTA_SEMPLICE).
  * La funzione aprire_botola serve per poter giungere al finale del gioco solo nel caso in cui l'utente possieda tutti e 4 i frammenti di mappa
  * e si trovi nella cella della matrice appropriata(BOTOLE), inoltre è presente un'ulteriore condizione in base all'intelligenza posseduta
  * dal personaggio che se sarà maggiore di 2 non dovrà risolvere alcun indovinello, altrimenti dovrà risolverlo prima di poter visualizzare
  * il finale completo, tutto questo controllo è gestito dalla funzione gestire_finale che esegue dei controlli in base all'intelligenza.
- * La funzione sfondare_porta serve, sempre se ci troviamo in una cella della matrice appropriata (PORTA_CHIUSA_SFONDABILE), di poter
+ * La funzione sfondare_porta serve, sempre se ci si trova in una cella della matrice appropriata (PORTA_CHIUSA_SFONDABILE), di poter
  * "oltrepassare" tale porta se il personaggio ha una forza maggiore di 2, altrimenti non può proseguire oltre e può solo tornare indietro.
  * Le funzioni prendere_frammento e prendere_chiave hanno lo stesso scopo, cioè se il giocatore si trova nella cella appropriata può prendere
- * il frammento di mappa o la chiave corrispondente, avvalorando a true (all'interno della struttura inventario)il campo corrispondente
+ * il frammento di mappa o la chiave corrispondente, avvalorando a true (all'interno della struttura inventario) il campo corrispondente
  * all'oggetto raccolto.
  * La funzione muovere_personaggio ha il compito di effettuare una serie di controlli (muro, porte ecc), per far effettuare lo spostamento
  * del personaggio (nord, sud, est o ovest).

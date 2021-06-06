@@ -1,11 +1,18 @@
 /**
- * Questo modulo permette la gestione della mappa e delle sue celle in particolare. Vengono definite una serie di costanti corrispondente ad ogni tipo
- * di elemento che Ã¨ possibile trovare in cella. Per il muro ho scelto il valore 0 perchÃ© non Ã¨ divisore di alcun numero e per la cella vuota ho scelto
- * il valore 1, perchÃ© divisore di ogni numero. Le successive celle sono tutti numeri primi.
- * Questa scelta Ã¨ stata effettuata sulla base della necessitÃ  di poter gestire la presenza di piÃ¹ elementi nella stessa cella: agendo cosÃ¬, infatti,
- * ogni cella sarÃ  divisibile solo per gli elementi lÃ¬ presenti.
- * La funzione leggere_mappa() ha il compito di leggere la mappa da file, la funzione gestire_cella() ha invece il compito di stabilire il comportamento
- * delle celle nelle quali non sono presenti comandi particolari effettuati dal giocatore oppure la semplice gestione di messaggi di output.
+ * Questo modulo definisce il tipo di dato matrice e permette la gestione della mappa e delle sue celle in particolare.
+ * Vengono definite una serie di costanti(numeri primi) corrispondente ad ogni tipo di elemento che è possibile trovare in cella. Per il muro si è
+ * scelto il valore 0 perchè non è divisore di alcun numero e per la cella vuota si è scelto il valore 1, perchè divisore di ogni numero.
+ * Questa scelta è stata effettuata sulla base della necessità  di poter gestire la presenza di più elementi nella stessa cella: agendo così, infatti,
+ * ogni cella sarà  divisibile solo per gli elementi lì presenti.
+ * Ad esempio se in una cella è stato salvato il numero 902, questo significa che lì è presente(escludendo l'1 della cella vuota):
+ * - STORIA (2)
+ * - PEZZO_MAPPA_EST (41)
+ * - PORTA_RE (11)
+ * Questo perchè 2*41*11 = 902 e questa è l'unica combinazione possibile.
+ * La funzione gestire_cella() ha il compito di stabilire il comportamento delle celle nelle quali non sono presenti comandi particolari effettuati dal
+ * giocatore oppure la semplice gestione di messaggi di output.
+ * La funzione trovare_direzioni_disponibili(), invece, ad ogni spostamento indica le possibili direzioni in cui può andare, controllando se vi è un muro
+ * oppure una porta chiusa.
 */
 #ifndef GESTIONE_MAPPA_H_
 #define GESTIONE_MAPPA_H_
@@ -40,7 +47,7 @@
 #define RIGHE 10
 #define COLONNE 14
 
-typedef int matrice[RIGHE][COLONNE];
+typedef int matrice[RIGHE][COLONNE];							//Tipo di dato matrice utilizzata per la mappa
 
 typedef struct
 {

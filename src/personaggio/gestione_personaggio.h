@@ -2,7 +2,7 @@
  * Il seguente modulo contiene il tipo di dato personaggio e le relative funzioni di scrittura e lettura per ogni suo campo.
  * I campi scelti sono 3 interi e un vettore di caratteri con dimensione massima di 50.
  * Sono presenti le funzioni di lettura e scrittura per ogni campo e le funzioni che hanno qualche modifica in particolare
- * sono : scrivere_vita,leggere_nome,scrivere_nome.
+ * sono: scrivere_vita, leggere_nome, scrivere_nome.
  * Scrivere_nome ha in input il tipo di dato personaggio e una stringa restituisce il campo nome aggiornato in cui ogni
  * carattere è stato preso dalla stringa passata in input.
  * Leggere_nome invece ha in input il tipo di dato personaggio e restituisce una stringa. Quest'ultima ha i caratteri presi

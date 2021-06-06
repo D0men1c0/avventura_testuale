@@ -1,11 +1,12 @@
 /**
- * Questo modulo permette la gestione della mappa e delle sue celle in particolare. Vengono definite una serie di costanti corrispondente ad ogni tipo
- * di elemento che √® possibile trovare in cella. Per il muro ho scelto il valore 0 perch√© non √® divisore di alcun numero e per la cella vuota ho scelto
- * il valore 1, perch√© divisore di ogni numero. Le successive celle sono tutti numeri primi.
- * Questa scelta √® stata effettuata sulla base della necessit√† di poter gestire la presenza di pi√π elementi nella stessa cella: agendo cos√¨, infatti,
- * ogni cella sar√† divisibile solo per gli elementi l√¨ presenti.
- * La funzione leggere_mappa() ha il compito di leggere la mappa da file, la funzione gestire_cella() ha invece il compito di stabilire il comportamento
- * delle celle nelle quali non sono presenti comandi particolari effettuati dal giocatore oppure la semplice gestione di messaggi di output.
+ * In questo modulo vengono gestite gli spostamenti all'interno della mappa con la funzione gestire_cella. Quest'ultima, infatti, legge il valore contenuto
+ * all'interno della cella attuale(prelevando la riga e la colonna dalla variabile globale pos) e attraverso una serie di controlli con la funzione resto, si
+ * agisce di conseguenza, cioË ad esempio se il valore della cella Ë 10 questo sar‡ divisibile per 5 e per 2(escludendo l'1 della cella vuota), quindi la
+ * funzione resto dar‡ come output 0 solamente con la storia(2) e con la porta chiusa sfondabile(5). Se bisogna modificare il valore della cella, basta eseguire
+ * una semplice divisione, ovvero valore totale della cella diviso il valore attribuito all'elemento(cioË in questo esempio 10/2 (il 2 Ë della storia)).
+ * L'altra funzione trovare_direzioni_disponibili stampa le possibili direzioni dopo uno spostamento e colora in giallo la posizione precedente, ovvero se ci si
+ * sposta verso nord verr‡ colorato di giallo il sud(perchË logicamente si Ë arrivati da sud). Questa funzione determina i possibili spostamenti controllando,
+ * tramite la funzione resto che nelle vicinanze(nord, sud, est e ovest) non ci siano muri o porte chiuse.
 */
 
 #include <stdio.h>
@@ -56,10 +57,10 @@ stringa trovare_direzioni_disponibili()
 	posizione posizione_sud;										//Posizione a sud del personaggio.
 	posizione posizione_est;										//Posizione a est del personaggio.
 	posizione posizione_ovest;										//Posizione a ovest del personaggio.
-	bool nord;														//Variabile che stabilisce se il nord √® disponibile.
-	bool sud;														//Variabile che stabilisce se il sud √® disponibile.
-	bool est;														//Variabile che stabilisce se il est √® disponibile.
-	bool ovest;														//Variabile che stabilisce se il ovest √® disponibile.
+	bool nord;														//Variabile che stabilisce se il nord Ë disponibile.
+	bool sud;														//Variabile che stabilisce se il sud Ë disponibile.
+	bool est;														//Variabile che stabilisce se il est Ë disponibile.
+	bool ovest;														//Variabile che stabilisce se il ovest Ë disponibile.
 
 	stringa direzioni = "";											//Stringa contenente le varie direzioni percorribili.
 
@@ -77,12 +78,12 @@ stringa trovare_direzioni_disponibili()
 
 	/**
 	 * Se la cella attuale contiene l'elemento PORTA_CHIUSA_SFONDABILE, PORTA_SEMPLICE o PORTA_RE tra i suoi divisori,
-	 * si controlla se la cella nella posizione in corrispondenza di ogni punto cardinale √® diversa da un muro
-	 * e se questa √® uguale alla posizione precedente del giocatore. Se queste condizioni sono entrambi vere,
-	 * allora la variabile diverr√† true e la direzione sar√† segnata come disponibile.
+	 * si controlla se la cella nella posizione in corrispondenza di ogni punto cardinale Ë diversa da un muro
+	 * e se questa Ë uguale alla posizione precedente del giocatore. Se queste condizioni sono entrambi vere,
+	 * allora la variabile diverr‡† true e la direzione sar‡† segnata come disponibile.
 	 * Se la cella attuale non contiene nessuno di quei tre elementi, viene controllata la sola presenza di un muro nella posizione
-	 * in corrispondenza di ogni punto cardinale. Se questo non √® presente, la variabile diverr√† true e
-	 * la direzione sar√† segnata come disponibile.
+	 * in corrispondenza di ogni punto cardinale. Se questo non Ë presente, la variabile diverr‡† true e
+	 * la direzione sar‡† segnata come disponibile.
 	*/
 
 	if(cella_attuale % PORTA_CHIUSA_SFONDABILE == 0 || cella_attuale % PORTA_SEMPLICE == 0 || cella_attuale % PORTA_RE == 0)
@@ -113,9 +114,9 @@ stringa trovare_direzioni_disponibili()
 	}
 
 	/**
-	 * Se le variabili corrispondenti ai punti cardinali sono vere, verr√† controllato la posizione legata al punto cardinale
-	 * in questione corrisponde alla posizione precedente. In questo caso la direzione sar√† colorata di giallo e concatenata alla stringa "direzioni".
-	 * Altrimenti sar√† semplicemente concatenata.
+	 * Se le variabili corrispondenti ai punti cardinali sono vere, verr‡† controllato la posizione legata al punto cardinale
+	 * in questione corrisponde alla posizione precedente. In questo caso la direzione sar‡† colorata di giallo e concatenata alla stringa "direzioni".
+	 * Altrimenti sar‡† semplicemente concatenata.
 	*/
 
 	if(nord)
@@ -153,7 +154,7 @@ stringa trovare_direzioni_disponibili()
 	/**
 	 * Con le successive due istruzioni viene sovrascritto lo spazio successivo all'ultima delle direzioni disponibili
 	 * con un carattere di new line e il carattere successivo viene sovrascritto dal carattere di fine stringa.
-	 * √à stato fatto ci√≤ allo scopo di migliorare esteticamente il messaggio delle direzioni.
+	 * E' stato fatto ciÚ allo scopo di migliorare esteticamente il messaggio delle direzioni.
 	*/
 
 	direzioni[leggere_lunghezza(direzioni) - 3] = '\n';
@@ -166,15 +167,15 @@ stringa trovare_direzioni_disponibili()
 void gestire_cella()
 {
 	int cella_attuale;													//Cella in cui il personaggio si trova attualmente.
-	stringa nome_file = "";												//Stringa in cui verr√† inserito il nome del file di testo da aprire.
-	stringa stringa_file = "";											//Stringa in cui verr√† inserito il contenuto dei file di testo.
+	stringa nome_file = "";												//Stringa in cui verr‡† inserito il nome del file di testo da aprire.
+	stringa stringa_file = "";											//Stringa in cui verr‡† inserito il contenuto dei file di testo.
 
 	nome_file = allocare_stringa(nome_file, 0);							//Allocazione della stringa.
 
 	cella_attuale = leggere_valore_matrice(mappa, leggere_y(pos), leggere_x(pos));		//Assegnazione del valore corrispondente alla cella attuale della mappa.
 
 	/**
-	 * Se la cella attuale √® una cella vuota, si procede con la stampa di un messaggio.
+	 * Se la cella attuale Ë una cella vuota, si procede con la stampa di un messaggio.
 	 * In caso contrario si studiano i differenti casi.
 	*/
 
@@ -188,7 +189,7 @@ void gestire_cella()
 	/**
 	 * Se la cella attuale contiene l'elemento STORIA tra i suoi divisori, viene utilizzata una funzione particolare per assegnare alla stringa
 	 * "nome_file" un valore specifico, basato sulla posizione del personaggio in quel momento. Successivamente viene aperto un file con il nome
-	 * pari al valore di quella stringa e il contenuto viene assegnato a "stringa_file", che poi sar√† sfruttata per la stampa del messaggio.
+	 * pari al valore di quella stringa e il contenuto viene assegnato a "stringa_file", che poi sar‡ sfruttata per la stampa del messaggio.
 	 * Infine l'elemento STORIA viene rimosso dalla cella attuale per evitare che queste operazioni si ripetino ogni volta che il giocatore passi
 	 * sulla stessa cella.
 	*/
@@ -196,7 +197,7 @@ void gestire_cella()
 	{
 		sprintf(nome_file, "storia/[%d][%d].txt", leggere_y(pos), leggere_x(pos));		//Utilizzo della funzione sprintf per assegnare a "nome_file" un valore particolare.
 		stringa_file = leggere_file_testo(nome_file, stringa_file);						//Assegnazione a stringa_file del contenuto del file di testo.
-		if (confrontare_stringhe(nome_file,"storia/[8][4].txt"))						//Se il file √® quello corrispondente allo spawn, viene visualizzato senza trattini.
+		if (confrontare_stringhe(nome_file,"storia/[8][4].txt"))						//Se il file Ë quello corrispondente allo spawn, viene visualizzato senza trattini.
 		{
 			rallentare_output(stringa_file, MILLISECONDI);								//Visualizzazione lenta del contenuto del file di testo dello spawn.
 		}
@@ -217,7 +218,7 @@ void gestire_cella()
 
 	if(cella_attuale % POWER_UP_VITA == 0)
 	{
-		if(leggere_vita(giocatore) < 5)													//La vita sar√† incrementata solo se il giocatore non ce l'ha al massimo.	
+		if(leggere_vita(giocatore) < 5)													//La vita sar‡† incrementata solo se il giocatore non ce l'ha al massimo.
 		{
 			scrivere_vita(&giocatore, leggere_vita(giocatore) + 1);						//Chiamata della funzione scrivere_vita per incrementare le vite a disposizione.
 			printf(COLORE_PORPORA);														//Stampa che serve a colorare i successivi messaggi di porpora.
@@ -235,7 +236,7 @@ void gestire_cella()
 
 	if(cella_attuale % POWER_UP_FORZA == 0)
 	{
-		if(leggere_forza(giocatore) < 5)												//La forza sar√† incrementata solo se il giocatore non ce l'ha al massimo.
+		if(leggere_forza(giocatore) < 5)												//La forza sar‡† incrementata solo se il giocatore non ce l'ha al massimo.
 		{
 			scrivere_forza(&giocatore, leggere_forza(giocatore) + 1);					//Chiamata della funzione scrivere_forza per incrementare la forza.
 			printf(COLORE_PORPORA);														//Stampa che serve a colorare i successivi messaggi di porpora.
@@ -247,7 +248,7 @@ void gestire_cella()
 
 	if(cella_attuale % POWER_UP_FORZA_2 == 0)
 	{
-		if(leggere_forza(giocatore) < 4)												//La forza sar√† incrementata di due unit√† solo se il giocatore ce l'ha inferiore a 4.
+		if(leggere_forza(giocatore) < 4)												//La forza sar‡† incrementata di due unit√† solo se il giocatore ce l'ha inferiore a 4.
 		{
 			scrivere_forza(&giocatore, leggere_forza(giocatore) + 2);					//Chiamata della funzione scrivere_forza per incrementare la forza di 2.
 			printf(COLORE_PORPORA);														//Stampa che serve a colorare i successivi messaggi di porpora.

@@ -1,10 +1,10 @@
 /**
  * Il seguente modulo serve per definire tutte le strutture, i tipi di dato e le funzioni legate all'analizzatore(sia lessicale che sintattico).
- * Il tipo di dato simbolo √® un intero che identifica la classe di appartenenza di un determinato token, mentre il tipo di dato parola_chiave 
- * √® una stringa che rappresenta il token stesso. Per poter gestire questi tipi di dato si √® fatto utilizzo di due strutture: la prima √® 
- * struttura_parole_chiave in cui vengono salvati tutti i token riconosciuti dall'analizzatore con i rispettivi simboli. L'altra struttura √® la
+ * Il tipo di dato simbolo Ë un intero che identifica la classe di appartenenza di un determinato token, mentre il tipo di dato parola_chiave
+ * Ë una stringa che rappresenta il token stesso. Per poter gestire questi tipi di dato si Ë fatto utilizzo di due strutture: la prima Ë
+ * struttura_parole_chiave in cui vengono salvati tutti i token riconosciuti dall'analizzatore con i rispettivi simboli. L'altra struttura Ë la
  * tabella simboli in cui, invece, vengono salvati tutti i token letti dalla sorgente con il relativo simbolo. La gestione dell'analisi lessicale e
- * sintattica seguir√† nel modulo analizzatore_lessicale_sintattico.h. In questo modulo √® presente la funzione inizializzare_strutture_analizzatore 
+ * sintattica seguir‡† nel modulo analizzatore_lessicale_sintattico.h. In questo modulo Ë presente la funzione inizializzare_strutture_analizzatore
  * che inizializza i simboli e le parole chiave all'interno della struttura_parole_chiave. Inoltre, la funzione leggere_comando legge da tastiera
  * il comando inserito dall'utente(sorgente) e richiama l'analizzatore lessicale per analizzare i vari token. Seguono le varie funzioni per leggere
  * e scrivere i campi delle due strutture.
