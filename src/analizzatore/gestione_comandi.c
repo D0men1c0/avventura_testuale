@@ -370,7 +370,7 @@ bool stampare_aiuto()
 	if(leggere_dimensione_tabella_simboli() < 2)						// Se c'è solamente un unico simbolo identificato dal token "aiuto"
 	{
 		risposta = leggere_file_testo("aiuto.txt", risposta);			// Leggi il file di aiuto
-		rallentare_output(risposta, MILLISECONDI);						// Stampa il file di aiuto
+		rallentare_output(risposta, 0);									// Stampa il file di aiuto
 		esito = true;													// Imposta esito a true
 	}
 
