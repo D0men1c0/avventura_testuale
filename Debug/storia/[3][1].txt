@@ -23,6 +23,8 @@ La guardia ti ferisce, ma riesci a difenderti grazie ad uno scudo trovato a terr
      '.||.'
        ``
 #COLORE_BIANCO#
-Con un contrattacco degno di nota stordisci la guardia, cade e sviene...
+Con un contrattacco degno di nota stordisci la guardia, cade e sviene.
+
+Sembra abbia qualcosa...
 
 

@@ -690,7 +690,7 @@ void gestire_finale(bool cifrato)
 	}
 
 
-	ritardare_programma(5000);
+	ritardare_programma(8000);
 	pulire_schermo();
 
 	risposta = leggere_file_storia("storia/end.txt", risposta);

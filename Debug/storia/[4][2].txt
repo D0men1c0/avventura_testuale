@@ -23,32 +23,4 @@ C'e' una porta arrugginita...
 #COLORE_BIANCO#
 ...provi a sfondarla compiendo uno sforzo estremo ma nell'intento ti tagli.
 
-Nonostante l'incoveniente sei riuscito ad accedere nella sala del trono!
-
-
-Lo intuisci dalla poltrona reale al centro
-#COLORE_PORPORA#
-   /~~|~~~~~~~~~~~~~~~~~~~~|~~\
-  (   |                    |   )
-   \  |    *    *    *     |  / 
-    | |                    | |
-    | |      *     *       | |
-    | |                    | | 
-    | |    *    *    *     | |
-    | |                    | |
-    / |      *     *       | \
-   /  \                    /  \
-  /    |__________________|    \
- /~~~,/                    \,~~~\    
-(    )______________________(    )
- '\ /                        \ /'
-   |__________________________|
-   |                          |
-   |                          |
-   |                          | 
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#COLORE_BIANCO#
-
-
-
 

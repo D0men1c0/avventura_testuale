@@ -1,3 +1,30 @@
+
+Nonostante l'incoveniente sei riuscito ad accedere nella sala del trono!
+Sei riuscito ad accedere alla sala del re!
+
+Lo intuisci dalla poltrona reale al centro.
+#COLORE_PORPORA#
+   /~~|~~~~~~~~~~~~~~~~~~~~|~~\
+  (   |                    |   )
+   \  |    *    *    *     |  / 
+    | |                    | |
+    | |      *     *       | |
+    | |                    | | 
+    | |    *    *    *     | |
+    | |                    | |
+    / |      *     *       | \
+   /  \                    /  \
+  /    |__________________|    \
+ /~~~,/                    \,~~~\    
+(    )______________________(    )
+ '\ /                        \ /'
+   |__________________________|
+   |                          |
+   |                          |
+   |                          | 
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#COLORE_BIANCO#
+
 Questa stanza e' parecchio grande...
 
 ...li' in fondo sembra ci sia qualcosa!
